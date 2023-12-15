@@ -1,6 +1,6 @@
 #pragma once 
 #include <iostream>
-
+#include "userinput.hpp"
 class Player{
     protected :
     std::string _lastname;
@@ -11,9 +11,16 @@ class Player{
     float _y;
 
     public : 
+    void moveLeft();
+    void moveRight();
     void virtual run() = 0; 
-    void virtual toAttack() = 0;
-    void virtual beAttacked() = 0; 
+    void virtual doAttack1()=0;
+    void virtual doAttack2()=0;
+    void virtual doAttack3()=0;
+    void virtual doAttack4()=0;
+    void jump();
+    void pick();
+
 
 
 

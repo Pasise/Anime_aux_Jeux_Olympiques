@@ -9,5 +9,5 @@ class Game{
     public :
     Game();
     void run();
-    void action(UserInput input);
+    void updateState(UserInput input);
 };

@@ -23,7 +23,7 @@ void Game::run()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        action(_input);
+        updateState(_input);
         window.clear();
         window.draw(shape);
         window.display();
@@ -32,7 +32,7 @@ void Game::run()
 
 //la méthode action prend en entrer un UserInput et effectue l'action correspondante : pour left on décrémente la position x et poour right on l'incrémente
 
-void Game::action(UserInput input)
+void Game::updateState(UserInput input)
 {
     if (input.getButton() == Button::left)
     {
@@ -80,14 +80,14 @@ void Game::action(UserInput input)
     {
         for (auto &player : _players)
         {
-            player.pick();
+            player.jump();
         }
     }
     else
     {
         for (auto &player : _players)
         {
-            player.idle();
+            player.pick();
         }
     }
 }
