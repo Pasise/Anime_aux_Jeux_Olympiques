@@ -7,6 +7,8 @@ class Player{
     std::string _firstname;
     float _Xp;
     float _speed;
+    float _x;
+    float _y;
 
     public : 
     void virtual run() = 0; 
