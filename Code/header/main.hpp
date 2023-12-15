@@ -1,7 +1,7 @@
 #pragma once 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "input.hpp"
+#include "userinput.hpp"
 
 //Prototypes des fonctions 
 void CheckBoutton();
