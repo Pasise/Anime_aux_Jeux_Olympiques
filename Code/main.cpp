@@ -13,7 +13,7 @@ int main() {
 
     // Chargement du sprite depuis un fichier (sprite sheet)
     sf::Texture texture;
-    if (!texture.loadFromFile("Attack_2.png")) {
+    if (!texture.loadFromFile("../Sprite/Byakuya_Kuchiki_Run3.png")) {
         // Gestion de l'erreur si le chargement échoue
         return -1;
     }
