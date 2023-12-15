@@ -5,7 +5,7 @@
 Game::Game() : _players(), _characterRenderer(&_players)  
 {
     // Crée le joueur de classe 1 Fushiguro Megumi
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerJJKClasse1>("Fushiguro", "Megumi", 0, 1, 0, 0, 0, 0, "../Sprite/Byakuya_Kuchiki_Run3.png");
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerJJKClasse1>("Fushiguro", "Megumi", 0, 1.3, 0, 0, -1, 0, "../Sprite/Byakuya_Kuchiki_Run4.png");
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
@@ -14,9 +14,9 @@ Game::Game() : _players(), _characterRenderer(&_players)
 }
 void Game::run()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!"); 
+    //créer un fond d'écran bleu
+    window.clear(sf::Color::Blue); // Clear the window to blue
 
     while (window.isOpen())
     {
@@ -32,8 +32,10 @@ void Game::run()
         updateState(_input);
 
         window.clear();
+        window.clear(sf::Color::Green); // Clear the window to blue
         _characterRenderer.render(window
         );
+        //je veux que le fond d'écran soit bleu
         window.display();
     }
 }

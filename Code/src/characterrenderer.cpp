@@ -1,13 +1,13 @@
 #include "../header/characterrenderer.hpp"
 
 CharacterRenderer::CharacterRenderer() 
-    : _players(nullptr), _sprites(), _currentFrames(), _frameChangeSpeed(0.11) 
+    : _players(nullptr), _sprites(), _currentFrames(), _frameChangeSpeed(0.1) 
 {
 
 }
 
 CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>* players)
-    : _players(players), _sprites(), _currentFrames(players->size(), 0), _frameChangeSpeed(0.11)
+    : _players(players), _sprites(), _currentFrames(players->size(), 0), _frameChangeSpeed(0.08)
 {
     if (_players)
     {
