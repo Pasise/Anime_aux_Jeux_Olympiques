@@ -8,4 +8,4 @@ class PlayerJJK : public Player
     float _occultenergy;
     float _color;
 
-}
+};

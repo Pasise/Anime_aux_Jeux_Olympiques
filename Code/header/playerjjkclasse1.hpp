@@ -10,5 +10,5 @@ class PlayerJJKClasse1 : public PlayerJJK
     void invocation();
     void extension();
 
-}
+};
 
