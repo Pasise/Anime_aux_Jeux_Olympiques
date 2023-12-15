@@ -1,10 +1,12 @@
 #include "../header/userinput.hpp"
 
-Input::Input() {}
+UserInput::UserInput() {}
+
+UserInput::UserInput(Button button) : _button(button) {}
 
 //Gestion des inputs
 
-void Input::GestionDesInputs(sf::Event event, sf::RenderWindow &window)
+void UserInput::manageInput(sf::Event event, sf::RenderWindow &window)
 {
     if (event.type == sf::Event::KeyPressed)
     {

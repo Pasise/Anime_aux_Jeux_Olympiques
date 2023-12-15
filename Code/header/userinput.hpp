@@ -3,12 +3,13 @@
 #include <SFML/Graphics.hpp>
 #include "button.hpp"
 
-class Input
+class UserInput
 { 
 public: 
-    Input();
+    UserInput();
+    UserInput(Button button);
     Button getButton(void) const {return _button;}
-    void GestionDesInputs(sf::Event event, sf::RenderWindow &windown);
+    void manageInput(sf::Event event, sf::RenderWindow &windown);
 
 
 private: 

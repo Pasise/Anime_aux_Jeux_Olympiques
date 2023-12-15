@@ -9,7 +9,7 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Animation et Déplacement du Sprite");
 
     //Pour la gestion des inputs
-    Input input;
+    UserInput input;
 
     // Chargement du sprite depuis un fichier (sprite sheet)
     sf::Texture texture;
@@ -51,7 +51,7 @@ int main() {
                 window.close();
             }
         }
-        input.GestionDesInputs(event,window);
+        input.manageInput(event,window);
       
 
         // Mesure du temps écoulé depuis le dernier changement de frame
