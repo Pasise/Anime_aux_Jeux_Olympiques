@@ -3,8 +3,8 @@
 
 class Player{
     protected :
-    std::string _Nom;
-    std::string _Prenom;
+    std::string _lastname;
+    std::string _firstname;
     float _Xp;
     float _speed;
 
