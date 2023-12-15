@@ -8,68 +8,33 @@ void Input::GestionDesInputs(sf::Event event, sf::RenderWindow &window)
 {
     if (event.type == sf::Event::KeyPressed)
     {
-        if (event.key.code == sf::Keyboard::Left)
+        if (event.key.code == sf::Keyboard::Q)
         {
             _button = Button::left;
         }
-        else if (event.key.code == sf::Keyboard::Right)
+        else if (event.key.code == sf::Keyboard::D)
         {
             _button = Button::right;
         }
-        else if (event.key.code == sf::Keyboard::Up)
-        {
-            _button = Button::up;
-        }
-        else if (event.key.code == sf::Keyboard::Down)
-        {
-            _button = Button::down;
-        }
-        else if (event.key.code == sf::Keyboard::Space)
-        {
-            _button = Button::space;
-        }
-        else if (event.key.code == sf::Keyboard::Escape)
-        {
-            _button = Button::escape;
-        }
         else if (event.key.code == sf::Keyboard::A)
         {
-            _button = Button::attack;
+            _button = Button::attack1;
         }
-    }
-    else if (event.type == sf::Event::KeyReleased)
-    {
-        if (event.key.code == sf::Keyboard::Left)
+        else if (event.key.code == sf::Keyboard::Z)
         {
-            _button = Button::left;
+            _button = Button::attack2;
         }
-        else if (event.key.code == sf::Keyboard::Right)
+        else if (event.key.code == sf::Keyboard::E)
         {
-            _button = Button::right;
+            _button = Button::attack3;
         }
-        else if (event.key.code == sf::Keyboard::Up)
+        else if (event.key.code == sf::Keyboard::S)
         {
-            _button = Button::up;
+            _button = Button::attack4;
         }
-        else if (event.key.code == sf::Keyboard::Down)
+        else if (event.key.code == sf::Keyboard::R)
         {
-            _button = Button::down;
+            _button = Button::pick;
         }
-        else if (event.key.code == sf::Keyboard::Space)
-        {
-            _button = Button::space;
-        }
-        else if (event.key.code == sf::Keyboard::Escape)
-        {
-            _button = Button::escape;
-        }
-        else if (event.key.code == sf::Keyboard::A)
-        {
-            _button = Button::attack;
-        }
-    }
-    else if (event.type == sf::Event::Closed)
-    {
-        window.close();
     }
 }
