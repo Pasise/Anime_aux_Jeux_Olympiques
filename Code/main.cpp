@@ -39,6 +39,8 @@ int main() {
 
     // Horloge pour mesurer le temps écoulé
     sf::Clock clock;
+     //Direction du personnage
+    int direction = 1;
 
     // Boucle principale
     while (window.isOpen()) {
@@ -65,8 +67,15 @@ int main() {
         }
 
         // Gestion du mouvement vers la droite lorsque la touche "E" est enfoncée
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
             position.x += speed * elapsedTime.asSeconds();
+            direction = 1;
+        }
+
+        // Gestion du mouvement vers la gauche lorsque la touche "Q" est enfoncée
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+            position.x -= speed * elapsedTime.asSeconds();
+            direction = -1;
         }
 
         // Calcul de la partie du sprite sheet à afficher (source rectangle)
@@ -86,6 +95,10 @@ int main() {
 
         // Affichage à l'écran
         window.display();
+
+        // Ajuster la direction du sprite horizontalement si le personnage se déplace vers la gauche
+        sprite.setScale(direction, 1);
+        
     }
 
 
