@@ -1,4 +1,4 @@
-#include "game.hpp"
+#include "../header/game.hpp"
 
 Game::Game() : _input(Button::none)
 {
