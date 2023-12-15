@@ -10,7 +10,9 @@ class Joueur{
 
     public : 
     void virtual courir() = 0; 
-    
+    void virtual attaquer() = 0;
+    void virtual recevoir_une_attaque() = 0; 
+
 
 
 }; 
