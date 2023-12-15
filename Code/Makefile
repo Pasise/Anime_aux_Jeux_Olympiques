@@ -1,7 +1,7 @@
 CC=g++
 CCFLAGS= -Wall -Werror -std=c++11 -g
 CC_SFML= -lsfml-graphics -lsfml-window -lsfml-system
-SRC= $(wildcard *.cpp)
+SRC= $(wildcard src/*.cpp)
 OBJ= $(SRC:.cpp=.o)
 
 
