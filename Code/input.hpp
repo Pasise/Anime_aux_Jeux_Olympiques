@@ -1,18 +1,17 @@
 #pragma once 
+#include <iostream>
 #include <SFML/Graphics.hpp>
+#include "boutton.hpp"
 
 class Input
 { 
-    struct Boutton { bool left, right, up, down, space, escape,attack; };
-
 public: 
     Input();
-    Boutton getBoutton(void) const;
+    Boutton getBoutton(void) const {return boutton;}
     void GestionDesInputs(sf::Event event, sf::RenderWindow &windown);
 
 
 private: 
 Boutton boutton;
-
 
 };

@@ -1,115 +1,75 @@
 #include "input.hpp"
 
-Input::Input()  // On initialise les bouttons à false
-{
-    boutton.left = false;
-    boutton.right = false;
-    boutton.up = false;
-    boutton.down = false;
-    boutton.space = false;
-    boutton.escape = false;
-}
-
-//Accéder aux inormations private de bouttons
-Input::Boutton Input::getBoutton(void) const
-{
-    return boutton;
-}
+Input::Input() {}
 
 //Gestion des inputs
 
-void Input::GestionDesInputs(sf::Event event, sf::RenderWindow &windown)
+void Input::GestionDesInputs(sf::Event event, sf::RenderWindow &window)
 {
-    //On ferme la fenêtre si on appuie sur la croix
-    if(event.type == sf::Event::Closed)
+    if (event.type == sf::Event::KeyPressed)
     {
-        windown.close();
-    }
-
-    //On gère les inputs 
-    //Si on appuie sur une touche, on met le boutton correspondant à true
-    if(event.type == sf::Event::KeyPressed)
-    {
-        switch(event.key.code)
+        if (event.key.code == sf::Keyboard::Left)
         {
-            case sf::Keyboard::Left:
-                boutton.left = true;
-                break;
-
-            case sf::Keyboard::Right:
-                boutton.right = true;
-                break;
-
-            case sf::Keyboard::Up:
-                boutton.up = true;
-                break;
-
-            case sf::Keyboard::Down:
-                boutton.down = true;
-                break;
-
-            case sf::Keyboard::Space:
-                boutton.space = true;
-                break;
-
-            case sf::Keyboard::Escape:
-                boutton.escape = true;
-                break;
-
-            default:
-                break;
+            boutton = Boutton::left;
+        }
+        else if (event.key.code == sf::Keyboard::Right)
+        {
+            boutton = Boutton::right;
+        }
+        else if (event.key.code == sf::Keyboard::Up)
+        {
+            boutton = Boutton::up;
+        }
+        else if (event.key.code == sf::Keyboard::Down)
+        {
+            boutton = Boutton::down;
+        }
+        else if (event.key.code == sf::Keyboard::Space)
+        {
+            boutton = Boutton::space;
+        }
+        else if (event.key.code == sf::Keyboard::Escape)
+        {
+            boutton = Boutton::escape;
+        }
+        else if (event.key.code == sf::Keyboard::A)
+        {
+            boutton = Boutton::attack;
         }
     }
-
-    //Si on relâche une touche, on met le boutton correspondant à false
-    if(event.type == sf::Event::KeyReleased)
+    else if (event.type == sf::Event::KeyReleased)
     {
-        switch(event.key.code)
+        if (event.key.code == sf::Keyboard::Left)
         {
-            case sf::Keyboard::Left:
-                boutton.left = false;
-                break;
-
-            case sf::Keyboard::Right:
-                boutton.right = false;
-                break;
-
-            case sf::Keyboard::Up:
-                boutton.up = false;
-                break;
-
-            case sf::Keyboard::Down:
-                boutton.down = false;
-                break;
-
-            case sf::Keyboard::Space:
-                boutton.space = false;
-                break;
-
-            case sf::Keyboard::Escape:
-                boutton.escape = false;
-                break;
-
-            default:
-                break;
+            boutton = Boutton::left;
+        }
+        else if (event.key.code == sf::Keyboard::Right)
+        {
+            boutton = Boutton::right;
+        }
+        else if (event.key.code == sf::Keyboard::Up)
+        {
+            boutton = Boutton::up;
+        }
+        else if (event.key.code == sf::Keyboard::Down)
+        {
+            boutton = Boutton::down;
+        }
+        else if (event.key.code == sf::Keyboard::Space)
+        {
+            boutton = Boutton::space;
+        }
+        else if (event.key.code == sf::Keyboard::Escape)
+        {
+            boutton = Boutton::escape;
+        }
+        else if (event.key.code == sf::Keyboard::A)
+        {
+            boutton = Boutton::attack;
         }
     }
-
-    //On gère la souris
-    if(event.type == sf::Event::MouseButtonPressed)
+    else if (event.type == sf::Event::Closed)
     {
-       if(event.mouseButton.button == sf::Mouse::Left)
-       {
-           boutton.attack = true;
-       }
+        window.close();
     }
-
-    if(event.type == sf::Event::MouseButtonReleased)
-    {
-        if(event.mouseButton.button == sf::Mouse::Left)
-       {
-           boutton.attack = false;
-       }
-    }
-      
 }
