@@ -1,4 +1,4 @@
-#include "input.hpp"
+#include "userinput.hpp"
 
 Input::Input()  // On initialise les bouttons à false
 {
