@@ -10,62 +10,62 @@ void Input::GestionDesInputs(sf::Event event, sf::RenderWindow &window)
     {
         if (event.key.code == sf::Keyboard::Left)
         {
-            boutton = Boutton::left;
+            _button = Button::left;
         }
         else if (event.key.code == sf::Keyboard::Right)
         {
-            boutton = Boutton::right;
+            _button = Button::right;
         }
         else if (event.key.code == sf::Keyboard::Up)
         {
-            boutton = Boutton::up;
+            _button = Button::up;
         }
         else if (event.key.code == sf::Keyboard::Down)
         {
-            boutton = Boutton::down;
+            _button = Button::down;
         }
         else if (event.key.code == sf::Keyboard::Space)
         {
-            boutton = Boutton::space;
+            _button = Button::space;
         }
         else if (event.key.code == sf::Keyboard::Escape)
         {
-            boutton = Boutton::escape;
+            _button = Button::escape;
         }
         else if (event.key.code == sf::Keyboard::A)
         {
-            boutton = Boutton::attack;
+            _button = Button::attack;
         }
     }
     else if (event.type == sf::Event::KeyReleased)
     {
         if (event.key.code == sf::Keyboard::Left)
         {
-            boutton = Boutton::left;
+            _button = Button::left;
         }
         else if (event.key.code == sf::Keyboard::Right)
         {
-            boutton = Boutton::right;
+            _button = Button::right;
         }
         else if (event.key.code == sf::Keyboard::Up)
         {
-            boutton = Boutton::up;
+            _button = Button::up;
         }
         else if (event.key.code == sf::Keyboard::Down)
         {
-            boutton = Boutton::down;
+            _button = Button::down;
         }
         else if (event.key.code == sf::Keyboard::Space)
         {
-            boutton = Boutton::space;
+            _button = Button::space;
         }
         else if (event.key.code == sf::Keyboard::Escape)
         {
-            boutton = Boutton::escape;
+            _button = Button::escape;
         }
         else if (event.key.code == sf::Keyboard::A)
         {
-            boutton = Boutton::attack;
+            _button = Button::attack;
         }
     }
     else if (event.type == sf::Event::Closed)

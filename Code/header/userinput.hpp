@@ -1,17 +1,17 @@
 #pragma once 
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "boutton.hpp"
+#include "button.hpp"
 
 class Input
 { 
 public: 
     Input();
-    Boutton getBoutton(void) const {return boutton;}
+    Button getButton(void) const {return _button;}
     void GestionDesInputs(sf::Event event, sf::RenderWindow &windown);
 
 
 private: 
-Boutton boutton;
+Button _button;
 
 };
