@@ -1,13 +1,21 @@
+#pragma once
+
 #include <iostream>
 #include "player.hpp"
 #include "userinput.hpp"
+#include "playerjjk.hpp"
+#include "playerjjkclasse1.hpp"
+#include "characterrenderer.hpp"
 #include <list>
+#include <memory>
 
-class Game{
-    std::list <Player> _players;
+class Game {
+    std::vector<std::shared_ptr<Player>> _players;
     UserInput _input;
-    public :
+    CharacterRenderer _characterRenderer;
+public:
     Game();
     void run();
-    void updateState(UserInput input);
+    void updateState(const UserInput& input);
+
 };

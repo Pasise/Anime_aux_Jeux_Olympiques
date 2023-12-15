@@ -39,4 +39,7 @@ void UserInput::manageInput(sf::Event event, sf::RenderWindow &window)
             _button = Button::pick;
         }
     }
+    else if (event.type == sf::Event::KeyReleased){
+        _button = Button::fix;
+    }
 }
