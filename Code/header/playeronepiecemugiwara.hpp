@@ -16,7 +16,7 @@ public:
     void setTexture(std::string texturepath){_texture = texturepath;}
     void doAttack1(); //
     void doAttack2();
-    void doAttack3(); //Extension
+    void doAttack3(); //
     void doAttack4();
     void doJump();
     void doPick();

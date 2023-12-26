@@ -18,6 +18,14 @@ Game::Game() : _players(), _characterRenderer(&_players)
     std::cout << "Player 2 name : " << _players[1]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players);
 
+
+    // Crée le joueur de l'équipage du Mugiwara Roronoa Zoro
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerOnePieceMugiwara>("Roronoa", "Zoro", 0, 1.3, 0, 0, -1, 0, "../Sprite/Attack_2.png");
+    _players.push_back(player3);  // Ajoutez le joueur à la liste
+    std::cout << "Player 3 in the list" << std::endl;
+    std::cout << "Player 3 name : " << _players[2]->getFirstname() << std::endl;
+    _characterRenderer = CharacterRenderer(&_players);
+
 }
 void Game::run()
 {

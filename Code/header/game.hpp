@@ -6,6 +6,8 @@
 #include "playerjjk.hpp"
 #include "playerjjkclasse1.hpp"
 #include "playerjjkclasseS.hpp"
+#include "playeronepiece.hpp"
+#include "playeronepiecemugiwara.hpp"
 #include "characterrenderer.hpp"
 #include <list>
 #include <memory>

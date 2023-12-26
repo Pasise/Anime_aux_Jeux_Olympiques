@@ -16,6 +16,6 @@ class PlayerOnePiece : public Player
     virtual std::string getTexture()= 0;
 
     protected :
-    float vol;
+    float _vol;
 
 };
