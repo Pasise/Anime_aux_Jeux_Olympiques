@@ -5,10 +5,17 @@
 Game::Game() : _players(), _characterRenderer(&_players)  
 {
     // Crée le joueur de classe 1 Fushiguro Megumi
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerJJKClasse1>("Fushiguro", "Megumi", 0, 1.3, 0, 0, -1, 0, "../Sprite/Byakuya_Kuchiki_Run4.png");
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerJJKClasse1>("Fushiguro", "Megumi", 0, 1.3, 0, 0, -1, 0, "../Sprite/Byakuya_Kuchiki_Run3.png");
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
+    _characterRenderer = CharacterRenderer(&_players);
+
+    // Crée le joueur de classe S Satoru Gojo
+    std::shared_ptr<Player> player2 = std::make_shared<PlayerJJKClasseS>("Satoru", "Gojo", 0, 1.3, 0, 0, -1, 0, "../Sprite/Attack_3.png");
+    _players.push_back(player2);  // Ajoutez le joueur à la liste
+    std::cout << "Player 2 in the list" << std::endl;
+    std::cout << "Player 2 name : " << _players[1]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players);
 
 }

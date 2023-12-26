@@ -21,5 +21,7 @@ public:
     void doAttack4();
     void doJump();
     void doPick();
+
+    bool checkCollision(PlayerJJK* otherPlayer);
 };
 

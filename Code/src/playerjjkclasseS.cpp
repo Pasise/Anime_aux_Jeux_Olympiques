@@ -1,6 +1,5 @@
 #include "../header/playerjjkclasseS.hpp"
 
-#include "../header/playerjjkclasseS.hpp"
 
 PlayerJJKClasseS::PlayerJJKClasseS(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float occultenergy, float color, std::string texturepath)
     : PlayerJJKClasse1(lastname, firstname, Xp, speed, x, y, occultenergy, color, texturepath)
@@ -49,4 +48,16 @@ void PlayerJJKClasseS::doJump()
 void PlayerJJKClasseS::doPick()
 {
     //std::cout << "Pick Not Implemented Yet" << std::endl;
+}
+
+bool PlayerJJKClasseS::checkCollision(PlayerJJK* otherPlayer)
+{
+    if (otherPlayer->getX() < _x + 50 && otherPlayer->getX() > _x - 50 && otherPlayer->getY() < _y + 50 && otherPlayer->getY() > _y - 50)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
