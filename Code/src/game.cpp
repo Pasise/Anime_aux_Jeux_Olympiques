@@ -5,12 +5,23 @@
 Game::Game() : _players(), _characterRenderer(&_players,"../Sprite/Background1.2merged.png")  
 {
     // Crée le joueur de classe 1 Fushiguro Megumi
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerJJKClasse1>("Fushiguro", "Megumi", 0, 2.3, 0, 580, -1, 0, "../Sprite/Byakuya_Kuchiki_Run4.png");
-    std::shared_ptr<Player> player2 = std::make_shared<PlayerJJKClasse1>("Satoru", "Gojo", 0, 4.8, 0, 730, -1, 0, "../Sprite/Byakuya_Kuchiki_Run4.png");
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerJJKClasse1>("Fushiguro", "Megumi", 0, 1.9, 0, 580, -1, 0, "../Sprite/Byakuya_Kuchiki_Run4.png");
+
     _players.push_back(player1);  // Ajoutez le joueur à la liste
-    _players.push_back(player2);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
+    // Crée le joueur de classe S Satoru Gojo
+    std::shared_ptr<Player> player2 = std::make_shared<PlayerJJKClasseS>("Satoru", "Gojo", 0, 1.3, 0, 580, -1, 0, "../Sprite/Attack_3.png");
+    _players.push_back(player2);  // Ajoutez le joueur à la liste
+    std::cout << "Player 2 in the list" << std::endl;
+    std::cout << "Player 2 name : " << _players[1]->getFirstname() << std::endl;
+
+
+    // Crée le joueur de l'équipage du Mugiwara Roronoa Zoro
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerOnePieceMugiwara>("Roronoa", "Zoro", 0, 0.8, 0, 580, -1, 0, "../Sprite/Attack_2.png");
+    _players.push_back(player3);  // Ajoutez le joueur à la liste
+    std::cout << "Player 3 in the list" << std::endl;
+    std::cout << "Player 3 name : " << _players[2]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,"../Sprite/Background1.2merged.png");
 
 }
