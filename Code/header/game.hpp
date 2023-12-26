@@ -5,6 +5,7 @@
 #include "userinput.hpp"
 #include "playerjjk.hpp"
 #include "playerjjkclasse1.hpp"
+#include "playerjjkclasseS.hpp"
 #include "characterrenderer.hpp"
 #include <list>
 #include <memory>
