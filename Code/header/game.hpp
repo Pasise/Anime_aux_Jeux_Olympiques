@@ -8,6 +8,7 @@
 #include "playerjjkclasseS.hpp"
 #include "playeronepiece.hpp"
 #include "playeronepiecemugiwara.hpp"
+#include "playeronepiecemugiwarafd.hpp"
 #include "characterrenderer.hpp"
 #include <list>
 #include <memory>
