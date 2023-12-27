@@ -38,6 +38,8 @@ Game::Game() : _players(), _characterRenderer(&_players,"../Sprite/Background1.2
     std::cout << "Player 5 in the list" << std::endl;
     std::cout << "Player 5 name : " << _players[4]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,"../Sprite/Background1.2merged.png");
+
+    //Cree le joeur de Bleach Byakuya Kuchiki 
     
 
 
