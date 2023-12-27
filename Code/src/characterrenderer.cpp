@@ -58,7 +58,13 @@ void CharacterRenderer::render(sf::RenderWindow& window)
 
             if (texture.loadFromFile(playerTexturePath))
             {
-                sf::Vector2u frameSize(texture.getSize().x / 4, texture.getSize().y);
+                int n;
+                if (((*_players)[i]->getFirstname() == "Gojo")||((*_players)[i]->getFirstname() == "Zoro"))
+                {
+                    n = 8;
+                }
+                else n = 4;
+                sf::Vector2u frameSize(texture.getSize().x / n, texture.getSize().y);
                 int currentFrame = _currentFrames[i];
                 sf::IntRect sourceRect(currentFrame * frameSize.x, 0, frameSize.x, frameSize.y);
 
@@ -78,6 +84,10 @@ void CharacterRenderer::render(sf::RenderWindow& window)
             _sprites[i].setScale(1, 1);
         }
         else
+        {
+            _sprites[i].setScale(-1, 1);
+        }
+        if (((*_players)[i]->getFirstname() == "Gojo")||((*_players)[i]->getFirstname() == "Zoro"))
         {
             _sprites[i].setScale(-1, 1);
         }
