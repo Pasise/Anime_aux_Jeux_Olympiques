@@ -6,9 +6,8 @@
 class PlayerBleachShinigami : public PlayerBleach
 {
 protected:
-    float _occultenergy;
-    float _color;
-    std::string _texture;  // Ajout de l'attribut texture
+    float _soin;
+    std::string _texture; 
 
 public:
     PlayerBleachShinigami(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float soin, std::string texturepath);

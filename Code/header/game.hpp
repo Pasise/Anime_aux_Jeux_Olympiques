@@ -11,6 +11,7 @@
 #include "playeronepiecemugiwarafd.hpp"
 #include "playerbleach.hpp"
 #include "playerbleachshinigami.hpp"
+#include "playerbleachshinigamicapitaine.hpp"
 #include "characterrenderer.hpp"
 #include <list>
 #include <memory>

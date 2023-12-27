@@ -40,7 +40,7 @@ Game::Game() : _players(), _characterRenderer(&_players,"../Sprite/Background1.2
     _characterRenderer = CharacterRenderer(&_players,"../Sprite/Background1.2merged.png");
 
     //Cree le joeur de Bleach Byakuya Kuchiki
-    std::shared_ptr<Player> player6 = std::make_shared<PlayerBleachShinigami>("Kuchiki", "Byakuya", 0, 1.3, 0, 580, -1, "../Sprite/Byakuya_Kuchiki_Run4.png");
+    std::shared_ptr<Player> player6 = std::make_shared<PlayerBleachShinigami>("Kuchiki", "Rukia", 0, 1.3, 0, 580, -1, "../Sprite/Byakuya_Kuchiki_Run4.png");
     _players.push_back(player6);  // Ajoutez le joueur à la liste
     std::cout << "Player 6 in the list" << std::endl;
     std::cout << "Player 6 name : " << _players[5]->getFirstname() << std::endl;
