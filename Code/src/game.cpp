@@ -94,7 +94,7 @@ void Game::updateState(const UserInput &input)
             {
                 // Seulement pour le premier joueur, utilisez les entrées de l'utilisateur
                 if (input.getButton() == Button::left)
-                    _players[i]->moveLeft();
+                    _players[i]->moveLeft();// Ajoutez le joueur à la liste
                 else if (input.getButton() == Button::right)
                     _players[i]->moveRight();
                 else if (input.getButton() == Button::attack1)
