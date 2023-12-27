@@ -9,6 +9,8 @@
 #include "playeronepiece.hpp"
 #include "playeronepiecemugiwara.hpp"
 #include "playeronepiecemugiwarafd.hpp"
+#include "playerbleach.hpp"
+#include "playerbleachshinigami.hpp"
 #include "characterrenderer.hpp"
 #include <list>
 #include <memory>
