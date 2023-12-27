@@ -14,7 +14,7 @@ PlayerJJKClasseS::PlayerJJKClasseS(std::string lastname, std::string firstname, 
     _occultenergy = occultenergy;
     _color = color;
     setTexture(texturepath);
-    _direction = 1;
+    _direction = -1;
     std::cout << "PlayerJJKClasseS created" << std::endl;
 
 }

@@ -15,6 +15,8 @@ public:
     void setPlayers(const std::vector<std::shared_ptr<Player>>* players);
     void setTexture(const std::string& texturePath) { _backgroundTexturePath = texturePath; loadBackgroundTexture(); }
     void setCameraPosition(float x);
+    //void makeLuffyRun(const std::shared_ptr<Player>& player, sf::Sprite& sprite, int currentFrame);
+    //void makeByakuyaRun(const std::shared_ptr<Player>& player, sf::Sprite& sprite, int currentFrame);
 
 private:
     const std::vector<std::shared_ptr<Player>>* _players;
