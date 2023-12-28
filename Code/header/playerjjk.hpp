@@ -13,7 +13,6 @@ class PlayerJJK : public Player
     void virtual doAttack4()=0;
     void virtual doJump()=0;
     void virtual doPick()=0;
-    virtual std::string getTexture()= 0;
     protected :
     float _occultenergy;
     float _color;

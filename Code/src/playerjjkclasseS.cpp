@@ -1,8 +1,8 @@
 #include "../header/playerjjkclasseS.hpp"
 
 
-PlayerJJKClasseS::PlayerJJKClasseS(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float occultenergy, float color, std::string texturepath)
-    : PlayerJJKClasse1(lastname, firstname, Xp, speed, x, y, occultenergy, color, texturepath)
+PlayerJJKClasseS::PlayerJJKClasseS(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float occultenergy, float color, std::map<std::string, int> textureAssociations)
+    : PlayerJJKClasse1(lastname, firstname, Xp, speed, x, y, occultenergy, color, textureAssociations)
 {
 
     _lastname = lastname;
@@ -13,7 +13,7 @@ PlayerJJKClasseS::PlayerJJKClasseS(std::string lastname, std::string firstname, 
     _y = y;
     _occultenergy = occultenergy;
     _color = color;
-    setTexture(texturepath);
+    addAssociations(textureAssociations);
     _direction = -1;
     std::cout << "PlayerJJKClasseS created" << std::endl;
 

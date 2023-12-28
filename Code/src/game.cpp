@@ -1,31 +1,31 @@
 // Game.cpp
 #include "../header/game.hpp"
-
+#include "../header/constant.hpp"
 
 Game::Game() : _players(), _characterRenderer(&_players,BACKGROUND)  
 {
-    // Crée le joueur de classe 1 Fushiguro Megumi
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerJJKClasse1>(LASTNAME_JJKCLASSE1, FIRSTNAME_JJKCLASSE1, XP_JJKCLASSE1, SPEED_JJKCLASSE1, X_JJKCLASSE1, Y_JJKCLASSE1, OCULTENERGY_JJKCLASSE1, COLOR_JJKCLASSE1, TEXTUREPATH_JJKCLASSE1);
+    //Crée le joueur de classe 1 Fushiguro Megumi
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerJJKClasse1>(LASTNAME_JJKCLASSE1, FIRSTNAME_JJKCLASSE1, XP_JJKCLASSE1, SPEED_JJKCLASSE1, X_JJKCLASSE1, Y_JJKCLASSE1, OCULTENERGY_JJKCLASSE1, COLOR_JJKCLASSE1, MEGUMIASSOCIATION);
 
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
     // Crée le joueur de classe S Satoru Gojo
-    std::shared_ptr<Player> player2 = std::make_shared<PlayerJJKClasseS>(LASTNAME_JJKCLASSES, FIRSTNAME_JJKCLASSES, XP_JJKCLASSES, SPEED_JJKCLASSES, X_JJKCLASSES, Y_JJKCLASSES, OCULTENERGY_JJKCLASSES, COLOR_JJKCLASSES, TEXTUREPATH_JJKCLASSES);
+    std::shared_ptr<Player> player2 = std::make_shared<PlayerJJKClasseS>(LASTNAME_JJKCLASSES, FIRSTNAME_JJKCLASSES, XP_JJKCLASSES, SPEED_JJKCLASSES, X_JJKCLASSES, Y_JJKCLASSES, OCULTENERGY_JJKCLASSES, COLOR_JJKCLASSES, GOJOASSOCIATION);
     _players.push_back(player2);  // Ajoutez le joueur à la liste
     std::cout << "Player 2 in the list" << std::endl;
     std::cout << "Player 2 name : " << _players[1]->getFirstname() << std::endl;
 
 
     // Crée le joueur de l'équipage du Mugiwara Roronoa Zoro
-    std::shared_ptr<Player> player3 = std::make_shared<PlayerOnePieceMugiwara>(LASTNAME_ONEPIECEMUGIWARA, FIRSTNAME_ONEPIECEMUGIWARA, XP_ONEPIECEMUGIWARA, SPEED_ONEPIECEMUGIWARA, X_ONEPIECEMUGIWARA, Y_ONEPIECEMUGIWARA, VOL_ONEPIECEMUGIWARA, TEXTUREPATH_ONEPIECEMUGIWARA);
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerOnePieceMugiwara>(LASTNAME_ONEPIECEMUGIWARA, FIRSTNAME_ONEPIECEMUGIWARA, XP_ONEPIECEMUGIWARA, SPEED_ONEPIECEMUGIWARA, X_ONEPIECEMUGIWARA, Y_ONEPIECEMUGIWARA, VOL_ONEPIECEMUGIWARA, ZOROASSOCIATION);
     _players.push_back(player3);  // Ajoutez le joueur à la liste
     std::cout << "Player 3 in the list" << std::endl;
     std::cout << "Player 3 name : " << _players[2]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,BACKGROUND); 
 
     // Crée le joueur de l'équipage du Mugiwara Monkey D. Luffy avec un fruit du démon
-    std::shared_ptr<Player> player4 = std::make_shared<PlayerOnePieceMugiwaraFD>(LASTNAME_ONEPIECEMUGIWARAFDJ1, FIRSTNAME_ONEPIECEMUGIWARAFDJ1, XP_ONEPIECEMUGIWARAFDJ1, SPEED_ONEPIECEMUGIWARAFDJ1, X_ONEPIECEMUGIWARAFDJ1, Y_ONEPIECEMUGIWARAFDJ1, VOL_ONEPIECEMUGIWARAFDJ1, TEXTUREPATH_ONEPIECEMUGIWARAFDJ1);
+    std::shared_ptr<Player> player4 = std::make_shared<PlayerOnePieceMugiwaraFD>(LASTNAME_ONEPIECEMUGIWARAFDJ1, FIRSTNAME_ONEPIECEMUGIWARAFDJ1, XP_ONEPIECEMUGIWARAFDJ1, SPEED_ONEPIECEMUGIWARAFDJ1, X_ONEPIECEMUGIWARAFDJ1, Y_ONEPIECEMUGIWARAFDJ1, VOL_ONEPIECEMUGIWARAFDJ1, LUFFYASSOCIATION);
     _players.push_back(player4);  // Ajoutez le joueur à la liste
     std::cout << "Player 4 in the list" << std::endl;
     std::cout << "Player 4 name : " << _players[3]->getFirstname() << std::endl;
@@ -33,21 +33,21 @@ Game::Game() : _players(), _characterRenderer(&_players,BACKGROUND)
 
 
     // Crée le joueur de l'équipage du Mugiwara Trafalgar D. Water Law avec un fruit du démon
-    std::shared_ptr<Player> player5 = std::make_shared<PlayerOnePieceMugiwara>(LASTNAME_ONEPIECEMUGIWARAFDJ2, FIRSTNAME_ONEPIECEMUGIWARAFDJ2, XP_ONEPIECEMUGIWARAFDJ2, SPEED_ONEPIECEMUGIWARAFDJ2, X_ONEPIECEMUGIWARAFDJ2, Y_ONEPIECEMUGIWARAFDJ2, VOL_ONEPIECEMUGIWARAFDJ2, TEXTUREPATH_ONEPIECEMUGIWARAFDJ2);
+    std::shared_ptr<Player> player5 = std::make_shared<PlayerOnePieceMugiwara>(LASTNAME_ONEPIECEMUGIWARAFDJ2, FIRSTNAME_ONEPIECEMUGIWARAFDJ2, XP_ONEPIECEMUGIWARAFDJ2, SPEED_ONEPIECEMUGIWARAFDJ2, X_ONEPIECEMUGIWARAFDJ2, Y_ONEPIECEMUGIWARAFDJ2, VOL_ONEPIECEMUGIWARAFDJ2,  TRAFALGARASSOCIATION);
     _players.push_back(player5);  // Ajoutez le joueur à la liste
     std::cout << "Player 5 in the list" << std::endl;
     std::cout << "Player 5 name : " << _players[4]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,BACKGROUND);
 
     //Cree le joeur de Bleach Kuchiki Rukia
-    std::shared_ptr<Player> player6 = std::make_shared<PlayerBleachShinigami>(LASTNAME_BLEACHSHINIGAMI, FIRSTNAME_BLEACHSHINIGAMI, XP_BLEACHSHINIGAMI, SPEED_BLEACHSHINIGAMI, X_BLEACHSHINIGAMI, Y_BLEACHSHINIGAMI, SOIN_BLEACHSHINIGAMI, TEXTUREPATH_BLEACHSHINIGAMI);
+    std::shared_ptr<Player> player6 = std::make_shared<PlayerBleachShinigami>(LASTNAME_BLEACHSHINIGAMI, FIRSTNAME_BLEACHSHINIGAMI, XP_BLEACHSHINIGAMI, SPEED_BLEACHSHINIGAMI, X_BLEACHSHINIGAMI, Y_BLEACHSHINIGAMI, SOIN_BLEACHSHINIGAMI, RUKIAASSOCIATION);
     _players.push_back(player6);  // Ajoutez le joueur à la liste
     std::cout << "Player 6 in the list" << std::endl;
     std::cout << "Player 6 name : " << _players[5]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,BACKGROUND);
 
     //Cree le joeur de Bleach Kuchiki Byakuya
-    std::shared_ptr<Player> player7 = std::make_shared<PlayerBleachShinigamiCapitaine>(LASTNAME_BLEACHSHINIGAMICAPITAINE, FIRSTNAME_BLEACHSHINIGAMICAPITAINE, XP_BLEACHSHINIGAMICAPITAINE, SPEED_BLEACHSHINIGAMICAPITAINE, X_BLEACHSHINIGAMICAPITAINE, Y_BLEACHSHINIGAMICAPITAINE, SOIN_BLEACHSHINIGAMICAPITAINE, TEXTUREPATH_BLEACHSHINIGAMICAPITAINE);
+    std::shared_ptr<Player> player7 = std::make_shared<PlayerBleachShinigamiCapitaine>(LASTNAME_BLEACHSHINIGAMICAPITAINE, FIRSTNAME_BLEACHSHINIGAMICAPITAINE, XP_BLEACHSHINIGAMICAPITAINE, SPEED_BLEACHSHINIGAMICAPITAINE, X_BLEACHSHINIGAMICAPITAINE, Y_BLEACHSHINIGAMICAPITAINE, SOIN_BLEACHSHINIGAMICAPITAINE, BYAKUYAASSOCIATION);
     _players.push_back(player7); 
     std::cout << "Player 7 in the list" << std::endl;
     std::cout << "Player 7 name : " << _players[6]->getFirstname() << std::endl;

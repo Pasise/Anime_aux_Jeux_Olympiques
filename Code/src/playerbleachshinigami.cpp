@@ -1,6 +1,6 @@
 #include "../header/playerbleachshinigami.hpp"
 
-PlayerBleachShinigami::PlayerBleachShinigami(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float soin, std::string texturepath)
+PlayerBleachShinigami::PlayerBleachShinigami(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float soin, std::map<std::string, int> textureAssociations)
 {
 
     _lastname = lastname;
@@ -10,7 +10,7 @@ PlayerBleachShinigami::PlayerBleachShinigami(std::string lastname, std::string f
     _x = x;
     _y = y;
     _soin = soin;
-    setTexture(texturepath);
+    addAssociations(textureAssociations);
     _direction = 1;
     std::cout << "PlayerBleachShinigami created" << std::endl;
 }

@@ -8,13 +8,10 @@ class PlayerJJKClasseS : public PlayerJJKClasse1
 protected:
     float _occultenergy;
     float _color;
-    std::string _texture; 
 
 public:
-    PlayerJJKClasseS(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float occultenergy, float color, std::string texturepath);
+    PlayerJJKClasseS(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float occultenergy, float color, std::map<std::string, int> textureAssociations);
     ~PlayerJJKClasseS() {};
-    std::string getTexture(){return _texture;}
-    void setTexture(std::string texturepath){_texture = texturepath;}
     void doAttack1(); //Invocation
     void doAttack2();
     void doAttack3(); //Extension

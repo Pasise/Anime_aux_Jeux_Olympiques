@@ -20,7 +20,7 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
             {
                 sf::Sprite sprite;
                 sf::Texture playerTexture;
-                playerTexture.loadFromFile(player->getTexture());
+                playerTexture.loadFromFile(player->getTexturePath(0));
                 sprite.setTexture(playerTexture);
                 _sprites.push_back(sprite);
                 std::cout << "Player texture loaded" << std::endl;
@@ -53,18 +53,14 @@ void CharacterRenderer::render(sf::RenderWindow& window)
     {
         if ((*_players)[i])
         {
-            std::string playerTexturePath = (*_players)[i]->getTexture();
+            std::string playerTexturePath = (*_players)[i]->getTexturePath(0);
             sf::Texture texture;
 
             if (texture.loadFromFile(playerTexturePath))
             {
-                int n;
-                if (((*_players)[i]->getFirstname() == "Gojo")||((*_players)[i]->getFirstname() == "Zoro"))
-                {
-                    n = 8;
-                }
-                else n = 4;
-                sf::Vector2u frameSize(texture.getSize().x / n, texture.getSize().y);
+                sf::Vector2u frameSize = texture.getSize();
+                frameSize.x /= (*_players)[i]->getNumberOfFrames(playerTexturePath);
+                frameSize.y /= 1;
                 int currentFrame = _currentFrames[i];
                 sf::IntRect sourceRect(currentFrame * frameSize.x, 0, frameSize.x, frameSize.y);
 
@@ -87,7 +83,7 @@ void CharacterRenderer::render(sf::RenderWindow& window)
         {
             _sprites[i].setScale(-1, 1);
         }
-        if (((*_players)[i]->getFirstname() == "Gojo")||((*_players)[i]->getFirstname() == "Zoro"))
+        if (((*_players)[i]->getFirstname() == "Luffy")||((*_players)[i]->getFirstname() == "Zoro"))
         {
             _sprites[i].setScale(-1, 1);
         }

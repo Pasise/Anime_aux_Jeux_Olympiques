@@ -1,6 +1,6 @@
 #include "../header/playeronepiecemugiwara.hpp"
 
-PlayerOnePieceMugiwara::PlayerOnePieceMugiwara(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float vol, std::string texturepath)
+PlayerOnePieceMugiwara::PlayerOnePieceMugiwara(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float vol, std::map<std::string, int> textureAssociations)
 {
     _lastname = lastname;
     _firstname = firstname;
@@ -9,7 +9,7 @@ PlayerOnePieceMugiwara::PlayerOnePieceMugiwara(std::string lastname, std::string
     _x = x;
     _y = y;
     _vol = vol;
-    setTexture(texturepath);
+    addAssociations(textureAssociations);
     _direction = 1;
     std::cout << "PlayerOnepieceMugiwara created" << std::endl;
 
