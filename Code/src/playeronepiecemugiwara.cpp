@@ -1,6 +1,6 @@
 #include "../header/playeronepiecemugiwara.hpp"
 
-PlayerOnePieceMugiwara::PlayerOnePieceMugiwara(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float vol, float color, std::string texturepath)
+PlayerOnePieceMugiwara::PlayerOnePieceMugiwara(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float vol, std::string texturepath)
 {
     _lastname = lastname;
     _firstname = firstname;

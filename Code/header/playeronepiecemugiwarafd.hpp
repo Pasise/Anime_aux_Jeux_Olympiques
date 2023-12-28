@@ -11,7 +11,7 @@ protected:
     std::string _texture;  // Ajout de l'attribut texture
 
 public:
-    PlayerOnePieceMugiwaraFD(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float vol, float color, std::string texturepath);
+    PlayerOnePieceMugiwaraFD(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float vol, std::string texturepath);
     ~PlayerOnePieceMugiwaraFD() {};
     std::string getTexture(){return _texture;}
     void setTexture(std::string texturepath){_texture = texturepath;}

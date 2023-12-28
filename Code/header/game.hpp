@@ -13,6 +13,7 @@
 #include "playerbleachshinigami.hpp"
 #include "playerbleachshinigamicapitaine.hpp"
 #include "characterrenderer.hpp"
+#include "constant.hpp"
 #include <list>
 #include <memory>
 
