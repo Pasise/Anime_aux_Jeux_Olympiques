@@ -34,3 +34,4 @@ bool Player::isCloseTo(const Player &otherPlayer, float distanceThreshold) const
     //std::cout << "Distance between " << " is " << distance << std::endl;
     return (distance < distanceThreshold);
 }
+
