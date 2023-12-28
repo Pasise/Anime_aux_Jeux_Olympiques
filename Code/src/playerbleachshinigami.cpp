@@ -15,10 +15,18 @@ PlayerBleachShinigami::PlayerBleachShinigami(std::string lastname, std::string f
     std::cout << "PlayerBleachShinigami created" << std::endl;
 }
 
-void PlayerBleachShinigami::doAttack1()
+
+void PlayerBleachShinigami::doAttack1(Player& targetPlayer)
 {
-    std::cout << "Attack1 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
+
+    // Calculez les dégâts spécifiques à Attack1 (à ajuster selon vos règles du jeu)
+    float damage = 30.0f;
+
+    // Infligez les dégâts au joueur ciblé
+    targetPlayer.reduceHealth(damage);
 }
+    
 
 void PlayerBleachShinigami::doAttack2()
 {

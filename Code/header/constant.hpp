@@ -96,3 +96,7 @@ std::map<std::string, int> BYAKUYAASSOCIATION = {{TEXTUREPATH_BLEACHSHINIGAMICAP
 // ========== Constantes Background ==========
 
 const std::string BACKGROUND = "../Sprite/Background1.2merged.png";
+
+// ========== Constantes Attack ==========
+
+const float DISTANCETREEHOLD = 10;

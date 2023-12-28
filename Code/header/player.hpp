@@ -1,5 +1,7 @@
 #pragma once 
 #include <iostream>
+#include <cmath>
+#include <chrono>
 #include "userinput.hpp"
 class Player{
     protected :
@@ -14,8 +16,8 @@ class Player{
     public : 
     void moveLeft();
     void moveRight();
-    float getX(){return _x;}
-    float getY(){return _y;}
+    float getX()const {return _x;}
+    float getY()const {return _y;}
     float getSpeed(){return _speed;}
     float getXp(){return _Xp;}
     int getDirection(){return _direction;}
@@ -63,7 +65,9 @@ class Player{
         }
     }
     void randomAttack();
-    void virtual doAttack1()=0;
+    bool isCloseTo(const Player &otherPlayer, float distanceThreshold) const;
+    bool canAttack() const;
+    void virtual doAttack1(Player& targetPlayer)=0;
     void virtual doAttack2()=0;
     void virtual doAttack3()=0;
     void virtual doAttack4()=0;

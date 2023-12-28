@@ -114,7 +114,15 @@ void Game::updateState(const UserInput &input)
             {
                 // Pour les autres joueurs, déplacez-les constamment vers la droite
                 _players[i]->moveRight();
-                _players[i]-> randomAttack();
+                for(size_t j = 0; j < _players.size(); ++j) // Pour chaque joueur
+                {
+                    if (i != j && _players[j]->isCloseTo(*_players[i], DISTANCETREEHOLD)) // Si le joueur est proche d'un autre joueur
+                    {
+                        _players[i]->randomAttack(); // Attaque aléatoire
+                        std::cout << "Player " << _players[i]->getFirstname()  << " is close to Player " << _players[j]->getFirstname()  << std::endl;
+                    }
+                }
+
             }
         }
     }
