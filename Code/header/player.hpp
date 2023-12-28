@@ -1,6 +1,7 @@
 #pragma once 
 #include <iostream>
 #include <cmath>
+#include <chrono>
 #include "userinput.hpp"
 class Player{
     protected :
@@ -30,6 +31,7 @@ class Player{
     void reduceHealth(float damage){_Xp = _Xp - damage;}
     void randomAttack();
     bool isCloseTo(const Player &otherPlayer, float distanceThreshold) const;
+    bool canAttack() const;
     void virtual doAttack1()=0;
     void virtual doAttack2()=0;
     void virtual doAttack3()=0;
