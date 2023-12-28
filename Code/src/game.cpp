@@ -114,6 +114,7 @@ void Game::updateState(const UserInput &input)
             {
                 // Pour les autres joueurs, déplacez-les constamment vers la droite
                 _players[i]->moveRight();
+                _players[i]-> randomAttack();
             }
         }
     }

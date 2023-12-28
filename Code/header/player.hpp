@@ -27,6 +27,7 @@ class Player{
     void setXp(float Xp){_Xp = Xp;}
     void setDirection(int direction){_direction = direction;}
     void reduceHealth(float damage){_Xp = _Xp - damage;}
+    void randomAttack();
     void virtual doAttack1()=0;
     void virtual doAttack2()=0;
     void virtual doAttack3()=0;
