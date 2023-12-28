@@ -32,7 +32,7 @@ class Player{
     void randomAttack();
     bool isCloseTo(const Player &otherPlayer, float distanceThreshold) const;
     bool canAttack() const;
-    void virtual doAttack1()=0;
+    void virtual doAttack1(Player& targetPlayer)=0;
     void virtual doAttack2()=0;
     void virtual doAttack3()=0;
     void virtual doAttack4()=0;
