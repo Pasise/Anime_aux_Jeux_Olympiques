@@ -28,3 +28,9 @@ void Player::randomAttack()
     else
         doAttack4();
 }
+
+bool Player::isCloseTo(const Player &otherPlayer, float distanceThreshold) const {
+    float distance = std::sqrt(std::pow(getX() - otherPlayer.getX(), 2) + std::pow(getY() - otherPlayer.getY(), 2));
+    //std::cout << "Distance between " << " is " << distance << std::endl;
+    return (distance < distanceThreshold);
+}

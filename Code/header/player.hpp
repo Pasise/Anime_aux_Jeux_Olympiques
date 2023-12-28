@@ -1,5 +1,6 @@
 #pragma once 
 #include <iostream>
+#include <cmath>
 #include "userinput.hpp"
 class Player{
     protected :
@@ -14,8 +15,8 @@ class Player{
     public : 
     void moveLeft();
     void moveRight();
-    float getX(){return _x;}
-    float getY(){return _y;}
+    float getX()const {return _x;}
+    float getY()const {return _y;}
     float getSpeed(){return _speed;}
     float getXp(){return _Xp;}
     int getDirection(){return _direction;}
@@ -28,6 +29,7 @@ class Player{
     void setDirection(int direction){_direction = direction;}
     void reduceHealth(float damage){_Xp = _Xp - damage;}
     void randomAttack();
+    bool isCloseTo(const Player &otherPlayer, float distanceThreshold) const;
     void virtual doAttack1()=0;
     void virtual doAttack2()=0;
     void virtual doAttack3()=0;
@@ -35,8 +37,4 @@ class Player{
     void virtual doJump()=0;
     void virtual doPick()=0;
     virtual std::string getTexture() = 0;
-
-
-
-
 }; 

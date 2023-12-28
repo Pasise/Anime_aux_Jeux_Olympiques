@@ -89,3 +89,7 @@ const std::string TEXTUREPATH_BLEACHSHINIGAMICAPITAINE =  "../Sprite/Byakuya_Kuc
 // ========== Constantes Background ==========
 
 const std::string BACKGROUND = "../Sprite/Background1.2merged.png";
+
+// ========== Constantes Attack ==========
+
+const float DISTANCETREEHOLD = 10;
