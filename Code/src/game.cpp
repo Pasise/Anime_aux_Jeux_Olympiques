@@ -2,7 +2,7 @@
 #include "../header/game.hpp"
 
 
-Game::Game() : _players(), _characterRenderer(&_players,"../Sprite/Background1.2merged.png")  
+Game::Game() : _players(), _characterRenderer(&_players,BACKGROUND)  
 {
     // Crée le joueur de classe 1 Fushiguro Megumi
     std::shared_ptr<Player> player1 = std::make_shared<PlayerJJKClasse1>(LASTNAME_JJKCLASSE1, FIRSTNAME_JJKCLASSE1, XP_JJKCLASSE1, SPEED_JJKCLASSE1, X_JJKCLASSE1, Y_JJKCLASSE1, OCULTENERGY_JJKCLASSE1, COLOR_JJKCLASSE1, TEXTUREPATH_JJKCLASSE1);
