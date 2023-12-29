@@ -11,7 +11,7 @@ protected:
 public:
     PlayerBleachShinigamiCapitaine(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float soin, std::map<std::string, int> textureAssociations);
     ~PlayerBleachShinigamiCapitaine() {};
-    void doAttack1(); //
+    void doAttack1(Player& targetPlayer); //
     void doAttack2();
     void doAttack3(); //
     void doAttack4();

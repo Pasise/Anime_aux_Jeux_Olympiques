@@ -12,7 +12,7 @@ protected:
 public:
     PlayerJJKClasseS(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float occultenergy, float color, std::map<std::string, int> textureAssociations);
     ~PlayerJJKClasseS() {};
-    void doAttack1(); //Invocation
+    void doAttack1(Player& targetPlayer); //Invocation
     void doAttack2();
     void doAttack3(); //Extension
     void doAttack4();

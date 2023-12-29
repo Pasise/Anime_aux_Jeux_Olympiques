@@ -7,7 +7,7 @@
 class PlayerOnePiece : public Player
 {
     public :
-    void virtual doAttack1()=0;
+    void virtual doAttack1(Player& targetPlayer)=0;
     void virtual doAttack2()=0;
     void virtual doAttack3()=0;
     void virtual doAttack4()=0;

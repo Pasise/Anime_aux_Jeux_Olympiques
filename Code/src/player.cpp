@@ -16,11 +16,11 @@ void Player::moveRight()
         setDirection(1);
 }
 
-void Player::randomAttack()
+void Player::randomAttack(Player& targetPlayer)
 {
     int random = rand() % 4 + 1; // lance une attaque aléatoire entre attack1 et attack4
     if (random == 1) 
-        doAttack1();
+        doAttack1(targetPlayer);
     else if (random == 2)
         doAttack2();
     else if (random == 3)
