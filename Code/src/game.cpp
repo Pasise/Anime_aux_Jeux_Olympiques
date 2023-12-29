@@ -100,11 +100,11 @@ void Game::updateState(const UserInput &input)
                 else if (input.getButton() == Button::attack1)
                     _players[i]->doAttack1(*_players[1]);
                 else if (input.getButton() == Button::attack2)
-                    _players[i]->doAttack2();
+                    _players[i]->doAttack2(*_players[2]);
                 else if (input.getButton() == Button::attack3)
-                    _players[i]->doAttack3();
+                    _players[i]->doAttack3(*_players[3]);
                 else if (input.getButton() == Button::attack4)
-                    _players[i]->doAttack4();
+                    _players[i]->doAttack4(*_players[4]);
                 else if (input.getButton() == Button::pick)
                     _players[i]->doJump();
                 else
