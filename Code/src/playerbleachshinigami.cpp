@@ -28,17 +28,17 @@ void PlayerBleachShinigami::doAttack1(Player& targetPlayer)
 }
     
 
-void PlayerBleachShinigami::doAttack2()
+void PlayerBleachShinigami::doAttack2(Player& targetPlayer)
 {
     std::cout << "Attack2 Not Implemented Yet" << std::endl;
 }
 
-void PlayerBleachShinigami::doAttack3()
+void PlayerBleachShinigami::doAttack3(Player& targetPlayer)
 {
     std::cout << "Attack3 Not Implemented Yet" << std::endl;
 }
 
-void PlayerBleachShinigami::doAttack4()
+void PlayerBleachShinigami::doAttack4(Player& targetPlayer)
 {
     std::cout << "Attack4 Not Implemented Yet" << std::endl;
 }

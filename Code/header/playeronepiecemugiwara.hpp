@@ -12,9 +12,9 @@ public:
     PlayerOnePieceMugiwara(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float vol, std::map<std::string, int> textureAssociations);
     ~PlayerOnePieceMugiwara() {};
     void doAttack1(Player& targetPlayer); //
-    void doAttack2();
-    void doAttack3(); //
-    void doAttack4();
+    void doAttack2(Player& targetPlayer);
+    void doAttack3(Player& targetPlayer); //
+    void doAttack4(Player& targetPlayer);
     void doJump();
     void doPick();
 };

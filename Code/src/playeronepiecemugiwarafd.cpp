@@ -21,17 +21,17 @@ void PlayerOnePieceMugiwaraFD::doAttack1(Player& targetPlayer)
     std::cout << "Attack1 Not Implemented Yet" << std::endl;
 }
 
-void PlayerOnePieceMugiwaraFD::doAttack2()
+void PlayerOnePieceMugiwaraFD::doAttack2(Player& targetPlayer)
 {
     std::cout << "Attack2 Not Implemented Yet" << std::endl;
 }
 
-void PlayerOnePieceMugiwaraFD::doAttack3()
+void PlayerOnePieceMugiwaraFD::doAttack3(Player& targetPlayer)
 {
     std::cout << "Attack3 Not Implemented Yet" << std::endl;
 }
 
-void PlayerOnePieceMugiwaraFD::doAttack4()
+void PlayerOnePieceMugiwaraFD::doAttack4(Player& targetPlayer)
 {
     std::cout << "Attack4 Not Implemented Yet" << std::endl;
 }

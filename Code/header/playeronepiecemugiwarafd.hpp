@@ -16,9 +16,9 @@ public:
     std::string getTexture(){return _texture;}
     void setTexture(std::string texturepath){_texture = texturepath;}
     void doAttack1(Player& targetPlayer); //
-    void doAttack2();
-    void doAttack3(); //
-    void doAttack4();
+    void doAttack2(Player& targetPlayer);
+    void doAttack3(Player& targetPlayer); //
+    void doAttack4(Player& targetPlayer);
     void doJump();
     void doPick();
 

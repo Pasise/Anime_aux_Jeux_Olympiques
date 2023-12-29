@@ -68,9 +68,9 @@ class Player{
     bool isCloseTo(const Player &otherPlayer, float distanceThreshold) const;
     bool canAttack() const;
     void virtual doAttack1(Player& targetPlayer)=0;
-    void virtual doAttack2()=0;
-    void virtual doAttack3()=0;
-    void virtual doAttack4()=0;
+    void virtual doAttack2(Player& targetPlayer)=0;
+    void virtual doAttack3(Player& targetPlayer)=0;
+    void virtual doAttack4(Player& targetPlayer)=0;
     void virtual doJump()=0;
     void virtual doPick()=0;
 

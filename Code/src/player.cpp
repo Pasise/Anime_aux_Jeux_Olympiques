@@ -22,11 +22,11 @@ void Player::randomAttack(Player& targetPlayer)
     if (random == 1) 
         doAttack1(targetPlayer);
     else if (random == 2)
-        doAttack2();
+        doAttack2(targetPlayer);
     else if (random == 3)
-        doAttack3();
+        doAttack3(targetPlayer);
     else
-        doAttack4();
+        doAttack4(targetPlayer);
 }
 
 bool Player::isCloseTo(const Player &otherPlayer, float distanceThreshold) const {

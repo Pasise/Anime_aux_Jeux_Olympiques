@@ -21,17 +21,17 @@ void PlayerJJKClasse1::doAttack1(Player& targetPlayer)
     std::cout << "Attack1 Not Implemented Yet" << std::endl;
 }
 
-void PlayerJJKClasse1::doAttack2()
+void PlayerJJKClasse1::doAttack2(Player& targetPlayer)
 {
     std::cout << "Attack2 Not Implemented Yet" << std::endl;
 }
 
-void PlayerJJKClasse1::doAttack3()
+void PlayerJJKClasse1::doAttack3(Player& targetPlayer)
 {
     std::cout << "Attack3 Not Implemented Yet" << std::endl;
 }
 
-void PlayerJJKClasse1::doAttack4()
+void PlayerJJKClasse1::doAttack4(Player& targetPlayer)
 {
     std::cout << "Attack4 Not Implemented Yet" << std::endl;
 }
