@@ -15,7 +15,7 @@ PlayerOnePieceMugiwara::PlayerOnePieceMugiwara(std::string lastname, std::string
 
 }
 
-void PlayerOnePieceMugiwara::doAttack1()
+void PlayerOnePieceMugiwara::doAttack1(Player& targetPlayer)
 {
     std::cout << "Attack1 Not Implemented Yet" << std::endl;
 }

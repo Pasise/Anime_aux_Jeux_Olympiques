@@ -16,7 +16,7 @@ PlayerBleachShinigamiCapitaine::PlayerBleachShinigamiCapitaine(std::string lastn
     std::cout << "PlayerBleachShinigamiCapitaine created" << std::endl;
 }
 
-void PlayerBleachShinigamiCapitaine::doAttack1()
+void PlayerBleachShinigamiCapitaine::doAttack1(Player& targetPlayer)
 {
     std::cout << "Attack1 Not Implemented Yet" << std::endl;
 }

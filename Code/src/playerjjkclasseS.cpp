@@ -19,7 +19,7 @@ PlayerJJKClasseS::PlayerJJKClasseS(std::string lastname, std::string firstname, 
 
 }
 
-void PlayerJJKClasseS::doAttack1()
+void PlayerJJKClasseS::doAttack1(Player& targetPlayer)
 {
     std::cout << "Attack1 Not Implemented Yet" << std::endl;
 }

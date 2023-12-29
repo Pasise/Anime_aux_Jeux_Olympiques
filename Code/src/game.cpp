@@ -98,7 +98,7 @@ void Game::updateState(const UserInput &input)
                 else if (input.getButton() == Button::right)
                     _players[i]->moveRight();
                 else if (input.getButton() == Button::attack1)
-                    _players[i]->doAttack1();
+                    _players[i]->doAttack1(*_players[1]);
                 else if (input.getButton() == Button::attack2)
                     _players[i]->doAttack2();
                 else if (input.getButton() == Button::attack3)
@@ -118,7 +118,7 @@ void Game::updateState(const UserInput &input)
                 {
                     if (i != j && _players[j]->isCloseTo(*_players[i], DISTANCETREEHOLD)) // Si le joueur est proche d'un autre joueur
                     {
-                        _players[i]->randomAttack(); // Attaque aléatoire
+                        _players[i]->randomAttack(*_players[j]); // Attaque aléatoire
                         std::cout << "Player " << _players[i]->getFirstname()  << " is close to Player " << _players[j]->getFirstname()  << std::endl;
                     }
                 }
