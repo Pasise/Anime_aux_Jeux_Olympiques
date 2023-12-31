@@ -112,6 +112,7 @@ void Game::updateState(const UserInput &input)
             }
             else
             {
+                
                 // Pour les autres joueurs, déplacez-les constamment vers la droite
                 _players[i]->moveRight();
                 
@@ -129,3 +130,20 @@ void Game::updateState(const UserInput &input)
         }
     }
 }
+
+
+/*for (int i = 0; i < 10; ++i) {
+        std::cout << "Iteration " << i + 1 << ": ";
+        if (player.canAttackNow()) {
+            std::cout << "Player can attack." << std::endl;
+        } else {
+            std::cout << "Player cannot attack." << std::endl;
+        }
+
+        // Modifier dynamiquement l'état d'attaque (par exemple, toutes les 3 itérations)
+        if ((i + 1) % 3 == 0) {
+            player.setCanAttack(!player.canAttackNow());
+            std::cout << "Player attack state changed." << std::endl;
+        }
+    }
+*/
