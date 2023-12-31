@@ -99,4 +99,4 @@ const std::string BACKGROUND = "../Sprite/Background1.2merged.png";
 
 // ========== Constantes Attack ==========
 
-const float DISTANCETREEHOLD = 10;
+const float DISTANCETREEHOLD = 5;

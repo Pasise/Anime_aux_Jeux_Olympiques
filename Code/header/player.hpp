@@ -15,6 +15,7 @@ class Player{
     float _y;
     int _direction;
     std::map<std::string, int> _textureAssociations;
+    bool canAttack1; // Variable de classe pour stocker l'état d'attaque
     public : 
     void moveLeft();
     void moveRight();
