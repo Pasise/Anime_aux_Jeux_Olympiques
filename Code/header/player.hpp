@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cmath>
 #include <chrono>
+#include <cstdlib>
+#include <ctime>
 #include "userinput.hpp"
 class Player{
     protected :

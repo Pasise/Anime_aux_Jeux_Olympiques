@@ -35,3 +35,19 @@ bool Player::isCloseTo(const Player &otherPlayer, float distanceThreshold) const
     return (distance < distanceThreshold);
 }
 
+bool Player::canAttack() const
+{
+    // Initialisation de la graine pour la génération de nombres aléatoires
+    std::srand(std::time(0));
+
+    // Générer un nombre aléatoire entre 0 et 1
+    int randomValue = std::rand() % 2;
+
+    if(randomValue == 1)
+        std::cout << "Attack possible" << std::endl;
+    else
+        std::cout << "Attack impossible" << std::endl;
+
+    // Si la valeur aléatoire est 1, le personnage peut attaquer, sinon non
+    return (randomValue == 1);
+}
