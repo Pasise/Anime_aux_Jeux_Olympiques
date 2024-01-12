@@ -56,4 +56,12 @@ bool Player::canAttackNow() const {
         // Générer un nombre aléatoire entre 0 et 1
         int randomValue = std::rand() % 2;
         return (randomValue == 1 && _canAttack);
-    }
+}
+
+void Player::reduceHealth(float damage,Player& targetPlayer)
+{
+    targetPlayer.setXp(targetPlayer.getXp()-damage);
+    std::cout << targetPlayer.getLastname() << " has lost " << damage << " health points" << std::endl;
+    std::cout << targetPlayer.getLastname() << " has now " << targetPlayer.getXp() << " health points" << std::endl;
+}
+

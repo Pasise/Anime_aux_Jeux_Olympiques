@@ -31,7 +31,7 @@ class Player{
     void setSpeed(float speed){_speed = speed;}
     void setXp(float Xp){_Xp = Xp;}
     void setDirection(int direction){_direction = direction;}
-    void reduceHealth(float damage){_Xp = _Xp - damage;}
+    void reduceHealth(float damage,Player& targetPlayer);
         // Ajout de la méthode pour associer un texturePath à un nombre de frames
     void addTexture(const std::string& texturePath, int numberOfFrames) {
         _textureAssociations[texturePath] = numberOfFrames;

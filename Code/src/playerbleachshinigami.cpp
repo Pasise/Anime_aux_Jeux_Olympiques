@@ -24,7 +24,7 @@ void PlayerBleachShinigami::doAttack1(Player& targetPlayer)
     float damage = 30.0f;
 
     // Infligez les dégâts au joueur ciblé
-    targetPlayer.reduceHealth(damage);
+    targetPlayer.reduceHealth(damage, targetPlayer);
 }
     
 
