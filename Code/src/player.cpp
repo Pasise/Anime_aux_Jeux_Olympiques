@@ -55,5 +55,5 @@ bool Player::canAttack() const
 bool Player::canAttackNow() const {
         // Générer un nombre aléatoire entre 0 et 1
         int randomValue = std::rand() % 2;
-        return (randomValue == 1 && canAttack);
+        return (randomValue == 1 && _canAttack);
     }

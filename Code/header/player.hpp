@@ -15,7 +15,7 @@ class Player{
     float _y;
     int _direction;
     std::map<std::string, int> _textureAssociations;
-    bool canAttack; // Variable de classe pour stocker l'état d'attaque
+    bool _canAttack; // Variable de classe pour stocker l'état d'attaque
     public : 
     void moveLeft();
     void moveRight();
@@ -70,12 +70,12 @@ class Player{
     void randomAttack(Player& targetPlayer);
     bool isCloseTo(const Player &otherPlayer, float distanceThreshold) const;
     bool canAttack() const;
-    Player() : canAttack(true) {
+    Player() : _canAttack(true) {
         std::srand(std::time(0)); // Initialisation de la graine une seule fois
     }
     bool canAttackNow() const;
     void setCanAttack(bool value) {
-        canAttack = value;
+        _canAttack = value;
     }
 
     
