@@ -21,22 +21,30 @@ PlayerJJKClasseS::PlayerJJKClasseS(std::string lastname, std::string firstname, 
 
 void PlayerJJKClasseS::doAttack1(Player& targetPlayer)
 {
-    std::cout << "Attack1 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
+    float damage = _occultenergy+1;
+    targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerJJKClasseS::doAttack2(Player& targetPlayer)
 {
-    std::cout << "Attack2 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack2 on " << targetPlayer.getLastname() << std::endl;
+    float damage = _occultenergy+2;
+    targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerJJKClasseS::doAttack3(Player& targetPlayer)
 {
-    std::cout << "Attack3 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack3 on " << targetPlayer.getLastname() << std::endl;
+    float damage = _occultenergy+3;
+    targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerJJKClasseS::doAttack4(Player& targetPlayer)
 {
-    std::cout << "Attack4 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack4 on " << targetPlayer.getLastname() << std::endl;
+    float damage = _occultenergy+4;
+    targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerJJKClasseS::doJump()

@@ -19,32 +19,28 @@ PlayerOnePieceMugiwaraFD::PlayerOnePieceMugiwaraFD(std::string lastname, std::st
 void PlayerOnePieceMugiwaraFD::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-    float damage = 5.0f;
-    _vol += 1;
+    float damage = _vol+1;
     targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerOnePieceMugiwaraFD::doAttack2(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack2 on " << targetPlayer.getLastname() << std::endl;
-    float damage = 8.0f;
-    _vol += 2;
+    float damage = _vol+2;
     targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerOnePieceMugiwaraFD::doAttack3(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack3 on " << targetPlayer.getLastname() << std::endl;
-    float damage = 10.0f;
-    _vol += 3;
+    float damage = _vol+3;
     targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerOnePieceMugiwaraFD::doAttack4(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack4 on " << targetPlayer.getLastname() << std::endl;
-    float damage = 15.0f;
-    _vol += 4;
+    float damage = _vol+4;
     targetPlayer.reduceHealth(damage, targetPlayer);
 }
 

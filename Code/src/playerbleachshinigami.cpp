@@ -19,28 +19,30 @@ PlayerBleachShinigami::PlayerBleachShinigami(std::string lastname, std::string f
 void PlayerBleachShinigami::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-
-    // Calculez les dégâts spécifiques à Attack1 (à ajuster selon vos règles du jeu)
-    float damage = 30.0f;
-
-    // Infligez les dégâts au joueur ciblé
+    float damage = _soin+1;
     targetPlayer.reduceHealth(damage, targetPlayer);
 }
     
 
 void PlayerBleachShinigami::doAttack2(Player& targetPlayer)
 {
-    std::cout << "Attack2 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack2 on " << targetPlayer.getLastname() << std::endl;
+    float damage = _soin+2;
+    targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerBleachShinigami::doAttack3(Player& targetPlayer)
 {
-    std::cout << "Attack3 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack3 on " << targetPlayer.getLastname() << std::endl;
+    float damage = _soin+3;
+    targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerBleachShinigami::doAttack4(Player& targetPlayer)
 {
-    std::cout << "Attack4 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack4 on " << targetPlayer.getLastname() << std::endl;
+    float damage = _soin+4;
+    targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerBleachShinigami::doJump()

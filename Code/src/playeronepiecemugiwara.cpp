@@ -17,22 +17,31 @@ PlayerOnePieceMugiwara::PlayerOnePieceMugiwara(std::string lastname, std::string
 
 void PlayerOnePieceMugiwara::doAttack1(Player& targetPlayer)
 {
-    std::cout << "Attack1 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
+    float damage = _vol+1;
+    targetPlayer.reduceHealth(damage, targetPlayer);
+
 }
 
 void PlayerOnePieceMugiwara::doAttack2(Player& targetPlayer)
 {
-    std::cout << "Attack2 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack2 on " << targetPlayer.getLastname() << std::endl;
+    float damage = _vol+2;
+    targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerOnePieceMugiwara::doAttack3(Player& targetPlayer)
 {
-    std::cout << "Attack3 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack3 on " << targetPlayer.getLastname() << std::endl;
+    float damage = _vol+3;
+    targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerOnePieceMugiwara::doAttack4(Player& targetPlayer)
 {
-    std::cout << "Attack4 Not Implemented Yet" << std::endl;
+    std::cout << getLastname() << " is performing Attack4 on " << targetPlayer.getLastname() << std::endl;
+    float damage = _vol+4;
+    targetPlayer.reduceHealth(damage, targetPlayer);
 }
 
 void PlayerOnePieceMugiwara::doJump()
