@@ -65,3 +65,13 @@ void Player::reduceHealth(float damage,Player& targetPlayer)
     std::cout << targetPlayer.getLastname() << " has now " << targetPlayer.getXp() << " health points" << std::endl;
 }
 
+void Player::doFix()
+{
+    setIsAttacking1(false);
+    setIsAttacking2(false);
+    setIsAttacking3(false);
+    setIsAttacking4(false);
+    setIsJumping(false);
+    setIsPicking(false);
+    
+}

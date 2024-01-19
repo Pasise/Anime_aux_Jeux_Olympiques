@@ -7,7 +7,7 @@
 
 
 //======Constantes JJK classe1=======
-const std::string LASTNAME_JJKCLASSE1 = "Fushiguro";
+/*const std::string LASTNAME_JJKCLASSE1 = "Fushiguro";
 const  std::string FIRSTNAME_JJKCLASSE1 = "Megumi";
 const float XP_JJKCLASSE1 =  0;
 const float SPEED_JJKCLASSE1 = 2.5;
@@ -16,11 +16,12 @@ const float Y_JJKCLASSE1 = 730;
 const float OCULTENERGY_JJKCLASSE1 =  1;
 const float COLOR_JJKCLASSE1 = 0;
 const std::string TEXTUREPATH_JJKCLASSE1 =    "../Sprite/ichigo_run.png";
-std::map<std::string, int> MEGUMIASSOCIATION = {{TEXTUREPATH_JJKCLASSE1, 6}};
+const std::string TEXTUREPATH_JJKCLASSE1_ATTACK1 =  "../Sprite/ichigo_attack1.png";
+std::map<std::string, int> MEGUMIASSOCIATION = {{TEXTUREPATH_JJKCLASSE1, 6},{TEXTUREPATH_JJKCLASSE1_ATTACK1, 5}};*/
 
 //======Constantes JJK classeS=======
 
-const std::string LASTNAME_JJKCLASSES = "Satoru";
+/*const std::string LASTNAME_JJKCLASSES = "Satoru";
 const  std::string FIRSTNAME_JJKCLASSES = "Gojo";
 const float XP_JJKCLASSES =  0;
 const float SPEED_JJKCLASSES = 1.3;
@@ -29,7 +30,7 @@ const float Y_JJKCLASSES = 590;
 const float OCULTENERGY_JJKCLASSES = 2;
 const float COLOR_JJKCLASSES = 0;
 const std::string TEXTUREPATH_JJKCLASSES =  "../Sprite/luffy_walkreverse4.png";
-std::map<std::string, int> GOJOASSOCIATION = {{TEXTUREPATH_JJKCLASSES, 8}};
+std::map<std::string, int> GOJOASSOCIATION = {{TEXTUREPATH_JJKCLASSES, 8}};*/
 
 
 
@@ -92,7 +93,17 @@ const float SOIN_BLEACHSHINIGAMICAPITAINE = 2;
 const std::string TEXTUREPATH_BLEACHSHINIGAMICAPITAINE =  "../Sprite/Byakuya_Kuchiki_Run4.png";
 std::map<std::string, int> BYAKUYAASSOCIATION = {{TEXTUREPATH_BLEACHSHINIGAMICAPITAINE, 4}};
 
-
+//======Constantes Ichigo KUROSAKI=======
+const std::string LASTNAME_ICHIGO = "Kurosaki";
+const  std::string FIRSTNAME_ICHIGO = "Ichigo";
+const float XP_ICHIGO =  0;
+const float SPEED_ICHIGO = 1.6;
+const float X_ICHIGO = 0;
+const float Y_ICHIGO = 580;
+const float SOIN_ICHIGO = 2;
+const std::string TEXTUREPATH_ICHIGO =    "../Sprite/ichigo_run.png";
+const std::string TEXTUREPATH_ICHIGO_ATTACK1 =  "../Sprite/ichigo_attack1.png";
+std::map<std::string, int> ICHIGOASSOCIATION = {{TEXTUREPATH_ICHIGO , 6},{TEXTUREPATH_ICHIGO_ATTACK1, 3}};
 // ========== Constantes Background ==========
 
 const std::string BACKGROUND = "../Sprite/Background1.2merged.png";

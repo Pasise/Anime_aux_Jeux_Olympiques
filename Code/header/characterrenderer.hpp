@@ -20,12 +20,17 @@ private:
     const std::vector<std::shared_ptr<Player>>* _players;
     std::vector<sf::Sprite> _sprites;
     std::vector<int> _currentFrames;
+    std::vector<sf::Sprite> _attackSprites; // Added _attackSprites attribute
     sf::Clock _clock;
     float _frameChangeSpeed;
+    std::map<std::string, int> _frameCounts;
 
     std::string _backgroundTexturePath;
     sf::Texture _backgroundTexture;   // Added _backgroundTexture attribute
     sf::Sprite _backgroundSprite;     // Added _backgroundSprite attribute
 
     void loadBackgroundTexture();
+    void renderPosition(sf::RenderWindow& window, std::size_t index);
+    void renderAttack1(sf::RenderWindow& window, std::size_t index);
 };
+

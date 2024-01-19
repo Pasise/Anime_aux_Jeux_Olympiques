@@ -15,6 +15,12 @@ PlayerJJKClasseS::PlayerJJKClasseS(std::string lastname, std::string firstname, 
     _color = color;
     addAssociations(textureAssociations);
     _direction = -1;
+    _isAttacking1 = false;
+    _isAttacking2 = false;
+    _isAttacking3 = false;
+    _isAttacking4 = false;
+    _isJumping = false;
+    _isPicking = false;
     std::cout << "PlayerJJKClasseS created" << std::endl;
 
 }

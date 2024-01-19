@@ -12,6 +12,13 @@ PlayerBleachShinigami::PlayerBleachShinigami(std::string lastname, std::string f
     _soin = soin;
     addAssociations(textureAssociations);
     _direction = 1;
+    _isAttacking1 = false;
+    _isAttacking2 = false;
+    _isAttacking3 = false;
+    _isAttacking4 = false;
+    _isJumping = false;
+    _isPicking = false;
+    
     std::cout << "PlayerBleachShinigami created" << std::endl;
 }
 

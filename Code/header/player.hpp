@@ -14,6 +14,13 @@ class Player{
     float _x;
     float _y;
     int _direction;
+    bool _isAttacking1;
+    bool _isAttacking2;
+    bool _isAttacking3;
+    bool _isAttacking4;
+    bool _isJumping;
+    bool _isPicking;
+    
     std::map<std::string, int> _textureAssociations;
     bool _canAttack; // Variable de classe pour stocker l'état d'attaque
     public : 
@@ -77,8 +84,45 @@ class Player{
     void setCanAttack(bool value) {
         _canAttack = value;
     }
-
+    bool isAttacking1() const {
+        return _isAttacking1;
+    }
+    bool isAttacking2() const {
+        return _isAttacking2;
+    }
+    bool isAttacking3() const {
+        return _isAttacking3;
+    }
+    bool isAttacking4() const {
+        return _isAttacking4;
+    }
+    void setIsAttacking1(bool value) {
+        _isAttacking1 = value;
+    }
+    void setIsAttacking2(bool value) {
+        _isAttacking2 = value;
+    }
+    void setIsAttacking3(bool value) {
+        _isAttacking3 = value;
+    }
+    void setIsAttacking4(bool value) {
+        _isAttacking4 = value;
+    }
     
+    bool isJumping() const {
+        return _isJumping;
+    }
+    void setIsJumping(bool value) {
+        _isJumping = value;
+    }
+    bool isPicking() const {
+        return _isPicking;
+    }
+    void setIsPicking(bool value) {
+        _isPicking = value;
+    }
+    
+    void doFix();
 
     void virtual doAttack1(Player& targetPlayer)=0;
     void virtual doAttack2(Player& targetPlayer)=0;

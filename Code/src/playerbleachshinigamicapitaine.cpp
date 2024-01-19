@@ -13,6 +13,12 @@ PlayerBleachShinigamiCapitaine::PlayerBleachShinigamiCapitaine(std::string lastn
     _soin = soin;
     addAssociations(textureAssociations);
     _direction = 1;
+    _isAttacking1 = false;
+    _isAttacking2 = false;
+    _isAttacking3 = false;
+    _isAttacking4 = false;
+    _isJumping = false;
+    _isPicking = false;
     std::cout << "PlayerBleachShinigamiCapitaine created" << std::endl;
 }
 
@@ -21,6 +27,11 @@ void PlayerBleachShinigamiCapitaine::doAttack1(Player& targetPlayer)
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
     float damage = _soin+1;
     targetPlayer.reduceHealth(damage, targetPlayer);
+    _isAttacking1 = true;
+    if (_isAttacking1 == true)
+    {
+        printf("%s is attacking %s\n", getLastname().c_str(), targetPlayer.getLastname().c_str());
+    }
 
   
 }
@@ -30,6 +41,7 @@ void PlayerBleachShinigamiCapitaine::doAttack2(Player& targetPlayer)
     std::cout << getLastname() << " is performing Attack2 on " << targetPlayer.getLastname() << std::endl;
     float damage = _soin+2;
     targetPlayer.reduceHealth(damage, targetPlayer);
+    _isAttacking2 = true;
 }
 
 void PlayerBleachShinigamiCapitaine::doAttack3(Player& targetPlayer)
@@ -37,6 +49,7 @@ void PlayerBleachShinigamiCapitaine::doAttack3(Player& targetPlayer)
     std::cout << getLastname() << " is performing Attack3 on " << targetPlayer.getLastname() << std::endl;
     float damage = _soin+3;
     targetPlayer.reduceHealth(damage, targetPlayer);
+    _isAttacking3 = true;
 }
 
 void PlayerBleachShinigamiCapitaine::doAttack4(Player& targetPlayer)
@@ -44,16 +57,19 @@ void PlayerBleachShinigamiCapitaine::doAttack4(Player& targetPlayer)
     std::cout << getLastname() << " is performing Attack4 on " << targetPlayer.getLastname() << std::endl;
     float damage = _soin+4;
     targetPlayer.reduceHealth(damage, targetPlayer);
+    _isAttacking4 = true;
 }
 
 void PlayerBleachShinigamiCapitaine::doJump()
 {
     _y += 2;
     _y -= 2;
+    _isJumping = true;
 }
 
 void PlayerBleachShinigamiCapitaine::doPick()
 {
     //std::cout << "Pick Not Implemented Yet" << std::endl;
+    _isPicking = true;
 }
 
