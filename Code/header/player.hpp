@@ -16,9 +16,6 @@ class Player: public Object{
     float _y;
     int _direction;
     bool _isAttacking1;
-    bool _isAttacking2;
-    bool _isAttacking3;
-    bool _isAttacking4;
     bool _isJumping;
     bool _isPicking;
     
@@ -87,29 +84,12 @@ class Player: public Object{
     }
     bool isAttacking1() const {
         return _isAttacking1;
-    }
-    bool isAttacking2() const {
-        return _isAttacking2;
-    }
-    bool isAttacking3() const {
-        return _isAttacking3;
-    }
-    bool isAttacking4() const {
-        return _isAttacking4;
+   
     }
     void setIsAttacking1(bool value) {
         _isAttacking1 = value;
     }
-    void setIsAttacking2(bool value) {
-        _isAttacking2 = value;
-    }
-    void setIsAttacking3(bool value) {
-        _isAttacking3 = value;
-    }
-    void setIsAttacking4(bool value) {
-        _isAttacking4 = value;
-    }
-    
+
     bool isJumping() const {
         return _isJumping;
     }
@@ -126,9 +106,6 @@ class Player: public Object{
     void doFix();
 
     void virtual doAttack1(Player& targetPlayer)=0;
-    void virtual doAttack2(Player& targetPlayer)=0;
-    void virtual doAttack3(Player& targetPlayer)=0;
-    void virtual doAttack4(Player& targetPlayer)=0;
     void virtual doJump()=0;
     void virtual doPick()=0;
 

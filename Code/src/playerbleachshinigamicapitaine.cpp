@@ -15,8 +15,6 @@ PlayerBleachShinigamiCapitaine::PlayerBleachShinigamiCapitaine(std::string lastn
     _direction = 1;
     _isAttacking1 = false;
     _isAttacking2 = false;
-    _isAttacking3 = false;
-    _isAttacking4 = false;
     _isJumping = false;
     _isPicking = false;
     std::cout << "PlayerBleachShinigamiCapitaine created" << std::endl;
@@ -42,22 +40,6 @@ void PlayerBleachShinigamiCapitaine::doAttack2(Player& targetPlayer)
     float damage = _soin+2;
     targetPlayer.reduceHealth(damage, targetPlayer);
     _isAttacking2 = true;
-}
-
-void PlayerBleachShinigamiCapitaine::doAttack3(Player& targetPlayer)
-{
-    std::cout << getLastname() << " is performing Attack3 on " << targetPlayer.getLastname() << std::endl;
-    float damage = _soin+3;
-    targetPlayer.reduceHealth(damage, targetPlayer);
-    _isAttacking3 = true;
-}
-
-void PlayerBleachShinigamiCapitaine::doAttack4(Player& targetPlayer)
-{
-    std::cout << getLastname() << " is performing Attack4 on " << targetPlayer.getLastname() << std::endl;
-    float damage = _soin+4;
-    targetPlayer.reduceHealth(damage, targetPlayer);
-    _isAttacking4 = true;
 }
 
 void PlayerBleachShinigamiCapitaine::doJump()

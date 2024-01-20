@@ -21,12 +21,6 @@ void Player::randomAttack(Player& targetPlayer)
     int random = rand() % 4 + 1; // lance une attaque aléatoire entre attack1 et attack4
     if (random == 1) 
         doAttack1(targetPlayer);
-    else if (random == 2)
-        doAttack2(targetPlayer);
-    else if (random == 3)
-        doAttack3(targetPlayer);
-    else
-        doAttack4(targetPlayer);
 }
 
 bool Player::isCloseTo(const Player &otherPlayer, float distanceThreshold) const {
@@ -68,9 +62,6 @@ void Player::reduceHealth(float damage,Player& targetPlayer)
 void Player::doFix()
 {
     setIsAttacking1(false);
-    setIsAttacking2(false);
-    setIsAttacking3(false);
-    setIsAttacking4(false);
     setIsJumping(false);
     setIsPicking(false);
     

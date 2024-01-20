@@ -12,9 +12,6 @@ public:
     PlayerBleachShinigami(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float soin, std::map<std::string, int> textureAssociations);
     ~PlayerBleachShinigami() {};
     void doAttack1(Player& targetPlayer); //
-    void doAttack2(Player& targetPlayer);
-    void doAttack3(Player& targetPlayer); //
-    void doAttack4(Player& targetPlayer);
     void doJump();
     void doPick();
 };

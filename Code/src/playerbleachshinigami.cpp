@@ -13,9 +13,6 @@ PlayerBleachShinigami::PlayerBleachShinigami(std::string lastname, std::string f
     addAssociations(textureAssociations);
     _direction = 1;
     _isAttacking1 = false;
-    _isAttacking2 = false;
-    _isAttacking3 = false;
-    _isAttacking4 = false;
     _isJumping = false;
     _isPicking = false;
     
@@ -31,26 +28,6 @@ void PlayerBleachShinigami::doAttack1(Player& targetPlayer)
 }
     
 
-void PlayerBleachShinigami::doAttack2(Player& targetPlayer)
-{
-    std::cout << getLastname() << " is performing Attack2 on " << targetPlayer.getLastname() << std::endl;
-    float damage = _soin+2;
-    targetPlayer.reduceHealth(damage, targetPlayer);
-}
-
-void PlayerBleachShinigami::doAttack3(Player& targetPlayer)
-{
-    std::cout << getLastname() << " is performing Attack3 on " << targetPlayer.getLastname() << std::endl;
-    float damage = _soin+3;
-    targetPlayer.reduceHealth(damage, targetPlayer);
-}
-
-void PlayerBleachShinigami::doAttack4(Player& targetPlayer)
-{
-    std::cout << getLastname() << " is performing Attack4 on " << targetPlayer.getLastname() << std::endl;
-    float damage = _soin+4;
-    targetPlayer.reduceHealth(damage, targetPlayer);
-}
 
 void PlayerBleachShinigami::doJump()
 {
