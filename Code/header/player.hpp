@@ -5,7 +5,8 @@
 #include <cstdlib>
 #include <ctime>
 #include "userinput.hpp"
-class Player{
+#include "object.hpp"
+class Player: public Object{
     protected :
     std::string _lastname;
     std::string _firstname;
