@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "player.hpp"
+#include "fruit.hpp"
 #include "userinput.hpp"
 #include <memory>
 #include <vector>
@@ -18,7 +19,9 @@ public:
 
 private:
     const std::vector<std::shared_ptr<Player>>* _players;
+    const std::vector<std::shared_ptr<Fruit>>* _fruits; // Added _fruits attribute  
     std::vector<sf::Sprite> _sprites;
+    std::vector<sf::Sprite> _fruitSprites; // Added _fruitSprites attribute
     std::vector<int> _currentFrames;
     std::vector<sf::Sprite> _attackSprites; // Added _attackSprites attribute
     sf::Clock _clock;
@@ -33,5 +36,6 @@ private:
     void renderPosition(sf::RenderWindow& window, std::size_t index);
     void renderAttack1(sf::RenderWindow& window, std::size_t index);
     void renderAttack2(sf::RenderWindow& window, std::size_t index);
+    void renderFruit(sf::RenderWindow& window, std::size_t index); // Added renderFruit method
 };
 

@@ -1,5 +1,6 @@
 #include "../header/characterrenderer.hpp"
 #include "../header/playersoin.hpp"
+#include "../header/fruit.hpp"
 
 CharacterRenderer::CharacterRenderer()
     : _players(nullptr), _sprites(), _currentFrames(), _frameChangeSpeed(0.1)
@@ -178,4 +179,30 @@ void CharacterRenderer::setCameraPosition(float x)
 {
     // Définissez la position de la caméra par rapport au personnage
     _backgroundSprite.setPosition(x, 0);
+}
+
+void CharacterRenderer::renderFruit(sf::RenderWindow& window, std::size_t index)
+{
+    if (_fruits && index < _fruits->size()) {
+        const auto& fruit = (*_fruits)[index];
+
+        // Vérifier si le pointeur vers le fruit est valide
+        if (fruit) {
+            sf::Sprite fruitSprite;
+
+            // Charger la texture du fruit
+            sf::Texture fruitTexture;
+            if (fruitTexture.loadFromFile(fruit->getTexturePath())) {
+                fruitSprite.setTexture(fruitTexture);
+
+                // Positionner le sprite du fruit à une position fixe (par exemple, 100, 100)
+                fruitSprite.setPosition(100, 100);
+
+                // Dessiner le sprite du fruit sur la fenêtre
+                window.draw(fruitSprite);
+            } else {
+                std::cerr << "Failed to load fruit texture: " << fruit->getTexturePath() << std::endl;
+            }
+        }
+    }
 }

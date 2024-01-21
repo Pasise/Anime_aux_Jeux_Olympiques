@@ -14,5 +14,6 @@ class Fruit: public Object{
     float _y;
     float _energy;
     bool _isAlive;
+    std::map<std::string, int> _textureAssociations;
 
 };
