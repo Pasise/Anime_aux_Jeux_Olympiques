@@ -3,9 +3,7 @@
 #include <iostream>
 #include "player.hpp"
 #include "userinput.hpp"
-#include "playeronepiece.hpp"
-#include "playeronepiecemugiwara.hpp"
-#include "playeronepiecemugiwarafd.hpp"
+#include "playerplus.hpp"
 #include "playerbleach.hpp"
 #include "playerbleachshinigami.hpp"
 #include "playerbleachshinigamicapitaine.hpp"

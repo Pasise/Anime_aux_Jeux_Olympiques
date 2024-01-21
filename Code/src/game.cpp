@@ -17,7 +17,7 @@ Game::Game() : _players(), _characterRenderer(&_players,BACKGROUND)
 
 
     // Crée le joueur de l'équipage du Mugiwara Roronoa Zoro
-    std::shared_ptr<Player> player3 = std::make_shared<PlayerOnePieceMugiwara>(LASTNAME_ONEPIECEMUGIWARA, FIRSTNAME_ONEPIECEMUGIWARA, XP_ONEPIECEMUGIWARA, SPEED_ONEPIECEMUGIWARA, X_ONEPIECEMUGIWARA, Y_ONEPIECEMUGIWARA, VOL_ONEPIECEMUGIWARA, ZOROASSOCIATION);
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerPlus>(LASTNAME_ONEPIECEMUGIWARA, FIRSTNAME_ONEPIECEMUGIWARA, XP_ONEPIECEMUGIWARA, SPEED_ONEPIECEMUGIWARA, X_ONEPIECEMUGIWARA, Y_ONEPIECEMUGIWARA, ZOROASSOCIATION);
     _players.push_back(player3);  // Ajoutez le joueur à la liste
     std::cout << "Player 3 in the list" << std::endl;
     std::cout << "Player 3 name : " << _players[1]->getFirstname() << std::endl;

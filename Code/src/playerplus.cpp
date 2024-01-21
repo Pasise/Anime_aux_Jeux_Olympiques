@@ -1,7 +1,6 @@
-#include "../header/playeronepiecemugiwarafd.hpp"
+#include "../header/playerplus.hpp"
 
-PlayerOnePieceMugiwaraFD::PlayerOnePieceMugiwaraFD(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float vol, std::map<std::string, int> textureAssociations) 
-: PlayerOnePieceMugiwara(lastname, firstname, Xp, speed, x, y, vol, textureAssociations)
+PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, std::map<std::string, int> textureAssociations) 
 {
     _lastname = lastname;
     _firstname = firstname;
@@ -9,47 +8,46 @@ PlayerOnePieceMugiwaraFD::PlayerOnePieceMugiwaraFD(std::string lastname, std::st
     _speed = speed;
     _x = x;
     _y = y;
-    _vol = vol;
     addAssociations(textureAssociations);
     _direction = 1;
     _isAttacking1 = false;
     _isAttacking2 = false;
     _isJumping = false;
     _isPicking = false;
-    std::cout << "PlayerOnepieceMugiwara created" << std::endl;
+    std::cout << "PlayerPlus created" << std::endl;
 
 }
 
-void PlayerOnePieceMugiwaraFD::doAttack1(Player& targetPlayer)
+void PlayerPlus::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-    float damage = _vol+1;
+    float damage = 1;
     targetPlayer.reduceHealth(damage, targetPlayer);
     _isAttacking1 = true;
 }
 
-void PlayerOnePieceMugiwaraFD::doAttack2(Player& targetPlayer)
+void PlayerPlus::doAttack2(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack2 on " << targetPlayer.getLastname() << std::endl;
-    float damage = _vol+2;
+    float damage = 2;
     targetPlayer.reduceHealth(damage, targetPlayer);
     _isAttacking2 = true;
 }
 
-void PlayerOnePieceMugiwaraFD::doJump()
+void PlayerPlus::doJump()
 {
     _y += 2;
     _y -= 2;
     _isJumping = true;
 }
 
-void PlayerOnePieceMugiwaraFD::doPick()
+void PlayerPlus::doPick()
 {
     //std::cout << "Pick Not Implemented Yet" << std::endl;
     _isPicking = true;
 }
 
-int PlayerOnePieceMugiwaraFD::getRandomNumberForRandomAttack() const {
+int PlayerPlus::getRandomNumberForRandomAttack() const {
         // Obtenir le temps actuel en secondes depuis l'époque
         auto currentTime = std::chrono::system_clock::now();
         // Convertir le temps en nombre entier représentant le nombre de secondes

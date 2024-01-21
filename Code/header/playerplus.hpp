@@ -1,19 +1,18 @@
 #pragma once
 
-#include "playeronepiecemugiwara.hpp"
+#include "player.hpp"
 #include <SFML/Graphics.hpp>
 
-class PlayerOnePieceMugiwaraFD : public PlayerOnePieceMugiwara
+class PlayerPlus : public Player
 {
     
 protected:
-    float _vol;
     std::string _texture;  // Ajout de l'attribut texture
     bool _isAttacking2; // Ajout de l'attribut _isAttacking1
 
 public:
-    PlayerOnePieceMugiwaraFD(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float vol, std::map<std::string, int> textureAssociations);
-    ~PlayerOnePieceMugiwaraFD() {};
+    PlayerPlus(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, std::map<std::string, int> textureAssociations);
+    ~PlayerPlus() {};
     std::string getTexture(){return _texture;}
     void setTexture(std::string texturepath){_texture = texturepath;}
     void doAttack1(Player& targetPlayer); //
