@@ -109,6 +109,8 @@ class Player: public Object{
     void virtual doJump()=0;
     void virtual doPick()=0;
 
+    int getRandomNumber() const;  
+
 
 
 
