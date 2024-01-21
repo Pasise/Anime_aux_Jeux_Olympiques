@@ -28,6 +28,8 @@ public:
     int getRandomNumberForRandomAttack() const;
     void doJump();
     void doPick();
+    void doFix2();
+    void randomAttack(Player& targetPlayer);
 
 
 };

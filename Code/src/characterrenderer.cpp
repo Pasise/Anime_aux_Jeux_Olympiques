@@ -1,5 +1,5 @@
 #include "../header/characterrenderer.hpp"
-#include "../header/playerbleachshinigamicapitaine.hpp"
+#include "../header/playersoin.hpp"
 
 CharacterRenderer::CharacterRenderer()
     : _players(nullptr), _sprites(), _currentFrames(), _frameChangeSpeed(0.1)
@@ -58,8 +58,8 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
 
 void CharacterRenderer::renderPosition(sf::RenderWindow& window, std::size_t index)
 {
-    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>((*_players)[index]);
-        if ((*_players)[index] && !(*_players)[index]->isAttacking1() &&( !captainPlayer || !captainPlayer->isAttacking2())){
+    std::shared_ptr<PlayerSoin> captainPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[index]);
+        if ((*_players)[index] && !(*_players)[index]->isAttacking1() &&( !captainPlayer || !captainPlayer->isAttacking1())){
             std::string playerTexturePath = (*_players)[index]->getTexturePath(2);
 
             sf::Texture texture;
@@ -113,9 +113,9 @@ void CharacterRenderer::renderAttack1(sf::RenderWindow& window, std::size_t inde
 
 void CharacterRenderer::renderAttack2(sf::RenderWindow& window, std::size_t index)
 {
-    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>((*_players)[index]);
+    std::shared_ptr<PlayerSoin> captainPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[index]);
 
-    if ((*_players)[index] && captainPlayer && captainPlayer->isAttacking2()) {
+    if ((*_players)[index] && captainPlayer && captainPlayer->isAttacking1()) {
         std::string playerTexturePath = captainPlayer->getTexturePath(1);
 
         sf::Texture texture;

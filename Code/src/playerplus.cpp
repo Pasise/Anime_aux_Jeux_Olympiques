@@ -64,3 +64,22 @@ int PlayerPlus::getRandomNumberForRandomAttack() const {
         int randomNumber = std::rand() % 3 + 1;
         return randomNumber;
     }
+void PlayerPlus::doFix2()
+{
+    _isAttacking2 = false;
+    
+}
+
+void PlayerPlus::randomAttack(Player& targetPlayer)
+{
+    int randomValue = getRandomNumberForRandomAttack();
+    if (randomValue == 1)
+    {
+        doAttack1(targetPlayer);
+    }
+    else if (randomValue == 2)
+    {
+        doAttack2(targetPlayer);
+    }
+    
+}

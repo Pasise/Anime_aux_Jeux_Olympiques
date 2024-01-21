@@ -1,6 +1,6 @@
-#include "../header/playerbleachshinigami.hpp"
+#include "../header/playersoin.hpp"
 
-PlayerBleachShinigami::PlayerBleachShinigami(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float soin, std::map<std::string, int> textureAssociations)
+PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float soin, std::map<std::string, int> textureAssociations)
 {
 
     _lastname = lastname;
@@ -20,7 +20,7 @@ PlayerBleachShinigami::PlayerBleachShinigami(std::string lastname, std::string f
 }
 
 
-void PlayerBleachShinigami::doAttack1(Player& targetPlayer)
+void PlayerSoin::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
     float damage = _soin+1;
@@ -29,14 +29,18 @@ void PlayerBleachShinigami::doAttack1(Player& targetPlayer)
     
 
 
-void PlayerBleachShinigami::doJump()
+void PlayerSoin::doJump()
 {
     _y += 2;
     _y -= 2;
 }
 
-void PlayerBleachShinigami::doPick()
+void PlayerSoin::doPick()
 {
     //std::cout << "Pick Not Implemented Yet" << std::endl;
 }
 
+void PlayerSoin::randomAttack(Player& targetPlayer)
+{
+   doAttack1(targetPlayer);
+}

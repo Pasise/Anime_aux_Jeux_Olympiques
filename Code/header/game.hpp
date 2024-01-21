@@ -4,9 +4,7 @@
 #include "player.hpp"
 #include "userinput.hpp"
 #include "playerplus.hpp"
-#include "playerbleach.hpp"
-#include "playerbleachshinigami.hpp"
-#include "playerbleachshinigamicapitaine.hpp"
+#include "playersoin.hpp"
 #include "characterrenderer.hpp"
 #include <list>
 #include <vector>

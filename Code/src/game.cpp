@@ -1,14 +1,14 @@
 // Game.cpp
 #include "../header/game.hpp"
 #include "../header/constant.hpp"
-#include "../header/playerbleachshinigamicapitaine.hpp"
+
 
 Game::Game() : _players(), _characterRenderer(&_players,BACKGROUND)  
 {
     std::cout << "Game created" << std::endl;
 
     // Crée le joueur de shinigami capiaine de Bleach Kuchiki Byakuya
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerBleachShinigamiCapitaine>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_BLEACHSHINIGAMICAPITAINE, SPEED_BLEACHSHINIGAMICAPITAINE, X_BLEACHSHINIGAMICAPITAINE, Y_BLEACHSHINIGAMICAPITAINE, SOIN_BLEACHSHINIGAMICAPITAINE, ICHIGOASSOCIATION);
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_BLEACHSHINIGAMICAPITAINE, SPEED_BLEACHSHINIGAMICAPITAINE, X_BLEACHSHINIGAMICAPITAINE, Y_BLEACHSHINIGAMICAPITAINE, ICHIGOASSOCIATION);
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
@@ -102,7 +102,7 @@ void Game::updateState(const UserInput &input)
                 else if (input.getButton() == Button::attack2)
                 {
                     // Get the shared pointer to PlayerBleachShinigamiCapitaine
-                    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>(_players[i]);
+                    std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
 
                     if (captainPlayer)
                     {
@@ -120,7 +120,7 @@ void Game::updateState(const UserInput &input)
                 else if (input.getButton() == Button::pick)
                     _players[i]->doJump();
                 else if (input.getButton() == Button::fix){
-                    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>(_players[i]);
+                    std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
 
                     if (captainPlayer)
                     {
