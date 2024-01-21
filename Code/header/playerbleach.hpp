@@ -12,6 +12,5 @@ class PlayerBleach : public Player
     void virtual doPick()=0;
     protected :
     float _soin;
-    
 
 };

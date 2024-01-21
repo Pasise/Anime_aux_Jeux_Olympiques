@@ -14,16 +14,13 @@ public:
     ~PlayerBleachShinigamiCapitaine() {};
     void doAttack1(Player& targetPlayer); //
     void doAttack2(Player& targetPlayer);
-      bool isAttacking2() const {
-        return _isAttacking2;
-   
-    }
-    void setIsAttacking2(bool value) {
-        _isAttacking2 = value;
-    }
+    bool isAttacking2() const { return _isAttacking2; }
+    void setIsAttacking2(bool value) { _isAttacking2 = value; }
 
     int getRandomNumberForRandomAttack() const;  
     void doJump();
     void doPick();
+    void doFix2();
+
 
 };

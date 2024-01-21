@@ -16,6 +16,7 @@ class Player: public Object{
     float _y;
     int _direction;
     bool _isAttacking1;
+
     bool _isJumping;
     bool _isPicking;
     
@@ -86,6 +87,7 @@ class Player: public Object{
         return _isAttacking1;
    
     }
+
     void setIsAttacking1(bool value) {
         _isAttacking1 = value;
     }
@@ -109,7 +111,6 @@ class Player: public Object{
     void virtual doJump()=0;
     void virtual doPick()=0;
     int getRandomNumberForCanAttack() const;
-
 
 
 

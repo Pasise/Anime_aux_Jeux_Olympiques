@@ -71,3 +71,9 @@ int PlayerBleachShinigamiCapitaine::getRandomNumberForRandomAttack() const {
 
  }
 
+
+void PlayerBleachShinigamiCapitaine::doFix2()
+{
+    _isAttacking2 = false;
+    
+}

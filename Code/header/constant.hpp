@@ -103,7 +103,8 @@ const float Y_ICHIGO = 580;
 const float SOIN_ICHIGO = 2;
 const std::string TEXTUREPATH_ICHIGO =    "../Sprite/ichigo_run.png";
 const std::string TEXTUREPATH_ICHIGO_ATTACK1 =  "../Sprite/ichigo_attack1.png";
-std::map<std::string, int> ICHIGOASSOCIATION = {{TEXTUREPATH_ICHIGO , 6},{TEXTUREPATH_ICHIGO_ATTACK1, 3}};
+const std::string TEXTUREPATH_ICHIGO_ATTACK2 = "../Sprite/ichigo_attack2.png";
+std::map<std::string, int> ICHIGOASSOCIATION = {{TEXTUREPATH_ICHIGO , 6},{TEXTUREPATH_ICHIGO_ATTACK1, 3}, {TEXTUREPATH_ICHIGO_ATTACK2, 8}};
 // ========== Constantes Background ==========
 
 const std::string BACKGROUND = "../Sprite/Background1.2merged.png";

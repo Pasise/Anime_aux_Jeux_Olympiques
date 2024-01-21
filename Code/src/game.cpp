@@ -1,6 +1,7 @@
 // Game.cpp
 #include "../header/game.hpp"
 #include "../header/constant.hpp"
+#include "../header/playerbleachshinigamicapitaine.hpp"
 
 Game::Game() : _players(), _characterRenderer(&_players,BACKGROUND)  
 {
@@ -99,15 +100,38 @@ void Game::updateState(const UserInput &input)
                     _players[i]->doAttack1(*_players[1]);
                     }
                 else if (input.getButton() == Button::attack2)
-                    _players[i]->doAttack1(*_players[2]);
+                {
+                    // Get the shared pointer to PlayerBleachShinigamiCapitaine
+                    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>(_players[i]);
+
+                    if (captainPlayer)
+                    {
+                        captainPlayer->doAttack2(*_players[1]);
+                    }
+                    else
+                    {
+                        std::cerr << "Error: _players[" << i << "] is not of type PlayerBleachShinigamiCapitaine" << std::endl;
+                    }
+                }
                 else if (input.getButton() == Button::attack3)
                     _players[i]->doAttack1(*_players[3]);
                 else if (input.getButton() == Button::attack4)
                     _players[i]->doAttack1(*_players[4]);
                 else if (input.getButton() == Button::pick)
                     _players[i]->doJump();
-                else if (input.getButton() == Button::fix)
+                else if (input.getButton() == Button::fix){
+                    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>(_players[i]);
+
+                    if (captainPlayer)
+                    {
+                        captainPlayer->doFix2();
+                    }
+                    else
+                    {
+                        std::cerr << "Error: _players[" << i << "] is not of type PlayerBleachShinigamiCapitaine" << std::endl;
+                    }
                     _players[i]->doFix();
+                }
             }
             else
             {

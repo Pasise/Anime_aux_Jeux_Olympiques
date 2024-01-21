@@ -1,4 +1,5 @@
 #include "../header/characterrenderer.hpp"
+#include "../header/playerbleachshinigamicapitaine.hpp"
 
 CharacterRenderer::CharacterRenderer()
     : _players(nullptr), _sprites(), _currentFrames(), _frameChangeSpeed(0.1)
@@ -57,8 +58,9 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
 
 void CharacterRenderer::renderPosition(sf::RenderWindow& window, std::size_t index)
 {
-        if ((*_players)[index] && !(*_players)[index]->isAttacking1()) {
-            std::string playerTexturePath = (*_players)[index]->getTexturePath(1);
+    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>((*_players)[index]);
+        if ((*_players)[index] && !(*_players)[index]->isAttacking1() &&( !captainPlayer || !captainPlayer->isAttacking2())){
+            std::string playerTexturePath = (*_players)[index]->getTexturePath(2);
 
             sf::Texture texture;
             if (texture.loadFromFile(playerTexturePath)) {
@@ -109,6 +111,37 @@ void CharacterRenderer::renderAttack1(sf::RenderWindow& window, std::size_t inde
     // ... rest of the code for scaling and additional conditions
 }
 
+void CharacterRenderer::renderAttack2(sf::RenderWindow& window, std::size_t index)
+{
+    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>((*_players)[index]);
+
+    if ((*_players)[index] && captainPlayer && captainPlayer->isAttacking2()) {
+        std::string playerTexturePath = captainPlayer->getTexturePath(1);
+
+        sf::Texture texture;
+        if (texture.loadFromFile(playerTexturePath)) {
+            sf::Vector2u frameSize = texture.getSize();
+            frameSize.x /= captainPlayer->getNumberOfFrames(playerTexturePath);
+            frameSize.y /= 1;
+            int currentFrame = _currentFrames[index];
+            sf::IntRect sourceRect(currentFrame * frameSize.x, 0, frameSize.x, frameSize.y);
+
+            _attackSprites[index].setTexture(texture);
+            _attackSprites[index].setTextureRect(sourceRect);
+            _attackSprites[index].setPosition(captainPlayer->getX(), captainPlayer->getY());
+
+            window.draw(_attackSprites[index]);
+        }
+        else {
+            std::cerr << "Failed to load player texture: " << playerTexturePath << std::endl;
+        }
+    }
+
+    // ... rest of the code for scaling and additional conditions
+}
+
+
+
 void CharacterRenderer::render(sf::RenderWindow& window)
 {
     sf::Time elapsedTime = _clock.getElapsedTime();
@@ -127,6 +160,7 @@ void CharacterRenderer::render(sf::RenderWindow& window)
     for (std::size_t i = 0; i < _sprites.size(); ++i) {
         renderPosition(window, i);
         renderAttack1(window, i);
+        renderAttack2(window, i);
     }
 }
 

@@ -32,5 +32,6 @@ private:
     void loadBackgroundTexture();
     void renderPosition(sf::RenderWindow& window, std::size_t index);
     void renderAttack1(sf::RenderWindow& window, std::size_t index);
+    void renderAttack2(sf::RenderWindow& window, std::size_t index);
 };
 
