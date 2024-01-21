@@ -25,6 +25,8 @@ public:
     void setIsAttacking2(bool value) {
         _isAttacking2 = value;
     }
+
+    int getRandomNumberForRandomAttack() const;
     void doJump();
     void doPick();
 

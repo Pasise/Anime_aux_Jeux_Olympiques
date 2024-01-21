@@ -48,3 +48,21 @@ void PlayerOnePieceMugiwaraFD::doPick()
     //std::cout << "Pick Not Implemented Yet" << std::endl;
     _isPicking = true;
 }
+
+int PlayerOnePieceMugiwaraFD::getRandomNumberForRandomAttack() const {
+        // Obtenir le temps actuel en secondes depuis l'époque
+        auto currentTime = std::chrono::system_clock::now();
+        // Convertir le temps en nombre entier représentant le nombre de secondes
+        auto currentTimeInSeconds = std::chrono::time_point_cast<std::chrono::seconds>(currentTime);
+        // Obtenir la durée écoulée depuis l'époque
+        auto epoch = currentTimeInSeconds.time_since_epoch();
+        // Convertir la durée en secondes
+        auto value = std::chrono::duration_cast<std::chrono::seconds>(epoch);
+        // Obtenir le nombre de secondes écoulées depuis l'époque
+        auto duration = value.count();
+        // Utiliser le nombre de secondes comme graine pour le générateur de nombres aléatoires
+        std::srand(duration);
+        // Générer un nombre aléatoire entre 1 et 3
+        int randomNumber = std::rand() % 3 + 1;
+        return randomNumber;
+    }
