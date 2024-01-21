@@ -108,8 +108,7 @@ class Player: public Object{
     void virtual doAttack1(Player& targetPlayer)=0;
     void virtual doJump()=0;
     void virtual doPick()=0;
-
-    int getRandomNumber() const;  
+    int getRandomNumberForCanAttack() const;
 
 
 

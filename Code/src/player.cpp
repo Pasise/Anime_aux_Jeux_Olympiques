@@ -66,3 +66,19 @@ void Player::doFix()
     setIsPicking(false);
     
 }
+
+int Player::getRandomNumberForCanAttack() const {
+        // Obtenir le temps actuel en secondes depuis l'époque
+        auto currentTime = std::chrono::system_clock::now();
+        auto seconds = std::chrono::time_point_cast<std::chrono::seconds>(currentTime);
+        auto timeInSeconds = seconds.time_since_epoch().count();
+
+        // Utiliser le temps comme graine pour la génération de nombres aléatoires
+        std::srand(static_cast<unsigned int>(timeInSeconds));
+         int randomValue = (std::rand() % 3);
+        std::cout << "random value: " << randomValue << std::endl;
+
+        // Générer un nombre aléatoire entre 1 et 2
+        return randomValue;
+
+ }

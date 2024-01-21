@@ -88,6 +88,8 @@ void Game::updateState(const UserInput &input)
         {
             if (i == 0)
             {
+                //Appeler la fonction getRandomNumber pour avoir un nombre aléatoire entre 0 et 1
+                _players[i]->getRandomNumberForCanAttack();
                 // Seulement pour le premier joueur, utilisez les entrées de l'utilisateur
                 if (input.getButton() == Button::left)
                     _players[i]->moveLeft();// Ajoutez le joueur à la liste
