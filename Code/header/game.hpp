@@ -13,6 +13,7 @@
 
 class Game {
     std::vector<std::shared_ptr<Player>> _players;
+    std::vector<std::shared_ptr<Fruit>> _fruits; // Added _fruits attribute
     UserInput _input;
     CharacterRenderer _characterRenderer;
 public:

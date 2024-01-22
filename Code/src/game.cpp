@@ -3,7 +3,7 @@
 #include "../header/constant.hpp"
 
 
-Game::Game() : _players(), _characterRenderer(&_players,BACKGROUND)  
+Game::Game() : _players(),_fruits(), _characterRenderer(&_players,BACKGROUND)  
 {
     std::cout << "Game created" << std::endl;
 
@@ -51,6 +51,11 @@ Game::Game() : _players(), _characterRenderer(&_players,BACKGROUND)
     std::cout << "Player 7 in the list" << std::endl;
     std::cout << "Player 7 name : " << _players[5]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,BACKGROUND);*/
+
+    // Crée le fruit du démon de Luffy
+    std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUIT,X_FRUIT,Y_FRUIT,TEXTUREPATH_FRUIT);
+    _fruits.push_back(fruit1);  // Ajoutez le joueur à la liste
+    std::cout << "Fruit 1 in the list" << std::endl;
 
     
 

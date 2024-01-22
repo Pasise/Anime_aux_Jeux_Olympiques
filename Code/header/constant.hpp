@@ -112,3 +112,12 @@ const std::string BACKGROUND = "../Sprite/Background1.2merged.png";
 // ========== Constantes Attack ==========
 
 const float DISTANCETREEHOLD = 5;
+
+// ========== Constantes Fruit  ==========
+
+// ========== Constantes Fruit du démon ==========
+const std::string TEXTUREPATH_FRUIT = "../Sprite/fruit_du_demon.png";
+const float X_FRUIT = 0;
+const float Y_FRUIT = 0;
+const float ENERGY_FRUIT = 0.5;
+const std::string NAME_FRUIT = "Fruit";
