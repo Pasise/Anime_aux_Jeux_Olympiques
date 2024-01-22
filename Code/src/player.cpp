@@ -23,6 +23,12 @@ bool Player::isCloseTo(const Player &otherPlayer, float distanceThreshold) const
     return (distance < distanceThreshold);
 }
 
+bool Player::isCloseToFruit(const Fruit &targetFruit, float distanceThreshold) const {
+    float distance = std::sqrt(std::pow(getX() - targetFruit.getX(), 2) + std::pow(getY() - targetFruit.getY(), 2));
+    //std::cout << "Distance between " << " is " << distance << std::endl;
+    return (distance < distanceThreshold);
+}
+
 int Player::getRandomNumberForCanAttack() const {
         // Obtenir le temps actuel en secondes depuis l'époque
         auto currentTime = std::chrono::system_clock::now();
@@ -63,5 +69,8 @@ void Player::doFix()
     setIsPicking(false);
     
 }
+
+
+
 
 

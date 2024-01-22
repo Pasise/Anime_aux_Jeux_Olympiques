@@ -35,9 +35,25 @@ void PlayerSoin::doJump()
     _y -= 2;
 }
 
-void PlayerSoin::doPick()
+void PlayerSoin::doPick(Fruit& targetFruit)
 {
-    //std::cout << "Pick Not Implemented Yet" << std::endl;
+    // Check if the target fruit is close enough and has the desired name
+    float distanceThreshold = 50.0f;  // Adjust the distance threshold as needed
+    if (isCloseToFruit(targetFruit, distanceThreshold) && targetFruit.getName() == "Masque du Hollow")
+    {
+        std::cout << getLastname() << " is picking up " << targetFruit.getName() << std::endl;
+
+        //Augmenter les xp du joueur de l'néergie du fruit 
+        _Xp += targetFruit.getEnergy();
+
+        
+    }
+    else
+    {
+        std::cout << getLastname() << " cannot pick up " << targetFruit.getName() << std::endl;
+    }
+
+    _isPicking = true;  // You may want to reconsider setting _isPicking to true here
 }
 
 void PlayerSoin::randomAttack(Player& targetPlayer)

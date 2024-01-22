@@ -6,6 +6,7 @@
 #include <ctime>
 #include "userinput.hpp"
 #include "object.hpp"
+#include "fruit.hpp"
 class Player: public Object{
     protected :
     std::string _lastname;
@@ -73,7 +74,9 @@ class Player: public Object{
             return "";
         }
     }
+
     bool isCloseTo(const Player &otherPlayer, float distanceThreshold) const;
+    bool isCloseToFruit(const Fruit &targetFruit, float distanceThreshold) const;
     int getRandomNumberForCanAttack() const;
     bool canAttack() const;
     bool isAttacking1() const {
@@ -102,7 +105,7 @@ class Player: public Object{
 
     void virtual doAttack1(Player& targetPlayer)=0;
     void virtual doJump()=0;
-    void virtual doPick()=0;
+    void virtual doPick(Fruit& targetFruit)=0;
     void virtual randomAttack(Player& targetPlayer)=0;
     
     

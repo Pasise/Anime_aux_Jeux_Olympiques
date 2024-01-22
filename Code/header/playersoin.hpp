@@ -1,6 +1,7 @@
 #pragma once
 
 #include "player.hpp"
+#include "fruit.hpp"
 #include <SFML/Graphics.hpp>
 
 class PlayerSoin : public Player
@@ -13,6 +14,6 @@ public:
     ~PlayerSoin() {};
     void doAttack1(Player& targetPlayer); //
     void doJump();
-    void doPick();
+    void doPick(Fruit& targetFruit);
     void randomAttack(Player& targetPlayer);
 };

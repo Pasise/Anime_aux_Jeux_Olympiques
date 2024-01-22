@@ -1,6 +1,7 @@
 #pragma once
 
 #include "player.hpp"
+#include "fruit.hpp"
 #include <SFML/Graphics.hpp>
 
 class PlayerPlus : public Player
@@ -27,7 +28,7 @@ public:
 
     int getRandomNumberForRandomAttack() const;
     void doJump();
-    void doPick();
+    void doPick(Fruit& targetFruit);
     void doFix2();
     void randomAttack(Player& targetPlayer);
 
