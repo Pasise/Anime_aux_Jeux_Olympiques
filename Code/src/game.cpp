@@ -60,14 +60,14 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
 
 
     // Crée un fruit normal que tout le monde peut manger
-    std::shared_ptr<Fruit> fruit2 = std::make_shared<Fruit>(NAME_FRUITNORMAL,Y_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUIT);
+    std::shared_ptr<Fruit> fruit2 = std::make_shared<Fruit>(NAME_FRUIT,Y_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUIT);
     _fruits.push_back(fruit2);  // Ajoutez le fruit à la liste
     std::cout << "Fruit 2 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
 
     //Cree le masque hollow de Ichigo
-    std::shared_ptr<Fruit> fruit3 = std::make_shared<Fruit>(NAME_HOLLOW,Y_HOLLOW,ENERGY_HOLLOW,TEXTUREPATH_FRUIT);
+    std::shared_ptr<Fruit> fruit3 = std::make_shared<Fruit>(NAME_FRUIT,Y_HOLLOW,ENERGY_HOLLOW,TEXTUREPATH_FRUIT);
     _fruits.push_back(fruit3);  // Ajoutez le fruit à la liste
     std::cout << "Fruit 3 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);

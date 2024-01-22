@@ -45,7 +45,7 @@ void PlayerPlus::doPick(Fruit& targetFruit)
 {
     // Check if the target fruit is close enough and has the desired name
     float distanceThreshold = 1000.0f;  // Adjust the distance threshold as needed
-    if (isCloseToFruit(targetFruit, distanceThreshold) && (targetFruit.getName() == "Gomu gomu fruit" || targetFruit.getName() == "Fruit normal"))
+    if (isCloseToFruit(targetFruit, distanceThreshold) && (targetFruit.getName() == "Gomu Gomu fruit" || targetFruit.getName() == "Fruit Normal"))
     {
         // Check if the fruit is alive before picking
         if (targetFruit.isAlive())
