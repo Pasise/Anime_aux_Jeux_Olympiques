@@ -72,17 +72,143 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
     std::cout << "Fruit 3 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
+    chooseScreen.push_back("../Sprite/Choose_Byakuya.PNG");
+    chooseScreen.push_back("../Sprite/Choose_Ichigo.PNG");
+    chooseScreen.push_back("../Sprite/Choose_Kyoraku.PNG");
+    chooseScreen.push_back("../Sprite/Choose_Zoro.PNG");
+    chooseScreen.push_back("../Sprite/Choose_Luffy.PNG");
 
-
-
-    
 
 
 }
-void Game::run()
-{
-        sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
+void Game::intro(sf::RenderWindow& window) {
+    // Open the intro window
+    window.create(sf::VideoMode(1920, 1080), "One Piece vs Bleach", sf::Style::Fullscreen);
 
+    // Load and display the intro image
+    sf::Texture introTexture;
+    if (introTexture.loadFromFile("../Sprite/home_screen.PNG")) {
+        sf::Sprite introSprite(introTexture);
+        window.draw(introSprite);
+        window.display();
+    } else {
+        std::cerr << "Failed to load intro image." << std::endl;
+        return;
+    }
+
+    // Wait for user input
+    sf::Event event;
+    while (window.isOpen()) {
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            } else if (event.type == sf::Event::MouseButtonPressed &&
+                       event.mouseButton.button == sf::Mouse::Left) {
+                // Check if the mouse is within the specified rectangle
+                sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
+                if (mousePosition.x >= 690 && mousePosition.x <= 1195 &&
+                    mousePosition.y >= 770 && mousePosition.y <= 900) {
+                    // Load and display the new image
+                    sf::Texture startTexture;
+                    if (startTexture.loadFromFile("../Sprite/home_screen_start.PNG")) {
+                        sf::Sprite startSprite(startTexture);
+                        window.draw(startSprite);
+                        window.display();
+                        sf::sleep(sf::seconds(0.5));
+                        return;
+                    } else {
+                        std::cerr << "Failed to load start image." << std::endl;
+                    }
+                } else  if (mousePosition.x >= 820 && mousePosition.x <= 1055 &&
+                    mousePosition.y >= 930 && mousePosition.y <= 1040) {
+                    // Load and display the new image
+                    sf::Texture startTexture;
+                    if (startTexture.loadFromFile("../Sprite/home_screen_exit.PNG")) {
+                        sf::Sprite startSprite(startTexture);
+                        window.draw(startSprite);
+                        window.display();
+                        sf::sleep(sf::seconds(0.5));
+                        window.close();
+                    } else {
+                        std::cerr << "Failed to load start image." << std::endl;
+                    }
+                }
+                       }
+        }
+    }
+}
+
+void Game::choose(sf::RenderWindow& window) {
+    sf::Event event;
+    std::vector<std::string>::iterator currentImage = chooseScreen.begin();
+    sf::Texture chooseTexture;
+    if (chooseTexture.loadFromFile(*currentImage)) {
+        sf::Sprite chooseSprite(chooseTexture);
+        window.draw(chooseSprite);
+        window.display();
+    } else {
+        std::cerr << "Failed to load choose image." << std::endl;
+        return;
+    }
+    while (window.isOpen()) {
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            } else if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::D) {
+                    // Afficher l'image suivante dans le vecteur
+                    currentImage++;
+                    if (currentImage == chooseScreen.end()) {
+                        // Revenir au début du vecteur si nous sommes à la fin
+                        currentImage = chooseScreen.begin();
+                    }
+                } else if (event.key.code == sf::Keyboard::Q) {
+                    // Afficher l'image précédente dans le vecteur
+                    if (currentImage == chooseScreen.begin()) {
+                        // Aller à la fin du vecteur si nous sommes au début
+                        currentImage = chooseScreen.end();
+                    }
+                    currentImage--;
+                }
+                // Charger et afficher l'image actuelle
+                if (chooseTexture.loadFromFile(*currentImage)) {
+                    sf::Sprite chooseSprite(chooseTexture);
+                    window.draw(chooseSprite);
+                    window.display();
+                } else {
+                    std::cerr << "Failed to load choose image." << std::endl;
+                    return;
+                }
+            } else if (event.type == sf::Event::MouseButtonPressed &&
+                       event.mouseButton.button == sf::Mouse::Left) {
+                // Vérifier si la souris est dans la zone spécifiée
+                sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
+                if (mousePosition.x >= 1500 && mousePosition.x <= 1855 &&
+                    mousePosition.y >= 940 && mousePosition.y <= 1025) {
+                    // Construire le nouveau nom de fichier avec "1.PNG" ajouté
+                    std::string newFileName = *currentImage;
+                    newFileName.insert(newFileName.find_last_of('.'), "1");
+
+                    // Charger et afficher la nouvelle image
+                    sf::Texture newTexture;
+                    if (newTexture.loadFromFile(newFileName)) {
+                        sf::Sprite newSprite(newTexture);
+                        window.draw(newSprite);
+                        window.display();
+                        sf::sleep(sf::seconds(0.5));
+                        return;
+                    } else {
+                        std::cerr << "Failed to load " << newFileName << std::endl;
+                        return;
+                    }
+                }
+            }
+        }
+    }
+}
+
+void Game::run(sf::RenderWindow& window)
+{
         while (window.isOpen()) {
             sf::Event event;
             while (window.pollEvent(event)) {
