@@ -20,7 +20,7 @@ protected:
 
 
 public:
-    Fruit(std::string name, float x, float y, float energy, std::string texturePath);
+    Fruit(std::string name,float y, float energy, std::string texturePath);
     ~Fruit() {};
     std::string getName() const { return _name; }
     float getX() const { return _x; }
@@ -29,15 +29,13 @@ public:
     bool isAlive() const { return _isAlive; }
     void setX(float x) { _x = x; }
     void setY(float y) { _y = y; }
-    void setEnergy(float energy) { _energy = energy; }
     void setIsAlive(bool isAlive) { _isAlive = isAlive; }
     void reduceEnergy(float damage);
-    void render(sf::RenderWindow& window);
     void loadTexture();
     void setTexturePath(std::string texturePath) { _texturePath = texturePath; loadTexture(); }
     std::string getTexturePath() const { return _texturePath; }
     sf::Sprite getSprite() const { return _sprite; }
     sf::Texture getTexture() const { return _texture; }
-    void render(sf::RenderWindow& window) const;
+    int getRandomNumberForX() const;
 
 };
