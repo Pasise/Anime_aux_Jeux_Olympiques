@@ -12,6 +12,7 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
     : _players(players),
       _fruits(fruits), // Initialiser _fruits ici
       _sprites(players->size()),
+      _fruitSprites(fruits->size()), // Initialiser _fruitSprites ici
       _currentFrames(players->size(), 0),
       _attackSprites(players->size()), // Initialiser _attackSprites ici
       _frameChangeSpeed(0.08),
@@ -45,6 +46,24 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
             _frameCounts[player->getTexturePath(1)] = player->getNumberOfFrames(player->getTexturePath(1));
         }
                     }
+            }
+        }
+    }
+
+    // Initialiser _fruitSprites ici
+    if (_fruits)
+    {
+        for (std::size_t i = 0; i < _fruits->size(); ++i)
+        {
+            const auto& fruit = (*_fruits)[i];
+            if (fruit)
+            {
+                sf::Sprite sprite;
+                sf::Texture fruitTexture;
+                fruitTexture.loadFromFile(fruit->getTexturePath());
+                sprite.setTexture(fruitTexture);
+                _fruitSprites[i] = sprite;
+                std::cout << "Fruit texture loaded" << std::endl;
             }
         }
     }
@@ -182,11 +201,27 @@ void CharacterRenderer::setCameraPosition(float x)
     _backgroundSprite.setPosition(x, 0);
 }
 
-void CharacterRenderer::renderFruits(sf::RenderWindow& window)
-{
-    for (const auto& fruit : *_fruits) {
-        if (fruit) {
-            fruit->render(window);
-        }
+void CharacterRenderer::setFruits(const std::vector<std::shared_ptr<Fruit>>* fruits) {
+    _fruits = fruits;
+
+    // Assurez-vous que _fruitSprites a la même taille que _fruits
+    _fruitSprites.resize(_fruits->size());
+
+    // Initialisez chaque sprite avec la texture appropriée
+    for (std::size_t i = 0; i < _fruits->size(); ++i) {
+        _fruitSprites[i].setTexture((*_fruits)[i]->getTexture());
     }
 }
+
+void CharacterRenderer::renderFruits(sf::RenderWindow& window) {
+    std::cout << "Rendering fruits" << std::endl;
+
+    
+ //Placer les fruits à des endroits aléatoire 
+    for (std::size_t i = 0; i < _fruits->size(); ++i) {
+        _fruitSprites[i].setPosition((*_fruits)[i]->getX(), (*_fruits)[i]->getY());
+        window.draw(_fruitSprites[i]);
+    }
+    
+}
+

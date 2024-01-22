@@ -56,6 +56,7 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
     std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUIT,X_FRUIT,Y_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
     _fruits.push_back(fruit1);  // Ajoutez le joueur à la liste
     std::cout << "Fruit 1 in the list" << std::endl;
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
 
     
@@ -78,8 +79,8 @@ void Game::run()
 
             window.clear();
             _characterRenderer.setTexture(BACKGROUND);
-            _characterRenderer.renderFruits(window);
             _characterRenderer.render(window);
+            _characterRenderer.renderFruits(window);
             window.display();
         }
 }

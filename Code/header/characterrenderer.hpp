@@ -34,6 +34,7 @@ private:
     sf::Texture _backgroundTexture;   // Added _backgroundTexture attribute
     sf::Sprite _backgroundSprite;     // Added _backgroundSprite attribute
 
+
     void loadBackgroundTexture();
     void renderPosition(sf::RenderWindow& window, std::size_t index);
     void renderAttack1(sf::RenderWindow& window, std::size_t index);

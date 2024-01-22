@@ -38,5 +38,6 @@ public:
     std::string getTexturePath() const { return _texturePath; }
     sf::Sprite getSprite() const { return _sprite; }
     sf::Texture getTexture() const { return _texture; }
+    void render(sf::RenderWindow& window) const;
 
 };
