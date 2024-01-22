@@ -35,7 +35,6 @@ class Player: public Object{
     std::string getFirstname(){return _firstname;}
     void setX(float x){_x = x;}
     void setY(float y){_y = y;}
-    void setSpeed(float speed){_speed = speed;}
     void setXp(float Xp){_Xp = Xp;}
     void setDirection(int direction){_direction = direction;}
     void reduceHealth(float damage,Player& targetPlayer);
@@ -99,6 +98,17 @@ class Player: public Object{
     }
     void setIsPicking(bool value) {
         _isPicking = value;
+    }
+
+    void setSpeed(float baseSpeed, float xpMultiplier)
+    {
+        // On calcule la vitesse du joueur en fonction de son xp
+        _speed = baseSpeed + (_Xp * xpMultiplier);
+
+        // On s'assure que le joeur ne fasse pas du surplace
+        if (_speed < 0.2f) {
+            _speed = 0.2f;
+        }
     }
     
     void doFix();
