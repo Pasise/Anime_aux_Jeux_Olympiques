@@ -78,6 +78,7 @@ void Game::run()
 
             window.clear();
             _characterRenderer.setTexture(BACKGROUND);
+            _characterRenderer.renderFruits(window);
             _characterRenderer.render(window);
             window.display();
         }

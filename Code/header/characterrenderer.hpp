@@ -16,6 +16,8 @@ public:
     void setPlayers(const std::vector<std::shared_ptr<Player>>* players);
     void setTexture(const std::string& texturePath) { _backgroundTexturePath = texturePath; loadBackgroundTexture(); }
     void setCameraPosition(float x);
+    void setFruits(const std::vector<std::shared_ptr<Fruit>>* fruits); // Ajout de la méthode setFruits
+    void renderFruits(sf::RenderWindow& window); // Ajout de la méthode renderFruits
 
 private:
     const std::vector<std::shared_ptr<Player>>* _players;
@@ -36,6 +38,6 @@ private:
     void renderPosition(sf::RenderWindow& window, std::size_t index);
     void renderAttack1(sf::RenderWindow& window, std::size_t index);
     void renderAttack2(sf::RenderWindow& window, std::size_t index);
-    void renderFruit(sf::RenderWindow& window, std::size_t index); // Added renderFruit method
+    
 };
 

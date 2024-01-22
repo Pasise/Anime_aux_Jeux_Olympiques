@@ -182,28 +182,11 @@ void CharacterRenderer::setCameraPosition(float x)
     _backgroundSprite.setPosition(x, 0);
 }
 
-void CharacterRenderer::renderFruit(sf::RenderWindow& window, std::size_t index)
+void CharacterRenderer::renderFruits(sf::RenderWindow& window)
 {
-    if (_fruits && index < _fruits->size()) {
-        const auto& fruit = (*_fruits)[index];
-
-        // Vérifier si le pointeur vers le fruit est valide
+    for (const auto& fruit : *_fruits) {
         if (fruit) {
-            sf::Sprite fruitSprite;
-
-            // Charger la texture du fruit
-            sf::Texture fruitTexture;
-            if (fruitTexture.loadFromFile(fruit->getTexturePath())) {
-                fruitSprite.setTexture(fruitTexture);
-
-                // Positionner le sprite du fruit à une position fixe (par exemple, 100, 100)
-                fruitSprite.setPosition(100, 100);
-
-                // Dessiner le sprite du fruit sur la fenêtre
-                window.draw(fruitSprite);
-            } else {
-                std::cerr << "Failed to load fruit texture: " << fruit->getTexturePath() << std::endl;
-            }
+            fruit->render(window);
         }
     }
 }
