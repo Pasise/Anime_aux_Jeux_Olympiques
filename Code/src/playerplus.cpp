@@ -44,8 +44,8 @@ void PlayerPlus::doJump()
 void PlayerPlus::doPick(Fruit& targetFruit)
 {
     // Check if the target fruit is close enough and has the desired name
-    float distanceThreshold = 50.0f;  // Adjust the distance threshold as needed
-    if (isCloseToFruit(targetFruit, distanceThreshold) && targetFruit.getName() == "Gomu Gomu fruit")
+    float distanceThreshold = 1000.0f;  // Adjust the distance threshold as needed
+    if (isCloseToFruit(targetFruit, distanceThreshold) && (targetFruit.getName() == "Gomu Gomu fruit" || targetFruit.getName() == "Fruit normal"))
     {
         std::cout << getLastname() << " is picking up " << targetFruit.getName() << std::endl;
 

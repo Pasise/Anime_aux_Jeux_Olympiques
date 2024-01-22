@@ -38,8 +38,8 @@ void PlayerSoin::doJump()
 void PlayerSoin::doPick(Fruit& targetFruit)
 {
     // Check if the target fruit is close enough and has the desired name
-    float distanceThreshold = 50.0f;  // Adjust the distance threshold as needed
-    if (isCloseToFruit(targetFruit, distanceThreshold) && targetFruit.getName() == "Masque du Hollow")
+    float distanceThreshold = 100.0f;  // Adjust the distance threshold as needed
+    if (isCloseToFruit(targetFruit, distanceThreshold) && (targetFruit.getName() == "Masque du Hollow" || targetFruit.getName() == "Fruit normal"))
     {
         std::cout << getLastname() << " is picking up " << targetFruit.getName() << std::endl;
 

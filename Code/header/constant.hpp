@@ -111,24 +111,24 @@ const std::string BACKGROUND = "../Sprite/Background1.2merged.png";
 
 // ========== Constantes Attack ==========
 
-const float DISTANCETREEHOLD = 5;
+const float DISTANCETREEHOLD = 200.f;
 
 // ========== Constantes Fruit  ==========
 
 // ========== Constantes Fruit du démon ==========
 const std::string TEXTUREPATH_FRUIT = "../Sprite/pasteque.png";
 const float Y_FRUIT = 620;
-const float ENERGY_FRUIT = 0.5;
+const float ENERGY_FRUIT = 10;
 const std::string NAME_FRUIT = "Gomu Gomu fruit";
 
 // ========== Constantes Fruit normal ==========
 const std::string TEXTUREPATH_FRUITNORMAL = "../Sprite/pasteque.png";
 const float Y_FRUITNORMAL = 620;
-const float ENERGY_FRUITNORMAL = 0.5;
-const std::string NAME_FRUITNORMAL = "Fruit pastèque";
+const float ENERGY_FRUITNORMAL = 10;
+const std::string NAME_FRUITNORMAL = "Fruit Normal";
 
 // ========== Constantes Masque du Hollow ==========
 const std::string TEXTUREPATH_HOLLOW = "../Sprite/pasteque.png";
 const float Y_HOLLOW = 620;
-const float ENERGY_HOLLOW = 0.5;
+const float ENERGY_HOLLOW = 10;
 const std::string NAME_HOLLOW = "Masque du Hollow";
