@@ -10,7 +10,7 @@
 class CharacterRenderer {
 public:
     CharacterRenderer();
-    CharacterRenderer(const std::vector<std::shared_ptr<Player>>* players, const std::string& backgroundTexturePath);
+    CharacterRenderer(const std::vector<std::shared_ptr<Player>>* players,const std::vector<std::shared_ptr<Fruit>>* fruits , const std::string& backgroundTexturePath);
     std::string getTexture();
     void render(sf::RenderWindow& window);
     void setPlayers(const std::vector<std::shared_ptr<Player>>* players);

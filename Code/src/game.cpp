@@ -3,7 +3,7 @@
 #include "../header/constant.hpp"
 
 
-Game::Game() : _players(),_fruits(), _characterRenderer(&_players,BACKGROUND)  
+Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKGROUND)  
 {
     std::cout << "Game created" << std::endl;
 
@@ -12,7 +12,7 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,BACKGROUND)
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
-    _characterRenderer = CharacterRenderer(&_players,BACKGROUND);
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
 
 
@@ -21,7 +21,7 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,BACKGROUND)
     _players.push_back(player3);  // Ajoutez le joueur à la liste
     std::cout << "Player 3 in the list" << std::endl;
     std::cout << "Player 3 name : " << _players[1]->getFirstname() << std::endl;
-    _characterRenderer = CharacterRenderer(&_players,BACKGROUND); 
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
     // Crée le joueur de l'équipage du Mugiwara Monkey D. Luffy avec un fruit du démon
     /*std::shared_ptr<Player> player4 = std::make_shared<PlayerOnePieceMugiwaraFD>(LASTNAME_ONEPIECEMUGIWARAFDJ1, FIRSTNAME_ONEPIECEMUGIWARAFDJ1, XP_ONEPIECEMUGIWARAFDJ1, SPEED_ONEPIECEMUGIWARAFDJ1, X_ONEPIECEMUGIWARAFDJ1, Y_ONEPIECEMUGIWARAFDJ1, VOL_ONEPIECEMUGIWARAFDJ1, LUFFYASSOCIATION);

@@ -8,8 +8,9 @@ CharacterRenderer::CharacterRenderer()
     std::cout << "CharacterRenderer created" << std::endl;
 }
 
-CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>* players, const std::string& backgroundTexturePath)
+CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>* players,const std::vector<std::shared_ptr<Fruit>>* fruits, const std::string& backgroundTexturePath)
     : _players(players),
+      _fruits(fruits), // Initialiser _fruits ici
       _sprites(players->size()),
       _currentFrames(players->size(), 0),
       _attackSprites(players->size()), // Initialiser _attackSprites ici
