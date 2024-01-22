@@ -1,27 +1,27 @@
 // Game.cpp
 #include "../header/game.hpp"
 #include "../header/constant.hpp"
-#include "../header/playerbleachshinigamicapitaine.hpp"
 
-Game::Game() : _players(), _characterRenderer(&_players,BACKGROUND)  
+
+Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKGROUND)  
 {
     std::cout << "Game created" << std::endl;
 
     // Crée le joueur de shinigami capiaine de Bleach Kuchiki Byakuya
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerBleachShinigamiCapitaine>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_BLEACHSHINIGAMICAPITAINE, SPEED_BLEACHSHINIGAMICAPITAINE, X_BLEACHSHINIGAMICAPITAINE, Y_BLEACHSHINIGAMICAPITAINE, SOIN_BLEACHSHINIGAMICAPITAINE, ICHIGOASSOCIATION);
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_BLEACHSHINIGAMICAPITAINE, SPEED_BLEACHSHINIGAMICAPITAINE, X_BLEACHSHINIGAMICAPITAINE, Y_BLEACHSHINIGAMICAPITAINE, ICHIGOASSOCIATION);
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
-    _characterRenderer = CharacterRenderer(&_players,BACKGROUND);
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
 
 
     // Crée le joueur de l'équipage du Mugiwara Roronoa Zoro
-    std::shared_ptr<Player> player3 = std::make_shared<PlayerOnePieceMugiwara>(LASTNAME_ONEPIECEMUGIWARA, FIRSTNAME_ONEPIECEMUGIWARA, XP_ONEPIECEMUGIWARA, SPEED_ONEPIECEMUGIWARA, X_ONEPIECEMUGIWARA, Y_ONEPIECEMUGIWARA, VOL_ONEPIECEMUGIWARA, ZOROASSOCIATION);
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerPlus>(LASTNAME_ONEPIECEMUGIWARA, FIRSTNAME_ONEPIECEMUGIWARA, XP_ONEPIECEMUGIWARA, SPEED_ONEPIECEMUGIWARA, X_ONEPIECEMUGIWARA, Y_ONEPIECEMUGIWARA, ZOROASSOCIATION);
     _players.push_back(player3);  // Ajoutez le joueur à la liste
     std::cout << "Player 3 in the list" << std::endl;
     std::cout << "Player 3 name : " << _players[1]->getFirstname() << std::endl;
-    _characterRenderer = CharacterRenderer(&_players,BACKGROUND); 
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
     // Crée le joueur de l'équipage du Mugiwara Monkey D. Luffy avec un fruit du démon
     /*std::shared_ptr<Player> player4 = std::make_shared<PlayerOnePieceMugiwaraFD>(LASTNAME_ONEPIECEMUGIWARAFDJ1, FIRSTNAME_ONEPIECEMUGIWARAFDJ1, XP_ONEPIECEMUGIWARAFDJ1, SPEED_ONEPIECEMUGIWARAFDJ1, X_ONEPIECEMUGIWARAFDJ1, Y_ONEPIECEMUGIWARAFDJ1, VOL_ONEPIECEMUGIWARAFDJ1, LUFFYASSOCIATION);
@@ -52,6 +52,29 @@ Game::Game() : _players(), _characterRenderer(&_players,BACKGROUND)
     std::cout << "Player 7 name : " << _players[5]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,BACKGROUND);*/
 
+    // Crée le fruit du démon de Luffy
+    std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUIT,Y_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
+    _fruits.push_back(fruit1);  // Ajoutez le fruit à la liste
+    std::cout << "Fruit 1 in the list" << std::endl;
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
+
+
+    // Crée un fruit normal que tout le monde peut manger
+    std::shared_ptr<Fruit> fruit2 = std::make_shared<Fruit>(NAME_FRUIT,Y_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
+    _fruits.push_back(fruit2);  // Ajoutez le fruit à la liste
+    std::cout << "Fruit 2 in the list" << std::endl;
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
+
+
+    //Cree le masque hollow de Ichigo
+    std::shared_ptr<Fruit> fruit3 = std::make_shared<Fruit>(NAME_FRUIT,Y_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
+    _fruits.push_back(fruit3);  // Ajoutez le fruit à la liste
+    std::cout << "Fruit 3 in the list" << std::endl;
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
+
+
+
+
     
 
 
@@ -73,6 +96,7 @@ void Game::run()
             window.clear();
             _characterRenderer.setTexture(BACKGROUND);
             _characterRenderer.render(window);
+            _characterRenderer.renderFruits(window);
             window.display();
         }
 }
@@ -102,7 +126,7 @@ void Game::updateState(const UserInput &input)
                 else if (input.getButton() == Button::attack2)
                 {
                     // Get the shared pointer to PlayerBleachShinigamiCapitaine
-                    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>(_players[i]);
+                    std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
 
                     if (captainPlayer)
                     {
@@ -118,9 +142,9 @@ void Game::updateState(const UserInput &input)
                 else if (input.getButton() == Button::attack4)
                     _players[i]->doAttack1(*_players[4]);
                 else if (input.getButton() == Button::pick)
-                    _players[i]->doJump();
+                    _players[i]->doPick(*_fruits[0]);
                 else if (input.getButton() == Button::fix){
-                    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>(_players[i]);
+                    std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
 
                     if (captainPlayer)
                     {
@@ -130,6 +154,7 @@ void Game::updateState(const UserInput &input)
                     {
                         std::cerr << "Error: _players[" << i << "] is not of type PlayerBleachShinigamiCapitaine" << std::endl;
                     }
+                 
                     _players[i]->doFix();
                 }
             }

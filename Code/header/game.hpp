@@ -3,12 +3,8 @@
 #include <iostream>
 #include "player.hpp"
 #include "userinput.hpp"
-#include "playeronepiece.hpp"
-#include "playeronepiecemugiwara.hpp"
-#include "playeronepiecemugiwarafd.hpp"
-#include "playerbleach.hpp"
-#include "playerbleachshinigami.hpp"
-#include "playerbleachshinigamicapitaine.hpp"
+#include "playerplus.hpp"
+#include "playersoin.hpp"
 #include "characterrenderer.hpp"
 #include <list>
 #include <vector>
@@ -17,6 +13,7 @@
 
 class Game {
     std::vector<std::shared_ptr<Player>> _players;
+    std::vector<std::shared_ptr<Fruit>> _fruits; // Added _fruits attribute
     UserInput _input;
     CharacterRenderer _characterRenderer;
 public:

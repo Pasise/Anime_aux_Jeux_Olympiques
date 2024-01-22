@@ -6,6 +6,7 @@
 #include <ctime>
 #include "userinput.hpp"
 #include "object.hpp"
+#include "fruit.hpp"
 class Player: public Object{
     protected :
     std::string _lastname;
@@ -21,7 +22,7 @@ class Player: public Object{
     bool _isPicking;
     
     std::map<std::string, int> _textureAssociations;
-    bool _canAttack; // Variable de classe pour stocker l'état d'attaque
+
     public : 
     void moveLeft();
     void moveRight();
@@ -73,16 +74,11 @@ class Player: public Object{
             return "";
         }
     }
-    void randomAttack(Player& targetPlayer);
+
     bool isCloseTo(const Player &otherPlayer, float distanceThreshold) const;
+    bool isCloseToFruit(const Fruit &targetFruit, float distanceThreshold) const;
+    int getRandomNumberForCanAttack() const;
     bool canAttack() const;
-    Player() : _canAttack(true) {
-        std::srand(std::time(0)); // Initialisation de la graine une seule fois
-    }
-    bool canAttackNow() const;
-    void setCanAttack(bool value) {
-        _canAttack = value;
-    }
     bool isAttacking1() const {
         return _isAttacking1;
    
@@ -109,8 +105,10 @@ class Player: public Object{
 
     void virtual doAttack1(Player& targetPlayer)=0;
     void virtual doJump()=0;
-    void virtual doPick()=0;
-    int getRandomNumberForCanAttack() const;
+    void virtual doPick(Fruit& targetFruit)=0;
+    void virtual randomAttack(Player& targetPlayer)=0;
+    
+    
 
 
 

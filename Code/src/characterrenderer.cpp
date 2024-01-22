@@ -1,5 +1,6 @@
 #include "../header/characterrenderer.hpp"
-#include "../header/playerbleachshinigamicapitaine.hpp"
+#include "../header/playersoin.hpp"
+#include "../header/fruit.hpp"
 
 CharacterRenderer::CharacterRenderer()
     : _players(nullptr), _sprites(), _currentFrames(), _frameChangeSpeed(0.1)
@@ -7,9 +8,11 @@ CharacterRenderer::CharacterRenderer()
     std::cout << "CharacterRenderer created" << std::endl;
 }
 
-CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>* players, const std::string& backgroundTexturePath)
+CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>* players,const std::vector<std::shared_ptr<Fruit>>* fruits, const std::string& backgroundTexturePath)
     : _players(players),
+      _fruits(fruits), // Initialiser _fruits ici
       _sprites(players->size()),
+      _fruitSprites(fruits->size()), // Initialiser _fruitSprites ici
       _currentFrames(players->size(), 0),
       _attackSprites(players->size()), // Initialiser _attackSprites ici
       _frameChangeSpeed(0.08),
@@ -46,9 +49,27 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
             }
         }
     }
+
+    // Initialiser _fruitSprites ici
+    if (_fruits)
+    {
+        for (std::size_t i = 0; i < _fruits->size(); ++i)
+        {
+            const auto& fruit = (*_fruits)[i];
+            if (fruit)
+            {
+                sf::Sprite sprite;
+                sf::Texture fruitTexture;
+                fruitTexture.loadFromFile(fruit->getTexturePath());
+                sprite.setTexture(fruitTexture);
+                _fruitSprites[i] = sprite;
+                std::cout << "Fruit texture loaded" << std::endl;
+            }
+        }
+    }
     else
     {
-        std::cout << "Invalid pointer to players" << std::endl;
+        std::cout << "Invalid pointer to players or fruits" << std::endl;
     }
 }
 
@@ -58,8 +79,8 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
 
 void CharacterRenderer::renderPosition(sf::RenderWindow& window, std::size_t index)
 {
-    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>((*_players)[index]);
-        if ((*_players)[index] && !(*_players)[index]->isAttacking1() &&( !captainPlayer || !captainPlayer->isAttacking2())){
+    std::shared_ptr<PlayerSoin> captainPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[index]);
+        if ((*_players)[index] && !(*_players)[index]->isAttacking1() &&( !captainPlayer || !captainPlayer->isAttacking1())){
             std::string playerTexturePath = (*_players)[index]->getTexturePath(2);
 
             sf::Texture texture;
@@ -113,9 +134,9 @@ void CharacterRenderer::renderAttack1(sf::RenderWindow& window, std::size_t inde
 
 void CharacterRenderer::renderAttack2(sf::RenderWindow& window, std::size_t index)
 {
-    std::shared_ptr<PlayerBleachShinigamiCapitaine> captainPlayer = std::dynamic_pointer_cast<PlayerBleachShinigamiCapitaine>((*_players)[index]);
+    std::shared_ptr<PlayerSoin> captainPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[index]);
 
-    if ((*_players)[index] && captainPlayer && captainPlayer->isAttacking2()) {
+    if ((*_players)[index] && captainPlayer && captainPlayer->isAttacking1()) {
         std::string playerTexturePath = captainPlayer->getTexturePath(1);
 
         sf::Texture texture;
@@ -179,3 +200,27 @@ void CharacterRenderer::setCameraPosition(float x)
     // Définissez la position de la caméra par rapport au personnage
     _backgroundSprite.setPosition(x, 0);
 }
+
+void CharacterRenderer::setFruits(const std::vector<std::shared_ptr<Fruit>>* fruits) {
+    _fruits = fruits;
+
+    // Assurez-vous que _fruitSprites a la même taille que _fruits
+    _fruitSprites.resize(_fruits->size());
+
+    // Initialisez chaque sprite avec la texture appropriée
+    for (std::size_t i = 0; i < _fruits->size(); ++i) {
+        _fruitSprites[i].setTexture((*_fruits)[i]->getTexture());
+    }
+}
+
+void CharacterRenderer::renderFruits(sf::RenderWindow& window) {
+    std::cout << "Rendering fruits" << std::endl;
+    
+ //Placer les fruits à des endroits définis
+    for (std::size_t i = 0; i < _fruits->size(); ++i) {
+        _fruitSprites[i].setPosition((*_fruits)[i]->getX(), (*_fruits)[i]->getY());
+        window.draw(_fruitSprites[i]);
+    }
+    
+}
+
