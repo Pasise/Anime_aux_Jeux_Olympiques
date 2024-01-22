@@ -120,4 +120,11 @@ const std::string TEXTUREPATH_FRUIT = "../Sprite/fruit_du_demon.png";
 const float X_FRUIT = 0;
 const float Y_FRUIT = 0;
 const float ENERGY_FRUIT = 0.5;
-const std::string NAME_FRUIT = "Fruit";
+const std::string NAME_FRUIT = "Gomu Gomu fruit";
+
+// ========== Constantes Fruit normal ==========
+const std::string TEXTUREPATH_FRUITNORMAL = "../Sprite/luffy_run2.png";
+const float X_FRUITNORMAL = 0;
+const float Y_FRUITNORMAL = 1000;
+const float ENERGY_FRUITNORMAL = 0.5;
+const std::string NAME_FRUITNORMAL = "Fruit pastèque";

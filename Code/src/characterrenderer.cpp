@@ -69,7 +69,7 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
     }
     else
     {
-        std::cout << "Invalid pointer to players" << std::endl;
+        std::cout << "Invalid pointer to players or fruits" << std::endl;
     }
 }
 
@@ -215,9 +215,8 @@ void CharacterRenderer::setFruits(const std::vector<std::shared_ptr<Fruit>>* fru
 
 void CharacterRenderer::renderFruits(sf::RenderWindow& window) {
     std::cout << "Rendering fruits" << std::endl;
-
     
- //Placer les fruits à des endroits aléatoire 
+ //Placer les fruits à des endroits définis
     for (std::size_t i = 0; i < _fruits->size(); ++i) {
         _fruitSprites[i].setPosition((*_fruits)[i]->getX(), (*_fruits)[i]->getY());
         window.draw(_fruitSprites[i]);

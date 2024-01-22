@@ -58,6 +58,14 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
     std::cout << "Fruit 1 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
+    // Crée un fruit normal que tout le monde peut manger
+    std::shared_ptr<Fruit> fruit2 = std::make_shared<Fruit>(NAME_FRUITNORMAL,X_FRUITNORMAL,Y_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUITNORMAL);
+    _fruits.push_back(fruit2);  // Ajoutez le joueur à la liste
+    std::cout << "Fruit 2 in the list" << std::endl;
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
+    
+
+
 
     
 
