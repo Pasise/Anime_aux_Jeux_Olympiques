@@ -53,9 +53,10 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,BACKGROUND)
     _characterRenderer = CharacterRenderer(&_players,BACKGROUND);*/
 
     // Crée le fruit du démon de Luffy
-    std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUIT,X_FRUIT,Y_FRUIT,TEXTUREPATH_FRUIT);
+    std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUIT,X_FRUIT,Y_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
     _fruits.push_back(fruit1);  // Ajoutez le joueur à la liste
     std::cout << "Fruit 1 in the list" << std::endl;
+
 
     
 
