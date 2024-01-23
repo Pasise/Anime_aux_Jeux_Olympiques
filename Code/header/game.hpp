@@ -27,9 +27,9 @@ public:
         return file_name;
     
     }
-    void run(sf::RenderWindow& window);
+    void run(sf::RenderWindow& window, size_t i);
     void intro(sf::RenderWindow& window);
-    void choose(sf::RenderWindow& window);
+    void choose(sf::RenderWindow& window, size_t& i);
     void applyPlayerChosen(int i){ 
         std::shared_ptr<Player> temp = _players[0];
         _players[0] = _players[i];

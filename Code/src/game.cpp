@@ -9,16 +9,16 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
         std::cerr << "Failed to load background music." << std::endl;
 
 
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA, SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, BYAKUYAASSOCIATION);
+    /*std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA, SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, BYAKUYAASSOCIATION);
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
-    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);*/
 
     std::shared_ptr<Player> player2 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO, SPEED_ICHIGO, X_ICHIGO, Y_ICHIGO, ICHIGOASSOCIATION);
     _players.push_back(player2);  // Ajoutez le joueur à la liste
     std::cout << "Player 2 in the list" << std::endl;
-    std::cout << "Player 2 name : " << _players[1]->getFirstname() << std::endl;
+    std::cout << "Player 2 name : " << _players[0]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
 
@@ -26,7 +26,7 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
     std::shared_ptr<Player> player3 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, XP_ZORO, SPEED_ZORO, X_ZORO, Y_ZORO, ZOROASSOCIATION);
     _players.push_back(player3);  // Ajoutez le joueur à la liste
     std::cout << "Player 3 in the list" << std::endl;
-    std::cout << "Player 3 name : " << _players[2]->getFirstname() << std::endl;
+    std::cout << "Player 3 name : " << _players[1]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
     // Crée le joueur de l'équipage du Mugiwara Monkey D. Luffy avec un fruit du démon
@@ -149,10 +149,9 @@ void Game::intro(sf::RenderWindow& window) {
     }
 }
 
-void Game::choose(sf::RenderWindow& window) {
+void Game::choose(sf::RenderWindow& window, size_t &i) {
     sf::Event event;
     std::vector<std::string>::iterator currentImage = chooseScreen.begin();
-    size_t i = 0;
     sf::Texture chooseTexture;
     
     // Load the initial image
@@ -253,7 +252,8 @@ void Game::choose(sf::RenderWindow& window) {
 }
 
 
-void Game::run(sf::RenderWindow& window) {
+void Game::run(sf::RenderWindow& window, size_t i) {
+    applyPlayerChosen(i);
     bool exitRun = false;
     size_t winner;
     while (window.isOpen() && !exitRun) {
