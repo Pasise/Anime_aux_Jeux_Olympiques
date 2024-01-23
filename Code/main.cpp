@@ -6,9 +6,9 @@ int main() {
     Game game;
 
     // Call the intro method
-    //game.intro(window);
+    game.intro(window);
 
-    //game.choose(window);
+    game.choose(window);
     // Call the run method
     game.run(window);
 
