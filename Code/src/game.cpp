@@ -247,7 +247,15 @@ void Game::updateState(const UserInput &input)
                 else if (input.getButton() == Button::right)
                     _players[i]->moveRight();
                 else if (input.getButton() == Button::attack1){
+                    if(_players[i]->isTimetoAttack())
+                    {
                     _players[i]->doAttack1(*_players[1]);
+                    _players[i]->setLastAttackTime();
+                    }
+                    else
+                    {
+                        std::cout << "You can't attack1 now" << std::endl;
+                    }
                     }
                 else if (input.getButton() == Button::attack2)
                 {
@@ -256,7 +264,16 @@ void Game::updateState(const UserInput &input)
 
                     if (captainPlayer)
                     {
+                        if(captainPlayer->isTimetoAttack())
+                    {
                         captainPlayer->doAttack2(*_players[1]);
+                        captainPlayer->setLastAttackTime();
+                    }
+                    else
+                    {
+                        std::cout << "You can't attack2 now" << std::endl;
+                    }
+                        
                     }
                     else
                     {

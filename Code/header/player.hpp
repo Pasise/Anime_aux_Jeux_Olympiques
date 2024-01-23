@@ -18,6 +18,11 @@ class Player: public Object{
     int _direction;
     bool _isAttacking1;
 
+    using Clock = std::chrono::steady_clock;
+    using TimePoint = std::chrono::time_point<Clock>;
+
+    TimePoint _lastAttackTime; // Record the time of the last attack
+
     bool _isJumping;
     bool _isPicking;
     
@@ -76,6 +81,7 @@ class Player: public Object{
 
     bool isCloseTo(const Player &otherPlayer, float distanceThreshold) const;
     bool isCloseToFruit(const Fruit &targetFruit, float distanceThreshold) const;
+    bool isTimetoAttack() const;
     int getRandomNumberForCanAttack() const;
     bool canAttack() const;
     bool isAttacking1() const {
@@ -109,6 +115,10 @@ class Player: public Object{
         if (_speed < 0.2f) {
             _speed = 0.2f;
         }
+    }
+
+    void setLastAttackTime() {
+        _lastAttackTime = Clock::now();
     }
     
     void doFix();

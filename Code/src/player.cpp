@@ -69,7 +69,13 @@ void Player::doFix()
     
 }
 
+bool Player::isTimetoAttack() const {
+    auto currentTime = Clock::now();
+    auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - _lastAttackTime);
 
+        // Check if enough time has passed since the last attack
+    return elapsedTime.count() >= 5; // Adjust the cooldown period (5 seconds in this case)
+}
 
 
 
