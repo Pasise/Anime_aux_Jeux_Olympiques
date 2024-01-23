@@ -97,10 +97,10 @@ void Game::intro(sf::RenderWindow& window) {
         return;
     }
 
-    sf::Music music;
-    if (!music.openFromFile("music.ogg"))
+    sf::Music musicintro;
+    if (!musicintro.openFromFile("music.ogg"))
         std::cout << "Failed to load music" << std::endl;
-    music.play();
+    musicintro.play();
 
     // Wait for user input
     sf::Event event;

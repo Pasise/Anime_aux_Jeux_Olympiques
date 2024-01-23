@@ -136,3 +136,9 @@ const float DISTANCETREEHOLD = 200.f;
 
 //======= Constantes vitesse=========
 const float XPMULTIPLIER = 0.015f;
+
+//======= Constantes musique=========
+const std::string MUSICINTRO = "../Music/Intro.ogg";
+const std::string MUSICCHOOSE = "../Music/Choose.ogg";
+const std::string MUSICGAME = "../Music/Game.ogg";
+
