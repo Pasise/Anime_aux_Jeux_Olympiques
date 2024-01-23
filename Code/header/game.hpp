@@ -10,6 +10,7 @@
 #include <vector>
 #include <map>
 #include <memory>
+#include <SFML/Audio.hpp>
 
 class Game {
     std::vector<std::shared_ptr<Player>> _players;
@@ -17,6 +18,7 @@ class Game {
     UserInput _input;
     CharacterRenderer _characterRenderer;
     std::vector<std::string> chooseScreen;
+    sf::Music _backgroundMusic;  // Ajout de la musique de fond
 public:
     Game();
     std::string getchooseScreen(int i){
@@ -29,5 +31,6 @@ public:
     void intro(sf::RenderWindow& window);
     void choose(sf::RenderWindow& window);
     void updateState(const UserInput& input);
+
 
 };

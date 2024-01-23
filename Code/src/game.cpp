@@ -82,6 +82,7 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
 
 }
 void Game::intro(sf::RenderWindow& window) {
+    
     // Open the intro window
     window.create(sf::VideoMode(1920, 1080), "One Piece vs Bleach", sf::Style::Fullscreen);
 
@@ -95,6 +96,11 @@ void Game::intro(sf::RenderWindow& window) {
         std::cerr << "Failed to load intro image." << std::endl;
         return;
     }
+
+    sf::Music music;
+    if (!music.openFromFile("music.ogg"))
+        std::cout << "Failed to load music" << std::endl;
+    music.play();
 
     // Wait for user input
     sf::Event event;
