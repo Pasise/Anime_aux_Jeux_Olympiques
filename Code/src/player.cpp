@@ -54,12 +54,24 @@ bool Player::canAttack() const {
 }
 
 
-void Player::reduceHealth(float damage,Player& targetPlayer)
+void Player::reduceHealth(float damage, Player& targetPlayer)
 {
-    targetPlayer.setXp(targetPlayer.getXp()-damage);
+    // Réduire l'XP du joueur cible
+    targetPlayer.setXp(targetPlayer.getXp() - damage);
+
+    // Vérifier si l'XP est tombé à zéro ou moins
+    if (targetPlayer.getXp() <= 0)
+    {
+        targetPlayer.setXp(0); // Assurez-vous que l'XP ne devienne pas négative
+        targetPlayer.setIsAlive(false);
+        std::cout << targetPlayer.getLastname() << " is dead" << std::endl;
+
+    }
+
     std::cout << targetPlayer.getLastname() << " has lost " << damage << " health points" << std::endl;
     std::cout << targetPlayer.getLastname() << " has now " << targetPlayer.getXp() << " health points" << std::endl;
 }
+
 
 void Player::doFix()
 {
