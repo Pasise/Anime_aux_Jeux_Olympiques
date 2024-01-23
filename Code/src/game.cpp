@@ -390,19 +390,32 @@ void Game::updateStatePlayerUser(const UserInput& input) {
 void Game::updateStateBots() {
     for (size_t i = 1; i < _players.size(); ++i) {
         if (_players[i]) {
+            
+            std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
             _players[i]->doFix();
-            _players[i]->moveRight();
+            if (captainPlayer) captainPlayer->doFix2();
 
-            for (size_t j = 1; j < _players.size(); ++j) {
-                _players[i]->setSpeed(XPMULTIPLIER);
+            _players[i]->setSpeed(XPMULTIPLIER);
+
+            for (size_t j = 0; j < _players.size(); ++j) {
                 if (i != j && _players[j]->isCloseTo(*_players[i], DISTANCETREEHOLD) && _players[i]->canAttack()) {
                     _players[i]->randomAttack(*_players[j]);
                     std::cout << "Player " << _players[i]->getFirstname() << " is close to Player " << _players[j]->getFirstname() << std::endl;
+
+                    // Arrêter le mouvement après l'attaque
+                    _players[i]->setSpeed(0);
+                    break;  // Sortir de la boucle interne après avoir attaqué
                 }
+            }
+
+            // Si le joueur n'attaque pas, il peut continuer à se déplacer
+            if (!_players[i]->isAttacking1() && (!captainPlayer || !captainPlayer->isAttacking2())) {
+                _players[i]->moveRight();
             }
         }
     }
 }
+
 
 
 
