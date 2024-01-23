@@ -1,1 +1,1 @@
-enum Button {left, right, attack1, attack2, attack3, attack4, jump, pick, fix};
+enum Button {left, right, attack1, attack2, heal, pick, fix, quit, confirm};

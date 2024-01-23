@@ -39,7 +39,7 @@ std::map<std::string, int> GOJOASSOCIATION = {{TEXTUREPATH_JJKCLASSES, 8}};*/
 //======Constantes OnePiece Mugiwara=======
 const std::string LASTNAME_ONEPIECEMUGIWARA = "Roronoa";
 const  std::string FIRSTNAME_ONEPIECEMUGIWARA = "Zoro";
-const float XP_ONEPIECEMUGIWARA =  50;
+const float XP_ONEPIECEMUGIWARA =  5000;
 const float SPEED_ONEPIECEMUGIWARA = 3;
 const float X_ONEPIECEMUGIWARA = 0;
 const float Y_ONEPIECEMUGIWARA = 740;
@@ -96,8 +96,8 @@ std::map<std::string, int> BYAKUYAASSOCIATION = {{TEXTUREPATH_BLEACHSHINIGAMICAP
 //======Constantes Ichigo KUROSAKI=======
 const std::string LASTNAME_ICHIGO = "Kurosaki";
 const  std::string FIRSTNAME_ICHIGO = "Ichigo";
-const float XP_ICHIGO =  50;
-const float SPEED_ICHIGO = 1.6;
+const float XP_ICHIGO =  1000;
+const float SPEED_ICHIGO = 5;
 const float X_ICHIGO = 0;
 const float Y_ICHIGO = 580;
 const float SOIN_ICHIGO = 2;

@@ -4,6 +4,10 @@ UserInput::UserInput() {}
 
 UserInput::UserInput(Button button) : _button(button) {}
 
+UserInput::UserInput(sf::Event event, sf::RenderWindow &window)
+{
+    manageInput(event, window);
+}
 //Gestion des inputs
 
 void UserInput::manageInput(sf::Event event, sf::RenderWindow &window)
@@ -28,15 +32,17 @@ void UserInput::manageInput(sf::Event event, sf::RenderWindow &window)
         }
         else if (event.key.code == sf::Keyboard::E)
         {
-            _button = Button::attack3;
-        }
-        else if (event.key.code == sf::Keyboard::S)
-        {
-            _button = Button::attack4;
+            _button = Button::heal;
         }
         else if (event.key.code == sf::Keyboard::R)
         {
             _button = Button::pick;
+        }
+        else if (event.key.code == sf::Keyboard ::Escape){
+            _button = Button::quit;
+        }
+        else if (event.key.code == sf::Keyboard ::Enter){
+            _button = Button::confirm;
         }
     }
     else if (event.type == sf::Event::KeyReleased){

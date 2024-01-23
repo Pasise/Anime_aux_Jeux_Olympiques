@@ -10,7 +10,7 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
 
 
     // Crée le joueur de shinigami capiaine de Bleach Kuchiki Byakuya
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_BLEACHSHINIGAMICAPITAINE, SPEED_BLEACHSHINIGAMICAPITAINE, X_BLEACHSHINIGAMICAPITAINE, Y_BLEACHSHINIGAMICAPITAINE, ICHIGOASSOCIATION);
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO, SPEED_ICHIGO, X_BLEACHSHINIGAMICAPITAINE, Y_BLEACHSHINIGAMICAPITAINE, ICHIGOASSOCIATION);
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
@@ -91,8 +91,6 @@ void Game::playBackgroundMusic() {
 
 void Game::intro(sf::RenderWindow& window) {
     
-    // Open the intro window
-    window.create(sf::VideoMode(1920, 1080), "One Piece vs Bleach", sf::Style::Fullscreen);
 
     // Load and display the intro image
     sf::Texture introTexture;
@@ -151,6 +149,8 @@ void Game::choose(sf::RenderWindow& window) {
     sf::Event event;
     std::vector<std::string>::iterator currentImage = chooseScreen.begin();
     sf::Texture chooseTexture;
+    
+    // Load the initial image
     if (chooseTexture.loadFromFile(*currentImage)) {
         sf::Sprite chooseSprite(chooseTexture);
         window.draw(chooseSprite);
@@ -159,27 +159,51 @@ void Game::choose(sf::RenderWindow& window) {
         std::cerr << "Failed to load choose image." << std::endl;
         return;
     }
+
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
             } else if (event.type == sf::Event::KeyPressed) {
-                if (event.key.code == sf::Keyboard::D) {
-                    // Afficher l'image suivante dans le vecteur
+                // Use UserInput to handle key events
+                UserInput input(event,window);
+                
+                if (input.getButton() == Button::right) {
+                    // Move to the next image in the vector
                     currentImage++;
                     if (currentImage == chooseScreen.end()) {
-                        // Revenir au début du vecteur si nous sommes à la fin
+                        // Wrap around to the beginning if we are at the end
                         currentImage = chooseScreen.begin();
                     }
-                } else if (event.key.code == sf::Keyboard::Q) {
-                    // Afficher l'image précédente dans le vecteur
+                } else if (input.getButton() == right) {
+                    // Move to the previous image in the vector
                     if (currentImage == chooseScreen.begin()) {
-                        // Aller à la fin du vecteur si nous sommes au début
+                        // Wrap around to the end if we are at the beginning
                         currentImage = chooseScreen.end();
                     }
                     currentImage--;
+                } else if (input.getButton() == confirm){
+                    std::string newFileName = *currentImage;
+                    newFileName.insert(newFileName.find_last_of('.'), "1");
+
+                    // Load and display the new image
+                    sf::Texture newTexture;
+                    if (newTexture.loadFromFile(newFileName)) {
+                        sf::Sprite newSprite(newTexture);
+                        window.draw(newSprite);
+                        window.display();
+                        
+                        // Pause for a short duration (0.5 seconds)
+                        sf::sleep(sf::seconds(0.5));
+                        
+                        return;
+                    } else {
+                        std::cerr << "Failed to load " << newFileName << std::endl;
+                        return;
+                    }
                 }
-                // Charger et afficher l'image actuelle
+
+                // Load and display the current image
                 if (chooseTexture.loadFromFile(*currentImage)) {
                     sf::Sprite chooseSprite(chooseTexture);
                     window.draw(chooseSprite);
@@ -190,21 +214,24 @@ void Game::choose(sf::RenderWindow& window) {
                 }
             } else if (event.type == sf::Event::MouseButtonPressed &&
                        event.mouseButton.button == sf::Mouse::Left) {
-                // Vérifier si la souris est dans la zone spécifiée
+                // Check if the mouse is in the specified area
                 sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
                 if (mousePosition.x >= 1500 && mousePosition.x <= 1855 &&
                     mousePosition.y >= 940 && mousePosition.y <= 1025) {
-                    // Construire le nouveau nom de fichier avec "1.PNG" ajouté
+                    // Build the new file name with "1.PNG" added
                     std::string newFileName = *currentImage;
                     newFileName.insert(newFileName.find_last_of('.'), "1");
 
-                    // Charger et afficher la nouvelle image
+                    // Load and display the new image
                     sf::Texture newTexture;
                     if (newTexture.loadFromFile(newFileName)) {
                         sf::Sprite newSprite(newTexture);
                         window.draw(newSprite);
                         window.display();
+                        
+                        // Pause for a short duration (0.5 seconds)
                         sf::sleep(sf::seconds(0.5));
+                        
                         return;
                     } else {
                         std::cerr << "Failed to load " << newFileName << std::endl;
@@ -216,26 +243,89 @@ void Game::choose(sf::RenderWindow& window) {
     }
 }
 
-void Game::run(sf::RenderWindow& window)
-{
-        while (window.isOpen()) {
-            sf::Event event;
-            while (window.pollEvent(event)) {
-                _input.manageInput(event, window);
-                if (event.type == sf::Event::Closed)
-                    window.close();
+
+void Game::run(sf::RenderWindow& window) {
+    bool exitRun = false;
+    size_t winner;
+    while (window.isOpen() && !exitRun) {
+        for (size_t i = 0; i < _players.size(); i++) {
+            if (_players[i]->getX() > 1700) {
+                exitRun = true;  // Sortir de la boucle run si un joueur a sa coordonnée x > 1850
+                winner = i;
+                break;
             }
-
-            updateState(_input);
-
-            window.clear();
-            _characterRenderer.setTexture(BACKGROUND);
-            _characterRenderer.render(window);
-            _characterRenderer.renderFruits(window);
-            window.display();
         }
+
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            _input.manageInput(event, window);
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        updateState(_input);
+
+        window.clear();
+        _characterRenderer.setTexture(BACKGROUND);
+        _characterRenderer.render(window);
+        _characterRenderer.renderFruits(window);
+        window.display();
+    }
+    if (winner == 0) return win(window);
+    else return lose(window);
 }
 
+void Game::win(sf::RenderWindow& window) {
+    sf::Texture winTexture;
+    if (winTexture.loadFromFile("../Sprite/win.png")) {
+        sf::Sprite winSprite(winTexture);
+        window.draw(winSprite);
+        window.display();
+    } else {
+        std::cerr << "Failed to load win image." << std::endl;
+        return;
+    }
+
+    // Charger la musique
+    sf::Music winMusic;
+    if (winMusic.openFromFile(MUSICINTRO)) {
+        winMusic.play();
+    } else {
+        std::cerr << "Failed to load win music." << std::endl;
+        return;
+    }
+
+    // Attendre 7 secondes
+    sf::sleep(sf::seconds(7));
+
+    // Retourner de la fonction
+}
+
+void Game::lose(sf::RenderWindow& window) {
+    sf::Texture loseTexture;
+    if (loseTexture.loadFromFile("../Sprite/lose.png")) {
+        sf::Sprite loseSprite(loseTexture);
+        window.draw(loseSprite);
+        window.display();
+    } else {
+        std::cerr << "Failed to load lose image." << std::endl;
+        return;
+    }
+
+    // Charger la musique
+    sf::Music loseMusic;
+    if (loseMusic.openFromFile(MUSICINTRO)) {
+        loseMusic.play();
+    } else {
+        std::cerr << "Failed to load lose music." << std::endl;
+        return;
+    }
+
+    // Attendre 7 secondes
+    sf::sleep(sf::seconds(7));
+
+    // Retourner de la fonction
+}
 
 //la méthode action prend en entrer un UserInput et effectue l'action correspondante : pour left on décrémente la position x et poour right on l'incrémente
 
@@ -290,10 +380,6 @@ void Game::updateState(const UserInput &input)
                         std::cerr << "Error: _players[" << i << "] is not of type PlayerBleachShinigamiCapitaine" << std::endl;
                     }
                 }
-                else if (input.getButton() == Button::attack3)
-                    _players[i]->doAttack1(*_players[3]);
-                else if (input.getButton() == Button::attack4)
-                    _players[i]->doAttack1(*_players[4]);
                 else if (input.getButton() == Button::pick)
                 {
                     for (const auto& fruit : _fruits)
@@ -337,8 +423,6 @@ void Game::updateState(const UserInput &input)
 
             }
         }
-        //remets tous les attributs attack à false
-        //_players[i]->setIsAttacking1(false);
     }
 }
 
