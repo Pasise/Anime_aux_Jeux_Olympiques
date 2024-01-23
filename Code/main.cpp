@@ -9,9 +9,9 @@ int main() {
     game.playBackgroundMusic();
 
     // Call the intro method
-    game.intro(window);
+    //game.intro(window);
 
-    game.choose(window, i);
+    //game.choose(window, i);
     // Call the run method
     game.run(window, i);
 

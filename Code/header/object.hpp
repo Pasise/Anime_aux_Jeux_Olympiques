@@ -14,5 +14,8 @@ class Object{
     
     bool _isAlive;
     public : 
+    void setIsAlive(bool value){
+        _isAlive = value;
+    }
     
 };

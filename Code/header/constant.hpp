@@ -8,7 +8,7 @@
 //======Constantes Zoro RORONOA =======
 const std::string LASTNAME_ZORO = "Roronoa";
 const  std::string FIRSTNAME_ZORO = "Zoro";
-const float XP_ZORO =  700;
+const float XP_ZORO =  600;
 const float XP_MAX_ZORO =  1000;
 const float SPEED_ZORO = 3;
 const float X_ZORO = 0;
