@@ -2,6 +2,7 @@
 #include "../header/playersoin.hpp"
 #include "../header/fruit.hpp"
 #include "../header/playerplus.hpp"
+#include "../header/playermedium.hpp"
 
 CharacterRenderer::CharacterRenderer()
     : _players(nullptr), _sprites(), _currentFrames(), _frameChangeSpeed(0.1)
@@ -81,9 +82,13 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
 void CharacterRenderer::renderPosition(sf::RenderWindow& window, std::size_t index)
 {
     std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[index]);
-        if ((*_players)[index] && !(*_players)[index]->isAttacking1() &&( !captainPlayer || !captainPlayer->isAttacking2())){
-            std::string playerTexturePath = (*_players)[index]->getTexturePath(2);
-
+    std::shared_ptr<PlayerMedium> mediumPlayer = std::dynamic_pointer_cast<PlayerMedium>((*_players)[index]);
+    std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[index]);
+        if ((*_players)[index] && !(*_players)[index]->isAttacking1() &&( !captainPlayer || !captainPlayer->isAttacking2()) && (!soinPlayer || !soinPlayer->isHealing())){
+            std::string playerTexturePath;
+            if (captainPlayer || soinPlayer)
+            playerTexturePath = (*_players)[index]->getTexturePath(2);
+            else playerTexturePath = (*_players)[index]->getTexturePath(1);
             sf::Texture texture;
             if (texture.loadFromFile(playerTexturePath)) {
                 sf::Vector2u frameSize = texture.getSize();
@@ -162,6 +167,34 @@ void CharacterRenderer::renderAttack2(sf::RenderWindow& window, std::size_t inde
     // ... rest of the code for scaling and additional conditions
 }
 
+void CharacterRenderer::renderHeal(sf::RenderWindow& window, std::size_t index)
+{
+    std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[index]);
+
+    if ((*_players)[index] && soinPlayer && soinPlayer->isHealing() && !soinPlayer->isAttacking1()) {
+        std::string playerTexturePath = soinPlayer->getTexturePath(1);
+
+        sf::Texture texture;
+        if (texture.loadFromFile(playerTexturePath)) {
+            sf::Vector2u frameSize = texture.getSize();
+            frameSize.x /= soinPlayer->getNumberOfFrames(playerTexturePath);
+            frameSize.y /= 1;
+            int currentFrame = _currentFrames[index];
+            sf::IntRect sourceRect(currentFrame * frameSize.x, 0, frameSize.x, frameSize.y);
+
+            _attackSprites[index].setTexture(texture);
+            _attackSprites[index].setTextureRect(sourceRect);
+            _attackSprites[index].setPosition(soinPlayer->getX(), soinPlayer->getY());
+
+            window.draw(_attackSprites[index]);
+        }
+        else {
+            std::cerr << "Failed to load player texture: " << playerTexturePath << std::endl;
+        }
+    }
+
+    // ... rest of the code for scaling and additional conditions
+}
 
 
 void CharacterRenderer::render(sf::RenderWindow& window)
@@ -183,6 +216,7 @@ void CharacterRenderer::render(sf::RenderWindow& window)
         renderPosition(window, i);
         renderAttack1(window, i);
         renderAttack2(window, i);
+        renderHeal(window, i);
     }
 }
 
@@ -233,7 +267,7 @@ void CharacterRenderer::loadHealthBarTexture() {
 void CharacterRenderer::renderHealthBars(sf::RenderWindow& window) {
 
     // Utilisez seulement le joueur 0
-    const auto& player = (*_players)[1];
+    const auto& player = (*_players)[0];
 
     // Vérifiez si les points d'expérience sont égaux à zéro
     if (player->getXp() == 0) {

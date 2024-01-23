@@ -9,54 +9,36 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
         std::cerr << "Failed to load background music." << std::endl;
 
 
-    /*std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA,XP_MAX_BYAKUYA SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, BYAKUYAASSOCIATION);
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerMedium>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA,XP_MAX_BYAKUYA, SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, BYAKUYAASSOCIATION);
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
-    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);*/
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
     std::shared_ptr<Player> player2 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO,XP_MAX_ICHIGO, SPEED_ICHIGO, X_ICHIGO, Y_ICHIGO, ICHIGOASSOCIATION);
     _players.push_back(player2);  // Ajoutez le joueur à la liste
     std::cout << "Player 2 in the list" << std::endl;
-    std::cout << "Player 2 name : " << _players[0]->getFirstname() << std::endl;
+    std::cout << "Player 2 name : " << _players[1]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
-
-    // Crée le joueur de l'équipage du Mugiwara Roronoa Zoro
-    std::shared_ptr<Player> player3 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, XP_ZORO,XP_MAX_ZORO, SPEED_ZORO, X_ZORO, Y_ZORO, ZOROASSOCIATION);
+    //Créer le joueur Shinsui KYORAKU de playersoin
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerSoin>(LASTNAME_SHINSUI, FIRSTNAME_SHINSUI, XP_SHINSUI,XP_MAX_SHINSUI, SPEED_SHINSUI, X_SHINSUI, Y_SHINSUI, SOIN_SHINSUI, SHINSUIASSOCIATION);
     _players.push_back(player3);  // Ajoutez le joueur à la liste
     std::cout << "Player 3 in the list" << std::endl;
-    std::cout << "Player 3 name : " << _players[1]->getFirstname() << std::endl;
-    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
+    std::cout << "Player 3 name : " << _players[2]->getFirstname() << std::endl;
 
-    // Crée le joueur de l'équipage du Mugiwara Monkey D. Luffy avec un fruit du démon
-    /*std::shared_ptr<Player> player4 = std::make_shared<PlayerOnePieceMugiwaraFD>(LASTNAME_ONEPIECEMUGIWARAFDJ1, FIRSTNAME_ONEPIECEMUGIWARAFDJ1, XP_ONEPIECEMUGIWARAFDJ1, SPEED_ONEPIECEMUGIWARAFDJ1, X_ONEPIECEMUGIWARAFDJ1, Y_ONEPIECEMUGIWARAFDJ1, VOL_ONEPIECEMUGIWARAFDJ1, LUFFYASSOCIATION);
+    // Crée le joueur de l'équipage du Mugiwara Roronoa Zoro
+    std::shared_ptr<Player> player4 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, XP_ZORO,XP_MAX_ZORO, SPEED_ZORO, X_ZORO, Y_ZORO, ZOROASSOCIATION);
     _players.push_back(player4);  // Ajoutez le joueur à la liste
     std::cout << "Player 4 in the list" << std::endl;
-    std::cout << "Player 4 name : " << _players[2]->getFirstname() << std::endl;
-    _characterRenderer = CharacterRenderer(&_players,BACKGROUND);
+    std::cout << "Player 4 name : " << _players[3]->getFirstname() << std::endl;
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
-
-    // Crée le joueur de l'équipage du Mugiwara Trafalgar D. Water Law avec un fruit du démon
-    std::shared_ptr<Player> player5 = std::make_shared<PlayerOnePieceMugiwara>(LASTNAME_ONEPIECEMUGIWARAFDJ2, FIRSTNAME_ONEPIECEMUGIWARAFDJ2, XP_ONEPIECEMUGIWARAFDJ2, SPEED_ONEPIECEMUGIWARAFDJ2, X_ONEPIECEMUGIWARAFDJ2, Y_ONEPIECEMUGIWARAFDJ2, VOL_ONEPIECEMUGIWARAFDJ2,  TRAFALGARASSOCIATION);
+    // Crée le joueur de l'équipage du Mugiwara Monkey D. Luffy player medium
+    std::shared_ptr<Player> player5 = std::make_shared<PlayerMedium>(LASTNAME_LUFFY, FIRSTNAME_LUFFY, XP_LUFFY,XP_MAX_LUFFY, SPEED_LUFFY, X_LUFFY, Y_LUFFY, LUFFYASSOCIATION);
     _players.push_back(player5);  // Ajoutez le joueur à la liste
     std::cout << "Player 5 in the list" << std::endl;
-    std::cout << "Player 5 name : " << _players[3]->getFirstname() << std::endl;
-    _characterRenderer = CharacterRenderer(&_players,BACKGROUND);
-
-    //Cree le joeur de Bleach Kuchiki Rukia
-    std::shared_ptr<Player> player6 = std::make_shared<PlayerBleachShinigami>(LASTNAME_BLEACHSHINIGAMI, FIRSTNAME_BLEACHSHINIGAMI, XP_BLEACHSHINIGAMI, SPEED_BLEACHSHINIGAMI, X_BLEACHSHINIGAMI, Y_BLEACHSHINIGAMI, SOIN_BLEACHSHINIGAMI, RUKIAASSOCIATION);
-    _players.push_back(player6);  // Ajoutez le joueur à la liste
-    std::cout << "Player 6 in the list" << std::endl;
-    std::cout << "Player 6 name : " << _players[4]->getFirstname() << std::endl;
-    _characterRenderer = CharacterRenderer(&_players,BACKGROUND);
-
-    //Cree le joeur de Bleach Kuchiki Byakuya
-    std::shared_ptr<Player> player7 = std::make_shared<PlayerBleachShinigamiCapitaine>(LASTNAME_BLEACHSHINIGAMICAPITAINE, FIRSTNAME_BLEACHSHINIGAMICAPITAINE, XP_BLEACHSHINIGAMICAPITAINE, SPEED_BLEACHSHINIGAMICAPITAINE, X_BLEACHSHINIGAMICAPITAINE, Y_BLEACHSHINIGAMICAPITAINE, SOIN_BLEACHSHINIGAMICAPITAINE, BYAKUYAASSOCIATION);
-    _players.push_back(player7); 
-    std::cout << "Player 7 in the list" << std::endl;
-    std::cout << "Player 7 name : " << _players[5]->getFirstname() << std::endl;
-    _characterRenderer = CharacterRenderer(&_players,BACKGROUND);*/
+    std::cout << "Player 5 name : " << _players[4]->getFirstname() << std::endl;
 
     // Crée le fruit du démon de Luffy
     std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUIT,Y_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
@@ -262,6 +244,10 @@ void Game::run(sf::RenderWindow& window, size_t i) {
                 exitRun = true;  // Sortir de la boucle run si un joueur a sa coordonnée x > 1850
                 winner = i;
                 break;
+            } else if (_players[i]->getXp() <= 0) {
+                exitRun = true;  // Sortir de la boucle run si un joueur a sa vie <= 0
+                winner = -1;
+                break;
             }
         }
 
@@ -349,8 +335,9 @@ void Game::updateStatePlayerUser(const UserInput& input) {
 
     if (input.getButton() == Button::left)
         _players[0]->moveLeft();
-    else if (input.getButton() == Button::right)
+    else if (input.getButton() == Button::right){
         _players[0]->moveRight();
+        std::cout << "Player " << _players[0]->getFirstname() << " is moving right" << std::endl;}
     else if (input.getButton() == Button::attack1) {
         if (_players[0]->isTimetoAttack()) {
             _players[0]->doAttack1(*_players[1]);
@@ -375,15 +362,34 @@ void Game::updateStatePlayerUser(const UserInput& input) {
         for (const auto& fruit : _fruits) {
             _players[0]->doPick(*fruit);
         }
+    } else if (input.getButton() == Button::heal) {
+        std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[0]);
+        if (soinPlayer){
+        soinPlayer->doHeal();
+        std::cout << "Player " << _players[0]->getFirstname() << " is healing" << std::endl;
+        } else {
+            std::cerr << "Error: _players[0] is not of type PlayerSoin" << std::endl;
+        }
     } else if (input.getButton() == Button::fix) {
         std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[0]);
+        std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[0]);
+        std::shared_ptr<PlayerMedium> mediumPlayer = std::dynamic_pointer_cast<PlayerMedium>(_players[0]);
 
         if (captainPlayer) {
             captainPlayer->doFix2();
         } else {
             std::cerr << "Error: _players[0] is not of type PlayerPlus" << std::endl;
         }
-
+        if (soinPlayer) {
+            soinPlayer->doFix3();
+        } else {
+            std::cerr << "Error: _players[0] is not of type PlayerSoin" << std::endl;
+        }
+        if (mediumPlayer) {
+            mediumPlayer->doFix();
+        } else {
+            std::cerr << "Error: _players[0] is not of type PlayerMedium" << std::endl;
+        }
         _players[0]->doFix();
     }
 }

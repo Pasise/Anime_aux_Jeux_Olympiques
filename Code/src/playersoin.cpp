@@ -1,6 +1,6 @@
 #include "../header/playersoin.hpp"
 
-PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, float soin, std::map<std::string, int> textureAssociations)
+PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, float heal, std::map<std::string, int> textureAssociations)
 {
 
     _lastname = lastname;
@@ -10,12 +10,13 @@ PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,flo
     _speed = speed;
     _x = x;
     _y = y;
-    _soin = soin;
+    _heal = heal;
     addAssociations(textureAssociations);
     _direction = 1;
     _isAttacking1 = false;
     _isJumping = false;
     _isPicking = false;
+    _isHealing = false;
     
     std::cout << "PlayerBleachShinigami created" << std::endl;
 }
@@ -24,8 +25,9 @@ PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,flo
 void PlayerSoin::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-    float damage = _soin+1;
+    float damage = _heal+1;
     targetPlayer.reduceHealth(damage, targetPlayer);
+    _isAttacking1 = true;
 }
     
 
@@ -73,4 +75,19 @@ void PlayerSoin::doPick(Fruit& targetFruit)
 void PlayerSoin::randomAttack(Player& targetPlayer)
 {
    doAttack1(targetPlayer);
+}
+
+void PlayerSoin::doHeal()
+{
+    std::cout << getLastname() << " is healing himself" << std::endl;
+    _Xp += heal;
+    if (_Xp > _XpMax)
+    {
+        _Xp = _XpMax;
+    }
+    _isHealing = true;
+}
+
+void PlayerSoin::doFix3(){
+    _isHealing = false;
 }
