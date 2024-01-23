@@ -36,62 +36,56 @@ std::map<std::string, int> GOJOASSOCIATION = {{TEXTUREPATH_JJKCLASSES, 8}};*/
 
 //======Constantes OnePiece=======
 
-//======Constantes OnePiece Mugiwara=======
-const std::string LASTNAME_ONEPIECEMUGIWARA = "Roronoa";
-const  std::string FIRSTNAME_ONEPIECEMUGIWARA = "Zoro";
-const float XP_ONEPIECEMUGIWARA =  5000;
-const float SPEED_ONEPIECEMUGIWARA = 3;
-const float X_ONEPIECEMUGIWARA = 0;
-const float Y_ONEPIECEMUGIWARA = 740;
-const float VOL_ONEPIECEMUGIWARA = 1;
-const std::string TEXTUREPATH_ONEPIECEMUGIWARA =  "../Sprite/zoro_run.png";
-std::map<std::string, int> ZOROASSOCIATION = {{TEXTUREPATH_ONEPIECEMUGIWARA, 6}};
+//======Constantes Zoro RORONOA =======
+const std::string LASTNAME_ZORO = "Roronoa";
+const  std::string FIRSTNAME_ZORO = "Zoro";
+const float XP_ZORO =  700;
+const float SPEED_ZORO = 3;
+const float X_ZORO = 0;
+const float Y_ZORO = 740;
+const float VOL_ZORO = 1;
+const std::string TEXTUREPATH_ZORO =  "../Sprite/zoro_run.png";
+const std::string TEXTUREPATH_ZORO_ATTACK1 = "../Sprite/zoro_attack1.png";
+const std::string TEXTUREPATH_ZORO_ATTACK2 = "../Sprite/zoro_attack2.png";
+std::map<std::string, int> ZOROASSOCIATION = {{TEXTUREPATH_ZORO, 6}, {TEXTUREPATH_ZORO_ATTACK1, 5}, {TEXTUREPATH_ZORO_ATTACK2, 6}};
 
 //======Constantes OnePiece MugiwaraFD=======
  // ===================Constantes OnePiece MugiwaraFD Joueur1=======
 
-const std::string LASTNAME_ONEPIECEMUGIWARAFDJ1 = "Monkey D.";
-const  std::string FIRSTNAME_ONEPIECEMUGIWARAFDJ1 = "Luffy";
-const float XP_ONEPIECEMUGIWARAFDJ1 =  50;
-const float SPEED_ONEPIECEMUGIWARAFDJ1 = 0.7;
-const float X_ONEPIECEMUGIWARAFDJ1 = 0;
-const float Y_ONEPIECEMUGIWARAFDJ1 = 580;
-const float VOL_ONEPIECEMUGIWARAFDJ1 = 1;
-const std::string TEXTUREPATH_ONEPIECEMUGIWARAFDJ1 = "../Sprite/luffy_walkreverse4.png";
-std::map<std::string, int> LUFFYASSOCIATION = {{TEXTUREPATH_ONEPIECEMUGIWARAFDJ1, 8}};
+const std::string LASTNAME_ZOROFDJ1 = "Monkey D.";
+const  std::string FIRSTNAME_ZOROFDJ1 = "Luffy";
+const float XP_ZOROFDJ1 =  50;
+const float SPEED_ZOROFDJ1 = 0.7;
+const float X_ZOROFDJ1 = 0;
+const float Y_ZOROFDJ1 = 580;
+const float VOL_ZOROFDJ1 = 1;
+const std::string TEXTUREPATH_ZOROFDJ1 = "../Sprite/luffy_walkreverse4.png";
+std::map<std::string, int> LUFFYASSOCIATION = {{TEXTUREPATH_ZOROFDJ1, 8}};
 
 // ===================Constantes OnePiece MugiwaraFD Joueur2=======
-const std::string LASTNAME_ONEPIECEMUGIWARAFDJ2 = "Trafalgar D.";
-const  std::string FIRSTNAME_ONEPIECEMUGIWARAFDJ2 = "Water Law";
-const float XP_ONEPIECEMUGIWARAFDJ2 =  50;
-const float SPEED_ONEPIECEMUGIWARAFDJ2 = 3.6;
-const float X_ONEPIECEMUGIWARAFDJ2 = 0;
-const float Y_ONEPIECEMUGIWARAFDJ2 = 580;
-const float VOL_ONEPIECEMUGIWARAFDJ2 = 2;
-const std::string TEXTUREPATH_ONEPIECEMUGIWARAFDJ2 =  "../Sprite/trafalgar_run2.png";
-std::map<std::string, int> TRAFALGARASSOCIATION = {{TEXTUREPATH_ONEPIECEMUGIWARAFDJ2, 6}};
+const std::string LASTNAME_ZOROFDJ2 = "Trafalgar D.";
+const  std::string FIRSTNAME_ZOROFDJ2 = "Water Law";
+const float XP_ZOROFDJ2 =  50;
+const float SPEED_ZOROFDJ2 = 3.6;
+const float X_ZOROFDJ2 = 0;
+const float Y_ZOROFDJ2 = 580;
+const float VOL_ZOROFDJ2 = 2;
+const std::string TEXTUREPATH_ZOROFDJ2 =  "../Sprite/trafalgar_run2.png";
+std::map<std::string, int> TRAFALGARASSOCIATION = {{TEXTUREPATH_ZOROFDJ2, 6}};
 //======Constantes Bleach=======
-//======Constantes Bleach Shinigami=======
-const std::string LASTNAME_BLEACHSHINIGAMI = "Kuchiki";
-const  std::string FIRSTNAME_BLEACHSHINIGAMI = "Rukia";
-const float XP_BLEACHSHINIGAMI =  50;
-const float SPEED_BLEACHSHINIGAMI = 2.6;
-const float X_BLEACHSHINIGAMI = 0;
-const float Y_BLEACHSHINIGAMI = 610;
-const float SOIN_BLEACHSHINIGAMI = 1;
-const std::string TEXTUREPATH_BLEACHSHINIGAMI =  "../Sprite/rukia_run.png";
-std::map<std::string, int> RUKIAASSOCIATION = {{TEXTUREPATH_BLEACHSHINIGAMI, 6}};
 
-//======Constantes Bleach Shinigami Capitaine=======
-const std::string LASTNAME_BLEACHSHINIGAMICAPITAINE = "Kuchiki";
-const  std::string FIRSTNAME_BLEACHSHINIGAMICAPITAINE = "Byakuya";
-const float XP_BLEACHSHINIGAMICAPITAINE =  50;
-const float SPEED_BLEACHSHINIGAMICAPITAINE = 1.6;
-const float X_BLEACHSHINIGAMICAPITAINE = 0;
-const float Y_BLEACHSHINIGAMICAPITAINE = 580;
-const float SOIN_BLEACHSHINIGAMICAPITAINE = 2;
-const std::string TEXTUREPATH_BLEACHSHINIGAMICAPITAINE =  "../Sprite/Byakuya_Kuchiki_Run4.png";
-std::map<std::string, int> BYAKUYAASSOCIATION = {{TEXTUREPATH_BLEACHSHINIGAMICAPITAINE, 4}};
+//======Constantes Byakuya KUCHIKI =======
+const std::string LASTNAME_BYAKUYA = "Kuchiki";
+const  std::string FIRSTNAME_BYAKUYA = "Byakuya";
+const float XP_BYAKUYA =  600;
+const float SPEED_BYAKUYA = 1.6;
+const float X_BYAKUYA = 0;
+const float Y_BYAKUYA = 580;
+const float SOIN_BYAKUYA = 2;
+const std::string TEXTUREPATH_BYAKUYA =  "../Sprite/Byakuya_Kuchiki_Run4.png";
+const std::string TEXTUREPATH_BYAKUYA_ATTACK1 = "../Sprite/byakuya_attack1.png";
+std::map<std::string, int> BYAKUYAASSOCIATION = {{TEXTUREPATH_BYAKUYA, 4}, {TEXTUREPATH_BYAKUYA_ATTACK1, 7}};
+
 
 //======Constantes Ichigo KUROSAKI=======
 const std::string LASTNAME_ICHIGO = "Kurosaki";
@@ -105,6 +99,7 @@ const std::string TEXTUREPATH_ICHIGO =    "../Sprite/ichigo_run.png";
 const std::string TEXTUREPATH_ICHIGO_ATTACK1 =  "../Sprite/ichigo_attack1.png";
 const std::string TEXTUREPATH_ICHIGO_ATTACK2 = "../Sprite/ichigo_attack2.png";
 std::map<std::string, int> ICHIGOASSOCIATION = {{TEXTUREPATH_ICHIGO , 6},{TEXTUREPATH_ICHIGO_ATTACK1, 3}, {TEXTUREPATH_ICHIGO_ATTACK2, 8}};
+
 // ========== Constantes Background ==========
 
 const std::string BACKGROUND = "../Sprite/Background1.2merged.png";

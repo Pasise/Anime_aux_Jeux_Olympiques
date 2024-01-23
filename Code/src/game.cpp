@@ -7,20 +7,24 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
 {
     std::cout << "Game created" << std::endl;
 
-    // Crée le joueur de shinigami capiaine de Bleach Kuchiki Byakuya
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO, SPEED_ICHIGO, X_BLEACHSHINIGAMICAPITAINE, Y_BLEACHSHINIGAMICAPITAINE, ICHIGOASSOCIATION);
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA, SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, BYAKUYAASSOCIATION);
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
+    std::shared_ptr<Player> player2 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO, SPEED_ICHIGO, X_ICHIGO, Y_ICHIGO, ICHIGOASSOCIATION);
+    _players.push_back(player2);  // Ajoutez le joueur à la liste
+    std::cout << "Player 2 in the list" << std::endl;
+    std::cout << "Player 2 name : " << _players[1]->getFirstname() << std::endl;
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
 
     // Crée le joueur de l'équipage du Mugiwara Roronoa Zoro
-    std::shared_ptr<Player> player3 = std::make_shared<PlayerPlus>(LASTNAME_ONEPIECEMUGIWARA, FIRSTNAME_ONEPIECEMUGIWARA, XP_ONEPIECEMUGIWARA, SPEED_ONEPIECEMUGIWARA, X_ONEPIECEMUGIWARA, Y_ONEPIECEMUGIWARA, ZOROASSOCIATION);
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, XP_ZORO, SPEED_ZORO, X_ZORO, Y_ZORO, ZOROASSOCIATION);
     _players.push_back(player3);  // Ajoutez le joueur à la liste
     std::cout << "Player 3 in the list" << std::endl;
-    std::cout << "Player 3 name : " << _players[1]->getFirstname() << std::endl;
+    std::cout << "Player 3 name : " << _players[2]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
     // Crée le joueur de l'équipage du Mugiwara Monkey D. Luffy avec un fruit du démon
@@ -145,6 +149,7 @@ void Game::intro(sf::RenderWindow& window) {
 void Game::choose(sf::RenderWindow& window) {
     sf::Event event;
     std::vector<std::string>::iterator currentImage = chooseScreen.begin();
+    size_t i = 0;
     sf::Texture chooseTexture;
     
     // Load the initial image
@@ -168,17 +173,21 @@ void Game::choose(sf::RenderWindow& window) {
                 if (input.getButton() == Button::right) {
                     // Move to the next image in the vector
                     currentImage++;
+                    i++;
                     if (currentImage == chooseScreen.end()) {
                         // Wrap around to the beginning if we are at the end
                         currentImage = chooseScreen.begin();
+                        i = 0;
                     }
-                } else if (input.getButton() == right) {
+                } else if (input.getButton() == left) {
                     // Move to the previous image in the vector
                     if (currentImage == chooseScreen.begin()) {
                         // Wrap around to the end if we are at the beginning
                         currentImage = chooseScreen.end();
+                        i = chooseScreen.size();
                     }
                     currentImage--;
+                    i--;
                 } else if (input.getButton() == confirm){
                     std::string newFileName = *currentImage;
                     newFileName.insert(newFileName.find_last_of('.'), "1");

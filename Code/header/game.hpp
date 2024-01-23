@@ -30,6 +30,10 @@ public:
     void run(sf::RenderWindow& window);
     void intro(sf::RenderWindow& window);
     void choose(sf::RenderWindow& window);
+    void applyPlayerChosen(int i){ 
+        std::shared_ptr<Player> temp = _players[0];
+        _players[0] = _players[i];
+        _players[i] = temp;}
     void updateState(const UserInput& input);
     void win(sf::RenderWindow& window);
     void lose(sf::RenderWindow& window);
