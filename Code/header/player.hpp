@@ -106,10 +106,11 @@ class Player: public Object{
         _isPicking = value;
     }
 
-    void setSpeed(float baseSpeed, float xpMultiplier)
+    void setSpeed( float xpMultiplier)
     {
         // On calcule la vitesse du joueur en fonction de son xp
-        _speed = baseSpeed + (_Xp * xpMultiplier);
+        _speed = (_Xp * xpMultiplier);
+        std::cout << "Speed of " << _lastname << " is " << _speed << std::endl;
 
         // On s'assure que le joeur ne fasse pas du surplace
         if (_speed < 0.2f) {

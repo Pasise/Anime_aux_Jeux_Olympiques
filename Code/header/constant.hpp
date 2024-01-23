@@ -39,8 +39,8 @@ std::map<std::string, int> GOJOASSOCIATION = {{TEXTUREPATH_JJKCLASSES, 8}};*/
 //======Constantes OnePiece Mugiwara=======
 const std::string LASTNAME_ONEPIECEMUGIWARA = "Roronoa";
 const  std::string FIRSTNAME_ONEPIECEMUGIWARA = "Zoro";
-const float XP_ONEPIECEMUGIWARA =  0;
-const float SPEED_ONEPIECEMUGIWARA = 1.3;
+const float XP_ONEPIECEMUGIWARA =  50;
+const float SPEED_ONEPIECEMUGIWARA = 3;
 const float X_ONEPIECEMUGIWARA = 0;
 const float Y_ONEPIECEMUGIWARA = 740;
 const float VOL_ONEPIECEMUGIWARA = 1;
@@ -52,7 +52,7 @@ std::map<std::string, int> ZOROASSOCIATION = {{TEXTUREPATH_ONEPIECEMUGIWARA, 6}}
 
 const std::string LASTNAME_ONEPIECEMUGIWARAFDJ1 = "Monkey D.";
 const  std::string FIRSTNAME_ONEPIECEMUGIWARAFDJ1 = "Luffy";
-const float XP_ONEPIECEMUGIWARAFDJ1 =  0;
+const float XP_ONEPIECEMUGIWARAFDJ1 =  50;
 const float SPEED_ONEPIECEMUGIWARAFDJ1 = 0.7;
 const float X_ONEPIECEMUGIWARAFDJ1 = 0;
 const float Y_ONEPIECEMUGIWARAFDJ1 = 580;
@@ -63,7 +63,7 @@ std::map<std::string, int> LUFFYASSOCIATION = {{TEXTUREPATH_ONEPIECEMUGIWARAFDJ1
 // ===================Constantes OnePiece MugiwaraFD Joueur2=======
 const std::string LASTNAME_ONEPIECEMUGIWARAFDJ2 = "Trafalgar D.";
 const  std::string FIRSTNAME_ONEPIECEMUGIWARAFDJ2 = "Water Law";
-const float XP_ONEPIECEMUGIWARAFDJ2 =  0;
+const float XP_ONEPIECEMUGIWARAFDJ2 =  50;
 const float SPEED_ONEPIECEMUGIWARAFDJ2 = 3.6;
 const float X_ONEPIECEMUGIWARAFDJ2 = 0;
 const float Y_ONEPIECEMUGIWARAFDJ2 = 580;
@@ -74,7 +74,7 @@ std::map<std::string, int> TRAFALGARASSOCIATION = {{TEXTUREPATH_ONEPIECEMUGIWARA
 //======Constantes Bleach Shinigami=======
 const std::string LASTNAME_BLEACHSHINIGAMI = "Kuchiki";
 const  std::string FIRSTNAME_BLEACHSHINIGAMI = "Rukia";
-const float XP_BLEACHSHINIGAMI =  0;
+const float XP_BLEACHSHINIGAMI =  50;
 const float SPEED_BLEACHSHINIGAMI = 2.6;
 const float X_BLEACHSHINIGAMI = 0;
 const float Y_BLEACHSHINIGAMI = 610;
@@ -85,7 +85,7 @@ std::map<std::string, int> RUKIAASSOCIATION = {{TEXTUREPATH_BLEACHSHINIGAMI, 6}}
 //======Constantes Bleach Shinigami Capitaine=======
 const std::string LASTNAME_BLEACHSHINIGAMICAPITAINE = "Kuchiki";
 const  std::string FIRSTNAME_BLEACHSHINIGAMICAPITAINE = "Byakuya";
-const float XP_BLEACHSHINIGAMICAPITAINE =  0;
+const float XP_BLEACHSHINIGAMICAPITAINE =  50;
 const float SPEED_BLEACHSHINIGAMICAPITAINE = 1.6;
 const float X_BLEACHSHINIGAMICAPITAINE = 0;
 const float Y_BLEACHSHINIGAMICAPITAINE = 580;
@@ -96,7 +96,7 @@ std::map<std::string, int> BYAKUYAASSOCIATION = {{TEXTUREPATH_BLEACHSHINIGAMICAP
 //======Constantes Ichigo KUROSAKI=======
 const std::string LASTNAME_ICHIGO = "Kurosaki";
 const  std::string FIRSTNAME_ICHIGO = "Ichigo";
-const float XP_ICHIGO =  0;
+const float XP_ICHIGO =  50;
 const float SPEED_ICHIGO = 1.6;
 const float X_ICHIGO = 0;
 const float Y_ICHIGO = 580;
@@ -108,10 +108,6 @@ std::map<std::string, int> ICHIGOASSOCIATION = {{TEXTUREPATH_ICHIGO , 6},{TEXTUR
 // ========== Constantes Background ==========
 
 const std::string BACKGROUND = "../Sprite/Background1.2merged.png";
-
-// ========== Constantes Attack ==========
-
-const float DISTANCETREEHOLD = 200.f;
 
 // ========== Constantes Fruit  ==========
 
@@ -132,3 +128,11 @@ const std::string TEXTUREPATH_HOLLOW = "../Sprite/pasteque.png";
 const float Y_HOLLOW = 620;
 const float ENERGY_HOLLOW = 10;
 const std::string NAME_HOLLOW = "Masque du Hollow";
+
+
+// ========== Constantes génerales ==========
+//======= Constantes distances d'attaque =========
+const float DISTANCETREEHOLD = 200.f;
+
+//======= Constantes vitesse=========
+const float XPMULTIPLIER = 0.015f;

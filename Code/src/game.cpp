@@ -239,6 +239,7 @@ void Game::updateState(const UserInput &input)
         {
             if (i == 0)
             {
+                _players[i]->setSpeed(XPMULTIPLIER);
                 //Appeler la fonction getRandomNumber pour avoir un nombre aléatoire entre 0 et 1
                 _players[i]->getRandomNumberForCanAttack();
                 // Seulement pour le premier joueur, utilisez les entrées de l'utilisateur
@@ -315,8 +316,10 @@ void Game::updateState(const UserInput &input)
                 
             for(size_t j = 1; j < _players.size(); ++j) // Pour chaque joueur
             {
+                _players[i]->setSpeed(XPMULTIPLIER);
                 if (i != j && _players[j]->isCloseTo(*_players[i], DISTANCETREEHOLD) && _players[i]->canAttack()) // Si le joueur est proche d'un autre joueur et les deux peuvent attaquer
                 {
+                    
                     _players[i]->randomAttack(*_players[j]); // Attaque aléatoire
                     std::cout << "Player " << _players[i]->getFirstname() << " is close to Player " << _players[j]->getFirstname() << std::endl;
                 }
