@@ -98,7 +98,7 @@ void Game::intro(sf::RenderWindow& window) {
     }
 
     sf::Music musicintro;
-    if (!musicintro.openFromFile("music.ogg"))
+    if (!musicintro.openFromFile(MUSICINTRO))
         std::cout << "Failed to load music" << std::endl;
     musicintro.play();
 
