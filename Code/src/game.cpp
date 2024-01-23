@@ -5,7 +5,9 @@
 
 Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKGROUND)  
 {
-    std::cout << "Game created" << std::endl;
+    if (!_backgroundMusic.openFromFile(MUSIC)) // Chargez la musique de fond
+        std::cerr << "Failed to load background music." << std::endl;
+
 
     // Crée le joueur de shinigami capiaine de Bleach Kuchiki Byakuya
     std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_BLEACHSHINIGAMICAPITAINE, SPEED_BLEACHSHINIGAMICAPITAINE, X_BLEACHSHINIGAMICAPITAINE, Y_BLEACHSHINIGAMICAPITAINE, ICHIGOASSOCIATION);
@@ -81,6 +83,12 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
 
 
 }
+
+void Game::playBackgroundMusic() {
+    _backgroundMusic.play();
+    _backgroundMusic.setLoop(true);
+}
+
 void Game::intro(sf::RenderWindow& window) {
     
     // Open the intro window
@@ -96,11 +104,6 @@ void Game::intro(sf::RenderWindow& window) {
         std::cerr << "Failed to load intro image." << std::endl;
         return;
     }
-
-    sf::Music musicintro;
-    if (!musicintro.openFromFile(MUSICINTRO))
-        std::cout << "Failed to load music" << std::endl;
-    musicintro.play();
 
     // Wait for user input
     sf::Event event;
