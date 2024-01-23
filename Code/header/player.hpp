@@ -36,6 +36,7 @@ class Player: public Object{
     float getY()const {return _y;}
     float getSpeed(){return _speed;}
     float getXp(){return _Xp;}
+    float getXpMax(){return _XpMax;}
     int getDirection(){return _direction;}
     std::string getLastname(){return _lastname;}
     std::string getFirstname(){return _firstname;}
@@ -111,7 +112,6 @@ class Player: public Object{
     {
         // On calcule la vitesse du joueur en fonction de son xp
         _speed = (_Xp * xpMultiplier);
-        std::cout << "Speed of " << _lastname << " is " << _speed << std::endl;
 
         // On s'assure que le joeur ne fasse pas du surplace
         if (_speed < 0.2f) {

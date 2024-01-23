@@ -279,6 +279,7 @@ void Game::run(sf::RenderWindow& window, size_t i) {
         _characterRenderer.setTexture(BACKGROUND);
         _characterRenderer.render(window);
         _characterRenderer.renderFruits(window);
+        _characterRenderer.renderHealthBars(window);
         window.display();
     }
     if (winner == 0) return win(window);

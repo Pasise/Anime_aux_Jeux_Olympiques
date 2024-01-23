@@ -19,6 +19,10 @@ public:
     void setFruits(const std::vector<std::shared_ptr<Fruit>>* fruits); // Ajout de la méthode setFruits
     void renderFruits(sf::RenderWindow& window); // Ajout de la méthode renderFruits
 
+    void loadHealthBarTexture();
+    void renderHealthBars(sf::RenderWindow& window);
+
+
 private:
     const std::vector<std::shared_ptr<Player>>* _players;
     const std::vector<std::shared_ptr<Fruit>>* _fruits; // Added _fruits attribute  
@@ -34,6 +38,8 @@ private:
     sf::Texture _backgroundTexture;   // Added _backgroundTexture attribute
     sf::Sprite _backgroundSprite;     // Added _backgroundSprite attribute
 
+    // Ajout de la texture pour la barre de vie
+    sf::Texture _healthBarTexture;
 
     void loadBackgroundTexture();
     void renderPosition(sf::RenderWindow& window, std::size_t index);
