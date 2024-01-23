@@ -5,7 +5,9 @@
 
 Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKGROUND)  
 {
-    std::cout << "Game created" << std::endl;
+    if (!_backgroundMusic.openFromFile(MUSIC)) // Chargez la musique de fond
+        std::cerr << "Failed to load background music." << std::endl;
+
 
     std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA, SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, BYAKUYAASSOCIATION);
     _players.push_back(player1);  // Ajoutez le joueur à la liste
@@ -85,6 +87,12 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
 
 
 }
+
+void Game::playBackgroundMusic() {
+    _backgroundMusic.play();
+    _backgroundMusic.setLoop(true);
+}
+
 void Game::intro(sf::RenderWindow& window) {
     
 
@@ -98,11 +106,6 @@ void Game::intro(sf::RenderWindow& window) {
         std::cerr << "Failed to load intro image." << std::endl;
         return;
     }
-
-    sf::Music musicintro;
-    if (!musicintro.openFromFile(MUSICINTRO))
-        std::cout << "Failed to load music" << std::endl;
-    musicintro.play();
 
     // Wait for user input
     sf::Event event;
@@ -294,7 +297,7 @@ void Game::win(sf::RenderWindow& window) {
 
     // Charger la musique
     sf::Music winMusic;
-    if (winMusic.openFromFile(MUSICINTRO)) {
+    if (winMusic.openFromFile(MUSIC)) {
         winMusic.play();
     } else {
         std::cerr << "Failed to load win music." << std::endl;
@@ -320,7 +323,7 @@ void Game::lose(sf::RenderWindow& window) {
 
     // Charger la musique
     sf::Music loseMusic;
-    if (loseMusic.openFromFile(MUSICINTRO)) {
+    if (loseMusic.openFromFile(MUSIC)) {
         loseMusic.play();
     } else {
         std::cerr << "Failed to load lose music." << std::endl;

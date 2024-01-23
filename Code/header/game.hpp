@@ -18,7 +18,7 @@ class Game {
     UserInput _input;
     CharacterRenderer _characterRenderer;
     std::vector<std::string> chooseScreen;
-    sf::Music _backgroundMusic;  // Ajout de la musique de fond
+    sf::Music _backgroundMusic; 
 public:
     Game();
     std::string getchooseScreen(int i){
@@ -37,6 +37,7 @@ public:
     void updateState(const UserInput& input);
     void win(sf::RenderWindow& window);
     void lose(sf::RenderWindow& window);
+    void playBackgroundMusic();
 
 
 };

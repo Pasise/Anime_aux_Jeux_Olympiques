@@ -133,9 +133,7 @@ const float DISTANCETREEHOLD = 200.f;
 const float XPMULTIPLIER = 0.015f;
 
 //======= Constantes musique=========
-const std::string MUSICINTRO = "../Music/julia-133094.wav";
-const std::string MUSICCHOOSE = "../Music/Choose.ogg";
-const std::string MUSICGAME = "../Music/Game.ogg";
+const std::string MUSIC = "../Music/julia-133094.wav";
 
 //======= Constante barre de vie =========
 const std::string TEXTUREPATH_LIFE = "../Sprite/life.png";
