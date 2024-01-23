@@ -1,7 +1,8 @@
 #include "../header/playerplus.hpp"
 
-PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,float Xp_max,float speed, float x, float y, std::map<std::string, int> textureAssociations) 
+PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, std::map<std::string, int> textureAssociations):PlayerMedium(lastname, firstname, Xp, Xp_max, speed, x, y, textureAssociations)
 {
+
     _lastname = lastname;
     _firstname = firstname;
     _Xp = Xp;
@@ -12,11 +13,10 @@ PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,flo
     addAssociations(textureAssociations);
     _direction = 1;
     _isAttacking1 = false;
-    _isAttacking2 = false;
     _isJumping = false;
     _isPicking = false;
+    _isAttacking2 = false;
     std::cout << "PlayerPlus created" << std::endl;
-
 }
 
 void PlayerPlus::doAttack1(Player& targetPlayer)

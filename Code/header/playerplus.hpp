@@ -1,10 +1,10 @@
 #pragma once
 
-#include "player.hpp"
+#include "playermedium.hpp"
 #include "fruit.hpp"
 #include <SFML/Graphics.hpp>
 
-class PlayerPlus : public Player
+class PlayerPlus : public PlayerMedium
 {
     
 protected:
