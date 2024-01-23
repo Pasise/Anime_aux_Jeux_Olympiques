@@ -288,7 +288,7 @@ void Game::win(sf::RenderWindow& window) {
 
     // Charger la musique
     sf::Music winMusic;
-    if (winMusic.openFromFile(MUSICINTRO)) {
+    if (winMusic.openFromFile(MUSIC)) {
         winMusic.play();
     } else {
         std::cerr << "Failed to load win music." << std::endl;
@@ -314,7 +314,7 @@ void Game::lose(sf::RenderWindow& window) {
 
     // Charger la musique
     sf::Music loseMusic;
-    if (loseMusic.openFromFile(MUSICINTRO)) {
+    if (loseMusic.openFromFile(MUSIC)) {
         loseMusic.play();
     } else {
         std::cerr << "Failed to load lose music." << std::endl;
