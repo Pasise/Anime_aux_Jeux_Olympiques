@@ -17,5 +17,8 @@ class Object{
     void setIsAlive(bool value){
         _isAlive = value;
     }
+    bool isAlive() const {
+        return _isAlive;
+    }
     
 };

@@ -18,9 +18,13 @@ public:
     void setCameraPosition(float x);
     void setFruits(const std::vector<std::shared_ptr<Fruit>>* fruits); // Ajout de la méthode setFruits
     void renderFruits(sf::RenderWindow& window); // Ajout de la méthode renderFruits
-
+    std::string getTexturePathFruits(int i){  //Parcour le vector de fruits jusqu'a lelement i puis renvoie le chemin de la texture de ce fruit
+        std::string file_name = _fruits->at(i)->getTexturePath();
+        return file_name;
+    }
     void loadHealthBarTexture();
     void renderHealthBars(sf::RenderWindow& window);
+
 
 
 private:
@@ -46,6 +50,7 @@ private:
     void renderAttack1(sf::RenderWindow& window, std::size_t index);
     void renderAttack2(sf::RenderWindow& window, std::size_t index);
     void renderHeal(sf::RenderWindow& window, std::size_t index);
+    void renderDeath(sf::RenderWindow& window, std::size_t index);
     
 };
 

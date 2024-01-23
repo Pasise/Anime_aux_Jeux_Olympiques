@@ -7,7 +7,7 @@
 class PlayerMedium : public Player
 {
     public: 
-        PlayerMedium(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, std::map<std::string, int> textureAssociations);
+        PlayerMedium(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, float damage, std::map<std::string, int> textureAssociations, std::string deathTexturePath);
         ~PlayerMedium() {};
         void doAttack1(Player& targetPlayer); //
         void doJump();

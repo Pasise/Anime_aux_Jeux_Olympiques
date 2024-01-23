@@ -9,53 +9,53 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
         std::cerr << "Failed to load background music." << std::endl;
 
 
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerMedium>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA,XP_MAX_BYAKUYA, SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, BYAKUYAASSOCIATION);
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerMedium>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA,XP_MAX_BYAKUYA, SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, DAMAGE_BYAKUYA, BYAKUYAASSOCIATION, DEATH_TEXTURE_PATH_BYAKUYA);
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
-    std::shared_ptr<Player> player2 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO,XP_MAX_ICHIGO, SPEED_ICHIGO, X_ICHIGO, Y_ICHIGO, ICHIGOASSOCIATION);
+    std::shared_ptr<Player> player2 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO,XP_MAX_ICHIGO, SPEED_ICHIGO, X_ICHIGO, Y_ICHIGO, DAMAGE_ICHIGO, ICHIGOASSOCIATION, DEATH_TEXTURE_PATH_ICHIGO);
     _players.push_back(player2);  // Ajoutez le joueur à la liste
     std::cout << "Player 2 in the list" << std::endl;
     std::cout << "Player 2 name : " << _players[1]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
     //Créer le joueur Shinsui KYORAKU de playersoin
-    std::shared_ptr<Player> player3 = std::make_shared<PlayerSoin>(LASTNAME_SHINSUI, FIRSTNAME_SHINSUI, XP_SHINSUI,XP_MAX_SHINSUI, SPEED_SHINSUI, X_SHINSUI, Y_SHINSUI, SOIN_SHINSUI, SHINSUIASSOCIATION);
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerSoin>(LASTNAME_SHINSUI, FIRSTNAME_SHINSUI, XP_SHINSUI,XP_MAX_SHINSUI, SPEED_SHINSUI, X_SHINSUI, Y_SHINSUI, DAMAGE_SHINSUI, SOIN_SHINSUI, SHINSUIASSOCIATION, DEATH_TEXTURE_PATH_SHINSUI);
     _players.push_back(player3);  // Ajoutez le joueur à la liste
     std::cout << "Player 3 in the list" << std::endl;
     std::cout << "Player 3 name : " << _players[2]->getFirstname() << std::endl;
 
     // Crée le joueur de l'équipage du Mugiwara Roronoa Zoro
-    std::shared_ptr<Player> player4 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, XP_ZORO,XP_MAX_ZORO, SPEED_ZORO, X_ZORO, Y_ZORO, ZOROASSOCIATION);
+    std::shared_ptr<Player> player4 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, XP_ZORO,XP_MAX_ZORO, SPEED_ZORO, X_ZORO, Y_ZORO, DAMAGE_ZORO, ZOROASSOCIATION, DEATH_TEXTURE_PATH_ZORO);
     _players.push_back(player4);  // Ajoutez le joueur à la liste
     std::cout << "Player 4 in the list" << std::endl;
     std::cout << "Player 4 name : " << _players[3]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
     // Crée le joueur de l'équipage du Mugiwara Monkey D. Luffy player medium
-    std::shared_ptr<Player> player5 = std::make_shared<PlayerMedium>(LASTNAME_LUFFY, FIRSTNAME_LUFFY, XP_LUFFY,XP_MAX_LUFFY, SPEED_LUFFY, X_LUFFY, Y_LUFFY, LUFFYASSOCIATION);
+    std::shared_ptr<Player> player5 = std::make_shared<PlayerMedium>(LASTNAME_LUFFY, FIRSTNAME_LUFFY, XP_LUFFY,XP_MAX_LUFFY, SPEED_LUFFY, X_LUFFY, Y_LUFFY, DAMAGE_LUFFY, LUFFYASSOCIATION, DEATH_TEXTURE_PATH_LUFFY);
     _players.push_back(player5);  // Ajoutez le joueur à la liste
     std::cout << "Player 5 in the list" << std::endl;
     std::cout << "Player 5 name : " << _players[4]->getFirstname() << std::endl;
 
     // Crée le fruit du démon de Luffy
-    std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUIT,Y_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
+    std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUITNORMAL,Y_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
     _fruits.push_back(fruit1);  // Ajoutez le fruit à la liste
     std::cout << "Fruit 1 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
 
     // Crée un fruit normal que tout le monde peut manger
-    std::shared_ptr<Fruit> fruit2 = std::make_shared<Fruit>(NAME_FRUIT,Y_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUIT);
+    std::shared_ptr<Fruit> fruit2 = std::make_shared<Fruit>(NAME_FRUITNORMAL,Y_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUIT);
     _fruits.push_back(fruit2);  // Ajoutez le fruit à la liste
     std::cout << "Fruit 2 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
 
     //Cree le masque hollow de Ichigo
-    std::shared_ptr<Fruit> fruit3 = std::make_shared<Fruit>(NAME_FRUIT,Y_HOLLOW,ENERGY_HOLLOW,TEXTUREPATH_FRUIT);
+    std::shared_ptr<Fruit> fruit3 = std::make_shared<Fruit>(NAME_FRUITNORMAL,Y_HOLLOW,ENERGY_HOLLOW,TEXTUREPATH_FRUIT);
     _fruits.push_back(fruit3);  // Ajoutez le fruit à la liste
     std::cout << "Fruit 3 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
@@ -244,7 +244,7 @@ void Game::run(sf::RenderWindow& window, size_t i) {
                 exitRun = true;  // Sortir de la boucle run si un joueur a sa coordonnée x > 1850
                 winner = i;
                 break;
-            } else if (_players[i]->getXp() <= 0) {
+            } else if (_players[0]->getXp() <= 0) {
                 exitRun = true;  // Sortir de la boucle run si un joueur a sa vie <= 0
                 winner = -1;
                 break;

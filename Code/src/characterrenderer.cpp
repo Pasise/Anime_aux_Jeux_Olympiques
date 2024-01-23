@@ -196,6 +196,32 @@ void CharacterRenderer::renderHeal(sf::RenderWindow& window, std::size_t index)
     // ... rest of the code for scaling and additional conditions
 }
 
+void CharacterRenderer::renderDeath(sf::RenderWindow& window, std::size_t index)
+{
+    if ((*_players)[index] && !(*_players)[index]->isAlive()) {
+        std::string playerTexturePath = (*_players)[index]->getDeathTexturePath();
+
+        sf::Texture texture;
+        if (texture.loadFromFile(playerTexturePath)) { //il n'y a qu'une frame
+            sf::Vector2u frameSize = texture.getSize(); //on prend la taille de la texture
+            frameSize.x /= 1; 
+            frameSize.y /= 1;
+
+            _sprites[index].setTexture(texture);
+            _sprites[index].setTextureRect(sf::IntRect(0, 0, frameSize.x, frameSize.y));
+            _sprites[index].setPosition((*_players)[index]->getX()-900, (*_players)[index]->getY());
+
+
+
+            window.draw(_sprites[index]);
+        }
+        else {
+            std::cerr << "Failed to load player texture: " << playerTexturePath << std::endl;
+        }
+    }
+
+    // ... rest of the code for scaling and additional conditions
+}
 
 void CharacterRenderer::render(sf::RenderWindow& window)
 {
@@ -213,10 +239,13 @@ void CharacterRenderer::render(sf::RenderWindow& window)
     window.draw(_backgroundSprite);
 
     for (std::size_t i = 0; i < _sprites.size(); ++i) {
-        renderPosition(window, i);
-        renderAttack1(window, i);
-        renderAttack2(window, i);
-        renderHeal(window, i);
+        if ((*_players)[i] && (*_players)[i]->isAlive()) {
+            renderPosition(window, i);
+            renderAttack1(window, i);
+            renderAttack2(window, i);
+            renderHeal(window, i);
+        } else 
+        renderDeath(window, i);
     }
 }
 
@@ -252,8 +281,23 @@ void CharacterRenderer::renderFruits(sf::RenderWindow& window) {
   
  //Placer les fruits à des endroits définis
     for (std::size_t i = 0; i < _fruits->size(); ++i) {
-        _fruitSprites[i].setPosition((*_fruits)[i]->getX(), (*_fruits)[i]->getY());
-        window.draw(_fruitSprites[i]);
+        if ((*_fruits)[i]->isAlive()) {
+        std::string fruitTexturePath = (*_fruits)[i]->getTexturePath();
+        sf::Texture texture;
+        if (texture.loadFromFile(fruitTexturePath)) {
+            sf::Vector2u frameSize = texture.getSize();
+            frameSize.x /= 1;
+            frameSize.y /= 1; //je veux que le sprite soit affiché en continue
+
+            _fruitSprites[i].setTexture(texture);
+            _fruitSprites[i].setTextureRect(sf::IntRect(0, 0, frameSize.x, frameSize.y));
+            _fruitSprites[i].setPosition((*_fruits)[i]->getX(), (*_fruits)[i]->getY());
+
+            window.draw(_fruitSprites[i]);
+        }
+
+
+        }
     }
     
 }
@@ -265,7 +309,6 @@ void CharacterRenderer::loadHealthBarTexture() {
 }
 
 void CharacterRenderer::renderHealthBars(sf::RenderWindow& window) {
-
     // Utilisez seulement le joueur 0
     const auto& player = (*_players)[0];
 
@@ -278,6 +321,18 @@ void CharacterRenderer::renderHealthBars(sf::RenderWindow& window) {
     // Indique la position fixe de la barre de vie en haut à gauche
     sf::Vector2f healthBarPosition(10.0f, 10.0f);
 
+    // Épaisseur de la bordure pour la barre de vie
+    float borderThickness = 5.0f;  // Ajustez l'épaisseur de la bordure selon vos préférences
+
+    // Créer le rectangle de la barre noire avec bordure fixe
+    sf::RectangleShape backgroundBar(sf::Vector2f(player->getXpMax(), 20.0f));
+    backgroundBar.setPosition(healthBarPosition);
+    backgroundBar.setFillColor(sf::Color::Black);  // Couleur noire
+
+    // Épaisseur de la bordure pour la barre noire
+    backgroundBar.setOutlineThickness(borderThickness);
+    backgroundBar.setOutlineColor(sf::Color::White);
+
     // Calcul du pourcentage de santé
     float healthPercentage = static_cast<float>(player->getXp()) / static_cast<float>(player->getXpMax());
 
@@ -287,14 +342,11 @@ void CharacterRenderer::renderHealthBars(sf::RenderWindow& window) {
     // Hauteur de la barre de vie
     float healthBarHeight = 20.0f;
 
-    // Épaisseur de la bordure
-    float borderThickness = 5.0f;  // Ajustez l'épaisseur de la bordure selon vos préférence
-
     // Couleur par défaut (vert)
     sf::Color healthBarColor = sf::Color::Green;
 
     // Changer la couleur en fonction du pourcentage de santé
-    if (healthPercentage <= 0.5f && healthPercentage > 0.3f) {
+    if (healthPercentage <= 0.6f && healthPercentage > 0.3f) {
         healthBarColor = sf::Color::Yellow;  // Orange pour 50% à 30%
     } else if (healthPercentage <= 0.3f) {
         healthBarColor = sf::Color::Red;     // Rouge pour moins de 30%
@@ -305,15 +357,16 @@ void CharacterRenderer::renderHealthBars(sf::RenderWindow& window) {
     healthBar.setPosition(healthBarPosition);
     healthBar.setFillColor(healthBarColor);
 
-    // Créer la bordure
-    healthBar.setOutlineThickness(borderThickness);
-    healthBar.setOutlineColor(sf::Color::White);
-    healthBar.setOutlineThickness(borderThickness);
-    healthBar.setOutlineColor(sf::Color::White);
+    // Épaisseur de la bordure pour la barre de vie
     healthBar.setOutlineThickness(borderThickness);
     healthBar.setOutlineColor(sf::Color::White);
 
-    // Dessiner la barre de vie et la bordure
+    // Dessiner la barre noire statique
+    window.draw(backgroundBar);
+
+    // Dessiner la barre de vie avec bordure
     window.draw(healthBar);
 }
+
+
 

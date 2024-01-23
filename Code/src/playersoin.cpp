@@ -1,6 +1,6 @@
 #include "../header/playersoin.hpp"
 
-PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, float heal, std::map<std::string, int> textureAssociations)
+PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, float damage, float heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath)
 {
 
     _lastname = lastname;
@@ -10,8 +10,10 @@ PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,flo
     _speed = speed;
     _x = x;
     _y = y;
+    _damage = damage;
     _heal = heal;
     addAssociations(textureAssociations);
+    _deathTexturePath = deathTexturePath;
     _direction = 1;
     _isAttacking1 = false;
     _isJumping = false;
@@ -25,8 +27,7 @@ PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,flo
 void PlayerSoin::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-    float damage = _heal+1;
-    targetPlayer.reduceHealth(damage, targetPlayer);
+    targetPlayer.reduceHealth(targetPlayer);
     _isAttacking1 = true;
 }
     

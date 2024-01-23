@@ -16,6 +16,7 @@ class Player: public Object{
     float _speed;
     float _x;
     float _y;
+    float _damage;
     int _direction;
     bool _isAttacking1;
 
@@ -28,6 +29,7 @@ class Player: public Object{
     bool _isPicking;
     
     std::map<std::string, int> _textureAssociations;
+    std::string _deathTexturePath;
 
     public : 
     void moveLeft();
@@ -38,13 +40,17 @@ class Player: public Object{
     float getXp(){return _Xp;}
     float getXpMax(){return _XpMax;}
     int getDirection(){return _direction;}
+    float getDamage(){return _damage;}
     std::string getLastname(){return _lastname;}
     std::string getFirstname(){return _firstname;}
+    std::string getDeathTexturePath() const {
+        return _deathTexturePath;
+    }
     void setX(float x){_x = x;}
     void setY(float y){_y = y;}
     void setXp(float Xp){_Xp = Xp;}
     void setDirection(int direction){_direction = direction;}
-    void reduceHealth(float damage,Player& targetPlayer);
+    void reduceHealth(Player& targetPlayer);
         // Ajout de la méthode pour associer un texturePath à un nombre de frames
     void addTexture(const std::string& texturePath, int numberOfFrames) {
         _textureAssociations[texturePath] = numberOfFrames;

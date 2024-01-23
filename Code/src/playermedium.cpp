@@ -1,6 +1,6 @@
 #include "../header/playermedium.hpp"
 
-PlayerMedium::PlayerMedium(std::string lastname, std::string firstname, float Xp,float Xp_max,float speed, float x, float y, std::map<std::string, int> textureAssociations) 
+PlayerMedium::PlayerMedium(std::string lastname, std::string firstname, float Xp,float Xp_max,float speed, float x, float y, float damage, std::map<std::string, int> textureAssociations, std::string deathTexturePath) 
 {
     _lastname = lastname;
     _firstname = firstname;
@@ -9,7 +9,9 @@ PlayerMedium::PlayerMedium(std::string lastname, std::string firstname, float Xp
     _speed = speed;
     _x = x;
     _y = y;
+    _damage = damage;
     addAssociations(textureAssociations);
+    _deathTexturePath = deathTexturePath;
     _direction = 1;
     _isAttacking1 = false;
     _isJumping = false;
@@ -21,8 +23,7 @@ PlayerMedium::PlayerMedium(std::string lastname, std::string firstname, float Xp
 void PlayerMedium::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-    float damage = 1;
-    targetPlayer.reduceHealth(damage, targetPlayer);
+    targetPlayer.reduceHealth(targetPlayer);
     _isAttacking1 = true;
 }
 

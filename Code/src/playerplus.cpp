@@ -1,6 +1,6 @@
 #include "../header/playerplus.hpp"
 
-PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, std::map<std::string, int> textureAssociations):PlayerMedium(lastname, firstname, Xp, Xp_max, speed, x, y, textureAssociations)
+PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, float damage, std::map<std::string, int> textureAssociations, std::string deathTexturePath):PlayerMedium(lastname, firstname, Xp, Xp_max, speed, x, y, damage, textureAssociations, deathTexturePath)
 {
 
     _lastname = lastname;
@@ -22,16 +22,14 @@ PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,flo
 void PlayerPlus::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-    float damage = 1;
-    targetPlayer.reduceHealth(damage, targetPlayer);
+    targetPlayer.reduceHealth(targetPlayer);
     _isAttacking1 = true;
 }
 
 void PlayerPlus::doAttack2(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack2 on " << targetPlayer.getLastname() << std::endl;
-    float damage = 2;
-    targetPlayer.reduceHealth(damage, targetPlayer);
+    targetPlayer.reduceHealth(targetPlayer);
     _isAttacking2 = true;
 }
 
