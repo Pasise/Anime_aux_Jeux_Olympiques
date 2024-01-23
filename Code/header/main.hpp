@@ -5,5 +5,6 @@
 #include "player.hpp"
 #include "game.hpp"
 #include "characterrenderer.hpp"
+
 //Prototypes des fonctions 
 void CheckBoutton();

@@ -1,7 +1,7 @@
 #include "header/main.hpp"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!" , sf::Style::Fullscreen);
+    sf::RenderWindow  window(sf::VideoMode(1920, 1080), "One Piece vs Bleach", sf::Style::Fullscreen);
 
     Game game;
 

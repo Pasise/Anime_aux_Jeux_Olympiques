@@ -31,6 +31,8 @@ public:
     void intro(sf::RenderWindow& window);
     void choose(sf::RenderWindow& window);
     void updateState(const UserInput& input);
+    void win(sf::RenderWindow& window);
+    void lose(sf::RenderWindow& window);
 
 
 };
