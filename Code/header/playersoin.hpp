@@ -10,7 +10,7 @@ protected:
     float _soin;
 
 public:
-    PlayerSoin(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, float soin, std::map<std::string, int> textureAssociations);
+    PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, float soin, std::map<std::string, int> textureAssociations);
     ~PlayerSoin() {};
     void doAttack1(Player& targetPlayer); //
     void doJump();

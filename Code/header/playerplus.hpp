@@ -12,7 +12,7 @@ protected:
     bool _isAttacking2; // Ajout de l'attribut _isAttacking1
 
 public:
-    PlayerPlus(std::string lastname, std::string firstname, float Xp, float speed, float x, float y, std::map<std::string, int> textureAssociations);
+    PlayerPlus(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, std::map<std::string, int> textureAssociations);
     ~PlayerPlus() {};
     std::string getTexture(){return _texture;}
     void setTexture(std::string texturepath){_texture = texturepath;}

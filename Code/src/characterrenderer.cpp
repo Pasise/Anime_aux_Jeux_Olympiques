@@ -224,3 +224,62 @@ void CharacterRenderer::renderFruits(sf::RenderWindow& window) {
     
 }
 
+void CharacterRenderer::loadHealthBarTexture() {
+    if (!_healthBarTexture.loadFromFile("../Sprite/life.png")) {
+        std::cerr << "Failed to load health bar texture." << std::endl;
+    }
+}
+
+void CharacterRenderer::renderHealthBars(sf::RenderWindow& window) {
+
+    // Utilisez seulement le joueur 0
+    const auto& player = (*_players)[1];
+
+    // Vérifiez si les points d'expérience sont égaux à zéro
+    if (player->getXp() == 0) {
+        // Points d'expérience égaux à zéro, ne dessinez pas la barre de vie
+        return;
+    }
+
+    // Indique la position fixe de la barre de vie en haut à gauche
+    sf::Vector2f healthBarPosition(10.0f, 10.0f);
+
+    // Calcul du pourcentage de santé
+    float healthPercentage = static_cast<float>(player->getXp()) / static_cast<float>(player->getXpMax());
+
+    // Largeur de la barre de vie en fonction de la santé du joueur
+    float healthBarWidth = healthPercentage * player->getXpMax();
+
+    // Hauteur de la barre de vie
+    float healthBarHeight = 20.0f;
+
+    // Épaisseur de la bordure
+    float borderThickness = 5.0f;  // Ajustez l'épaisseur de la bordure selon vos préférence
+
+    // Couleur par défaut (vert)
+    sf::Color healthBarColor = sf::Color::Green;
+
+    // Changer la couleur en fonction du pourcentage de santé
+    if (healthPercentage <= 0.5f && healthPercentage > 0.3f) {
+        healthBarColor = sf::Color::Yellow;  // Orange pour 50% à 30%
+    } else if (healthPercentage <= 0.3f) {
+        healthBarColor = sf::Color::Red;     // Rouge pour moins de 30%
+    }
+
+    // Créer le rectangle de la barre de vie avec bordure
+    sf::RectangleShape healthBar(sf::Vector2f(healthBarWidth, healthBarHeight));
+    healthBar.setPosition(healthBarPosition);
+    healthBar.setFillColor(healthBarColor);
+
+    // Créer la bordure
+    healthBar.setOutlineThickness(borderThickness);
+    healthBar.setOutlineColor(sf::Color::White);
+    healthBar.setOutlineThickness(borderThickness);
+    healthBar.setOutlineColor(sf::Color::White);
+    healthBar.setOutlineThickness(borderThickness);
+    healthBar.setOutlineColor(sf::Color::White);
+
+    // Dessiner la barre de vie et la bordure
+    window.draw(healthBar);
+}
+
