@@ -142,3 +142,6 @@ const std::string MUSICINTRO = "../Music/julia-133094.wav";
 const std::string MUSICCHOOSE = "../Music/Choose.ogg";
 const std::string MUSICGAME = "../Music/Game.ogg";
 
+//======= Constante barre de vie =========
+const std::string TEXTUREPATH_LIFE = "../Sprite/life.png";
+
