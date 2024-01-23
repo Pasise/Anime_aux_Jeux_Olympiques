@@ -72,16 +72,15 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
     std::cout << "Fruit 3 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
-    // chooseScreen.push_back("../Sprite/Choose_Byakuya.PNG");
-    // chooseScreen.push_back("../Sprite/Choose_Ichigo.PNG");
-    // chooseScreen.push_back("../Sprite/Choose_Kyoraku.PNG");
-    // chooseScreen.push_back("../Sprite/Choose_Zoro.PNG");
-    // chooseScreen.push_back("../Sprite/Choose_Luffy.PNG");
+    chooseScreen.push_back("../Sprite/Choose_Byakuya.PNG");
+    chooseScreen.push_back("../Sprite/Choose_Ichigo.PNG");
+    chooseScreen.push_back("../Sprite/Choose_Kyoraku.PNG");
+    chooseScreen.push_back("../Sprite/Choose_Zoro.PNG");
+    chooseScreen.push_back("../Sprite/Choose_Luffy.PNG");
 
 
 
 }
-/*
 void Game::intro(sf::RenderWindow& window) {
     // Open the intro window
     window.create(sf::VideoMode(1920, 1080), "One Piece vs Bleach", sf::Style::Fullscreen);
@@ -138,7 +137,6 @@ void Game::intro(sf::RenderWindow& window) {
         }
     }
 }
-
 
 void Game::choose(sf::RenderWindow& window) {
     sf::Event event;
@@ -208,7 +206,7 @@ void Game::choose(sf::RenderWindow& window) {
         }
     }
 }
-*/
+
 void Game::run(sf::RenderWindow& window)
 {
         while (window.isOpen()) {
