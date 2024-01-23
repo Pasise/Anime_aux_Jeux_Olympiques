@@ -9,13 +9,13 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
         std::cerr << "Failed to load background music." << std::endl;
 
 
-    /*std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA, SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, BYAKUYAASSOCIATION);
+    /*std::shared_ptr<Player> player1 = std::make_shared<PlayerPlus>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA,XP_MAX_BYAKUYA SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, BYAKUYAASSOCIATION);
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);*/
 
-    std::shared_ptr<Player> player2 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO, SPEED_ICHIGO, X_ICHIGO, Y_ICHIGO, ICHIGOASSOCIATION);
+    std::shared_ptr<Player> player2 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO,XP_MAX_ICHIGO, SPEED_ICHIGO, X_ICHIGO, Y_ICHIGO, ICHIGOASSOCIATION);
     _players.push_back(player2);  // Ajoutez le joueur à la liste
     std::cout << "Player 2 in the list" << std::endl;
     std::cout << "Player 2 name : " << _players[0]->getFirstname() << std::endl;
@@ -23,7 +23,7 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
 
 
     // Crée le joueur de l'équipage du Mugiwara Roronoa Zoro
-    std::shared_ptr<Player> player3 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, XP_ZORO, SPEED_ZORO, X_ZORO, Y_ZORO, ZOROASSOCIATION);
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, XP_ZORO,XP_MAX_ZORO, SPEED_ZORO, X_ZORO, Y_ZORO, ZOROASSOCIATION);
     _players.push_back(player3);  // Ajoutez le joueur à la liste
     std::cout << "Player 3 in the list" << std::endl;
     std::cout << "Player 3 name : " << _players[1]->getFirstname() << std::endl;

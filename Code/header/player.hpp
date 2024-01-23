@@ -12,6 +12,7 @@ class Player: public Object{
     std::string _lastname;
     std::string _firstname;
     float _Xp;
+    float _XpMax;
     float _speed;
     float _x;
     float _y;
