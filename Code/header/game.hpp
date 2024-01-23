@@ -34,7 +34,8 @@ public:
         std::shared_ptr<Player> temp = _players[0];
         _players[0] = _players[i];
         _players[i] = temp;}
-    void updateState(const UserInput& input);
+    void updateStatePlayerUser(const UserInput& input);
+    void updateStateBots();
     void win(sf::RenderWindow& window);
     void lose(sf::RenderWindow& window);
     void playBackgroundMusic();

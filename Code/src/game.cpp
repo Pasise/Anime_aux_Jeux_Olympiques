@@ -272,7 +272,8 @@ void Game::run(sf::RenderWindow& window, size_t i) {
                 window.close();
         }
 
-        updateState(_input);
+        updateStatePlayerUser(_input);
+        updateStateBots();
 
         window.clear();
         _characterRenderer.setTexture(BACKGROUND);
@@ -338,102 +339,71 @@ void Game::lose(sf::RenderWindow& window) {
 
 //la méthode action prend en entrer un UserInput et effectue l'action correspondante : pour left on décrémente la position x et poour right on l'incrémente
 
-void Game::updateState(const UserInput &input)
-{
-    // Vérifiez si les pointeurs dans _players sont valides avant d'appeler les méthodes sur eux
-    for (size_t i = 0; i < _players.size(); ++i)
-    {
-        if (_players[i])
-        {
-            if (i == 0)
-            {
-                _players[i]->setSpeed(XPMULTIPLIER);
-                //Appeler la fonction getRandomNumber pour avoir un nombre aléatoire entre 0 et 1
-                _players[i]->getRandomNumberForCanAttack();
-                // Seulement pour le premier joueur, utilisez les entrées de l'utilisateur
-                if (input.getButton() == Button::left)
-                    _players[i]->moveLeft();// Ajoutez le joueur à la liste
-                else if (input.getButton() == Button::right)
-                    _players[i]->moveRight();
-                else if (input.getButton() == Button::attack1){
-                    if(_players[i]->isTimetoAttack())
-                    {
-                    _players[i]->doAttack1(*_players[1]);
-                    _players[i]->setLastAttackTime();
-                    }
-                    else
-                    {
-                        std::cout << "You can't attack1 now" << std::endl;
-                    }
-                    }
-                else if (input.getButton() == Button::attack2)
-                {
-                    // Get the shared pointer to PlayerBleachShinigamiCapitaine
-                    std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
+void Game::updateStatePlayerUser(const UserInput& input) {
+    if (_players.empty() || !_players[0])
+        return;
 
-                    if (captainPlayer)
-                    {
-                        if(captainPlayer->isTimetoAttack())
-                    {
-                        captainPlayer->doAttack2(*_players[1]);
-                        captainPlayer->setLastAttackTime();
-                    }
-                    else
-                    {
-                        std::cout << "You can't attack2 now" << std::endl;
-                    }
-                        
-                    }
-                    else
-                    {
-                        std::cerr << "Error: _players[" << i << "] is not of type PlayerBleachShinigamiCapitaine" << std::endl;
-                    }
-                }
-                else if (input.getButton() == Button::pick)
-                {
-                    for (const auto& fruit : _fruits)
-                    {
+    _players[0]->setSpeed(XPMULTIPLIER);
+    _players[0]->getRandomNumberForCanAttack();
 
-                            _players[i]->doPick(*fruit);
-                    }
-                }
-                else if (input.getButton() == Button::fix){
-                    std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
+    if (input.getButton() == Button::left)
+        _players[0]->moveLeft();
+    else if (input.getButton() == Button::right)
+        _players[0]->moveRight();
+    else if (input.getButton() == Button::attack1) {
+        if (_players[0]->isTimetoAttack()) {
+            _players[0]->doAttack1(*_players[1]);
+            _players[0]->setLastAttackTime();
+        } else {
+            std::cout << "You can't attack1 now" << std::endl;
+        }
+    } else if (input.getButton() == Button::attack2) {
+        std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[0]);
 
-                    if (captainPlayer)
-                    {
-                        captainPlayer->doFix2();
-                    }
-                    else
-                    {
-                        std::cerr << "Error: _players[" << i << "] is not of type PlayerBleachShinigamiCapitaine" << std::endl;
-                    }
-                 
-                    _players[i]->doFix();
-                }
+        if (captainPlayer) {
+            if (captainPlayer->isTimetoAttack()) {
+                captainPlayer->doAttack2(*_players[1]);
+                captainPlayer->setLastAttackTime();
+            } else {
+                std::cout << "You can't attack2 now" << std::endl;
             }
-            else
-            {
-                
-                // Pour les autres joueurs, déplacez-les constamment vers la droite
-                _players[i]->moveRight();
-                
-            for(size_t j = 1; j < _players.size(); ++j) // Pour chaque joueur
-            {
+        } else {
+            std::cerr << "Error: _players[0] is not of type PlayerPlus" << std::endl;
+        }
+    } else if (input.getButton() == Button::pick) {
+        for (const auto& fruit : _fruits) {
+            _players[0]->doPick(*fruit);
+        }
+    } else if (input.getButton() == Button::fix) {
+        std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[0]);
+
+        if (captainPlayer) {
+            captainPlayer->doFix2();
+        } else {
+            std::cerr << "Error: _players[0] is not of type PlayerPlus" << std::endl;
+        }
+
+        _players[0]->doFix();
+    }
+}
+
+void Game::updateStateBots() {
+    for (size_t i = 1; i < _players.size(); ++i) {
+        if (_players[i]) {
+            _players[i]->doFix();
+            _players[i]->moveRight();
+
+            for (size_t j = 1; j < _players.size(); ++j) {
                 _players[i]->setSpeed(XPMULTIPLIER);
-                if (i != j && _players[j]->isCloseTo(*_players[i], DISTANCETREEHOLD) && _players[i]->canAttack()) // Si le joueur est proche d'un autre joueur et les deux peuvent attaquer
-                {
-                    
-                    _players[i]->randomAttack(*_players[j]); // Attaque aléatoire
+                if (i != j && _players[j]->isCloseTo(*_players[i], DISTANCETREEHOLD) && _players[i]->canAttack()) {
+                    _players[i]->randomAttack(*_players[j]);
                     std::cout << "Player " << _players[i]->getFirstname() << " is close to Player " << _players[j]->getFirstname() << std::endl;
                 }
-            }
-
-
             }
         }
     }
 }
+
 
 
 /*for (int i = 0; i < 10; ++i) {

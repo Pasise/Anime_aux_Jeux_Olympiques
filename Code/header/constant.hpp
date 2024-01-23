@@ -3,37 +3,6 @@
 #include <SFML/Graphics.hpp>
 
 
-//======Constantes JJK=======
-
-
-//======Constantes JJK classe1=======
-/*const std::string LASTNAME_JJKCLASSE1 = "Fushiguro";
-const  std::string FIRSTNAME_JJKCLASSE1 = "Megumi";
-const float XP_JJKCLASSE1 =  0;
-const float SPEED_JJKCLASSE1 = 2.5;
-const float X_JJKCLASSE1 = -1; 
-const float Y_JJKCLASSE1 = 730;
-const float OCULTENERGY_JJKCLASSE1 =  1;
-const float COLOR_JJKCLASSE1 = 0;
-const std::string TEXTUREPATH_JJKCLASSE1 =    "../Sprite/ichigo_run.png";
-const std::string TEXTUREPATH_JJKCLASSE1_ATTACK1 =  "../Sprite/ichigo_attack1.png";
-std::map<std::string, int> MEGUMIASSOCIATION = {{TEXTUREPATH_JJKCLASSE1, 6},{TEXTUREPATH_JJKCLASSE1_ATTACK1, 5}};*/
-
-//======Constantes JJK classeS=======
-
-/*const std::string LASTNAME_JJKCLASSES = "Satoru";
-const  std::string FIRSTNAME_JJKCLASSES = "Gojo";
-const float XP_JJKCLASSES =  0;
-const float SPEED_JJKCLASSES = 1.3;
-const float X_JJKCLASSES = 0;
-const float Y_JJKCLASSES = 590;
-const float OCULTENERGY_JJKCLASSES = 2;
-const float COLOR_JJKCLASSES = 0;
-const std::string TEXTUREPATH_JJKCLASSES =  "../Sprite/luffy_walkreverse4.png";
-std::map<std::string, int> GOJOASSOCIATION = {{TEXTUREPATH_JJKCLASSES, 8}};*/
-
-
-
 //======Constantes OnePiece=======
 
 //======Constantes Zoro RORONOA =======
@@ -127,7 +96,7 @@ const std::string NAME_HOLLOW = "Masque du Hollow";
 
 // ========== Constantes génerales ==========
 //======= Constantes distances d'attaque =========
-const float DISTANCETREEHOLD = 200.f;
+const float DISTANCETREEHOLD = 500.f; 
 
 //======= Constantes vitesse=========
 const float XPMULTIPLIER = 0.015f;
