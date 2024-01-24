@@ -39,6 +39,7 @@ public:
     void win(sf::RenderWindow& window);
     void lose(sf::RenderWindow& window);
     void playBackgroundMusic();
+    void stopBackgroundMusic();
 
 
 };

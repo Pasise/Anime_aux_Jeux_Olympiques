@@ -59,12 +59,12 @@ const std::string DEATH_TEXTURE_PATH_BYAKUYA = "../Sprite/byakuya_dead.PNG";
 //======Constantes Ichigo KUROSAKI=======
 const std::string LASTNAME_ICHIGO = "Kurosaki";
 const  std::string FIRSTNAME_ICHIGO = "Ichigo";
-const float XP_ICHIGO =  300;
-const float XP_MAX_ICHIGO =  300;
+const float XP_ICHIGO =  400;
+const float XP_MAX_ICHIGO =  400;
 const float SPEED_ICHIGO = 5;
 const float X_ICHIGO = 0;
 const float Y_ICHIGO = 580;
-const float DAMAGE_ICHIGO = 10;
+const float DAMAGE_ICHIGO = 1;
 const float SOIN_ICHIGO = 2;
 const std::string TEXTUREPATH_ICHIGO =    "../Sprite/ichigo_run.png";
 const std::string TEXTUREPATH_ICHIGO_ATTACK1 =  "../Sprite/ichigo_attack1.png";
@@ -90,7 +90,7 @@ const std::string DEATH_TEXTURE_PATH_SHINSUI = "../Sprite/kyoraku_dead.PNG";
 
 // ========== Constantes Background ==========
 
-const std::string BACKGROUND = "../Sprite/Background1.23.png";
+const std::string BACKGROUND = "../Sprite/Background.png";
 
 // ========== Constantes Fruit  ==========
 
@@ -122,6 +122,7 @@ const float XPMULTIPLIER = 0.015f;
 
 //======= Constantes musique=========
 const std::string MUSIC = "../Music/julia-133094.wav";
-
+const std::string WINMUSIC = "../Music/win.wav";
+const std::string LOSEMUSIC = "../Music/lose.wav";
 
 

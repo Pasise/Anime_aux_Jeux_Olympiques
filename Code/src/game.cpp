@@ -71,10 +71,19 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
 }
 
 void Game::playBackgroundMusic() {
+    _backgroundMusic.setVolume(20);
     _backgroundMusic.play();
     _backgroundMusic.setLoop(true);
 }
 
+void Game::stopBackgroundMusic() {
+   //arrete la musique en fondu
+    for (int i = 20; i >= 0; i-=5) {
+        _backgroundMusic.setVolume(i);
+        sf::sleep(sf::milliseconds(80));
+    }
+    _backgroundMusic.stop();
+}
 void Game::intro(sf::RenderWindow& window) {
     
 
@@ -282,6 +291,7 @@ void Game::run(sf::RenderWindow& window, size_t i) {
 }
 
 void Game::win(sf::RenderWindow& window) {
+    stopBackgroundMusic();
     sf::Texture winTexture;
     if (winTexture.loadFromFile("../Sprite/win.png")) {
         sf::Sprite winSprite(winTexture);
@@ -291,10 +301,10 @@ void Game::win(sf::RenderWindow& window) {
         std::cerr << "Failed to load win image." << std::endl;
         return;
     }
-
     // Charger la musique
     sf::Music winMusic;
-    if (winMusic.openFromFile(MUSIC)) {
+    if (winMusic.openFromFile(WINMUSIC)) {
+        winMusic.setVolume(65);
         winMusic.play();
     } else {
         std::cerr << "Failed to load win music." << std::endl;
@@ -302,13 +312,14 @@ void Game::win(sf::RenderWindow& window) {
     }
 
     // Attendre 7 secondes
-    sf::sleep(sf::seconds(7));
+    sf::sleep(sf::seconds(6));
 
     // Retourner de la fonction
 }
 
 void Game::lose(sf::RenderWindow& window) {
     sf::Texture loseTexture;
+        stopBackgroundMusic();
     if (loseTexture.loadFromFile("../Sprite/lose.png")) {
         sf::Sprite loseSprite(loseTexture);
         window.draw(loseSprite);
@@ -320,7 +331,8 @@ void Game::lose(sf::RenderWindow& window) {
 
     // Charger la musique
     sf::Music loseMusic;
-    if (loseMusic.openFromFile(MUSIC)) {
+    if (loseMusic.openFromFile(LOSEMUSIC)) {
+        loseMusic.setVolume(65);
         loseMusic.play();
     } else {
         std::cerr << "Failed to load lose music." << std::endl;
