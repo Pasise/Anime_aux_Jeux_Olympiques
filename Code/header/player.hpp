@@ -130,6 +130,7 @@ class Player: public Object{
     void setLastAttackTime() {
         _lastAttackTime = Clock::now();
     }
+
     
     void doFix();
 
