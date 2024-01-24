@@ -36,7 +36,7 @@ void PlayerMedium::doJump()
 
 void PlayerMedium::doPick(Fruit& targetFruit)
 { // Check if the target fruit is close enough and has the desired name
-    float distanceThreshold = 1000.0f;  // Adjust the distance threshold as needed
+    float distanceThreshold = 100.0f;  // Adjust the distance threshold as needed
     if (isCloseToFruit(targetFruit, distanceThreshold) && (targetFruit.getName() == "Masque du Hollow" || targetFruit.getName() == "Fruit Normal"))
     {
         // Check if the fruit is alive before picking

@@ -19,9 +19,10 @@ protected:
     sf::Texture _texture;
     std::string _texturePath;
     static std::unordered_set<float> usedXCoordinates;  // Static set to store used x-coordinates
+    static std::unordered_set<float> usedYCoordinates;  // Static set to store used y-coordinates
 
 public:
-    Fruit(std::string name, float y, float energy, std::string texturePath);
+    Fruit(std::string name, float energy, std::string texturePath);
     ~Fruit() {};
     std::string getName() const { return _name; }
     float getX() const { return _x; }
@@ -29,7 +30,7 @@ public:
     float getEnergy() const { return _energy; }
     bool isAlive() const { return _isAlive; }
     void setX(float x);
-    void setY(float y) { _y = y; }
+    void setY(float y);
     void setIsAlive(bool isAlive) { _isAlive = isAlive; }
     void reduceEnergy(float damage);
     void loadTexture();
@@ -38,4 +39,5 @@ public:
     sf::Sprite getSprite() const { return _sprite; }
     sf::Texture getTexture() const { return _texture; }
     int getRandomNumberForX() const;
+    int getRandomNumberForY() const;
 };

@@ -41,21 +41,21 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
     std::cout << "Player 5 name : " << _players[4]->getFirstname() << std::endl;
 
     // Crée le fruit du démon de Luffy
-    std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUIT,Y_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
+    std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
     _fruits.push_back(fruit1);  // Ajoutez le fruit à la liste
     std::cout << "Fruit 1 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
 
     // Crée un fruit normal que tout le monde peut manger
-    std::shared_ptr<Fruit> fruit2 = std::make_shared<Fruit>(NAME_FRUITNORMAL,Y_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUITNORMAL);
+    std::shared_ptr<Fruit> fruit2 = std::make_shared<Fruit>(NAME_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUITNORMAL);
     _fruits.push_back(fruit2);  // Ajoutez le fruit à la liste
     std::cout << "Fruit 2 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
 
     //Cree le masque hollow de Ichigo
-    std::shared_ptr<Fruit> fruit3 = std::make_shared<Fruit>(NAME_FRUITNORMAL,Y_HOLLOW,ENERGY_HOLLOW,TEXTUREPATH_HOLLOW);
+    std::shared_ptr<Fruit> fruit3 = std::make_shared<Fruit>(NAME_HOLLOW,ENERGY_HOLLOW,TEXTUREPATH_HOLLOW);
     _fruits.push_back(fruit3);  // Ajoutez le fruit à la liste
     std::cout << "Fruit 3 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
@@ -346,26 +346,34 @@ void Game::updateStatePlayerUser(const UserInput& input) {
         _players[0]->moveLeft();
     else if (input.getButton() == Button::right){
         _players[0]->moveRight();
-        std::cout << "Player " << _players[0]->getFirstname() << " is moving right" << std::endl;}
+       std::cout << "Player " << _players[0]->getFirstname() << " is moving right" << std::endl;}
     else if (input.getButton() == Button::attack1) {
-        if (_players[0]->isTimetoAttack() && (_players[0]->isSameline(*_players[1]) && _players[0]->isBehind(*_players[1]))) {
-            _players[0]->doAttack1(*_players[1]);
-            _players[0]->setLastAttackTime();
-        } else {
-            std::cout << "You can't attack1 now" << std::endl;
+        for (size_t i = 0; i < _players.size(); ++i) {
+        if (i != 0 && _players[i] && _players[i]->isAlive()) {
+            if (_players[0]->isTimetoAttack() && (_players[0]->isCloseTo(*_players[i],DISTANCETREEHOLD) && _players[0]->isBehind(*_players[i]))) {
+                _players[0]->doAttack1(*_players[i]);
+                _players[0]->setLastAttackTime();
+            } else {
+                std::cout << "You can't attack1 now" << std::endl;
         }
+    }
+}
+
     } else if (input.getButton() == Button::attack2) {
         std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[0]);
 
+       
         if (captainPlayer) {
-            if (captainPlayer->isTimetoAttack() && (captainPlayer->isSameline(*_players[1]) && captainPlayer->isBehind(*_players[1]))) {
-                captainPlayer->doAttack2(*_players[1]);
-                captainPlayer->setLastAttackTime();
-            } else {
-                std::cout << "You can't attack2 now" << std::endl;
+            for (size_t i = 0; i < _players.size(); ++i) {
+                if (i != 0 && captainPlayer->isTimetoAttack() && (captainPlayer->isCloseTo(*_players[i],DISTANCETREEHOLD) && captainPlayer->isBehind(*_players[i]))) {
+                    captainPlayer->doAttack2(*_players[i]);
+                    captainPlayer->setLastAttackTime();
+                } else {
+                    std::cout << "You can't attack2 now" << std::endl;
+                }
             }
         } else {
-            std::cerr << "Error: _players[0] is not of type PlayerPlus" << std::endl;
+         std::cerr << "Error: _players[0] is not of type PlayerPlus" << std::endl;
         }
     } else if (input.getButton() == Button::pick) {
         for (const auto& fruit : _fruits) {
@@ -377,7 +385,7 @@ void Game::updateStatePlayerUser(const UserInput& input) {
         soinPlayer->doHeal();
         std::cout << "Player " << _players[0]->getFirstname() << " is healing" << std::endl;
         } else {
-            std::cerr << "Error: _players[0] is not of type PlayerSoin" << std::endl;
+         std::cerr << "Error: _players[0] is not of type PlayerSoin" << std::endl;
         }
     } else if (input.getButton() == Button::fix) {
         std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[0]);
@@ -387,17 +395,17 @@ void Game::updateStatePlayerUser(const UserInput& input) {
         if (captainPlayer) {
             captainPlayer->doFix2();
         } else {
-            std::cerr << "Error: _players[0] is not of type PlayerPlus" << std::endl;
+        std::cerr << "Error: _players[0] is not of type PlayerPlus" << std::endl;
         }
         if (soinPlayer) {
             soinPlayer->doFix3();
         } else {
-            std::cerr << "Error: _players[0] is not of type PlayerSoin" << std::endl;
+          std::cerr << "Error: _players[0] is not of type PlayerSoin" << std::endl;
         }
         if (mediumPlayer) {
             mediumPlayer->doFix();
         } else {
-            std::cerr << "Error: _players[0] is not of type PlayerMedium" << std::endl;
+         std::cerr << "Error: _players[0] is not of type PlayerMedium" << std::endl;
         }
         _players[0]->doFix();
     }
@@ -414,7 +422,7 @@ void Game::updateStateBots() {
             _players[i]->setSpeed(XPMULTIPLIER);
 
             for (size_t j = 0; j < _players.size(); ++j) {
-                if (i != j && _players[j]->isCloseTo(*_players[i], DISTANCETREEHOLD) && _players[i]->canAttack() && _players[i]->isSameline(*_players[j]) && _players[i]->isBehind(*_players[j])) {
+                if (i != j && _players[i]->isCloseTo(*_players[j], DISTANCETREEHOLD) && _players[i]->canAttack() && _players[i]->isCloseTo(*_players[j],DISTANCETREEHOLD) && _players[i]->isBehind(*_players[j])) {
                     _players[i]->randomAttack(*_players[j]);
                     std::cout << "Player " << _players[i]->getFirstname() << " is close to Player " << _players[j]->getFirstname() << std::endl;
 
