@@ -41,21 +41,21 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
     std::cout << "Player 5 name : " << _players[4]->getFirstname() << std::endl;
 
     // Crée le fruit du démon de Luffy
-    std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUITNORMAL,Y_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
+    std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUIT,Y_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
     _fruits.push_back(fruit1);  // Ajoutez le fruit à la liste
     std::cout << "Fruit 1 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
 
     // Crée un fruit normal que tout le monde peut manger
-    std::shared_ptr<Fruit> fruit2 = std::make_shared<Fruit>(NAME_FRUITNORMAL,Y_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUIT);
+    std::shared_ptr<Fruit> fruit2 = std::make_shared<Fruit>(NAME_FRUITNORMAL,Y_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUITNORMAL);
     _fruits.push_back(fruit2);  // Ajoutez le fruit à la liste
     std::cout << "Fruit 2 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
 
     //Cree le masque hollow de Ichigo
-    std::shared_ptr<Fruit> fruit3 = std::make_shared<Fruit>(NAME_FRUITNORMAL,Y_HOLLOW,ENERGY_HOLLOW,TEXTUREPATH_FRUIT);
+    std::shared_ptr<Fruit> fruit3 = std::make_shared<Fruit>(NAME_FRUITNORMAL,Y_HOLLOW,ENERGY_HOLLOW,TEXTUREPATH_HOLLOW);
     _fruits.push_back(fruit3);  // Ajoutez le fruit à la liste
     std::cout << "Fruit 3 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
@@ -349,7 +349,7 @@ void Game::updateStatePlayerUser(const UserInput& input) {
         std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[0]);
 
         if (captainPlayer) {
-            if (captainPlayer->isTimetoAttack()) {
+            if (captainPlayer->isTimetoAttack() && (captainPlayer->isSameline(*_players[1]) && captainPlayer->isBehind(*_players[1]))) {
                 captainPlayer->doAttack2(*_players[1]);
                 captainPlayer->setLastAttackTime();
             } else {

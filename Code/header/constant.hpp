@@ -95,7 +95,7 @@ const std::string BACKGROUND = "../Sprite/Background1.2merged.png";
 // ========== Constantes Fruit  ==========
 
 // ========== Constantes Fruit du démon ==========
-const std::string TEXTUREPATH_FRUIT = "../Sprite/pasteque.png";
+const std::string TEXTUREPATH_FRUIT = "../Sprite/Fruit_du_demon.png";
 const float Y_FRUIT = 690;
 const float ENERGY_FRUIT = 10;
 const std::string NAME_FRUIT = "Gomu Gomu fruit";
@@ -107,7 +107,7 @@ const float ENERGY_FRUITNORMAL = 10;
 const std::string NAME_FRUITNORMAL = "Fruit Normal";
 
 // ========== Constantes Masque du Hollow ==========
-const std::string TEXTUREPATH_HOLLOW = "../Sprite/pasteque.png";
+const std::string TEXTUREPATH_HOLLOW = "../Sprite/Fruit_du_demon.png";
 const float Y_HOLLOW = 690;
 const float ENERGY_HOLLOW = 10;
 const std::string NAME_HOLLOW = "Masque du Hollow";
@@ -123,6 +123,5 @@ const float XPMULTIPLIER = 0.015f;
 //======= Constantes musique=========
 const std::string MUSIC = "../Music/julia-133094.wav";
 
-//======= Constante barre de vie =========
-const std::string TEXTUREPATH_LIFE = "../Sprite/life.png";
+
 
