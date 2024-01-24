@@ -339,7 +339,7 @@ void Game::updateStatePlayerUser(const UserInput& input) {
         _players[0]->moveRight();
         std::cout << "Player " << _players[0]->getFirstname() << " is moving right" << std::endl;}
     else if (input.getButton() == Button::attack1) {
-        if (_players[0]->isTimetoAttack()) {
+        if (_players[0]->isTimetoAttack() && (_players[0]->isSameline(*_players[1]) && _players[0]->isBehind(*_players[1]))) {
             _players[0]->doAttack1(*_players[1]);
             _players[0]->setLastAttackTime();
         } else {
@@ -405,7 +405,7 @@ void Game::updateStateBots() {
             _players[i]->setSpeed(XPMULTIPLIER);
 
             for (size_t j = 0; j < _players.size(); ++j) {
-                if (i != j && _players[j]->isCloseTo(*_players[i], DISTANCETREEHOLD) && _players[i]->canAttack()) {
+                if (i != j && _players[j]->isCloseTo(*_players[i], DISTANCETREEHOLD) && _players[i]->canAttack() && _players[i]->isSameline(*_players[j]) && _players[i]->isBehind(*_players[j])) {
                     _players[i]->randomAttack(*_players[j]);
                     std::cout << "Player " << _players[i]->getFirstname() << " is close to Player " << _players[j]->getFirstname() << std::endl;
 

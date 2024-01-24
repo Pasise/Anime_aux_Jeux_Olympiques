@@ -88,6 +88,13 @@ bool Player::isTimetoAttack() const {
     return elapsedTime.count() >= 5; // Adjust the cooldown period (5 seconds in this case)
 }
 
+bool Player::isSameline(const Player &otherPlayer) const {
+    return (getY() == otherPlayer.getY());
+}
+
+bool Player::isBehind(const Player &otherPlayer) const {
+    return (getX() < otherPlayer.getX());
+}
 
 
 
