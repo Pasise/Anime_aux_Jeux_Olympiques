@@ -37,7 +37,7 @@ int Player::getRandomNumberForCanAttack() const {
 
         // Utiliser le temps comme graine pour la génération de nombres aléatoires
         std::srand(static_cast<unsigned int>(timeInSeconds));
-         int randomValue = (std::rand() % 3);
+         int randomValue = (std::rand() % 10);
 
         // Générer un nombre aléatoire entre 1 et 2
         return randomValue;
