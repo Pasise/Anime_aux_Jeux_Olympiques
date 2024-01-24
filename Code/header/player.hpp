@@ -91,7 +91,7 @@ class Player: public Object{
     bool isCloseToFruit(const Fruit &targetFruit, float distanceThreshold) const;
     bool isTimetoAttack() const;
     int getRandomNumberForCanAttack() const;
-    bool canAttack() const;
+    
     bool isSameline(const Player &otherPlayer) const;
     bool isBehind(const Player &otherPlayer) const;
     bool isAttacking1() const {
@@ -137,6 +137,7 @@ class Player: public Object{
     void virtual doJump()=0;
     void virtual doPick(Fruit& targetFruit)=0;
     void virtual randomAttack(Player& targetPlayer)=0;
+    bool virtual canAttack() const = 0;
     
     
 

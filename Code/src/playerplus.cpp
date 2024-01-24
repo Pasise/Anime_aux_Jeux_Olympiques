@@ -110,3 +110,13 @@ void PlayerPlus::randomAttack(Player& targetPlayer)
     }
     
 }
+
+
+bool PlayerPlus::canAttack() const {
+
+    // Générez une valeur aléatoire pour déterminer si le joueur peut attaquer
+    int randomValue = getRandomNumberForCanAttack();
+
+    // Le joueur peut attaquer si la valeur aléatoire est 1 donc 50% de chance
+    return randomValue == 2;
+}
