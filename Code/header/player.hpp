@@ -24,6 +24,7 @@ class Player: public Object{
     using TimePoint = std::chrono::time_point<Clock>;
 
     TimePoint _lastAttackTime; // Record the time of the last attack
+    TimePoint _lastPickTime;
 
     bool _isJumping;
     bool _isPicking;
@@ -133,6 +134,11 @@ class Player: public Object{
         _lastAttackTime = Clock::now();
     }
 
+    void setLastPickTime() {
+        _lastPickTime = Clock::now();
+    }
+
+
     
     void doFix();
 
@@ -141,6 +147,7 @@ class Player: public Object{
     void virtual doPick(Fruit& targetFruit)=0;
     void virtual randomAttack(Player& targetPlayer)=0;
     bool virtual canAttack() const = 0;
+    bool isTimetoPick() const;
     
     
 

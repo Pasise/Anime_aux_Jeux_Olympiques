@@ -16,6 +16,7 @@ PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,flo
     _isJumping = false;
     _isPicking = false;
     _isAttacking2 = false;
+    _isAlive = true;
     std::cout << "PlayerPlus created" << std::endl;
 }
 

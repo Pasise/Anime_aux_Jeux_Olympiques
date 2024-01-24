@@ -297,7 +297,7 @@ void Game::run(sf::RenderWindow& window, size_t i) {
                 exitRun = true;  // Sortir de la boucle run si un joueur a sa coordonnée x > 1850
                 winner = i;
                 break;
-            } else if (_players[0]->getXp() <= 0) {
+            } else if (!_players[0]->isAlive()) {
                 exitRun = true;  // Sortir de la boucle run si un joueur a sa vie <= 0
                 winner = -1;
                 break;
@@ -349,7 +349,7 @@ void Game::win(sf::RenderWindow& window) {
     }
 
     // Attendre 7 secondes
-    sf::sleep(sf::seconds(6));
+    sf::sleep(sf::seconds(4));
 
     // Retourner de la fonction
 }
@@ -377,7 +377,7 @@ void Game::lose(sf::RenderWindow& window) {
     }
 
     // Attendre 7 secondes
-    sf::sleep(sf::seconds(7));
+    sf::sleep(sf::seconds(4));
 
     // Retourner de la fonction
 }
@@ -433,13 +433,17 @@ void Game::updateStatePlayerUser(const UserInput& input) {
     } else if (input.getButton() == Button::pick) {
         for (const auto& fruit : _fruits) {
             _players[0]->doPick(*fruit);
-            if (_players[0]->isPicking()) playPickSound();
+            if (_players[0]->isPicking()) {
+                playPickSound();
+                //_players[0]->setLastPickTime();
+        }
         }
     } else if (input.getButton() == Button::heal) {
         std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[0]);
-        if (soinPlayer){
+        if (soinPlayer && soinPlayer->isTimetoHeal()){
         playHealSound();
         soinPlayer->doHeal();
+        soinPlayer->setLastHealTime();
         std::cout << "Player " << _players[0]->getFirstname() << " is healing" << std::endl;
         } else {
          std::cerr << "Error: _players[0] is not of type PlayerSoin" << std::endl;
@@ -473,6 +477,7 @@ void Game::updateStateBots() {
         if (_players[i] && _players[i]->isAlive()) {
             
             std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
+            std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[i]);           
             _players[i]->doFix();
             if (captainPlayer) captainPlayer->doFix2();
 
@@ -487,12 +492,15 @@ void Game::updateStateBots() {
                     _players[i]->setSpeed(0);
                     break;  // Sortir de la boucle interne après avoir attaqué
                 }
+                if (soinPlayer && soinPlayer->getXp()<=80 && soinPlayer->isTimetoHeal()) soinPlayer->doHeal();
             }
 
             // Si le joueur n'attaque pas, il peut continuer à se déplacer
             if (!_players[i]->isAttacking1() && (!captainPlayer || !captainPlayer->isAttacking2())) {
                 _players[i]->moveRight();
             }
+        } else {
+            std::cout << "Player " << _players[i]->getFirstname() << "is dead" << std::endl;
         }
     }
 }

@@ -75,8 +75,8 @@ const std::string DEATH_TEXTURE_PATH_ICHIGO = "../Sprite/ichigo_dead.PNG";
 //======Constantes Shinsui KYORAKU=======
 const std::string LASTNAME_SHINSUI = "Kyoraku";
 const  std::string FIRSTNAME_SHINSUI = "Shinsui";
-const float XP_SHINSUI =  100;
-const float XP_MAX_SHINSUI =  100;
+const float XP_SHINSUI =  1000;
+const float XP_MAX_SHINSUI =  10000;
 const float SPEED_SHINSUI = 5;
 const float X_SHINSUI = 0;
 const float Y_SHINSUI = 580;

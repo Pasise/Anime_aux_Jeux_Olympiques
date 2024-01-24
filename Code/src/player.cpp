@@ -90,6 +90,15 @@ bool Player::isTimetoAttack() const {
     return elapsedTime.count() >= 5; // Adjust the cooldown period (5 seconds in this case)
 }
 
+bool Player::isTimetoPick() const {
+    auto currentTime = Clock::now();
+    auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - _lastPickTime);
+
+        // Check if enough time has passed since the last attack
+    return elapsedTime.count() >= 5; // Adjust the cooldown period (5 seconds in this case)
+}
+
+
 bool Player::isSameline(const Player &otherPlayer) const {
     return (getY() == otherPlayer.getY());
 }

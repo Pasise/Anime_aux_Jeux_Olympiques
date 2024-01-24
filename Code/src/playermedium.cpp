@@ -16,6 +16,7 @@ PlayerMedium::PlayerMedium(std::string lastname, std::string firstname, float Xp
     _isAttacking1 = false;
     _isJumping = false;
     _isPicking = false;
+    _isAlive = true;
     std::cout << "PlayerMedium created" << std::endl;
 
 }
