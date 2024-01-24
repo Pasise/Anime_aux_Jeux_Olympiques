@@ -107,7 +107,7 @@ const float ENERGY_FRUITNORMAL = 10;
 const std::string NAME_FRUITNORMAL = "Fruit Normal";
 
 // ========== Constantes Masque du Hollow ==========
-const std::string TEXTUREPATH_HOLLOW = "../Sprite/Fruit_du_demon.png";
+const std::string TEXTUREPATH_HOLLOW = "../Sprite/Hollow_mask5.png";
 const float Y_HOLLOW = 690;
 const float ENERGY_HOLLOW = 10;
 const std::string NAME_HOLLOW = "Masque du Hollow";
