@@ -59,17 +59,17 @@ const std::string DEATH_TEXTURE_PATH_BYAKUYA = "../Sprite/byakuya_dead.PNG";
 //======Constantes Ichigo KUROSAKI=======
 const std::string LASTNAME_ICHIGO = "Kurosaki";
 const  std::string FIRSTNAME_ICHIGO = "Ichigo";
-const float XP_ICHIGO =  100;
-const float XP_MAX_ICHIGO =  100;
+const float XP_ICHIGO =  300;
+const float XP_MAX_ICHIGO =  300;
 const float SPEED_ICHIGO = 5;
 const float X_ICHIGO = 0;
 const float Y_ICHIGO = 580;
-const float DAMAGE_ICHIGO = 1000;
+const float DAMAGE_ICHIGO = 10;
 const float SOIN_ICHIGO = 2;
 const std::string TEXTUREPATH_ICHIGO =    "../Sprite/ichigo_run.png";
 const std::string TEXTUREPATH_ICHIGO_ATTACK1 =  "../Sprite/ichigo_attack1.png";
 const std::string TEXTUREPATH_ICHIGO_ATTACK2 = "../Sprite/ichigo_attack2.png";
-std::map<std::string, int> ICHIGOASSOCIATION = {{TEXTUREPATH_ICHIGO , 6},{TEXTUREPATH_ICHIGO_ATTACK1, 3}, {TEXTUREPATH_ICHIGO_ATTACK2, 8}};
+std::map<std::string, int> ICHIGOASSOCIATION = {{TEXTUREPATH_ICHIGO , 6},{TEXTUREPATH_ICHIGO_ATTACK1, 3}, {TEXTUREPATH_ICHIGO_ATTACK2, 6}};
 const std::string DEATH_TEXTURE_PATH_ICHIGO = "../Sprite/ichigo_dead.PNG";
 
 //======Constantes Shinsui KYORAKU=======
@@ -85,7 +85,7 @@ const float SOIN_SHINSUI = 200;
 const std::string TEXTUREPATH_SHINSUI =    "../Sprite/kyoraku_run.png"; 
 const std::string TEXTUREPATH_SHINSUI_ATTACK1 =  "../Sprite/kyoraku_attack1.png";
 const std::string TEXTUREPATH_SHINSUI_HEAL = "../Sprite/kyoraku_heal.png";
-std::map<std::string, int> SHINSUIASSOCIATION = {{TEXTUREPATH_SHINSUI , 4},{TEXTUREPATH_SHINSUI_ATTACK1, 6}, {TEXTUREPATH_SHINSUI_HEAL, 10}};
+std::map<std::string, int> SHINSUIASSOCIATION = {{TEXTUREPATH_SHINSUI , 4},{TEXTUREPATH_SHINSUI_ATTACK1, 6}, {TEXTUREPATH_SHINSUI_HEAL, 4}};
 const std::string DEATH_TEXTURE_PATH_SHINSUI = "../Sprite/kyoraku_dead.PNG";
 
 // ========== Constantes Background ==========

@@ -238,6 +238,13 @@ void Game::run(sf::RenderWindow& window, size_t i) {
     applyPlayerChosen(i);
     bool exitRun = false;
     size_t winner;
+    std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[0]);
+    if (captainPlayer){
+        _players[i]->setY(-1000); //on joue sans Byakuya
+        _players[i+1]->setY(740);
+    } else {
+        _players[1]->setY(-1000); //on joue sans Ichigo
+    }
     while (window.isOpen() && !exitRun) {
         for (size_t i = 0; i < _players.size(); i++) {
             if (_players[i]->getX() > 1700) {
@@ -263,8 +270,10 @@ void Game::run(sf::RenderWindow& window, size_t i) {
 
         window.clear();
         _characterRenderer.setTexture(BACKGROUND);
+        if (captainPlayer)
+        _characterRenderer.render2(window);
+        else
         _characterRenderer.render(window);
-        _characterRenderer.renderFruits(window);
         _characterRenderer.renderHealthBars(window);
         window.display();
     }
@@ -396,7 +405,7 @@ void Game::updateStatePlayerUser(const UserInput& input) {
 
 void Game::updateStateBots() {
     for (size_t i = 1; i < _players.size(); ++i) {
-        if (_players[i]) {
+        if (_players[i] && _players[i]->isAlive()) {
             
             std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
             _players[i]->doFix();

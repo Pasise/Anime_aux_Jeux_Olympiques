@@ -46,6 +46,12 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
         if (player) {
             _frameCounts[player->getTexturePath(0)] = player->getNumberOfFrames(player->getTexturePath(0));
             _frameCounts[player->getTexturePath(1)] = player->getNumberOfFrames(player->getTexturePath(1));
+
+            std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(player);
+            std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(player);
+            if (captainPlayer || soinPlayer)
+            _frameCounts[player->getTexturePath(2)] = player->getNumberOfFrames(player->getTexturePath(2));
+
         }
                     }
             }
@@ -226,11 +232,18 @@ void CharacterRenderer::renderDeath(sf::RenderWindow& window, std::size_t index)
 void CharacterRenderer::render(sf::RenderWindow& window)
 {
     sf::Time elapsedTime = _clock.getElapsedTime();
+    std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[0]);
+    std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[0]);
 
     if (elapsedTime.asSeconds() > _frameChangeSpeed) {
         for (std::size_t i = 0; i < _currentFrames.size(); ++i) {
-            std::string texturePath = (*_players)[i]->getTexturePath(0);
-            _currentFrames[i] = (_currentFrames[i] + 1) % _frameCounts[texturePath];
+            std::string texturePath;
+            if (soinPlayer)
+            texturePath = (*_players)[i]->getTexturePath(2);
+            if (captainPlayer)
+            texturePath = (*_players)[i]->getTexturePath(0);
+            else texturePath = (*_players)[i]->getTexturePath(1);
+            _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]);
         }
 
         _clock.restart();
@@ -247,8 +260,49 @@ void CharacterRenderer::render(sf::RenderWindow& window)
         } else 
         renderDeath(window, i);
     }
+        renderFruits(window);
 }
 
+void CharacterRenderer::render2(sf::RenderWindow& window)
+{
+    sf::Time elapsedTime = _clock.getElapsedTime();
+    std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[0]);
+    std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[0]);
+
+    if (elapsedTime.asSeconds() > _frameChangeSpeed) {
+        for (std::size_t i = 0; i < _currentFrames.size(); ++i) {
+            std::string texturePath;
+            if (soinPlayer)
+            texturePath = (*_players)[i]->getTexturePath(2);
+            if (captainPlayer)
+            texturePath = (*_players)[i]->getTexturePath(0);
+            else texturePath = (*_players)[i]->getTexturePath(1);
+            std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[i]);
+            std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[i]);
+            if (!captainPlayer)
+            _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]-2);
+            else if (!soinPlayer)
+            _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]+1);
+            else 
+            _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]-1);
+        }
+
+        _clock.restart();
+    }
+
+    window.draw(_backgroundSprite);
+
+    for (std::size_t i = 0; i < _sprites.size(); ++i) {
+        if ((*_players)[i] && (*_players)[i]->isAlive()) {
+            renderPosition(window, i);
+            renderAttack1(window, i);
+            renderAttack2(window, i);
+            renderHeal(window, i);
+        } else 
+        renderDeath(window, i);
+    }
+        renderFruits(window);
+}
 
 void CharacterRenderer::loadBackgroundTexture()
 {

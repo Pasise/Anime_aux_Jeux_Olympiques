@@ -13,6 +13,7 @@ public:
     CharacterRenderer(const std::vector<std::shared_ptr<Player>>* players,const std::vector<std::shared_ptr<Fruit>>* fruits , const std::string& backgroundTexturePath);
     std::string getTexture();
     void render(sf::RenderWindow& window);
+    void render2(sf::RenderWindow& window);
     void setPlayers(const std::vector<std::shared_ptr<Player>>* players);
     void setTexture(const std::string& texturePath) { _backgroundTexturePath = texturePath; loadBackgroundTexture(); }
     void setCameraPosition(float x);
