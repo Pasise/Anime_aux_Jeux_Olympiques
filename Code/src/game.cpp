@@ -66,6 +66,17 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
     chooseScreen.push_back("../Sprite/Choose_Zoro.PNG");
     chooseScreen.push_back("../Sprite/Choose_Luffy.PNG");
 
+    // Charger la musique heal attack et pick
+
+    if (!_healMusic.openFromFile(HEALMUSIC)) {
+        std::cerr << "Failed to load heal music." << std::endl;
+    }
+    if (!_attackMusic.openFromFile(ATTACKMUSIC)) {
+        std::cerr << "Failed to load attack music." << std::endl;
+    }
+    if (!_pickMusic.openFromFile(PICKMUSIC)) {
+        std::cerr << "Failed to load pick music." << std::endl;
+    }
 
 
 }
@@ -84,6 +95,30 @@ void Game::stopBackgroundMusic() {
     }
     _backgroundMusic.stop();
 }
+
+void Game::playHealSound() {
+    _healMusic.setVolume(100);
+    _healMusic.stop();  // Arrête la musique (si elle est en cours de lecture)
+    _healMusic.setPlayingOffset(sf::Time::Zero);  // Réinitialise la position de lecture à zéro
+    _healMusic.play();  // Joue la musique depuis le début
+}
+
+
+void Game::playAttackSound() {
+    _attackMusic.setVolume(100);
+    _attackMusic.stop();
+    _attackMusic.setPlayingOffset(sf::Time::Zero);
+    _attackMusic.play();
+}
+
+
+void Game::playPickSound() {
+    _pickMusic.setVolume(100);
+    _pickMusic.stop();
+    _pickMusic.setPlayingOffset(sf::Time::Zero);
+    _pickMusic.play();
+}
+
 void Game::intro(sf::RenderWindow& window) {
     
 
@@ -250,9 +285,11 @@ void Game::run(sf::RenderWindow& window, size_t i) {
     std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[0]);
     if (captainPlayer){
         _players[i]->setY(-1000); //on joue sans Byakuya
+        _players[i]->setIsAlive(false);
         _players[i+1]->setY(740);
     } else {
         _players[1]->setY(-1000); //on joue sans Ichigo
+        _players[1]->setIsAlive(false);
     }
     while (window.isOpen() && !exitRun) {
         for (size_t i = 0; i < _players.size(); i++) {
@@ -359,11 +396,16 @@ void Game::updateStatePlayerUser(const UserInput& input) {
     else if (input.getButton() == Button::right){
         _players[0]->moveRight();
        std::cout << "Player " << _players[0]->getFirstname() << " is moving right" << std::endl;}
+    else if (input.getButton() == Button::up)
+        _players[0]->moveUp();
+    else if (input.getButton() == Button::down)
+        _players[0]->moveDown();
     else if (input.getButton() == Button::attack1) {
         for (size_t i = 0; i < _players.size(); ++i) {
         if (i != 0 && _players[i] && _players[i]->isAlive()) {
             if (_players[0]->isTimetoAttack() && (_players[0]->isCloseTo(*_players[i],DISTANCETREEHOLD) && _players[0]->isBehind(*_players[i]))) {
                 _players[0]->doAttack1(*_players[i]);
+                playAttackSound();
                 _players[0]->setLastAttackTime();
             } else {
                 std::cout << "You can't attack1 now" << std::endl;
@@ -379,6 +421,7 @@ void Game::updateStatePlayerUser(const UserInput& input) {
             for (size_t i = 0; i < _players.size(); ++i) {
                 if (i != 0 && captainPlayer->isTimetoAttack() && (captainPlayer->isCloseTo(*_players[i],DISTANCETREEHOLD) && captainPlayer->isBehind(*_players[i]))) {
                     captainPlayer->doAttack2(*_players[i]);
+                    playAttackSound();
                     captainPlayer->setLastAttackTime();
                 } else {
                     std::cout << "You can't attack2 now" << std::endl;
@@ -390,10 +433,12 @@ void Game::updateStatePlayerUser(const UserInput& input) {
     } else if (input.getButton() == Button::pick) {
         for (const auto& fruit : _fruits) {
             _players[0]->doPick(*fruit);
+            if (_players[0]->isPicking()) playPickSound();
         }
     } else if (input.getButton() == Button::heal) {
         std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[0]);
         if (soinPlayer){
+        playHealSound();
         soinPlayer->doHeal();
         std::cout << "Player " << _players[0]->getFirstname() << " is healing" << std::endl;
         } else {

@@ -16,6 +16,17 @@ void Player::moveRight()
         setDirection(1);
 }
 
+void Player::moveUp()
+{
+        if (getY() > 580)
+        setY(getY() - getSpeed());
+}
+
+void Player::moveDown()
+{
+        if (getY() < 740)
+        setY(getY() + getSpeed());
+}
 
 bool Player::isCloseTo(const Player &otherPlayer, float distanceThreshold) const {
     float distance = std::sqrt(std::pow(getX() - otherPlayer.getX(), 2) + std::pow(getY() - otherPlayer.getY(), 2));

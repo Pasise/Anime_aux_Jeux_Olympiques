@@ -52,6 +52,7 @@ void PlayerMedium::doPick(Fruit& targetFruit)
 
             // Set isAlive to false to mark the fruit as picked
             targetFruit.setIsAlive(false);
+            _isPicking = true;
         }
         else
         {
@@ -63,7 +64,7 @@ void PlayerMedium::doPick(Fruit& targetFruit)
         std::cout << getLastname() << " cannot pick up " << targetFruit.getName() << std::endl;
     }
 
-    _isPicking = true;  // You may want to reconsider setting _isPicking to true here
+      // You may want to reconsider setting _isPicking to true 
 }
 
 void PlayerMedium::randomAttack(Player& targetPlayer)

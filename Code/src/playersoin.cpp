@@ -1,4 +1,5 @@
 #include "../header/playersoin.hpp"
+#include "../header/game.hpp"
 
 PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, float damage, float heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath)
 {
@@ -58,6 +59,7 @@ void PlayerSoin::doPick(Fruit& targetFruit)
 
             // Set isAlive to false to mark the fruit as picked
             targetFruit.setIsAlive(false);
+            _isPicking = true;
         }
         else
         {
@@ -69,7 +71,6 @@ void PlayerSoin::doPick(Fruit& targetFruit)
         std::cout << getLastname() << " cannot pick up " << targetFruit.getName() << std::endl;
     }
 
-    _isPicking = true;  // You may want to reconsider setting _isPicking to true here
 }
 
 

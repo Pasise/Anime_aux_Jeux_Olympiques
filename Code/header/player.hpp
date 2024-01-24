@@ -34,6 +34,8 @@ class Player: public Object{
     public : 
     void moveLeft();
     void moveRight();
+    void moveUp();
+    void moveDown();
     float getX()const {return _x;}
     float getY()const {return _y;}
     float getSpeed(){return _speed;}

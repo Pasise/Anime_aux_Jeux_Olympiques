@@ -22,15 +22,23 @@ void UserInput::manageInput(sf::Event event, sf::RenderWindow &window)
         {
             _button = Button::right;
         }
+        else if (event.key.code == sf::Keyboard::S)
+        {
+            _button = Button::down;
+        }
+        else if (event.key.code == sf::Keyboard::Z)
+        {
+            _button = Button::up;
+        }
         else if (event.key.code == sf::Keyboard::A)
         {
             _button = Button::attack1;
         }
-        else if (event.key.code == sf::Keyboard::Z)
+        else if (event.key.code == sf::Keyboard::E)
         {
             _button = Button::attack2;
         }
-        else if (event.key.code == sf::Keyboard::E)
+        else if (event.key.code == sf::Keyboard::C)
         {
             _button = Button::heal;
         }

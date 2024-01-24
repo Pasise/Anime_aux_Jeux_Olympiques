@@ -19,6 +19,9 @@ class Game {
     CharacterRenderer _characterRenderer;
     std::vector<std::string> chooseScreen;
     sf::Music _backgroundMusic; 
+    sf::Music _healMusic;
+    sf::Music _attackMusic;
+    sf::Music _pickMusic;
 public:
     Game();
     std::string getchooseScreen(int i){
@@ -40,6 +43,9 @@ public:
     void lose(sf::RenderWindow& window);
     void playBackgroundMusic();
     void stopBackgroundMusic();
+    void playHealSound();
+    void playAttackSound();
+    void playPickSound();
 
 
 };

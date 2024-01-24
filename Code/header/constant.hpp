@@ -121,5 +121,6 @@ const float XPMULTIPLIER = 0.015f;
 const std::string MUSIC = "../Music/julia-133094.wav";
 const std::string WINMUSIC = "../Music/win.wav";
 const std::string LOSEMUSIC = "../Music/lose.wav";
-
-
+const std::string HEALMUSIC = "../Music/heal.wav";
+const std::string ATTACKMUSIC = "../Music/attack.wav";
+const std::string PICKMUSIC = "../Music/pick.wav";
