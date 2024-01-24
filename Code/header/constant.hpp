@@ -90,7 +90,7 @@ const std::string DEATH_TEXTURE_PATH_SHINSUI = "../Sprite/kyoraku_dead.PNG";
 
 // ========== Constantes Background ==========
 
-const std::string BACKGROUND = "../Sprite/Background1.2merged.png";
+const std::string BACKGROUND = "../Sprite/Background1.23.png";
 
 // ========== Constantes Fruit  ==========
 
