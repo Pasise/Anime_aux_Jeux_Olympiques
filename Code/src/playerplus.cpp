@@ -23,14 +23,14 @@ PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,flo
 void PlayerPlus::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-    targetPlayer.reduceHealth(targetPlayer);
+    reduceHealth(targetPlayer);
     _isAttacking1 = true;
 }
 
 void PlayerPlus::doAttack2(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack2 on " << targetPlayer.getLastname() << std::endl;
-    targetPlayer.reduceHealth(targetPlayer);
+    reduceHealth(targetPlayer);
     _isAttacking2 = true;
 }
 

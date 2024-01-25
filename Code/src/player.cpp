@@ -69,6 +69,7 @@ void Player::reduceHealth( Player& targetPlayer)
         std::cout << targetPlayer.getLastname() << " is dead" << std::endl;
 
     }
+    std::cout << "Damage infligé : " << getDamage() << "par " << _lastname << std::endl;
 
     std::cout << targetPlayer.getLastname() << " has now " << targetPlayer.getXp() << " health points" << std::endl;
 }

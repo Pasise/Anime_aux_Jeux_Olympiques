@@ -29,7 +29,7 @@ PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,flo
 void PlayerSoin::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-    targetPlayer.reduceHealth(targetPlayer);
+    reduceHealth(targetPlayer);
     _isAttacking1 = true;
 }
     

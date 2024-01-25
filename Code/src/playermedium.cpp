@@ -24,7 +24,7 @@ PlayerMedium::PlayerMedium(std::string lastname, std::string firstname, float Xp
 void PlayerMedium::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-    targetPlayer.reduceHealth(targetPlayer);
+    reduceHealth(targetPlayer);
     _isAttacking1 = true;
 }
 

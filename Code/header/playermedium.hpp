@@ -11,7 +11,6 @@ class PlayerMedium : public Player
         ~PlayerMedium() {};
         void doAttack1(Player& targetPlayer); //
         void doJump();
-        void doPick(Fruit& targetFruit);
         void randomAttack(Player& targetPlayer);
         bool canAttack() const;
 
