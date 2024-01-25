@@ -95,7 +95,7 @@ const std::string BACKGROUND = "../Sprite/Background.png";
 // ========== Constantes Fruit  ==========
 
 // ========== Constantes Fruit du démon ==========
-const std::string TEXTUREPATH_FRUIT = "../Sprite/Fruit_du_demon2.png";
+const std::string TEXTUREPATH_FRUIT = "../Sprite/Fruit_du_demon.png";
 const float ENERGY_FRUIT = 100;
 const std::string NAME_FRUIT = "Gomu Gomu fruit";
 

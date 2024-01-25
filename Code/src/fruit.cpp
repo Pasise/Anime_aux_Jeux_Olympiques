@@ -35,19 +35,35 @@ void Fruit::setY(float y) {
     _y = y;
 }
 
-std::default_random_engine generator;  // Initialisation du générateur de nombres aléatoires
 int Fruit::getRandomNumberForY() const {
-  std::uniform_int_distribution<int> distribution(0, 1); // Distribution pour obtenir 0 ou 1
-
+    srand(time(NULL));
     float newY;
-    if (distribution(generator) == 0) {
-        newY = 600.0f;
-    } else {
-        newY = 740.0f;
+    int rand1= rand() % 2;
+    int rand2= rand() % 2;
+    int rand3= rand() % 2;
+
+
+    if (_name == "Gomu Gomu fruit") {
+        if (rand1 == 1) {
+            newY = 627.0f;
+        } else {
+            newY = 627.0f;
+        }
+    } else if (_name == "Masque du Hollow") {
+        if (rand2 == 1) {
+            newY = 725.0f;
+        } else {
+            newY = 580.0f;
+        }
+    } else if (_name == "Fruit Normal") {
+        if (rand3 == 1) {
+            newY = 830.0f;
+        } else {
+            newY = 680.0f;
+        }
     }
 
     return newY;
-
-    return newY;
 }
+
 
