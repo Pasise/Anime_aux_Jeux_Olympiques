@@ -110,7 +110,7 @@ bool Player::isBehind(const Player &otherPlayer) const {
 void Player::doPick(Fruit& targetFruit)
 {
     // Check if the target fruit is close enough
-    float distanceThreshold = 100.0f;  // Adjust the distance threshold as needed
+    float distanceThreshold = 300.0f;  // Adjust the distance threshold as needed
 
     if (isCloseToFruit(targetFruit, distanceThreshold))
     {
