@@ -19,7 +19,6 @@ public:
     void doFix3();
     void doAttack1(Player& targetPlayer); //
     void doJump();
-    void doPick(Fruit& targetFruit);
     void randomAttack(Player& targetPlayer);
     bool canAttack() const;
     bool isTimetoHeal() const;

@@ -28,7 +28,6 @@ public:
 
     int getRandomNumberForRandomAttack() const;
     void doJump();
-    void doPick(Fruit& targetFruit);
     void doFix2();
     void randomAttack(Player& targetPlayer);
     bool canAttack() const;

@@ -107,5 +107,48 @@ bool Player::isBehind(const Player &otherPlayer) const {
     return (getX() < otherPlayer.getX());
 }
 
+void Player::doPick(Fruit& targetFruit)
+{
+    // Check if the target fruit is close enough
+    float distanceThreshold = 100.0f;  // Adjust the distance threshold as needed
+
+    if (isCloseToFruit(targetFruit, distanceThreshold))
+    {
+        // Check the name of the target fruit and the specific conditions for each player
+        if ((targetFruit.getName() == "Masque du Hollow" && getFirstname() == "Ichigo") ||
+            (targetFruit.getName() == "Gomu Gomu fruit" && getFirstname() == "Luffy") ||
+            targetFruit.getName() == "Fruit Normal")
+        {
+            // Check if the fruit is alive before picking
+            if (targetFruit.isAlive())
+            {
+                std::cout << getLastname() << " is picking up " << targetFruit.getName() << std::endl;
+                std::cout << "Xp avant : " << _Xp << std::endl;
+
+                // Increase the player's xp by the energy of the fruit
+                _Xp += targetFruit.getEnergy();
+
+                std::cout << "Xp apres : " << _Xp << std::endl;
+
+                // Set isAlive to false to mark the fruit as picked
+                targetFruit.setIsAlive(false);
+            }
+            else
+            {
+                std::cout << getLastname() << " cannot pick up " << targetFruit.getName() << " - Already picked" << std::endl;
+            }
+        }
+        else
+        {
+            std::cout << getLastname() << " cannot pick up " << targetFruit.getName() << " - Not the right player for this fruit" << std::endl;
+        }
+    }
+    else
+    {
+        std::cout << getLastname() << " cannot pick up " << targetFruit.getName() << " - Not close enough" << std::endl;
+    }
+
+    _isPicking = true;  // You may want to reconsider setting _isPicking to true here
+}
 
 

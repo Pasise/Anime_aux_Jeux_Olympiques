@@ -41,39 +41,6 @@ void PlayerPlus::doJump()
     _isJumping = true;
 }
 
-void PlayerPlus::doPick(Fruit& targetFruit)
-{
-    // Check if the target fruit is close enough and has the desired name
-    float distanceThreshold = 1000.0f;  // Adjust the distance threshold as needed
-    if (isCloseToFruit(targetFruit, distanceThreshold) && (targetFruit.getName() == "Gomu Gomu fruit" || targetFruit.getName() == "Fruit Normal"))
-    {
-        // Check if the fruit is alive before picking
-        if (targetFruit.isAlive())
-        {
-            std::cout << getLastname() << " is picking up " << targetFruit.getName() << std::endl;
-            std::cout << "Xp avant : " << _Xp << std::endl;
-            
-            // Augmenter les xp du joueur de l'énergie du fruit 
-            _Xp += targetFruit.getEnergy();
-            
-            std::cout << "Xp apres : " << _Xp << std::endl;
-
-            // Set isAlive to false to mark the fruit as picked
-            targetFruit.setIsAlive(false);
-            _isPicking = true;
-        }
-        else
-        {
-            std::cout << getLastname() << " cannot pick up " << targetFruit.getName() << " - Already picked" << std::endl;
-        }
-    }
-    else
-    {
-        std::cout << getLastname() << " cannot pick up " << targetFruit.getName() << std::endl;
-    }
-
-}
-
 
 int PlayerPlus::getRandomNumberForRandomAttack() const {
         // Obtenir le temps actuel en secondes depuis l'époque

@@ -142,9 +142,11 @@ class Player: public Object{
     
     void doFix();
 
+    void doPick(Fruit& targetFruit);
+
     void virtual doAttack1(Player& targetPlayer)=0;
     void virtual doJump()=0;
-    void virtual doPick(Fruit& targetFruit)=0;
+    
     void virtual randomAttack(Player& targetPlayer)=0;
     bool virtual canAttack() const = 0;
     bool isTimetoPick() const;
