@@ -127,6 +127,10 @@ void Player::doPick(Fruit& targetFruit)
 
                 // Increase the player's xp by the energy of the fruit
                 _Xp += targetFruit.getEnergy();
+                if (_Xp > _XpMax)
+                {
+                    _Xp = _XpMax;
+                }
 
                 std::cout << "Xp apres : " << _Xp << std::endl;
 

@@ -10,76 +10,63 @@ CharacterRenderer::CharacterRenderer()
     std::cout << "CharacterRenderer created" << std::endl;
 }
 
-CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>* players,const std::vector<std::shared_ptr<Fruit>>* fruits, const std::string& backgroundTexturePath)
+CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>* players, const std::vector<std::shared_ptr<Fruit>>* fruits, const std::string& backgroundTexturePath)
     : _players(players),
-      _fruits(fruits), // Initialiser _fruits ici
+      _fruits(fruits),
       _sprites(players->size()),
-      _fruitSprites(fruits->size()), // Initialiser _fruitSprites ici
+      _fruitSprites(fruits->size()),
       _currentFrames(players->size(), 0),
-      _attackSprites(players->size()), // Initialiser _attackSprites ici
+      _attackSprites(players->size()),
       _frameChangeSpeed(0.08),
       _backgroundTexturePath(backgroundTexturePath)
 {
     std::cout << "CharacterRenderer created" << std::endl;
     loadBackgroundTexture();
 
-    if (_players)
-    {
-        for (std::size_t i = 0; i < _players->size(); ++i)
-        {
+    if (_players) {
+        for (size_t i = 0; i < _players->size(); ++i) {
             const auto& player = (*_players)[i];
-            if (player)
-            {
-                sf::Sprite sprite;
-                sf::Texture playerTexture;
-                playerTexture.loadFromFile(player->getTexturePath(0));
-                sprite.setTexture(playerTexture);
-                _sprites[i] = sprite;
+            if (!player) continue;
 
-                sf::Sprite attackSprite;  // Ajout de la création d'une sprite d'attaque
-                sf::Texture attackTexture;
-                attackTexture.loadFromFile(player->getTexturePath(1));
-                attackSprite.setTexture(attackTexture);
-                _attackSprites[i] = attackSprite;
-                std::cout << "Player texture loaded" << std::endl;
-                    for (const auto& player : *_players) {
-        if (player) {
-            _frameCounts[player->getTexturePath(0)] = player->getNumberOfFrames(player->getTexturePath(0));
-            _frameCounts[player->getTexturePath(1)] = player->getNumberOfFrames(player->getTexturePath(1));
+            loadPlayerTexture(player, _sprites[i], 0);
+            loadPlayerTexture(player, _attackSprites[i], 1);
 
             std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(player);
             std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(player);
-            if (captainPlayer || soinPlayer)
-            _frameCounts[player->getTexturePath(2)] = player->getNumberOfFrames(player->getTexturePath(2));
-
-        }
-                    }
+            if (captainPlayer || soinPlayer) {
+                loadPlayerTexture(player, _sprites[i], 2);
             }
         }
     }
 
-    // Initialiser _fruitSprites ici
-    if (_fruits)
-    {
-        for (std::size_t i = 0; i < _fruits->size(); ++i)
-        {
+    if (_fruits) {
+        for (size_t i = 0; i < _fruits->size(); ++i) {
             const auto& fruit = (*_fruits)[i];
-            if (fruit)
-            {
-                sf::Sprite sprite;
-                sf::Texture fruitTexture;
-                fruitTexture.loadFromFile(fruit->getTexturePath());
-                sprite.setTexture(fruitTexture);
-                _fruitSprites[i] = sprite;
-                std::cout << "Fruit texture loaded" << std::endl;
-            }
+            if (!fruit) continue;
+
+            loadFruitTexture(fruit, _fruitSprites[i]);
         }
-    }
-    else
-    {
+    } else {
         std::cout << "Invalid pointer to players or fruits" << std::endl;
     }
 }
+
+void CharacterRenderer::loadPlayerTexture(const std::shared_ptr<Player>& player, sf::Sprite& sprite, int textureIndex) {
+    sf::Texture playerTexture;
+    playerTexture.loadFromFile(player->getTexturePath(textureIndex));
+    sprite.setTexture(playerTexture);
+    std::cout << "Player texture loaded" << std::endl;
+
+    _frameCounts[player->getTexturePath(textureIndex)] = player->getNumberOfFrames(player->getTexturePath(textureIndex));
+}
+
+void CharacterRenderer::loadFruitTexture(const std::shared_ptr<Fruit>& fruit, sf::Sprite& sprite) {
+    sf::Texture fruitTexture;
+    fruitTexture.loadFromFile(fruit->getTexturePath());
+    sprite.setTexture(fruitTexture);
+    std::cout << "Fruit texture loaded" << std::endl;
+}
+
 
 
 void CharacterRenderer::renderPosition(sf::RenderWindow& window, std::size_t index)
@@ -111,7 +98,6 @@ void CharacterRenderer::renderPosition(sf::RenderWindow& window, std::size_t ind
             }
         }
 
-    // ... rest of the code for scaling and additional conditions
 }
 
 void CharacterRenderer::renderAttack1(sf::RenderWindow& window, std::size_t index)
@@ -310,17 +296,13 @@ void CharacterRenderer::loadBackgroundTexture()
 
 void CharacterRenderer::setCameraPosition(float x)
 {
-    // Définissez la position de la caméra par rapport au personnage
     _backgroundSprite.setPosition(x, 0);
 }
 
 void CharacterRenderer::setFruits(const std::vector<std::shared_ptr<Fruit>>* fruits) {
     _fruits = fruits;
 
-    // Assurez-vous que _fruitSprites a la même taille que _fruits
     _fruitSprites.resize(_fruits->size());
-
-    // Initialisez chaque sprite avec la texture appropriée
     for (std::size_t i = 0; i < _fruits->size(); ++i) {
         _fruitSprites[i].setTexture((*_fruits)[i]->getTexture());
     }
@@ -336,7 +318,7 @@ void CharacterRenderer::renderFruits(sf::RenderWindow& window) {
         if (texture.loadFromFile(fruitTexturePath)) {
             sf::Vector2u frameSize = texture.getSize();
             frameSize.x /= 1;
-            frameSize.y /= 1; //je veux que le sprite soit affiché en continue
+            frameSize.y /= 1; 
 
             _fruitSprites[i].setTexture(texture);
             _fruitSprites[i].setTextureRect(sf::IntRect(0, 0, frameSize.x, frameSize.y));
@@ -361,7 +343,7 @@ void CharacterRenderer::renderHealthBars(sf::RenderWindow& window) {
     // Utilise seulement le joueur 0
     const auto& player = (*_players)[0];
 
-    // Vérifiez si les points d'expérience sont égaux à zéro
+    // Vérifier si les points d'expérience sont égaux à zéro
     if (player->getXp() == 0) {
         return;
     }

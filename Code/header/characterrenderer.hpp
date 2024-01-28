@@ -47,6 +47,8 @@ private:
     sf::Texture _healthBarTexture;
 
     void loadBackgroundTexture();
+    void loadPlayerTexture(const std::shared_ptr<Player>& player, sf::Sprite& sprite, int textureIndex);
+    void loadFruitTexture(const std::shared_ptr<Fruit>& fruit, sf::Sprite& sprite);
     void renderPosition(sf::RenderWindow& window, std::size_t index);
     void renderAttack1(sf::RenderWindow& window, std::size_t index);
     void renderAttack2(sf::RenderWindow& window, std::size_t index);
