@@ -124,4 +124,4 @@ const std::string LOSEMUSIC = "../Music/lose.wav";
 const std::string HEALMUSIC = "../Music/heal.wav";
 const std::string ATTACKMUSIC = "../Music/attack.wav";
 const std::string PICKMUSIC = "../Music/pick.wav";
-const std::string ATTACKEDMUSIC = "../Music/attacked1.wav";
+const std::string ATTACKEDMUSIC = "../Music/attacked.wav";

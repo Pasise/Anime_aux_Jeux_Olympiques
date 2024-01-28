@@ -82,9 +82,6 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
 }
 
 
-
-// ... (votre code existant)
-
 void CharacterRenderer::renderPosition(sf::RenderWindow& window, std::size_t index)
 {
     std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[index]);
@@ -141,7 +138,6 @@ void CharacterRenderer::renderAttack1(sf::RenderWindow& window, std::size_t inde
             }
         }
 
-    // ... rest of the code for scaling and additional conditions
 }
 
 void CharacterRenderer::renderAttack2(sf::RenderWindow& window, std::size_t index)
@@ -170,7 +166,6 @@ void CharacterRenderer::renderAttack2(sf::RenderWindow& window, std::size_t inde
         }
     }
 
-    // ... rest of the code for scaling and additional conditions
 }
 
 void CharacterRenderer::renderHeal(sf::RenderWindow& window, std::size_t index)
@@ -199,7 +194,7 @@ void CharacterRenderer::renderHeal(sf::RenderWindow& window, std::size_t index)
         }
     }
 
-    // ... rest of the code for scaling and additional conditions
+
 }
 
 void CharacterRenderer::renderDeath(sf::RenderWindow& window, std::size_t index)
@@ -208,8 +203,8 @@ void CharacterRenderer::renderDeath(sf::RenderWindow& window, std::size_t index)
         std::string playerTexturePath = (*_players)[index]->getDeathTexturePath();
 
         sf::Texture texture;
-        if (texture.loadFromFile(playerTexturePath)) { //il n'y a qu'une frame
-            sf::Vector2u frameSize = texture.getSize(); //on prend la taille de la texture
+        if (texture.loadFromFile(playerTexturePath)) { 
+            sf::Vector2u frameSize = texture.getSize(); 
             frameSize.x /= 1; 
             frameSize.y /= 1;
 
@@ -226,7 +221,6 @@ void CharacterRenderer::renderDeath(sf::RenderWindow& window, std::size_t index)
         }
     }
 
-    // ... rest of the code for scaling and additional conditions
 }
 
 void CharacterRenderer::render(sf::RenderWindow& window)
@@ -272,19 +266,20 @@ void CharacterRenderer::render2(sf::RenderWindow& window)
     if (elapsedTime.asSeconds() > _frameChangeSpeed) {
         for (std::size_t i = 0; i < _currentFrames.size(); ++i) {
             std::string texturePath;
-            if (soinPlayer)
-            texturePath = (*_players)[i]->getTexturePath(2);
-            if (captainPlayer)
-            texturePath = (*_players)[i]->getTexturePath(0);
+            if (soinPlayer) texturePath = (*_players)[i]->getTexturePath(2);
+
+            if (captainPlayer) texturePath = (*_players)[i]->getTexturePath(0);
+
             else texturePath = (*_players)[i]->getTexturePath(1);
+
             std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[i]);
             std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[i]);
-            if (!captainPlayer)
-            _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]-2);
-            else if (!soinPlayer)
-            _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]+1);
-            else 
-            _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]-1);
+
+            if (!captainPlayer)  _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]-2);
+
+            else if (!soinPlayer) _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]+1);
+
+            else _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]-1);
         }
 
         _clock.restart();
@@ -363,62 +358,43 @@ void CharacterRenderer::loadHealthBarTexture() {
 }
 
 void CharacterRenderer::renderHealthBars(sf::RenderWindow& window) {
-    // Utilisez seulement le joueur 0
+    // Utilise seulement le joueur 0
     const auto& player = (*_players)[0];
 
     // Vérifiez si les points d'expérience sont égaux à zéro
     if (player->getXp() == 0) {
-        // Points d'expérience égaux à zéro, ne dessinez pas la barre de vie
         return;
     }
 
-    // Indique la position fixe de la barre de vie en haut à gauche
     sf::Vector2f healthBarPosition(10.0f, 10.0f);
-
-    // Épaisseur de la bordure pour la barre de vie
-    float borderThickness = 5.0f;  // Ajustez l'épaisseur de la bordure selon vos préférences
-
-    // Créer le rectangle de la barre noire avec bordure fixe
+    float borderThickness = 5.0f;
     sf::RectangleShape backgroundBar(sf::Vector2f(player->getXpMax(), 20.0f));
     backgroundBar.setPosition(healthBarPosition);
-    backgroundBar.setFillColor(sf::Color::Black);  // Couleur noire
-
-    // Épaisseur de la bordure pour la barre noire
+    backgroundBar.setFillColor(sf::Color::Black);
     backgroundBar.setOutlineThickness(borderThickness);
     backgroundBar.setOutlineColor(sf::Color::White);
 
-    // Calcul du pourcentage de santé
     float healthPercentage = static_cast<float>(player->getXp()) / static_cast<float>(player->getXpMax());
-
-    // Largeur de la barre de vie en fonction de la santé du joueur
     float healthBarWidth = healthPercentage * player->getXpMax();
 
-    // Hauteur de la barre de vie
     float healthBarHeight = 20.0f;
 
-    // Couleur par défaut (vert)
     sf::Color healthBarColor = sf::Color::Green;
 
-    // Changer la couleur en fonction du pourcentage de santé
     if (healthPercentage <= 0.6f && healthPercentage > 0.3f) {
-        healthBarColor = sf::Color::Yellow;  // Orange pour 50% à 30%
+        healthBarColor = sf::Color::Yellow; 
     } else if (healthPercentage <= 0.3f) {
-        healthBarColor = sf::Color::Red;     // Rouge pour moins de 30%
+        healthBarColor = sf::Color::Red; 
     }
 
-    // Créer le rectangle de la barre de vie avec bordure
     sf::RectangleShape healthBar(sf::Vector2f(healthBarWidth, healthBarHeight));
     healthBar.setPosition(healthBarPosition);
     healthBar.setFillColor(healthBarColor);
 
-    // Épaisseur de la bordure pour la barre de vie
     healthBar.setOutlineThickness(borderThickness);
     healthBar.setOutlineColor(sf::Color::White);
 
-    // Dessiner la barre noire statique
     window.draw(backgroundBar);
-
-    // Dessiner la barre de vie avec bordure
     window.draw(healthBar);
 }
 

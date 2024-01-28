@@ -78,7 +78,6 @@ void Player::reduceHealth( Player& targetPlayer)
 void Player::doFix()
 {
     setIsAttacking1(false);
-    setIsJumping(false);
     setIsPicking(false);
     
 }

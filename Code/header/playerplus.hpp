@@ -28,7 +28,7 @@ public:
 
     int getRandomNumberForRandomAttack() const;
     void doJump();
-    void doFix2();
+    void doFix() override;
     void randomAttack(Player& targetPlayer);
     bool canAttack() const;
 

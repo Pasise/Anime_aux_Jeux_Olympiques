@@ -32,6 +32,8 @@ public:
     
     }
     void run(sf::RenderWindow& window, size_t i);
+    bool waitForMouseClickInRegion(sf::RenderWindow& window, int minX, int maxX, int minY, int maxY);
+    void handleIntroLogic(sf::RenderWindow& window);
     void intro(sf::RenderWindow& window);
     void choose(sf::RenderWindow& window, size_t& i);
     void applyPlayerChosen(int i){ 
@@ -48,6 +50,23 @@ public:
     void playAttackSound();
     void playPickSound();
     void playAttackedSound();
+    void setPlayerPositionAndStatus(size_t index, float yPos, bool isAlive);
+    void checkExitConditions(bool& exitRun, size_t& winner);
+    void updateStates();
+    void render(sf::RenderWindow& window, std::shared_ptr<PlayerPlus> captainPlayer);
+    void handleWinLose(size_t winner, sf::RenderWindow& window);
+    void handleAttack(int attackType);
+    size_t basicAttack();
+    size_t captainPlayerAttack(const std::shared_ptr<PlayerPlus>& captainPlayer);
+    void handlePick();
+    void handleHeal();
 
+    private :
+
+    void displayIntroScreen(sf::RenderWindow& window);
+    void displayStartScreen(sf::RenderWindow& window);
+    void displayExitScreen(sf::RenderWindow& window);
+    void loadAndDrawTexture(sf::RenderWindow& window, const std::string& filePath);
+    void moveImageIterator(std::vector<std::string>::iterator& it, size_t& i, int direction);
 
 };

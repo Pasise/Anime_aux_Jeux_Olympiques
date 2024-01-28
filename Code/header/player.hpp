@@ -140,7 +140,7 @@ class Player: public Object{
 
 
     
-    void doFix();
+    void virtual doFix();
 
     void doPick(Fruit& targetFruit);
 

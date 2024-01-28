@@ -59,9 +59,11 @@ int PlayerPlus::getRandomNumberForRandomAttack() const {
         int randomNumber = std::rand() % 3 + 1;
         return randomNumber;
     }
-void PlayerPlus::doFix2()
+void PlayerPlus::doFix()
 {
+    _isAttacking1 = false;
     _isAttacking2 = false;
+    _isPicking = false;
     
 }
 

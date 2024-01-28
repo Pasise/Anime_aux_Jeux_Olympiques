@@ -59,8 +59,11 @@ void PlayerSoin::doHeal()
     _isHealing = true;
 }
 
-void PlayerSoin::doFix3(){
+void PlayerSoin::doFix(){
+    _isAttacking1 = false;
+    _isPicking = false;
     _isHealing = false;
+
 }
 
 

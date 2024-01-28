@@ -16,7 +16,7 @@ public:
     ~PlayerSoin() {};
     void doHeal();
     bool isHealing(){return _isHealing;};
-    void doFix3();
+    void doFix() override;
     void doAttack1(Player& targetPlayer); //
     void doJump();
     void randomAttack(Player& targetPlayer);
