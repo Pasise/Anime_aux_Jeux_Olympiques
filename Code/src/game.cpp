@@ -381,7 +381,7 @@ void Game::updateStatePlayerUser(const UserInput& input) {
     if (_players.empty() || !_players[0])
         return;
 
-    _players[0]->setSpeed(XPMULTIPLIER);
+    _players[0]->setSpeed();
     _players[0]->getRandomNumberForCanAttack();
 
     switch (input.getButton()) {
@@ -471,7 +471,7 @@ void Game::updateStateBots() {
             std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[i]);           
             _players[i]->doFix();
 
-            _players[i]->setSpeed(XPMULTIPLIER);
+            _players[i]->setSpeed();
 
             for (size_t j = 0; j < _players.size(); ++j) {
                 if (i != j && _players[i]->isCloseTo(*_players[j], DISTANCETREEHOLD) && _players[i]->canAttack() && _players[i]->isCloseTo(*_players[j],DISTANCETREEHOLD) && _players[i]->isBehind(*_players[j])) {

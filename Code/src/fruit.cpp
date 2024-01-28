@@ -50,7 +50,7 @@ int Fruit::getRandomNumberForY() const {
             newY = 627.0f;
         }
     } else if (_name == "Masque du Hollow") {
-        if (rand2 == 1) {
+        if (rand2 == 0) {
             newY = 725.0f;
         } else {
             newY = 580.0f;

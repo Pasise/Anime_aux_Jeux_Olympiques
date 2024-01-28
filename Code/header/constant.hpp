@@ -8,8 +8,8 @@
 //======Constantes Zoro RORONOA =======
 const std::string LASTNAME_ZORO = "Roronoa";
 const  std::string FIRSTNAME_ZORO = "Zoro";
-const float XP_ZORO =  100;
-const float XP_MAX_ZORO =  100;
+const float XP_ZORO =  150;
+const float XP_MAX_ZORO =  150;
 const float SPEED_ZORO = 3;
 const float X_ZORO = 0;
 const float Y_ZORO = 740;
@@ -26,8 +26,8 @@ const std::string DEATH_TEXTURE_PATH_ZORO = "../Sprite/zoro_dead.PNG";
 
 const std::string LASTNAME_LUFFY = "Monkey D.";
 const  std::string FIRSTNAME_LUFFY = "Luffy";
-const float XP_LUFFY =  150;
-const float XP_MAX_LUFFY =  150;
+const float XP_LUFFY =  200;
+const float XP_MAX_LUFFY =  200;
 const float SPEED_LUFFY = 0.7;
 const float X_LUFFY = 0;
 const float Y_LUFFY = 580;
@@ -43,8 +43,8 @@ const std::string DEATH_TEXTURE_PATH_LUFFY = "../Sprite/luffy_dead.PNG";
 //======Constantes Byakuya KUCHIKI =======
 const std::string LASTNAME_BYAKUYA = "Kuchiki";
 const  std::string FIRSTNAME_BYAKUYA = "Byakuya";
-const float XP_BYAKUYA =  200;
-const float XP_MAX_BYAKUYA =  200;
+const float XP_BYAKUYA =  250;
+const float XP_MAX_BYAKUYA =  250;
 const float SPEED_BYAKUYA = 1.6;
 const float X_BYAKUYA = 0;
 const float Y_BYAKUYA = 740;
@@ -59,8 +59,8 @@ const std::string DEATH_TEXTURE_PATH_BYAKUYA = "../Sprite/byakuya_dead.PNG";
 //======Constantes Ichigo KUROSAKI=======
 const std::string LASTNAME_ICHIGO = "Kurosaki";
 const  std::string FIRSTNAME_ICHIGO = "Ichigo";
-const float XP_ICHIGO =  100;
-const float XP_MAX_ICHIGO =  100;
+const float XP_ICHIGO =  150;
+const float XP_MAX_ICHIGO =  150;
 const float SPEED_ICHIGO = 5;
 const float X_ICHIGO = 0;
 const float Y_ICHIGO = 580;
@@ -75,8 +75,8 @@ const std::string DEATH_TEXTURE_PATH_ICHIGO = "../Sprite/ichigo_dead.PNG";
 //======Constantes Shinsui KYORAKU=======
 const std::string LASTNAME_SHINSUI = "Kyoraku";
 const  std::string FIRSTNAME_SHINSUI = "Shinsui";
-const float XP_SHINSUI =  100;
-const float XP_MAX_SHINSUI =  100;
+const float XP_SHINSUI =  150;
+const float XP_MAX_SHINSUI =  150;
 const float SPEED_SHINSUI = 5;
 const float X_SHINSUI = 0;
 const float Y_SHINSUI = 580;
@@ -114,8 +114,6 @@ const std::string NAME_HOLLOW = "Masque du Hollow";
 //======= Constantes distances d'attaque =========
 const float DISTANCETREEHOLD = 100.f; 
 
-//======= Constantes vitesse=========
-const float XPMULTIPLIER = 0.015f;
 
 //======= Constantes musique=========
 const std::string MUSIC = "../Music/julia-133094.wav";

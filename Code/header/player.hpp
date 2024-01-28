@@ -119,6 +119,17 @@ class Player: public Object{
         _isPicking = value;
     }
 
+    void setSpeed()
+    {
+        // On calcule la vitesse du joueur en fonction de son xp
+        _speed = (_Xp * 1/_XpMax);
+
+        // On s'assure que le joeur ne fasse pas du surplace
+        if (_speed < 0.2f) {
+            _speed = 0.2f;
+        }
+    }
+
     void setSpeed( float xpMultiplier)
     {
         // On calcule la vitesse du joueur en fonction de son xp
