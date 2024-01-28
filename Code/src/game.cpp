@@ -476,6 +476,7 @@ void Game::updateStateBots() {
             for (size_t j = 0; j < _players.size(); ++j) {
                 if (i != j &&  _players[i]->isTimetoAttack() && _players[i]->isCloseTo(*_players[j], DISTANCETREEHOLD) && _players[i]->canAttack() && _players[i]->isCloseTo(*_players[j],DISTANCETREEHOLD) && _players[i]->isBehind(*_players[j])) {
                     _players[i]->randomAttack(*_players[j]);
+                    _players[i]->setLastAttackTime();
                     if (j == 0) playAttackedSound();
                     std::cout << "Player " << _players[i]->getFirstname() << " is close to Player " << _players[j]->getFirstname() << std::endl;
 
