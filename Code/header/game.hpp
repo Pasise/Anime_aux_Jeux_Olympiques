@@ -22,6 +22,7 @@ class Game {
     sf::Music _healMusic;
     sf::Music _attackMusic;
     sf::Music _pickMusic;
+    sf::Music _atacckedMusic;
 public:
     Game();
     std::string getchooseScreen(int i){
@@ -46,6 +47,7 @@ public:
     void playHealSound();
     void playAttackSound();
     void playPickSound();
+    void playAttackedSound();
 
 
 };

@@ -77,6 +77,9 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
     if (!_pickMusic.openFromFile(PICKMUSIC)) {
         std::cerr << "Failed to load pick music." << std::endl;
     }
+    if (!_atacckedMusic.openFromFile(ATTACKEDMUSIC)) {
+        std::cerr << "Failed to load attacked music." << std::endl;
+    }
 
 
 }
@@ -119,6 +122,12 @@ void Game::playPickSound() {
     _pickMusic.play();
 }
 
+void Game::playAttackedSound() {
+    _atacckedMusic.setVolume(100);
+    _atacckedMusic.stop();
+    _atacckedMusic.setPlayingOffset(sf::Time::Zero);
+    _atacckedMusic.play();
+}
 void Game::intro(sf::RenderWindow& window) {
     
 
@@ -480,19 +489,24 @@ void Game::updateStateBots() {
             std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[i]);           
             _players[i]->doFix();
             if (captainPlayer) captainPlayer->doFix2();
+            if (soinPlayer) soinPlayer->doFix3();
 
             _players[i]->setSpeed(XPMULTIPLIER);
 
             for (size_t j = 0; j < _players.size(); ++j) {
                 if (i != j && _players[i]->isCloseTo(*_players[j], DISTANCETREEHOLD) && _players[i]->canAttack() && _players[i]->isCloseTo(*_players[j],DISTANCETREEHOLD) && _players[i]->isBehind(*_players[j])) {
                     _players[i]->randomAttack(*_players[j]);
+                    if (j == 0) playAttackedSound();
                     std::cout << "Player " << _players[i]->getFirstname() << " is close to Player " << _players[j]->getFirstname() << std::endl;
 
                     // Arrêter le mouvement après l'attaque
                     _players[i]->setSpeed(0);
                     break;  // Sortir de la boucle interne après avoir attaqué
                 }
-                if (soinPlayer && soinPlayer->getXp()<=80 && soinPlayer->isTimetoHeal()) soinPlayer->doHeal();
+                if (soinPlayer && soinPlayer->getXp()<=80 && soinPlayer->isTimetoHeal()) {
+                    soinPlayer->doHeal();
+                    soinPlayer->setLastHealTime();
+                }
             }
 
             // Si le joueur n'attaque pas, il peut continuer à se déplacer
