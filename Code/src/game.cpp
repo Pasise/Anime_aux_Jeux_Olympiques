@@ -9,30 +9,30 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
         std::cerr << "Failed to load background music." << std::endl;
 
 
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerMedium>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA,XP_MAX_BYAKUYA, SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, DAMAGE_BYAKUYA, BYAKUYAASSOCIATION, DEATH_TEXTURE_PATH_BYAKUYA);
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerMedium>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA,XP_MAX_BYAKUYA,XP_MULTIPLIER_BYAKUYA, SPEED_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, DAMAGE_BYAKUYA, BYAKUYAASSOCIATION, DEATH_TEXTURE_PATH_BYAKUYA);
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
-    std::shared_ptr<Player> player2 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO,XP_MAX_ICHIGO, SPEED_ICHIGO, X_ICHIGO, Y_ICHIGO, DAMAGE_ICHIGO, ICHIGOASSOCIATION, DEATH_TEXTURE_PATH_ICHIGO);
+    std::shared_ptr<Player> player2 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO,XP_MAX_ICHIGO,XP_MULTIPLIER_ICHIGO, SPEED_ICHIGO, X_ICHIGO, Y_ICHIGO, DAMAGE_ICHIGO, ICHIGOASSOCIATION, DEATH_TEXTURE_PATH_ICHIGO);
     _players.push_back(player2);  // Ajoutez le joueur à la liste
     std::cout << "Player 2 in the list" << std::endl;
     std::cout << "Player 2 name : " << _players[1]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
-    std::shared_ptr<Player> player3 = std::make_shared<PlayerSoin>(LASTNAME_SHINSUI, FIRSTNAME_SHINSUI, XP_SHINSUI,XP_MAX_SHINSUI, SPEED_SHINSUI, X_SHINSUI, Y_SHINSUI, DAMAGE_SHINSUI, SOIN_SHINSUI, SHINSUIASSOCIATION, DEATH_TEXTURE_PATH_SHINSUI);
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerSoin>(LASTNAME_SHINSUI, FIRSTNAME_SHINSUI, XP_SHINSUI,XP_MAX_SHINSUI,XP_MULTIPLIER_SHINSUI, SPEED_SHINSUI, X_SHINSUI, Y_SHINSUI, DAMAGE_SHINSUI, SOIN_SHINSUI, SHINSUIASSOCIATION, DEATH_TEXTURE_PATH_SHINSUI);
     _players.push_back(player3);  // Ajoutez le joueur à la liste
     std::cout << "Player 3 in the list" << std::endl;
     std::cout << "Player 3 name : " << _players[2]->getFirstname() << std::endl;
 
-    std::shared_ptr<Player> player4 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, XP_ZORO,XP_MAX_ZORO, SPEED_ZORO, X_ZORO, Y_ZORO, DAMAGE_ZORO, ZOROASSOCIATION, DEATH_TEXTURE_PATH_ZORO);
+    std::shared_ptr<Player> player4 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, XP_ZORO,XP_MAX_ZORO,XP_MULTIPLIER_ZORO, SPEED_ZORO, X_ZORO, Y_ZORO, DAMAGE_ZORO, ZOROASSOCIATION, DEATH_TEXTURE_PATH_ZORO);
     _players.push_back(player4);  // Ajoutez le joueur à la liste
     std::cout << "Player 4 in the list" << std::endl;
     std::cout << "Player 4 name : " << _players[3]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
-    std::shared_ptr<Player> player5 = std::make_shared<PlayerMedium>(LASTNAME_LUFFY, FIRSTNAME_LUFFY, XP_LUFFY,XP_MAX_LUFFY, SPEED_LUFFY, X_LUFFY, Y_LUFFY, DAMAGE_LUFFY, LUFFYASSOCIATION, DEATH_TEXTURE_PATH_LUFFY);
+    std::shared_ptr<Player> player5 = std::make_shared<PlayerMedium>(LASTNAME_LUFFY, FIRSTNAME_LUFFY, XP_LUFFY,XP_MAX_LUFFY,XP_MULTIPLIER_LUFFY, SPEED_LUFFY, X_LUFFY, Y_LUFFY, DAMAGE_LUFFY, LUFFYASSOCIATION, DEATH_TEXTURE_PATH_LUFFY);
     _players.push_back(player5);  // Ajoutez le joueur à la liste
     std::cout << "Player 5 in the list" << std::endl;
     std::cout << "Player 5 name : " << _players[4]->getFirstname() << std::endl;
@@ -474,7 +474,7 @@ void Game::updateStateBots() {
             _players[i]->setSpeed();
 
             for (size_t j = 0; j < _players.size(); ++j) {
-                if (i != j && _players[i]->isCloseTo(*_players[j], DISTANCETREEHOLD) && _players[i]->canAttack() && _players[i]->isCloseTo(*_players[j],DISTANCETREEHOLD) && _players[i]->isBehind(*_players[j])) {
+                if (i != j &&  _players[i]->isTimetoAttack() && _players[i]->isCloseTo(*_players[j], DISTANCETREEHOLD) && _players[i]->canAttack() && _players[i]->isCloseTo(*_players[j],DISTANCETREEHOLD) && _players[i]->isBehind(*_players[j])) {
                     _players[i]->randomAttack(*_players[j]);
                     if (j == 0) playAttackedSound();
                     std::cout << "Player " << _players[i]->getFirstname() << " is close to Player " << _players[j]->getFirstname() << std::endl;

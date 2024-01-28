@@ -13,6 +13,7 @@ class Player: public Object{
     std::string _firstname;
     float _Xp;
     float _XpMax;
+    float _XpMultiplier;
     float _speed;
     float _x;
     float _y;
@@ -122,7 +123,7 @@ class Player: public Object{
     void setSpeed()
     {
         // On calcule la vitesse du joueur en fonction de son xp
-        _speed = (_Xp * 1/_XpMax);
+        _speed = (_Xp * _XpMultiplier);
 
         // On s'assure que le joeur ne fasse pas du surplace
         if (_speed < 0.2f) {

@@ -1,13 +1,14 @@
 #include "../header/playersoin.hpp"
 #include "../header/game.hpp"
 
-PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max, float speed, float x, float y, float damage, float heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath)
+PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier, float speed, float x, float y, float damage, float heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath)
 {
 
     _lastname = lastname;
     _firstname = firstname;
     _Xp = Xp;
     _XpMax = Xp_max;
+    _XpMultiplier = Xp_multiplier;
     _speed = speed;
     _x = x;
     _y = y;
