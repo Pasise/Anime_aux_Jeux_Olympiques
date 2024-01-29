@@ -45,7 +45,7 @@ int Fruit::getRandomNumberForY() const {
 
     if (_name == "Gomu Gomu fruit") {
         if (rand1 == 1) {
-            newY = 627.0f;
+            newY = 775.0f;
         } else {
             newY = 627.0f;
         }

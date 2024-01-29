@@ -43,3 +43,7 @@ bool PlayerMedium::canAttack() const {
     // Le joueur peut attaquer si la valeur aléatoire est 1 donc 50% de chance
     return randomValue == 1;
 }
+
+
+
+

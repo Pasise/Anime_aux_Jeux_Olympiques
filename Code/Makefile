@@ -21,9 +21,6 @@ execute : main
 	g++ $(CCFLAGS) -MM $(SRC) > .depends
 -include .depends
 
-test:
-	cd tests ; make
-	./tests/testcase.out
 
 clean :
 	rm -f $(OBJ) main.o main
