@@ -380,5 +380,47 @@ void CharacterRenderer::renderHealthBars(sf::RenderWindow& window) {
     window.draw(healthBar);
 }
 
+void CharacterRenderer::renderHealthBarsBots(sf::RenderWindow& window) {
+    for (std::size_t i = 1; i < _players->size(); ++i) {
+        const auto& player = (*_players)[i];
 
+        // Vérifier si les points d'expérience sont égaux à zéro
+        if (player->getXp() == 0) {
+            continue;
+        }
+        float xBar = player->getX();
+        float yBar = player->getY();
+        if (player->getFirstname() == "Luffy") xBar+=100;
+        else if (player->getFirstname() == "Zoro") xBar+=150;
+        sf::Vector2f healthBarPosition(xBar, yBar - 20.0f);
+        float borderThickness = 5.0f;
+        sf::RectangleShape backgroundBar(sf::Vector2f(player->getXpMax(), 10.0f));
+        backgroundBar.setPosition(healthBarPosition);
+        backgroundBar.setFillColor(sf::Color::Black);
+        backgroundBar.setOutlineThickness(borderThickness);
+        backgroundBar.setOutlineColor(sf::Color::White);
 
+        float healthPercentage = static_cast<float>(player->getXp()) / static_cast<float>(player->getXpMax());
+        float healthBarWidth = healthPercentage * player->getXpMax();
+
+        float healthBarHeight = 10.0f;
+
+        sf::Color healthBarColor = sf::Color::Green;
+
+        if (healthPercentage <= 0.6f && healthPercentage > 0.3f) {
+            healthBarColor = sf::Color::Yellow; 
+        } else if (healthPercentage <= 0.3f) {
+            healthBarColor = sf::Color::Red; 
+        }
+
+        sf::RectangleShape healthBar(sf::Vector2f(healthBarWidth, healthBarHeight));
+        healthBar.setPosition(healthBarPosition);
+        healthBar.setFillColor(healthBarColor);
+
+        healthBar.setOutlineThickness(borderThickness);
+        healthBar.setOutlineColor(sf::Color::White);
+
+        window.draw(backgroundBar);
+        window.draw(healthBar);
+    }
+}

@@ -14,36 +14,35 @@ public:
     std::string getTexture();
     void render(sf::RenderWindow& window);
     void render2(sf::RenderWindow& window);
-    void setPlayers(const std::vector<std::shared_ptr<Player>>* players);
     void setTexture(const std::string& texturePath) { _backgroundTexturePath = texturePath; loadBackgroundTexture(); }
     void setCameraPosition(float x);
-    void setFruits(const std::vector<std::shared_ptr<Fruit>>* fruits); // Ajout de la méthode setFruits
-    void renderFruits(sf::RenderWindow& window); // Ajout de la méthode renderFruits
-    std::string getTexturePathFruits(int i){  //Parcour le vector de fruits jusqu'a lelement i puis renvoie le chemin de la texture de ce fruit
+    void setFruits(const std::vector<std::shared_ptr<Fruit>>* fruits);
+    void renderFruits(sf::RenderWindow& window); 
+    std::string getTexturePathFruits(int i){ 
         std::string file_name = _fruits->at(i)->getTexturePath();
         return file_name;
     }
     void loadHealthBarTexture();
     void renderHealthBars(sf::RenderWindow& window);
+    void renderHealthBarsBots(sf::RenderWindow& window);
 
 
 
 private:
     const std::vector<std::shared_ptr<Player>>* _players;
-    const std::vector<std::shared_ptr<Fruit>>* _fruits; // Added _fruits attribute  
+    const std::vector<std::shared_ptr<Fruit>>* _fruits; 
     std::vector<sf::Sprite> _sprites;
-    std::vector<sf::Sprite> _fruitSprites; // Added _fruitSprites attribute
+    std::vector<sf::Sprite> _fruitSprites; 
     std::vector<int> _currentFrames;
-    std::vector<sf::Sprite> _attackSprites; // Added _attackSprites attribute
+    std::vector<sf::Sprite> _attackSprites; 
     sf::Clock _clock;
     float _frameChangeSpeed;
     std::map<std::string, int> _frameCounts;
 
     std::string _backgroundTexturePath;
-    sf::Texture _backgroundTexture;   // Added _backgroundTexture attribute
-    sf::Sprite _backgroundSprite;     // Added _backgroundSprite attribute
+    sf::Texture _backgroundTexture;  
+    sf::Sprite _backgroundSprite;     
 
-    // Ajout de la texture pour la barre de vie
     sf::Texture _healthBarTexture;
 
     void loadBackgroundTexture();

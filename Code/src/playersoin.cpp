@@ -1,7 +1,7 @@
 #include "../header/playersoin.hpp"
 #include "../header/game.hpp"
 
-PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier, float speed, float x, float y, float damage, float heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath)
+PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier,float x, float y, float damage, float heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath)
 {
 
     _lastname = lastname;
@@ -9,7 +9,7 @@ PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,flo
     _Xp = Xp;
     _XpMax = Xp_max;
     _XpMultiplier = Xp_multiplier;
-    _speed = speed;
+    _speed = Xp_max*Xp_multiplier;
     _x = x;
     _y = y;
     _damage = damage;
@@ -18,7 +18,6 @@ PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,flo
     _deathTexturePath = deathTexturePath;
     _direction = 1;
     _isAttacking1 = false;
-    _isJumping = false;
     _isPicking = false;
     _isHealing = false;
     _isAlive = true;
@@ -30,17 +29,10 @@ PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,flo
 void PlayerSoin::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-    reduceHealth(targetPlayer);
+    reduceHealth(targetPlayer, _damage);
     _isAttacking1 = true;
 }
     
-
-
-void PlayerSoin::doJump()
-{
-    _y += 2;
-    _y -= 2;
-}
 
 
 
@@ -52,7 +44,7 @@ void PlayerSoin::randomAttack(Player& targetPlayer)
 void PlayerSoin::doHeal()
 {
     std::cout << getLastname() << " is healing himself" << std::endl;
-    _Xp += heal;
+    _Xp += _heal;
     if (_Xp > _XpMax)
     {
         _Xp = _XpMax;
@@ -82,5 +74,5 @@ bool PlayerSoin::isTimetoHeal() const {
     auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - _lastHealTime);
 
         // Check if enough time has passed since the last attack
-    return elapsedTime.count() >= 15; // Adjust the cooldown period (5 seconds in this case)
+    return elapsedTime.count() >= 17; // Adjust the cooldown period (5 seconds in this case)
 }

@@ -1,6 +1,6 @@
 #include "../header/playerplus.hpp"
 
-PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier, float speed, float x, float y, float damage, std::map<std::string, int> textureAssociations, std::string deathTexturePath):PlayerMedium(lastname, firstname, Xp, Xp_max,Xp_multiplier, speed, x, y, damage, textureAssociations, deathTexturePath)
+PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier, float x, float y, float damage, std::map<std::string, int> textureAssociations, std::string deathTexturePath):PlayerMedium(lastname, firstname, Xp, Xp_max,Xp_multiplier, x, y, damage, textureAssociations, deathTexturePath)
 {
 
     _lastname = lastname;
@@ -8,13 +8,12 @@ PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,flo
     _Xp = Xp;
     _XpMax = Xp_max;
     _XpMultiplier = Xp_multiplier;
-    _speed = speed;
+    _speed = Xp_max*Xp_multiplier;
     _x = x;
     _y = y;
     addAssociations(textureAssociations);
     _direction = 1;
     _isAttacking1 = false;
-    _isJumping = false;
     _isPicking = false;
     _isAttacking2 = false;
     _isAlive = true;
@@ -24,23 +23,17 @@ PlayerPlus::PlayerPlus(std::string lastname, std::string firstname, float Xp,flo
 void PlayerPlus::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
-    reduceHealth(targetPlayer);
+    reduceHealth(targetPlayer, _damage);
     _isAttacking1 = true;
 }
 
 void PlayerPlus::doAttack2(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack2 on " << targetPlayer.getLastname() << std::endl;
-    reduceHealth(targetPlayer);
+    reduceHealth(targetPlayer, _damage*1.5);
     _isAttacking2 = true;
 }
 
-void PlayerPlus::doJump()
-{
-    _y += 2;
-    _y -= 2;
-    _isJumping = true;
-}
 
 
 int PlayerPlus::getRandomNumberForRandomAttack() const {

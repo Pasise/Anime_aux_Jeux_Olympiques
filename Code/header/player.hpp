@@ -54,22 +54,6 @@ class Player: public Object{
         return _lastAttackTime;
     }
 
-    void setX(float x){_x = x;}
-    void setY(float y){_y = y;}
-    void setXp(float Xp){_Xp = Xp;}
-    void setDirection(int direction){_direction = direction;}
-    void reduceHealth(Player& targetPlayer);
-        // Ajout de la méthode pour associer un texturePath à un nombre de frames
-    void addTexture(const std::string& texturePath, int numberOfFrames) {
-        _textureAssociations[texturePath] = numberOfFrames;
-    }
-    void addAssociations(const std::map<std::string, int>& textureAssociationsToAdd) {
-        for (const auto& entry : textureAssociationsToAdd) {
-            _textureAssociations[entry.first] = entry.second;
-        }
-    }
-
-    // Méthode pour récupérer le nombre de frames associé à un texturePath
     int getNumberOfFrames(const std::string& texturePath) const {
         auto it = _textureAssociations.find(texturePath);
         if (it != _textureAssociations.end()) {
@@ -79,19 +63,37 @@ class Player: public Object{
             return 0;
         }
     }
-        const std::map<std::string, int>& getTextureAssociations() const {
+        
+    const std::map<std::string, int>& getTextureAssociations() const {
         return _textureAssociations;
     }
+
     std::string getTexturePath(int i) const {
         auto it = _textureAssociations.begin();
-        std::advance(it, i);  // Avance jusqu'à l'élément à la position i
+        std::advance(it, i);  
 
         if (it != _textureAssociations.end()) {
-            // Renvoie le chemin de texture de l'élément à la position i
+            
             return it->first;
         } else {
-            // Renvoie une chaîne vide si la position i est hors limites
+            
             return "";
+        }
+    }
+
+    void setX(float x){_x = x;}
+    void setY(float y){_y = y;}
+    void setXp(float Xp){_Xp = Xp;}
+    void setDirection(int direction){_direction = direction;}
+
+    void reduceHealth(Player& targetPlayer, float damage);
+    
+    void addTexture(const std::string& texturePath, int numberOfFrames) {
+        _textureAssociations[texturePath] = numberOfFrames;
+    }
+    void addAssociations(const std::map<std::string, int>& textureAssociationsToAdd) {
+        for (const auto& entry : textureAssociationsToAdd) {
+            _textureAssociations[entry.first] = entry.second;
         }
     }
 
@@ -107,26 +109,13 @@ class Player: public Object{
    
     }
 
-    void setIsAttacking1(bool value) {
-        _isAttacking1 = value;
-    }
+    void setIsAttacking1(bool value) {_isAttacking1 = value;}
 
-    bool isJumping() const {
-        return _isJumping;
-    }
-    void setIsJumping(bool value) {
-        _isJumping = value;
-    }
-    bool isPicking() const {
-        return _isPicking;
-    }
-    void setIsPicking(bool value) {
-        _isPicking = value;
-    }
+    bool isPicking() const {return _isPicking;}
+    void setIsPicking(bool value) {_isPicking = value;}
 
     void setSpeed()
     {
-        // On calcule la vitesse du joueur en fonction de son xp
         _speed = (_Xp * _XpMultiplier);
 
         // On s'assure que le joeur ne fasse pas du surplace
@@ -137,7 +126,6 @@ class Player: public Object{
 
     void setSpeed( float xpMultiplier)
     {
-        // On calcule la vitesse du joueur en fonction de son xp
         _speed = (_Xp * xpMultiplier);
 
         // On s'assure que le joeur ne fasse pas du surplace
@@ -158,10 +146,9 @@ class Player: public Object{
     
     void virtual doFix();
 
-    void doPick(Fruit& targetFruit);
+    void doPick(Fruit& targetFruit, float distanceThreshold);
 
     void virtual doAttack1(Player& targetPlayer)=0;
-    void virtual doJump()=0;
     
     void virtual randomAttack(Player& targetPlayer)=0;
     bool virtual canAttack() const = 0;

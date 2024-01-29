@@ -56,10 +56,10 @@ int Player::getRandomNumberForCanAttack() const {
  }
 
 
-void Player::reduceHealth( Player& targetPlayer)
+void Player::reduceHealth( Player& targetPlayer, float damage)
 {
     // Réduire l'XP du joueur cible
-    targetPlayer.setXp(targetPlayer.getXp() - getDamage());
+    targetPlayer.setXp(targetPlayer.getXp() - damage);
 
     // Vérifier si l'XP est tombé à zéro ou moins
     if (targetPlayer.getXp() <= 0)
@@ -105,18 +105,14 @@ bool Player::isTimeToFix() const {
 
     return elapsedTime.count() >= 1;
 }
-bool Player::isSameline(const Player &otherPlayer) const {
-    return (getY() == otherPlayer.getY());
-}
 
 bool Player::isBehind(const Player &otherPlayer) const {
     return (getX() < otherPlayer.getX());
 }
 
-void Player::doPick(Fruit& targetFruit)
+void Player::doPick(Fruit& targetFruit, float distanceThreshold)
 {
-    // Check if the target fruit is close enough
-    float distanceThreshold = 300.0f;  // Adjust the distance threshold as needed
+
 
     if (isCloseToFruit(targetFruit, distanceThreshold))
     {

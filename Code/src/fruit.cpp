@@ -23,7 +23,7 @@ int Fruit::getRandomNumberForX() const {
 
     // Generate a new x-coordinate until a unique one is found
     do {
-        newX = std::rand() % 1800;
+        newX = std::rand() % 800;
     } while (usedXCoordinates.count(newX) > 0);
 
     return newX;

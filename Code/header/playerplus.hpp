@@ -12,7 +12,7 @@ protected:
     bool _isAttacking2; // Ajout de l'attribut _isAttacking1
 
 public:
-    PlayerPlus(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier, float speed, float x, float y, float damage, std::map<std::string, int> textureAssociations, std::string deathTexturePath);
+    PlayerPlus(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier, float x, float y, float damage, std::map<std::string, int> textureAssociations, std::string deathTexturePath);
     ~PlayerPlus() {};
     std::string getTexture(){return _texture;}
     void setTexture(std::string texturepath){_texture = texturepath;}
@@ -27,7 +27,6 @@ public:
     }
 
     int getRandomNumberForRandomAttack() const;
-    void doJump();
     void doFix() override;
     void randomAttack(Player& targetPlayer);
     bool canAttack() const;
