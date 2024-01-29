@@ -14,5 +14,7 @@ class PlayerMedium : public Player
         void doAttack1(Player& targetPlayer); //
         void randomAttack(Player& targetPlayer);
         bool canAttack() const;
+        PlayerMedium& operator=(const PlayerMedium& other);
+        PlayerMedium& operator=(bool isAlive);
 
 };

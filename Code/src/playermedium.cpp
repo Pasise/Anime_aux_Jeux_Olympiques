@@ -47,3 +47,35 @@ bool PlayerMedium::canAttack() const {
 
 
 
+PlayerMedium& PlayerMedium::operator=(const PlayerMedium& other)
+{
+    if (this != &other)
+    {
+        // Copier les membres de other vers this
+        _lastname = other._lastname;
+        _firstname = other._firstname;
+        _Xp = other._Xp;
+        _XpMax = other._XpMax;
+        _XpMultiplier = other._XpMultiplier;
+        _speed = other._speed;
+        _x = other._x;
+        _y = other._y;
+        _damage = other._damage;
+        _direction = other._direction;
+        _isAttacking1 = other._isAttacking1;
+        _lastAttackTime = other._lastAttackTime;
+        _lastPickTime = other._lastPickTime;
+        _isPicking = other._isPicking;
+        _textureAssociations = other._textureAssociations;
+        _deathTexturePath = other._deathTexturePath;
+    }
+
+    return *this;
+}
+
+// Surcharge supplémentaire pour changer l'état de isAlive
+PlayerMedium& PlayerMedium::operator=(bool isAlive)
+{
+    _isAlive = isAlive;
+    return *this;
+}

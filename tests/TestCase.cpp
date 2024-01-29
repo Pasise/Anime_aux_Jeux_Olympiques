@@ -61,7 +61,6 @@ TEST_CASE("Test des fonctions de la classe PlayerMedium") {
         CHECK(playerMediumCopy.getTextureAssociations() == playerMediumOriginal.getTextureAssociations());
         CHECK(playerMediumCopy.getDeathTexturePath() == playerMediumOriginal.getDeathTexturePath());
     }
-    /*
 
     SUBCASE("Test de la surchage en changeant l'état de _isAlive à true") {
         PlayerMedium playerMedium("Trafalgar", "Law", 100.0f, 150.0f, 1.5f, 0.0f, 0.0f, 20.0f, {{"Trafalgar.png", 2}}, "Trafalgar2.png");
@@ -77,7 +76,7 @@ TEST_CASE("Test des fonctions de la classe PlayerMedium") {
         CHECK(playerMedium.isAlive() == false);
     }
 
-*/
+
 }
 
 
