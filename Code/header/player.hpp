@@ -27,7 +27,6 @@ class Player: public Object{
     TimePoint _lastAttackTime; // Record the time of the last attack
     TimePoint _lastPickTime;
 
-    bool _isJumping;
     bool _isPicking;
     
     std::map<std::string, int> _textureAssociations;
