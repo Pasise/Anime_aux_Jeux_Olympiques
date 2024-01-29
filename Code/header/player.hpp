@@ -50,6 +50,10 @@ class Player: public Object{
     std::string getDeathTexturePath() const {
         return _deathTexturePath;
     }
+    TimePoint getLastAttackTime() const {
+        return _lastAttackTime;
+    }
+
     void setX(float x){_x = x;}
     void setY(float y){_y = y;}
     void setXp(float Xp){_Xp = Xp;}
@@ -150,7 +154,7 @@ class Player: public Object{
         _lastPickTime = Clock::now();
     }
 
-
+    bool isTimeToFix() const;
     
     void virtual doFix();
 

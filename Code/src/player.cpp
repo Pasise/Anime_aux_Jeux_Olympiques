@@ -99,7 +99,12 @@ bool Player::isTimetoPick() const {
     return elapsedTime.count() >= 5; // Adjust the cooldown period (5 seconds in this case)
 }
 
+bool Player::isTimeToFix() const {
+    auto currentTime = Clock::now();
+    auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - _lastAttackTime);
 
+    return elapsedTime.count() >= 1;
+}
 bool Player::isSameline(const Player &otherPlayer) const {
     return (getY() == otherPlayer.getY());
 }

@@ -128,3 +128,5 @@ const std::string HEALMUSIC = "../Music/heal.wav";
 const std::string ATTACKMUSIC = "../Music/attack.wav";
 const std::string PICKMUSIC = "../Music/pick.wav";
 const std::string ATTACKEDMUSIC = "../Music/attacked.wav";
+
+const float FIX_COOLDOWN = 1.0f;

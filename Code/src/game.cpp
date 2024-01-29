@@ -1,4 +1,3 @@
-// Game.cpp
 #include "../header/game.hpp"
 #include "../header/constant.hpp"
 
@@ -355,7 +354,7 @@ void Game::win(sf::RenderWindow& window) {
         std::cerr << "Failed to load win image." << std::endl;
         return;
     }
-    // Charger la musique
+
     sf::Music winMusic;
     if (winMusic.openFromFile(WINMUSIC)) {
         winMusic.setVolume(65);
@@ -365,10 +364,8 @@ void Game::win(sf::RenderWindow& window) {
         return;
     }
 
-    // Attendre 7 secondes
     sf::sleep(sf::seconds(4));
 
-    // Retourner de la fonction
 }
 
 void Game::lose(sf::RenderWindow& window) {
@@ -383,7 +380,6 @@ void Game::lose(sf::RenderWindow& window) {
         return;
     }
 
-    // Charger la musique
     sf::Music loseMusic;
     if (loseMusic.openFromFile(LOSEMUSIC)) {
         loseMusic.setVolume(65);
@@ -393,13 +389,10 @@ void Game::lose(sf::RenderWindow& window) {
         return;
     }
 
-    // Attendre 7 secondes
     sf::sleep(sf::seconds(4));
 
-    // Retourner de la fonction
 }
 
-//la méthode action prend en entrer un UserInput et effectue l'action correspondante : pour left on décrémente la position x et poour right on l'incrémente
 
 void Game::updateStatePlayerUser(const UserInput& input) {
     if (_players.empty() || !_players[0])
@@ -493,7 +486,8 @@ void Game::updateStateBots() {
             
             std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
             std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[i]);  
-            _players[i]->doFix();
+
+            if (_players[i]->isTimeToFix()) _players[i]->doFix();
 
             _players[i]->setSpeed();
 
