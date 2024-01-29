@@ -162,9 +162,6 @@ class Player: public Object{
     void virtual randomAttack(Player& targetPlayer)=0;
     bool virtual canAttack() const = 0;
     bool isTimetoPick() const;
-    
-    
-
 
 
 }; 

@@ -164,21 +164,45 @@ void Game::displayExitScreen(sf::RenderWindow& window) {
 
 
 void Game::handleIntroLogic(sf::RenderWindow& window) {
-    if (waitForMouseClickInRegion(window, 690, 1195, 770, 900)) {
+
+}
+
+
+void Game::intro(sf::RenderWindow& window) {
+    displayIntroScreen(window);
+    sf::Event _event;
+
+    bool startClicked = false;
+    bool exitClicked = false;
+
+    while (window.isOpen() && !startClicked && !exitClicked) {
+        while (window.pollEvent(_event)) {
+            if (_event.type == sf::Event::Closed) {
+                window.close();
+            } else if (_event.type == sf::Event::MouseButtonPressed &&
+                       _event.mouseButton.button == sf::Mouse::Left) {
+                sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
+                if (mousePosition.x >= 690 && mousePosition.x <= 1195 &&
+                    mousePosition.y >= 770 && mousePosition.y <= 900) {
+                    startClicked = true;
+                } else if (mousePosition.x >= 820 && mousePosition.x <= 1055 &&
+                           mousePosition.y >= 930 && mousePosition.y <= 1040) {
+                    exitClicked = true;
+                }
+            }
+        }
+    }
+
+    if (startClicked) {
         displayStartScreen(window);
         sf::sleep(sf::seconds(0.5));
-    } else if (waitForMouseClickInRegion(window, 820, 1055, 930, 1040)) {
+    } else if (exitClicked) {
         displayExitScreen(window);
         sf::sleep(sf::seconds(0.5));
         window.close();
     }
 }
 
-
-void Game::intro(sf::RenderWindow& window) {
-    displayIntroScreen(window);
-    handleIntroLogic(window);
-}
 
 
 void Game::moveImageIterator(std::vector<std::string>::iterator& currentImage, size_t& i, int direction) {
@@ -468,13 +492,13 @@ void Game::updateStateBots() {
         if (_players[i] && _players[i]->isAlive()) {
             
             std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
-            std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[i]);           
+            std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[i]);  
             _players[i]->doFix();
 
             _players[i]->setSpeed();
 
             for (size_t j = 0; j < _players.size(); ++j) {
-                if (i != j &&  _players[i]->isTimetoAttack() && _players[i]->isCloseTo(*_players[j], DISTANCETREEHOLD) && _players[i]->canAttack() && _players[i]->isCloseTo(*_players[j],DISTANCETREEHOLD) && _players[i]->isBehind(*_players[j])) {
+                if (i != j &&  _players[i]->isTimetoAttack() && _players[i]->isCloseTo(*_players[j], DISTANCETREEHOLD) && _players[i]->isCloseTo(*_players[j],DISTANCETREEHOLD) && _players[i]->isBehind(*_players[j])) {
                     _players[i]->randomAttack(*_players[j]);
                     _players[i]->setLastAttackTime();
                     if (j == 0) playAttackedSound();
