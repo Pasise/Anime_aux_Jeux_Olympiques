@@ -81,8 +81,22 @@ Le dossier contient les différents types de fichiers suivants
 
 #### - Le dossier musique comprend la musique en fond et les bruitages en .wav
 
+#### - Le dossier tests comprend le doctest, le TestCase et le Makefile associé aux tests
+
 #### Dans le dossier code il y a également : 
 - Le makefile pour la compilation et l'éxécution
 - le main.cpp pour lancer le jeu
 
 
+## Tests unitaires 
+
+Pour réaliser les tests unitaires il faut se déplacer dans le dossier tests
+
+```bash
+cd ../tests
+```
+Et lancer la commande 
+
+```bash
+make test
+```
