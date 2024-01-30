@@ -2,7 +2,7 @@
 #include "doctest.h"
 #include "../Code/header/playermedium.hpp" 
 #include "../Code/header/playerplus.hpp"
-#include "../Code/header/playersoin.hpp"
+#include "../Code/header/playerheal.hpp"
 #include "../Code/header/characterrenderer.hpp"
 
 
@@ -132,8 +132,8 @@ TEST_CASE("Test des fonctions de la classe PlayerPlus") {
 
 }
 
-TEST_CASE("PlayerSoin - Test de la fonction doHeal") {
-    PlayerSoin healer("Jorge", "Blanco", 100.0f, 150.0f, 1.5f, 0.0f, 0.0f, 20.0f, 10.0f, {{"texture1.png", 2}}, "death_texture.png");
+TEST_CASE("PlayerHeal - Test de la fonction doHeal") {
+    PlayerHeal healer("Jorge", "Blanco", 100.0f, 150.0f, 1.5f, 0.0f, 0.0f, 20.0f, 10.0f, {{"texture1.png", 2}}, "death_texture.png");
 
     healer.doHeal();
 
@@ -203,6 +203,5 @@ TEST_CASE("UserInput - Test de la gestion des inputs") {
         CHECK(userInput.getButton() == Button::fix);
     }
 
-    // Ajoutez des tests similaires pour les autres touches (S, Z, A, E, C, R, Escape, Enter, etc.)
 }
 

@@ -4,7 +4,7 @@
 #include "player.hpp"
 #include "userinput.hpp"
 #include "playerplus.hpp"
-#include "playersoin.hpp"
+#include "playerheal.hpp"
 #include "characterrenderer.hpp"
 #include <list>
 #include <vector>

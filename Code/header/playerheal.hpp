@@ -4,7 +4,7 @@
 #include "fruit.hpp"
 #include <SFML/Graphics.hpp>
 
-class PlayerSoin : public Player
+class PlayerHeal : public Player
 {
 protected:
     float _heal;
@@ -12,8 +12,8 @@ protected:
     TimePoint _lastHealTime;
 
 public:
-    PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier, float x, float y, float damage, float soin, std::map<std::string, int> textureAssociations, std::string deathTexturePath);
-    ~PlayerSoin() {};
+    PlayerHeal(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier, float x, float y, float damage, float Heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath);
+    ~PlayerHeal() {};
     void doHeal();
     bool isHealing(){return _isHealing;};
     void doFix() override;

@@ -68,21 +68,21 @@ const std::string TEXTUREPATH_ICHIGO_ATTACK2 = "../Sprite/ichigo_attack2.png";
 std::map<std::string, int> ICHIGOASSOCIATION = {{TEXTUREPATH_ICHIGO , 6},{TEXTUREPATH_ICHIGO_ATTACK1, 3}, {TEXTUREPATH_ICHIGO_ATTACK2, 6}};
 const std::string DEATH_TEXTURE_PATH_ICHIGO = "../Sprite/ichigo_dead.PNG";
 
-//======Constantes Shinsui KYORAKU=======
-const std::string LASTNAME_SHINSUI = "Kyoraku";
-const  std::string FIRSTNAME_SHINSUI = "Shinsui";
-const float XP_SHINSUI =  200;
-const float XP_MAX_SHINSUI =  200;
-const float XP_MULTIPLIER_SHINSUI = 0.02;
-const float X_SHINSUI = 0;
-const float Y_SHINSUI = 580;
-const float DAMAGE_SHINSUI = 50;
-const float SOIN_SHINSUI = 40;
-const std::string TEXTUREPATH_SHINSUI =    "../Sprite/kyoraku_run.png"; 
-const std::string TEXTUREPATH_SHINSUI_ATTACK1 =  "../Sprite/kyoraku_attack1.png";
-const std::string TEXTUREPATH_SHINSUI_HEAL = "../Sprite/kyoraku_heal.png";
-std::map<std::string, int> SHINSUIASSOCIATION = {{TEXTUREPATH_SHINSUI , 4},{TEXTUREPATH_SHINSUI_ATTACK1, 6}, {TEXTUREPATH_SHINSUI_HEAL, 4}};
-const std::string DEATH_TEXTURE_PATH_SHINSUI = "../Sprite/kyoraku_dead.PNG";
+//======Constantes SHUNSUI KYORAKU=======
+const std::string LASTNAME_SHUNSUI = "Kyoraku";
+const  std::string FIRSTNAME_SHUNSUI = "SHUNSUI";
+const float XP_SHUNSUI =  200;
+const float XP_MAX_SHUNSUI =  200;
+const float XP_MULTIPLIER_SHUNSUI = 0.02;
+const float X_SHUNSUI = 0;
+const float Y_SHUNSUI = 580;
+const float DAMAGE_SHUNSUI = 50;
+const float HEAL_SHUNSUI = 40;
+const std::string TEXTUREPATH_SHUNSUI =    "../Sprite/kyoraku_run.png"; 
+const std::string TEXTUREPATH_SHUNSUI_ATTACK1 =  "../Sprite/kyoraku_attack1.png";
+const std::string TEXTUREPATH_SHUNSUI_HEAL = "../Sprite/kyoraku_heal.png";
+std::map<std::string, int> SHUNSUIASSOCIATION = {{TEXTUREPATH_SHUNSUI , 4},{TEXTUREPATH_SHUNSUI_ATTACK1, 6}, {TEXTUREPATH_SHUNSUI_HEAL, 4}};
+const std::string DEATH_TEXTURE_PATH_SHUNSUI = "../Sprite/kyoraku_dead.PNG";
 
 // ========== Constantes Background ==========
 
@@ -102,7 +102,7 @@ const std::string NAME_FRUITNORMAL = "Fruit Normal";
 
 // ========== Constantes Masque du Hollow ==========
 const std::string TEXTUREPATH_HOLLOW = "../Sprite/Hollow_mask5.png";
-const float ENERGY_HOLLOW = 100;
+const float ENERGY_HOLLOW = 90;
 const std::string NAME_HOLLOW = "Masque du Hollow";
 
 

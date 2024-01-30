@@ -10,7 +10,7 @@ public:
     UserInput(Button button);
     UserInput(sf::Event event, sf::RenderWindow &window);
     Button getButton(void) const {return _button;}
-    void manageInput(sf::Event event, sf::RenderWindow &windown);
+    void manageInput(sf::Event event, sf::RenderWindow &window);
 
 
 private: 

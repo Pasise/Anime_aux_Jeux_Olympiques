@@ -62,7 +62,7 @@ Le dossier contient les différents types de fichiers suivants
 - player.hpp (définition général d'un joueur)
 - playermedium.hpp(un joueur avec 1 attaque)
 - playerplus.hpp(un joueur avec 2 attaques)
-- playersoin.hpp(un joueur avec une attaque et la possibilité de se soigner)
+- playerheal.hpp(un joueur avec une attaque et la possibilité de se soigner)
 - userinput.hpp (gestion du clavier)
 
 #### - Les fichiers .cpp dans la définition des fonctions dans le dossier src:
@@ -74,7 +74,7 @@ Le dossier contient les différents types de fichiers suivants
 - player.cpp
 - playermedium.cpp
 - playerplus.cpp
-- playersoin.cpp
+- playerheal.cpp
 - userinput.cpp
 
 #### - Le dossier Sprite contient les sprites utilisés pour ce jeu et les images pour l'affichage en .png

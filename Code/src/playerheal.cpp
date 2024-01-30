@@ -1,7 +1,7 @@
-#include "../header/playersoin.hpp"
+#include "../header/playerheal.hpp"
 #include "../header/game.hpp"
 
-PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier,float x, float y, float damage, float heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath)
+PlayerHeal::PlayerHeal(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier,float x, float y, float damage, float heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath)
 {
 
     _lastname = lastname;
@@ -26,7 +26,7 @@ PlayerSoin::PlayerSoin(std::string lastname, std::string firstname, float Xp,flo
 }
 
 
-void PlayerSoin::doAttack1(Player& targetPlayer)
+void PlayerHeal::doAttack1(Player& targetPlayer)
 {
     std::cout << getLastname() << " is performing Attack1 on " << targetPlayer.getLastname() << std::endl;
     reduceHealth(targetPlayer, _damage);
@@ -36,12 +36,12 @@ void PlayerSoin::doAttack1(Player& targetPlayer)
 
 
 
-void PlayerSoin::randomAttack(Player& targetPlayer)
+void PlayerHeal::randomAttack(Player& targetPlayer)
 {
    doAttack1(targetPlayer);
 }
 
-void PlayerSoin::doHeal()
+void PlayerHeal::doHeal()
 {
     std::cout << getLastname() << " is healing himself" << std::endl;
     _Xp += _heal;
@@ -52,7 +52,7 @@ void PlayerSoin::doHeal()
     _isHealing = true;
 }
 
-void PlayerSoin::doFix(){
+void PlayerHeal::doFix(){
     _isAttacking1 = false;
     _isPicking = false;
     _isHealing = false;
@@ -60,7 +60,7 @@ void PlayerSoin::doFix(){
 }
 
 
-bool PlayerSoin::canAttack() const {
+bool PlayerHeal::canAttack() const {
 
     // Générez une valeur aléatoire pour déterminer si le joueur peut attaquer
     int randomValue = getRandomNumberForCanAttack();
@@ -69,7 +69,7 @@ bool PlayerSoin::canAttack() const {
     return randomValue == 3;
 }
 
-bool PlayerSoin::isTimetoHeal() const {
+bool PlayerHeal::isTimetoHeal() const {
     auto currentTime = Clock::now();
     auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - _lastHealTime);
 

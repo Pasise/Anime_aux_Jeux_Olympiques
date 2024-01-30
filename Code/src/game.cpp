@@ -20,7 +20,7 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
     std::cout << "Player 2 name : " << _players[1]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
-    std::shared_ptr<Player> player3 = std::make_shared<PlayerSoin>(LASTNAME_SHINSUI, FIRSTNAME_SHINSUI, XP_SHINSUI,XP_MAX_SHINSUI,XP_MULTIPLIER_SHINSUI, X_SHINSUI, Y_SHINSUI, DAMAGE_SHINSUI, SOIN_SHINSUI, SHINSUIASSOCIATION, DEATH_TEXTURE_PATH_SHINSUI);
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerHeal>(LASTNAME_SHUNSUI, FIRSTNAME_SHUNSUI, XP_SHUNSUI,XP_MAX_SHUNSUI,XP_MULTIPLIER_SHUNSUI, X_SHUNSUI, Y_SHUNSUI, DAMAGE_SHUNSUI, HEAL_SHUNSUI, SHUNSUIASSOCIATION, DEATH_TEXTURE_PATH_SHUNSUI);
     _players.push_back(player3);  // Ajoutez le joueur à la liste
     std::cout << "Player 3 in the list" << std::endl;
     std::cout << "Player 3 name : " << _players[2]->getFirstname() << std::endl;
@@ -478,11 +478,11 @@ void Game::handlePick() {
 }
 
 void Game::handleHeal() {
-    std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[0]);
-    if (soinPlayer && soinPlayer->isTimetoHeal()){
-        soinPlayer->doHeal();
+    std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>(_players[0]);
+    if (HealPlayer && HealPlayer->isTimetoHeal()){
+        HealPlayer->doHeal();
         playHealSound();
-        soinPlayer->setLastHealTime();
+        HealPlayer->setLastHealTime();
     }
 }
 
@@ -492,7 +492,7 @@ void Game::updateStateBots() {
         if (_players[i] && _players[i]->isAlive()) {
             
             std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
-            std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(_players[i]);  
+            std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>(_players[i]);  
 
             if (_players[i]->isTimeToFix()) _players[i]->doFix();
 
@@ -511,9 +511,9 @@ void Game::updateStateBots() {
                     break;  // Sortir de la boucle interne après avoir attaqué
                     }
                 }
-                if (soinPlayer && soinPlayer->getXp()<=soinPlayer->getXpMax()/2 && soinPlayer->isTimetoHeal()) {
-                    soinPlayer->doHeal();
-                    soinPlayer->setLastHealTime();
+                if (HealPlayer && HealPlayer->getXp()<=HealPlayer->getXpMax()/2 && HealPlayer->isTimetoHeal()) {
+                    HealPlayer->doHeal();
+                    HealPlayer->setLastHealTime();
                 }
             }
 

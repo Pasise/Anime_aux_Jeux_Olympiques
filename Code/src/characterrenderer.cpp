@@ -1,5 +1,5 @@
 #include "../header/characterrenderer.hpp"
-#include "../header/playersoin.hpp"
+#include "../header/playerheal.hpp"
 #include "../header/fruit.hpp"
 #include "../header/playerplus.hpp"
 #include "../header/playermedium.hpp"
@@ -32,8 +32,8 @@ CharacterRenderer::CharacterRenderer(const std::vector<std::shared_ptr<Player>>*
             loadPlayerTexture(player, _attackSprites[i], 1);
 
             std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(player);
-            std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>(player);
-            if (captainPlayer || soinPlayer) {
+            std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>(player);
+            if (captainPlayer || HealPlayer) {
                 loadPlayerTexture(player, _sprites[i], 2);
             }
         }
@@ -73,10 +73,10 @@ void CharacterRenderer::renderPosition(sf::RenderWindow& window, std::size_t ind
 {
     std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[index]);
     std::shared_ptr<PlayerMedium> mediumPlayer = std::dynamic_pointer_cast<PlayerMedium>((*_players)[index]);
-    std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[index]);
-        if ((*_players)[index] && !(*_players)[index]->isAttacking1() &&( !captainPlayer || !captainPlayer->isAttacking2()) && (!soinPlayer || !soinPlayer->isHealing())){
+    std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>((*_players)[index]);
+        if ((*_players)[index] && !(*_players)[index]->isAttacking1() &&( !captainPlayer || !captainPlayer->isAttacking2()) && (!HealPlayer || !HealPlayer->isHealing())){
             std::string playerTexturePath;
-            if (captainPlayer || soinPlayer)
+            if (captainPlayer || HealPlayer)
             playerTexturePath = (*_players)[index]->getTexturePath(2);
             else playerTexturePath = (*_players)[index]->getTexturePath(1);
             sf::Texture texture;
@@ -156,22 +156,22 @@ void CharacterRenderer::renderAttack2(sf::RenderWindow& window, std::size_t inde
 
 void CharacterRenderer::renderHeal(sf::RenderWindow& window, std::size_t index)
 {
-    std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[index]);
+    std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>((*_players)[index]);
 
-    if ((*_players)[index] && soinPlayer && soinPlayer->isHealing() && !soinPlayer->isAttacking1()) {
-        std::string playerTexturePath = soinPlayer->getTexturePath(1);
+    if ((*_players)[index] && HealPlayer && HealPlayer->isHealing() && !HealPlayer->isAttacking1()) {
+        std::string playerTexturePath = HealPlayer->getTexturePath(1);
 
         sf::Texture texture;
         if (texture.loadFromFile(playerTexturePath)) {
             sf::Vector2u frameSize = texture.getSize();
-            frameSize.x /= soinPlayer->getNumberOfFrames(playerTexturePath);
+            frameSize.x /= HealPlayer->getNumberOfFrames(playerTexturePath);
             frameSize.y /= 1;
             int currentFrame = _currentFrames[index];
             sf::IntRect sourceRect(currentFrame * frameSize.x, 0, frameSize.x, frameSize.y);
 
             _attackSprites[index].setTexture(texture);
             _attackSprites[index].setTextureRect(sourceRect);
-            _attackSprites[index].setPosition(soinPlayer->getX(), soinPlayer->getY());
+            _attackSprites[index].setPosition(HealPlayer->getX(), HealPlayer->getY());
 
             window.draw(_attackSprites[index]);
         }
@@ -213,12 +213,12 @@ void CharacterRenderer::render(sf::RenderWindow& window)
 {
     sf::Time elapsedTime = _clock.getElapsedTime();
     std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[0]);
-    std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[0]);
+    std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>((*_players)[0]);
 
     if (elapsedTime.asSeconds() > _frameChangeSpeed) {
         for (std::size_t i = 0; i < _currentFrames.size(); ++i) {
             std::string texturePath;
-            if (soinPlayer)
+            if (HealPlayer)
             texturePath = (*_players)[i]->getTexturePath(2);
             if (captainPlayer)
             texturePath = (*_players)[i]->getTexturePath(0);
@@ -247,23 +247,23 @@ void CharacterRenderer::render2(sf::RenderWindow& window)
 {
     sf::Time elapsedTime = _clock.getElapsedTime();
     std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[0]);
-    std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[0]);
+    std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>((*_players)[0]);
 
     if (elapsedTime.asSeconds() > _frameChangeSpeed) {
         for (std::size_t i = 0; i < _currentFrames.size(); ++i) {
             std::string texturePath;
-            if (soinPlayer) texturePath = (*_players)[i]->getTexturePath(2);
+            if (HealPlayer) texturePath = (*_players)[i]->getTexturePath(2);
 
             if (captainPlayer) texturePath = (*_players)[i]->getTexturePath(0);
 
             else texturePath = (*_players)[i]->getTexturePath(1);
 
             std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[i]);
-            std::shared_ptr<PlayerSoin> soinPlayer = std::dynamic_pointer_cast<PlayerSoin>((*_players)[i]);
+            std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>((*_players)[i]);
 
             if (!captainPlayer)  _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]-2);
 
-            else if (!soinPlayer) _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]+1);
+            else if (!HealPlayer) _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]+1);
 
             else _currentFrames[i] = (_currentFrames[i] + 1) % (_frameCounts[texturePath]-1);
         }
