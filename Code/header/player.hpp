@@ -101,7 +101,6 @@ class Player: public Object{
     bool isTimetoAttack() const;
     int getRandomNumberForCanAttack() const;
     
-    bool isSameline(const Player &otherPlayer) const;
     bool isBehind(const Player &otherPlayer) const;
     bool isAttacking1() const {
         return _isAttacking1;
