@@ -62,6 +62,7 @@ public:
     void handleHeal();
 
     private :
+        
 
     void displayIntroScreen(sf::RenderWindow& window);
     void displayStartScreen(sf::RenderWindow& window);

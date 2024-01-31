@@ -12,7 +12,7 @@ protected:
     TimePoint _lastHealTime;
 
 public:
-    PlayerHeal(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier, float x, float y, float damage, float Heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath);
+    PlayerHeal(std::string lastname, std::string firstname, float Hp,float Hp_max,float Hp_multiplier, float x, float y, float damage, float Heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath);
     ~PlayerHeal() {};
     void doHeal();
     bool isHealing(){return _isHealing;};

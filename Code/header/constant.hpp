@@ -8,11 +8,11 @@
 //======Constantes Zoro RORONOA =======
 const std::string LASTNAME_ZORO = "Roronoa";
 const  std::string FIRSTNAME_ZORO = "Zoro";
-const float XP_ZORO =  200;
-const float XP_MAX_ZORO =  200;
-const float XP_MULTIPLIER_ZORO = 0.02;
-const float X_ZORO = 0;
-const float Y_ZORO = 740;
+const float HP_ZORO =  400;
+const float HP_MAX_ZORO =  400;
+const float HP_MULTIPLIER_ZORO = 0.023;
+const float X_ZORO = 780;
+const float Y_ZORO = 940;
 const float DAMAGE_ZORO = 40;
 const std::string TEXTUREPATH_ZORO =  "../Sprite/zoro_run.png";
 const std::string TEXTUREPATH_ZORO_ATTACK1 = "../Sprite/zoro_attack1.png";
@@ -25,11 +25,11 @@ const std::string DEATH_TEXTURE_PATH_ZORO = "../Sprite/zoro_dead.PNG";
 
 const std::string LASTNAME_LUFFY = "Monkey D.";
 const  std::string FIRSTNAME_LUFFY = "Luffy";
-const float XP_LUFFY =  250;
-const float XP_MAX_LUFFY =  250;
-const float XP_MULTIPLIER_LUFFY = 0.017;
-const float X_LUFFY = 0;
-const float Y_LUFFY = 580;
+const float HP_LUFFY =  400;
+const float HP_MAX_LUFFY =  400;
+const float HP_MULTIPLIER_LUFFY = 0.020;
+const float X_LUFFY = 780;
+const float Y_LUFFY = 800;
 const float DAMAGE_LUFFY = 50;
 const std::string TEXTUREPATH_LUFFY = "../Sprite/luffy_run.png";
 const std::string TEXTUREPATH_LUFFY_ATTACK1 = "../Sprite/luffy_attack1.png";
@@ -41,11 +41,11 @@ const std::string DEATH_TEXTURE_PATH_LUFFY = "../Sprite/luffy_dead.PNG";
 //======Constantes Byakuya KUCHIKI =======
 const std::string LASTNAME_BYAKUYA = "Kuchiki";
 const  std::string FIRSTNAME_BYAKUYA = "Byakuya";
-const float XP_BYAKUYA =  300;
-const float XP_MAX_BYAKUYA =  300;
-const float XP_MULTIPLIER_BYAKUYA = 0.017;
-const float X_BYAKUYA = 0;
-const float Y_BYAKUYA = 740;
+const float HP_BYAKUYA =  600;
+const float HP_MAX_BYAKUYA =  600;
+const float HP_MULTIPLIER_BYAKUYA = 0.02;
+const float X_BYAKUYA = 780;
+const float Y_BYAKUYA = 940;
 const float DAMAGE_BYAKUYA = 50;
 const std::string TEXTUREPATH_BYAKUYA =  "../Sprite/byakuya_run.png";
 const std::string TEXTUREPATH_BYAKUYA_ATTACK1 = "../Sprite/byakuya_attack1.png";
@@ -56,11 +56,11 @@ const std::string DEATH_TEXTURE_PATH_BYAKUYA = "../Sprite/byakuya_dead.PNG";
 //======Constantes Ichigo KUROSAKI=======
 const std::string LASTNAME_ICHIGO = "Kurosaki";
 const  std::string FIRSTNAME_ICHIGO = "Ichigo";
-const float XP_ICHIGO =  200;
-const float XP_MAX_ICHIGO =  200;
-const float XP_MULTIPLIER_ICHIGO = 0.016;
-const float X_ICHIGO = 0;
-const float Y_ICHIGO = 580;
+const float HP_ICHIGO =  400;
+const float HP_MAX_ICHIGO =  400;
+const float HP_MULTIPLIER_ICHIGO = 0.0185;
+const float X_ICHIGO = 780;
+const float Y_ICHIGO = 800;
 const float DAMAGE_ICHIGO = 40;
 const std::string TEXTUREPATH_ICHIGO =    "../Sprite/ichigo_run.png";
 const std::string TEXTUREPATH_ICHIGO_ATTACK1 =  "../Sprite/ichigo_attack1.png";
@@ -71,11 +71,11 @@ const std::string DEATH_TEXTURE_PATH_ICHIGO = "../Sprite/ichigo_dead.PNG";
 //======Constantes SHUNSUI KYORAKU=======
 const std::string LASTNAME_SHUNSUI = "Kyoraku";
 const  std::string FIRSTNAME_SHUNSUI = "SHUNSUI";
-const float XP_SHUNSUI =  200;
-const float XP_MAX_SHUNSUI =  200;
-const float XP_MULTIPLIER_SHUNSUI = 0.02;
-const float X_SHUNSUI = 0;
-const float Y_SHUNSUI = 580;
+const float HP_SHUNSUI =  400;
+const float HP_MAX_SHUNSUI =  400;
+const float HP_MULTIPLIER_SHUNSUI = 0.023;
+const float X_SHUNSUI = 780;
+const float Y_SHUNSUI = 800;
 const float DAMAGE_SHUNSUI = 50;
 const float HEAL_SHUNSUI = 40;
 const std::string TEXTUREPATH_SHUNSUI =    "../Sprite/kyoraku_run.png"; 
@@ -86,7 +86,7 @@ const std::string DEATH_TEXTURE_PATH_SHUNSUI = "../Sprite/kyoraku_dead.PNG";
 
 // ========== Constantes Background ==========
 
-const std::string BACKGROUND = "../Sprite/Background.png";
+const std::string BACKGROUND = "../Sprite/Background1.2merged.png";
 
 // ========== Constantes Fruit  ==========
 
@@ -109,7 +109,7 @@ const std::string NAME_HOLLOW = "Masque du Hollow";
 // ========== Constantes génerales ==========
 //======= Constantes distances d'attaque =========
 const float DISTANCETREEHOLD = 250.f; 
-const float DISTANCETREEHOLDLUFFY = 450.f; //Luffy peut attaquer de plus loin
+const float DISTANCETREEHOLDLUFFY = 500.f; //Luffy peut attaquer de plus loin
 const float DISTANCETREEHOLDFRUITS = 180.f;
 
 

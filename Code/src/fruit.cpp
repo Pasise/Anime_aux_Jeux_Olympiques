@@ -23,7 +23,8 @@ int Fruit::getRandomNumberForX() const {
 
     // Generate a new x-coordinate until a unique one is found
     do {
-        newX = std::rand() % 800;
+
+        newX = (rand() % 2400) + 1250;
     } while (usedXCoordinates.count(newX) > 0);
 
     return newX;
@@ -45,21 +46,21 @@ int Fruit::getRandomNumberForY() const {
 
     if (_name == "Gomu Gomu fruit") {
         if (rand1 == 1) {
-            newY = 775.0f;
+            newY = 1005.0f;
         } else {
-            newY = 627.0f;
+            newY = 857.0f;
         }
     } else if (_name == "Masque du Hollow") {
         if (rand2 == 0) {
-            newY = 725.0f;
+            newY = 955.0f;
         } else {
-            newY = 580.0f;
+            newY = 810.0f;
         }
     } else if (_name == "Fruit Normal") {
         if (rand3 == 1) {
-            newY = 830.0f;
+            newY = 1060.0f;
         } else {
-            newY = 680.0f;
+            newY = 910.0f;
         }
     }
 

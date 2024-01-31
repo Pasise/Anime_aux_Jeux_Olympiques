@@ -1,13 +1,13 @@
 #include "../header/playermedium.hpp"
 
-PlayerMedium::PlayerMedium(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier, float x, float y, float damage, std::map<std::string, int> textureAssociations, std::string deathTexturePath) 
+PlayerMedium::PlayerMedium(std::string lastname, std::string firstname, float Hp,float Hp_max,float Hp_multiplier, float x, float y, float damage, std::map<std::string, int> textureAssociations, std::string deathTexturePath) 
 {
     _lastname = lastname;
     _firstname = firstname;
-    _Xp = Xp;
-    _XpMax = Xp_max;
-    _XpMultiplier = Xp_multiplier;
-    _speed = Xp_max*Xp_multiplier;
+    _Hp = Hp;
+    _HpMax = Hp_max;
+    _HpMultiplier = Hp_multiplier;
+    _speed = Hp_max*Hp_multiplier;
     _x = x;
     _y = y;
     _damage = damage;
@@ -54,9 +54,9 @@ PlayerMedium& PlayerMedium::operator=(const PlayerMedium& other)
         // Copier les membres de other vers this
         _lastname = other._lastname;
         _firstname = other._firstname;
-        _Xp = other._Xp;
-        _XpMax = other._XpMax;
-        _XpMultiplier = other._XpMultiplier;
+        _Hp = other._Hp;
+        _HpMax = other._HpMax;
+        _HpMultiplier = other._HpMultiplier;
         _speed = other._speed;
         _x = other._x;
         _y = other._y;

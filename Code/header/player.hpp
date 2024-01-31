@@ -11,9 +11,9 @@ class Player: public Object{
     protected :
     std::string _lastname;
     std::string _firstname;
-    float _Xp;
-    float _XpMax;
-    float _XpMultiplier;
+    float _Hp;
+    float _HpMax;
+    float _HpMultiplier;
     float _speed;
     float _x;
     float _y;
@@ -32,7 +32,14 @@ class Player: public Object{
     std::map<std::string, int> _textureAssociations;
     std::string _deathTexturePath;
 
+    //view
+    sf::View _view;
+
     public : 
+    sf::View &getView() 
+    {
+        return _view;
+    }
     void moveLeft();
     void moveRight();
     void moveUp();
@@ -40,8 +47,8 @@ class Player: public Object{
     float getX()const {return _x;}
     float getY()const {return _y;}
     float getSpeed(){return _speed;}
-    float getXp(){return _Xp;}
-    float getXpMax(){return _XpMax;}
+    float getHp(){return _Hp;}
+    float getHpMax(){return _HpMax;}
     int getDirection(){return _direction;}
     float getDamage(){return _damage;}
     std::string getLastname(){return _lastname;}
@@ -82,7 +89,7 @@ class Player: public Object{
 
     void setX(float x){_x = x;}
     void setY(float y){_y = y;}
-    void setXp(float Xp){_Xp = Xp;}
+    void setHp(float Hp){_Hp = Hp;}
     void setDirection(int direction){_direction = direction;}
 
     void reduceHealth(Player& targetPlayer, float damage);
@@ -114,7 +121,7 @@ class Player: public Object{
 
     void setSpeed()
     {
-        _speed = (_Xp * _XpMultiplier);
+        _speed = (_Hp * _HpMultiplier);
 
         // On s'assure que le joeur ne fasse pas du surplace
         if (_speed < 0.2f) {
@@ -122,9 +129,9 @@ class Player: public Object{
         }
     }
 
-    void setSpeed( float xpMultiplier)
+    void setSpeed( float HpMultiplier)
     {
-        _speed = (_Xp * xpMultiplier);
+        _speed = (_Hp * HpMultiplier);
 
         // On s'assure que le joeur ne fasse pas du surplace
         if (_speed < 0.2f) {

@@ -69,8 +69,8 @@ void CharacterRenderer::loadFruitTexture(const std::shared_ptr<Fruit>& fruit, sf
 
 
 
-void CharacterRenderer::renderPosition(sf::RenderWindow& window, std::size_t index)
-{
+void CharacterRenderer::renderPosition(sf::RenderWindow& window, std::size_t index) // Affichage de la course des joueurs
+{ 
     std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[index]);
     std::shared_ptr<PlayerMedium> mediumPlayer = std::dynamic_pointer_cast<PlayerMedium>((*_players)[index]);
     std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>((*_players)[index]);
@@ -100,7 +100,7 @@ void CharacterRenderer::renderPosition(sf::RenderWindow& window, std::size_t ind
 
 }
 
-void CharacterRenderer::renderAttack1(sf::RenderWindow& window, std::size_t index)
+void CharacterRenderer::renderAttack1(sf::RenderWindow& window, std::size_t index) // Affichage de l'attaque 1 des joueurs
 {
         if ((*_players)[index] && (*_players)[index]->isAttacking1()) {
             std::string playerTexturePath = (*_players)[index]->getTexturePath(0);
@@ -126,7 +126,7 @@ void CharacterRenderer::renderAttack1(sf::RenderWindow& window, std::size_t inde
 
 }
 
-void CharacterRenderer::renderAttack2(sf::RenderWindow& window, std::size_t index)
+void CharacterRenderer::renderAttack2(sf::RenderWindow& window, std::size_t index) // Affichage de l'attaque 2 des joueurs
 {
     std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[index]);
 
@@ -154,7 +154,7 @@ void CharacterRenderer::renderAttack2(sf::RenderWindow& window, std::size_t inde
 
 }
 
-void CharacterRenderer::renderHeal(sf::RenderWindow& window, std::size_t index)
+void CharacterRenderer::renderHeal(sf::RenderWindow& window, std::size_t index) // Affichage du soin des joueurs
 {
     std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>((*_players)[index]);
 
@@ -183,7 +183,7 @@ void CharacterRenderer::renderHeal(sf::RenderWindow& window, std::size_t index)
 
 }
 
-void CharacterRenderer::renderDeath(sf::RenderWindow& window, std::size_t index)
+void CharacterRenderer::renderDeath(sf::RenderWindow& window, std::size_t index) // Affichage de la mort des joueurs
 {
     if ((*_players)[index] && !(*_players)[index]->isAlive()) {
         std::string playerTexturePath = (*_players)[index]->getDeathTexturePath();
@@ -243,7 +243,7 @@ void CharacterRenderer::render(sf::RenderWindow& window)
         renderFruits(window);
 }
 
-void CharacterRenderer::render2(sf::RenderWindow& window)
+void CharacterRenderer::render2(sf::RenderWindow& window) // Dans certains cas on doit appeler render2 au lieu de render, sinon il y a un problème de sprite qui clignote
 {
     sf::Time elapsedTime = _clock.getElapsedTime();
     std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>((*_players)[0]);
@@ -294,10 +294,6 @@ void CharacterRenderer::loadBackgroundTexture()
     _backgroundSprite.setTexture(_backgroundTexture);
 }
 
-void CharacterRenderer::setCameraPosition(float x)
-{
-    _backgroundSprite.setPosition(x, 0);
-}
 
 void CharacterRenderer::setFruits(const std::vector<std::shared_ptr<Fruit>>* fruits) {
     _fruits = fruits;
@@ -333,77 +329,32 @@ void CharacterRenderer::renderFruits(sf::RenderWindow& window) {
     
 }
 
-void CharacterRenderer::loadHealthBarTexture() {
-    if (!_healthBarTexture.loadFromFile("../Sprite/life.png")) {
-        std::cerr << "Failed to load health bar texture." << std::endl;
-    }
-}
-
-void CharacterRenderer::renderHealthBars(sf::RenderWindow& window) {
-    // Utilise seulement le joueur 0
-    const auto& player = (*_players)[0];
-
-    // Vérifier si les points d'expérience sont égaux à zéro
-    if (player->getXp() == 0) {
-        return;
-    }
-
-    sf::Vector2f healthBarPosition(10.0f, 10.0f);
-    float borderThickness = 5.0f;
-    sf::RectangleShape backgroundBar(sf::Vector2f(player->getXpMax(), 20.0f));
-    backgroundBar.setPosition(healthBarPosition);
-    backgroundBar.setFillColor(sf::Color::Black);
-    backgroundBar.setOutlineThickness(borderThickness);
-    backgroundBar.setOutlineColor(sf::Color::White);
-
-    float healthPercentage = static_cast<float>(player->getXp()) / static_cast<float>(player->getXpMax());
-    float healthBarWidth = healthPercentage * player->getXpMax();
-
-    float healthBarHeight = 20.0f;
-
-    sf::Color healthBarColor = sf::Color::Green;
-
-    if (healthPercentage <= 0.6f && healthPercentage > 0.3f) {
-        healthBarColor = sf::Color::Yellow; 
-    } else if (healthPercentage <= 0.3f) {
-        healthBarColor = sf::Color::Red; 
-    }
-
-    sf::RectangleShape healthBar(sf::Vector2f(healthBarWidth, healthBarHeight));
-    healthBar.setPosition(healthBarPosition);
-    healthBar.setFillColor(healthBarColor);
-
-    healthBar.setOutlineThickness(borderThickness);
-    healthBar.setOutlineColor(sf::Color::White);
-
-    window.draw(backgroundBar);
-    window.draw(healthBar);
-}
 
 void CharacterRenderer::renderHealthBarsBots(sf::RenderWindow& window) {
-    for (std::size_t i = 1; i < _players->size(); ++i) {
+    for (std::size_t i = 0; i < _players->size(); ++i) {
         const auto& player = (*_players)[i];
 
-        // Vérifier si les points d'expérience sont égaux à zéro
-        if (player->getXp() == 0) {
+        // Vérifier si les points de vie sont égaux à zéro
+        if (player->getHp() == 0) {
             continue;
         }
         float xBar = player->getX();
         float yBar = player->getY();
-        if (player->getFirstname() == "Luffy") xBar+=100;
+        if (player->getFirstname() == "Luffy") xBar+=100; // à cause du décalage du sprite, par rapport à la position réelle du joueur
         else if (player->getFirstname() == "Zoro") xBar+=150;
         sf::Vector2f healthBarPosition(xBar, yBar - 20.0f);
-        float borderThickness = 5.0f;
-        sf::RectangleShape backgroundBar(sf::Vector2f(player->getXpMax(), 10.0f));
+        float borderThickness = 2.5f;
+        sf::RectangleShape backgroundBar(sf::Vector2f(player->getHpMax(), 6.0f));
         backgroundBar.setPosition(healthBarPosition);
         backgroundBar.setFillColor(sf::Color::Black);
         backgroundBar.setOutlineThickness(borderThickness);
         backgroundBar.setOutlineColor(sf::Color::White);
+        backgroundBar.setScale(0.5, 1);
 
-        float healthPercentage = static_cast<float>(player->getXp()) / static_cast<float>(player->getXpMax());
-        float healthBarWidth = healthPercentage * player->getXpMax();
+        float healthPercentage = static_cast<float>(player->getHp()) / static_cast<float>(player->getHpMax()); // Calculer le pourcentage de vie restant
+        float healthBarWidth = healthPercentage * player->getHpMax();
 
-        float healthBarHeight = 10.0f;
+        float healthBarHeight = 6.0f;
 
         sf::Color healthBarColor = sf::Color::Green;
 
@@ -419,8 +370,20 @@ void CharacterRenderer::renderHealthBarsBots(sf::RenderWindow& window) {
 
         healthBar.setOutlineThickness(borderThickness);
         healthBar.setOutlineColor(sf::Color::White);
+        healthBar.setScale(0.5, 1); // On diminue la taille de la barre de vie
 
         window.draw(backgroundBar);
         window.draw(healthBar);
     }
 }
+
+void CharacterRenderer::renderPlayerCurser(sf::RenderWindow& window) { // Affichage du curseur sur le joueur que l'on joue
+    const auto& player = (*_players)[0];
+    sf::CircleShape triangle(30, 3);
+    triangle.setScale(0.5, 0.5);
+    triangle.setRotation(180);
+    triangle.setFillColor(sf::Color::Red);
+    if(player->getFirstname() == "Zoro" || player->getFirstname() == "Luffy") triangle.setPosition(player->getX()+250, player->getY() + 20);
+    else triangle.setPosition(player->getX()+150, player->getY() + 20);
+    window.draw(triangle);
+    }

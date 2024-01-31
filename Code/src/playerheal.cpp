@@ -1,15 +1,15 @@
 #include "../header/playerheal.hpp"
 #include "../header/game.hpp"
 
-PlayerHeal::PlayerHeal(std::string lastname, std::string firstname, float Xp,float Xp_max,float Xp_multiplier,float x, float y, float damage, float heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath)
+PlayerHeal::PlayerHeal(std::string lastname, std::string firstname, float Hp,float Hp_max,float Hp_multiplier,float x, float y, float damage, float heal, std::map<std::string, int> textureAssociations, std::string deathTexturePath)
 {
 
     _lastname = lastname;
     _firstname = firstname;
-    _Xp = Xp;
-    _XpMax = Xp_max;
-    _XpMultiplier = Xp_multiplier;
-    _speed = Xp_max*Xp_multiplier;
+    _Hp = Hp;
+    _HpMax = Hp_max;
+    _HpMultiplier = Hp_multiplier;
+    _speed = Hp_max*Hp_multiplier;
     _x = x;
     _y = y;
     _damage = damage;
@@ -22,6 +22,9 @@ PlayerHeal::PlayerHeal(std::string lastname, std::string firstname, float Xp,flo
     _isHealing = false;
     _isAlive = true;
     
+    // view
+
+
     std::cout << "PlayerBleachShinigami created" << std::endl;
 }
 
@@ -44,10 +47,10 @@ void PlayerHeal::randomAttack(Player& targetPlayer)
 void PlayerHeal::doHeal()
 {
     std::cout << getLastname() << " is healing himself" << std::endl;
-    _Xp += _heal;
-    if (_Xp > _XpMax)
+    _Hp += _heal;
+    if (_Hp > _HpMax)
     {
-        _Xp = _XpMax;
+        _Hp = _HpMax;
     }
     _isHealing = true;
 }

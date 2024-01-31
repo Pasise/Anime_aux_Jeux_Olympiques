@@ -6,6 +6,8 @@ void Player::moveLeft()
 {
        setX(getX() - getSpeed());
        setDirection(-1);
+       _view.move(-getSpeed(),0);
+       
 }
 
 //implémente la méthode moveRight si on appuie sur right et incrémente la position de x en utilisant la vitesse
@@ -14,22 +16,27 @@ void Player::moveRight()
 {
         setX(getX() + getSpeed());
         setDirection(1);
+        _view.move(getSpeed(),0);
 }
 
 void Player::moveUp()
 {
-        if (getY() > 580)
-        setY(getY() - getSpeed());
+        if (getY() > 800){
+        setY(getY() - getSpeed()*2);
+        _view.move(0,-getSpeed()*2);
+        }
 }
 
 void Player::moveDown()
 {
-        if (getY() < 740)
-        setY(getY() + getSpeed());
+        if (getY() < 940){
+        setY(getY() + getSpeed()*2);
+        _view.move(0,getSpeed()*2);
+        }
 }
 
 bool Player::isCloseTo(const Player &otherPlayer, float distanceThreshold) const {
-    float distance = std::sqrt(std::pow(getX() - otherPlayer.getX(), 2) + std::pow(getY() - otherPlayer.getY(), 2));
+    float distance = std::sqrt(std::pow(getX() - otherPlayer.getX(), 2) + std::pow((getY() - otherPlayer.getY())*1.7, 2)); //on multiplie par 1.7 pour avoir plus de chance d'attaquer quelq'un sur notre ligne
     //std::cout << "Distance between " << " is " << distance << std::endl;
     return (distance < distanceThreshold);
 }
@@ -58,20 +65,20 @@ int Player::getRandomNumberForCanAttack() const {
 
 void Player::reduceHealth( Player& targetPlayer, float damage)
 {
-    // Réduire l'XP du joueur cible
-    targetPlayer.setXp(targetPlayer.getXp() - damage);
+    // Réduire l'Hp du joueur cible
+    targetPlayer.setHp(targetPlayer.getHp() - damage);
 
-    // Vérifier si l'XP est tombé à zéro ou moins
-    if (targetPlayer.getXp() <= 0)
+    // Vérifier si l'Hp est tombé à zéro ou moins
+    if (targetPlayer.getHp() <= 0)
     {
-        targetPlayer.setXp(0); // Assurez-vous que l'XP ne devienne pas négative
+        targetPlayer.setHp(0); // Assurez-vous que l'Hp ne devienne pas négative
         targetPlayer.setIsAlive(false);
         std::cout << targetPlayer.getLastname() << " is dead" << std::endl;
 
     }
     std::cout << "Damage infligé : " << getDamage() << "par " << _lastname << std::endl;
 
-    std::cout << targetPlayer.getLastname() << " has now " << targetPlayer.getXp() << " health points" << std::endl;
+    std::cout << targetPlayer.getLastname() << " has now " << targetPlayer.getHp() << " health points" << std::endl;
 }
 
 
@@ -125,16 +132,16 @@ void Player::doPick(Fruit& targetFruit, float distanceThreshold)
             if (targetFruit.isAlive())
             {
                 std::cout << getLastname() << " is picking up " << targetFruit.getName() << std::endl;
-                std::cout << "Xp avant : " << _Xp << std::endl;
+                std::cout << "Hp avant : " << _Hp << std::endl;
 
-                // Increase the player's xp by the energy of the fruit
-                _Xp += targetFruit.getEnergy();
-                if (_Xp > _XpMax)
+                // Increase the player's Hp by the energy of the fruit
+                _Hp += targetFruit.getEnergy();
+                if (_Hp > _HpMax)
                 {
-                    _Xp = _XpMax;
+                    _Hp = _HpMax;
                 }
 
-                std::cout << "Xp apres : " << _Xp << std::endl;
+                std::cout << "Hp apres : " << _Hp << std::endl;
 
                 // Set isAlive to false to mark the fruit as picked
                 targetFruit.setIsAlive(false);

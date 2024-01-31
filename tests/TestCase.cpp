@@ -10,9 +10,9 @@ TEST_CASE("Test des fonctions de la classe PlayerMedium") {
     SUBCASE("Test du constructeur et des fonctions d'initialisation") {
         std::string lastname = "Gojo";
         std::string firstname = "Satoru";
-        float Xp = 100.0f;
-        float Xp_max = 150.0f;
-        float Xp_multiplier = 1.5f;
+        float Hp = 100.0f;
+        float Hp_max = 150.0f;
+        float Hp_multiplier = 1.5f;
 
         float x = 0.0f;
         float y = 0.0f;
@@ -20,12 +20,12 @@ TEST_CASE("Test des fonctions de la classe PlayerMedium") {
         std::map<std::string, int> textureAssociations = {{"Gojo.png", 2}, {"Gojo2.png", 3}};
         std::string deathTexturePath = "death_texture.png";
 
-        PlayerMedium playerMedium(lastname, firstname, Xp, Xp_max, Xp_multiplier, x, y, damage, textureAssociations, deathTexturePath);
+        PlayerMedium playerMedium(lastname, firstname, Hp, Hp_max, Hp_multiplier, x, y, damage, textureAssociations, deathTexturePath);
 
         CHECK(playerMedium.getLastname() == lastname);
         CHECK(playerMedium.getFirstname() == firstname);
-        CHECK(playerMedium.getXp() == Xp);
-        CHECK(playerMedium.getXpMax() == Xp_max);
+        CHECK(playerMedium.getHp() == Hp);
+        CHECK(playerMedium.getHpMax() == Hp_max);
         CHECK(playerMedium.getX() == x);
         CHECK(playerMedium.getY() == y);
         CHECK(playerMedium.getDamage() == damage);
@@ -37,11 +37,11 @@ TEST_CASE("Test des fonctions de la classe PlayerMedium") {
         PlayerMedium attacker("Trafalgar", "Law", 100.0f, 150.0f, 1.5f, 0.0f, 0.0f, 20.0f, {{"Trafalgar.png", 2}}, "Trafalgar2.png");
         PlayerMedium target("Don Quijote", "Doflamingo", 80.0f, 120.0f, 1.2f, 0.0f, 0.0f, 15.0f, {{"Doflamingo.png", 3}}, "Doflamingo2.png");
 
-        float initialXp = target.getXp();
+        float initialHp = target.getHp();
         attacker.doAttack1(target);
 
-        CHECK(target.getXp() == doctest::Approx(initialXp - attacker.getDamage()));
-        CHECK(target.isAlive() == (target.getXp() > 0));
+        CHECK(target.getHp() == doctest::Approx(initialHp - attacker.getDamage()));
+        CHECK(target.isAlive() == (target.getHp() > 0));
     }
 
     SUBCASE("Test pour la surcharge de l'opérateur =") {
@@ -53,8 +53,8 @@ TEST_CASE("Test des fonctions de la classe PlayerMedium") {
 
         CHECK(playerMediumCopy.getLastname() == playerMediumOriginal.getLastname());
         CHECK(playerMediumCopy.getFirstname() == playerMediumOriginal.getFirstname());
-        CHECK(playerMediumCopy.getXp() == playerMediumOriginal.getXp());
-        CHECK(playerMediumCopy.getXpMax() == playerMediumOriginal.getXpMax());
+        CHECK(playerMediumCopy.getHp() == playerMediumOriginal.getHp());
+        CHECK(playerMediumCopy.getHpMax() == playerMediumOriginal.getHpMax());
         CHECK(playerMediumCopy.getX() == playerMediumOriginal.getX());
         CHECK(playerMediumCopy.getY() == playerMediumOriginal.getY());
         CHECK(playerMediumCopy.getDamage() == playerMediumOriginal.getDamage());
@@ -84,20 +84,20 @@ TEST_CASE("Test des fonctions de la classe PlayerPlus") {
     SUBCASE("Test du constructeur et des fonctions d'initialisation") {
         std::string lastname = "Fushiguro";
         std::string firstname = "Megumi";
-        float Xp = 200.0f;
-        float Xp_max = 250.0f;
-        float Xp_multiplier = 2.5f;
+        float Hp = 200.0f;
+        float Hp_max = 250.0f;
+        float Hp_multiplier = 2.5f;
         float x = 4.0f;
         float y = 0.0f;
         float damage = 25.0f;
         std::map<std::string, int> textureAssociations = {{"Megumi.png", 2}, {"Megumi2.png", 3}};
         std::string deathTexturePath = "death_texture.png";
 
-        PlayerPlus playerPlus(lastname, firstname, Xp, Xp_max, Xp_multiplier, x, y, damage, textureAssociations, deathTexturePath);
+        PlayerPlus playerPlus(lastname, firstname, Hp, Hp_max, Hp_multiplier, x, y, damage, textureAssociations, deathTexturePath);
         CHECK(playerPlus.getLastname() == lastname);
         CHECK(playerPlus.getFirstname() == firstname);
-        CHECK(playerPlus.getXp() == Xp);
-        CHECK(playerPlus.getXpMax() == Xp_max);
+        CHECK(playerPlus.getHp() == Hp);
+        CHECK(playerPlus.getHpMax() == Hp_max);
         CHECK(playerPlus.getX() == x);
         CHECK(playerPlus.getY() == y);
         CHECK(playerPlus.getDamage() == damage);
@@ -109,11 +109,11 @@ TEST_CASE("Test des fonctions de la classe PlayerPlus") {
         PlayerPlus attacker("Shelby", "Thomas", 100.0f, 150.0f, 1.5f, 0.0f, 0.0f, 20.0f, {{"Thomas.png", 2}}, "Thomas2.png");
         PlayerPlus target("Annelise", "Keating", 80.0f, 120.0f, 1.2f,0.0f, 0.0f, 15.0f, {{"Annelise.png", 3}}, "death_texture.png");
 
-        float initialXp = target.getXp();
+        float initialHp = target.getHp();
         attacker.doAttack1(target);
 
-        CHECK(target.getXp() == doctest::Approx(initialXp - attacker.getDamage()));
-        CHECK(target.isAlive() == (target.getXp() > 0));
+        CHECK(target.getHp() == doctest::Approx(initialHp - attacker.getDamage()));
+        CHECK(target.isAlive() == (target.getHp() > 0));
         CHECK(attacker.isAttacking1() == true);
         CHECK(attacker.isAttacking2() == false);
     }
@@ -125,7 +125,7 @@ TEST_CASE("Test des fonctions de la classe PlayerPlus") {
     attacker.doAttack2(target);
 
     
-    CHECK(target.isAlive() == (target.getXp() > 0));
+    CHECK(target.isAlive() == (target.getHp() > 0));
     CHECK(attacker.isAttacking1() == false);
     CHECK(attacker.isAttacking2() == true);
 }
@@ -137,7 +137,7 @@ TEST_CASE("PlayerHeal - Test de la fonction doHeal") {
 
     healer.doHeal();
 
-    CHECK(healer.getXp() <= healer.getXpMax());
+    CHECK(healer.getHp() <= healer.getHpMax());
     CHECK(healer.isHealing() == true);
     CHECK(healer.isAttacking1() == false);
     CHECK(healer.isPicking() == false);

@@ -15,16 +15,14 @@ public:
     void render(sf::RenderWindow& window);
     void render2(sf::RenderWindow& window);
     void setTexture(const std::string& texturePath) { _backgroundTexturePath = texturePath; loadBackgroundTexture(); }
-    void setCameraPosition(float x);
     void setFruits(const std::vector<std::shared_ptr<Fruit>>* fruits);
     void renderFruits(sf::RenderWindow& window); 
     std::string getTexturePathFruits(int i){ 
         std::string file_name = _fruits->at(i)->getTexturePath();
         return file_name;
     }
-    void loadHealthBarTexture();
-    void renderHealthBars(sf::RenderWindow& window);
     void renderHealthBarsBots(sf::RenderWindow& window);
+    void renderPlayerCurser(sf::RenderWindow& window);
 
 
 

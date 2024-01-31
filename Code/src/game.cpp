@@ -8,54 +8,73 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
         std::cerr << "Failed to load background music." << std::endl;
 
 
-    std::shared_ptr<Player> player1 = std::make_shared<PlayerMedium>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, XP_BYAKUYA,XP_MAX_BYAKUYA,XP_MULTIPLIER_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, DAMAGE_BYAKUYA, BYAKUYAASSOCIATION, DEATH_TEXTURE_PATH_BYAKUYA);
+    std::shared_ptr<Player> player1 = std::make_shared<PlayerMedium>(LASTNAME_BYAKUYA, FIRSTNAME_BYAKUYA, HP_BYAKUYA,HP_MAX_BYAKUYA,HP_MULTIPLIER_BYAKUYA, X_BYAKUYA, Y_BYAKUYA, DAMAGE_BYAKUYA, BYAKUYAASSOCIATION, DEATH_TEXTURE_PATH_BYAKUYA);
     _players.push_back(player1);  // Ajoutez le joueur à la liste
     std::cout << "Player 1 in the list" << std::endl;
     std::cout << "Player 1 name : " << _players[0]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
-    std::shared_ptr<Player> player2 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, XP_ICHIGO,XP_MAX_ICHIGO,XP_MULTIPLIER_ICHIGO, X_ICHIGO, Y_ICHIGO, DAMAGE_ICHIGO, ICHIGOASSOCIATION, DEATH_TEXTURE_PATH_ICHIGO);
-    _players.push_back(player2);  // Ajoutez le joueur à la liste
+    std::shared_ptr<Player> player2 = std::make_shared<PlayerPlus>(LASTNAME_ICHIGO, FIRSTNAME_ICHIGO, HP_ICHIGO,HP_MAX_ICHIGO,HP_MULTIPLIER_ICHIGO, X_ICHIGO, Y_ICHIGO, DAMAGE_ICHIGO, ICHIGOASSOCIATION, DEATH_TEXTURE_PATH_ICHIGO);
+    _players.push_back(player2);  
     std::cout << "Player 2 in the list" << std::endl;
     std::cout << "Player 2 name : " << _players[1]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
-    std::shared_ptr<Player> player3 = std::make_shared<PlayerHeal>(LASTNAME_SHUNSUI, FIRSTNAME_SHUNSUI, XP_SHUNSUI,XP_MAX_SHUNSUI,XP_MULTIPLIER_SHUNSUI, X_SHUNSUI, Y_SHUNSUI, DAMAGE_SHUNSUI, HEAL_SHUNSUI, SHUNSUIASSOCIATION, DEATH_TEXTURE_PATH_SHUNSUI);
-    _players.push_back(player3);  // Ajoutez le joueur à la liste
+    std::shared_ptr<Player> player3 = std::make_shared<PlayerHeal>(LASTNAME_SHUNSUI, FIRSTNAME_SHUNSUI, HP_SHUNSUI,HP_MAX_SHUNSUI,HP_MULTIPLIER_SHUNSUI, X_SHUNSUI, Y_SHUNSUI, DAMAGE_SHUNSUI, HEAL_SHUNSUI, SHUNSUIASSOCIATION, DEATH_TEXTURE_PATH_SHUNSUI);
+    _players.push_back(player3);  
     std::cout << "Player 3 in the list" << std::endl;
     std::cout << "Player 3 name : " << _players[2]->getFirstname() << std::endl;
 
-    std::shared_ptr<Player> player4 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, XP_ZORO,XP_MAX_ZORO,XP_MULTIPLIER_ZORO, X_ZORO, Y_ZORO, DAMAGE_ZORO, ZOROASSOCIATION, DEATH_TEXTURE_PATH_ZORO);
-    _players.push_back(player4);  // Ajoutez le joueur à la liste
+    std::shared_ptr<Player> player4 = std::make_shared<PlayerPlus>(LASTNAME_ZORO, FIRSTNAME_ZORO, HP_ZORO,HP_MAX_ZORO,HP_MULTIPLIER_ZORO, X_ZORO, Y_ZORO, DAMAGE_ZORO, ZOROASSOCIATION, DEATH_TEXTURE_PATH_ZORO);
+    _players.push_back(player4);  
     std::cout << "Player 4 in the list" << std::endl;
     std::cout << "Player 4 name : " << _players[3]->getFirstname() << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
-    std::shared_ptr<Player> player5 = std::make_shared<PlayerMedium>(LASTNAME_LUFFY, FIRSTNAME_LUFFY, XP_LUFFY,XP_MAX_LUFFY,XP_MULTIPLIER_LUFFY, X_LUFFY, Y_LUFFY, DAMAGE_LUFFY, LUFFYASSOCIATION, DEATH_TEXTURE_PATH_LUFFY);
-    _players.push_back(player5);  // Ajoutez le joueur à la liste
+    std::shared_ptr<Player> player5 = std::make_shared<PlayerMedium>(LASTNAME_LUFFY, FIRSTNAME_LUFFY, HP_LUFFY,HP_MAX_LUFFY,HP_MULTIPLIER_LUFFY, X_LUFFY, Y_LUFFY, DAMAGE_LUFFY, LUFFYASSOCIATION, DEATH_TEXTURE_PATH_LUFFY);
+    _players.push_back(player5);  
     std::cout << "Player 5 in the list" << std::endl;
     std::cout << "Player 5 name : " << _players[4]->getFirstname() << std::endl;
 
     std::shared_ptr<Fruit> fruit1 = std::make_shared<Fruit>(NAME_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
-    _fruits.push_back(fruit1);  // Ajoutez le fruit à la liste
+    _fruits.push_back(fruit1);  
     std::cout << "Fruit 1 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND); 
 
     std::shared_ptr<Fruit> fruit2 = std::make_shared<Fruit>(NAME_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUITNORMAL);
-    _fruits.push_back(fruit2);  // Ajoutez le fruit à la liste
+    _fruits.push_back(fruit2);  
     std::cout << "Fruit 2 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
     std::shared_ptr<Fruit> fruit3 = std::make_shared<Fruit>(NAME_HOLLOW,ENERGY_HOLLOW,TEXTUREPATH_HOLLOW);
-    _fruits.push_back(fruit3);  // Ajoutez le fruit à la liste
+    _fruits.push_back(fruit3);  
     std::cout << "Fruit 3 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
     std::shared_ptr<Fruit> fruit4 = std::make_shared<Fruit>(NAME_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUITNORMAL);
-    _fruits.push_back(fruit4);  // Ajoutez le fruit à la liste
+    _fruits.push_back(fruit4);  
     std::cout << "Fruit 4 in the list" << std::endl;
     _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
+    std::shared_ptr<Fruit> fruit5 = std::make_shared<Fruit>(NAME_FRUIT,ENERGY_FRUIT,TEXTUREPATH_FRUIT);
+    _fruits.push_back(fruit5);  
+    std::cout << "Fruit 5 in the list" << std::endl;
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
+
+    std::shared_ptr<Fruit> fruit6 = std::make_shared<Fruit>(NAME_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUITNORMAL);
+    _fruits.push_back(fruit6);  
+    std::cout << "Fruit 6 in the list" << std::endl;
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
+
+    std::shared_ptr<Fruit> fruit7 = std::make_shared<Fruit>(NAME_FRUITNORMAL,ENERGY_FRUITNORMAL,TEXTUREPATH_FRUITNORMAL);
+    _fruits.push_back(fruit7);  
+    std::cout << "Fruit 7 in the list" << std::endl;
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
+
+    std::shared_ptr<Fruit> fruit8 = std::make_shared<Fruit>(NAME_HOLLOW,ENERGY_HOLLOW,TEXTUREPATH_HOLLOW);
+    _fruits.push_back(fruit8);  
+    std::cout << "Fruit 8 in the list" << std::endl;
+    _characterRenderer = CharacterRenderer(&_players,&_fruits,BACKGROUND);
 
     chooseScreen.push_back("../Sprite/Choose_Byakuya.PNG");
     chooseScreen.push_back("../Sprite/Choose_Ichigo.PNG");
@@ -77,13 +96,13 @@ Game::Game() : _players(),_fruits(), _characterRenderer(&_players,&_fruits,BACKG
     }
 }
 
-void Game::playBackgroundMusic() {
+void Game::playBackgroundMusic() { // Jouer la musique de fond
     _backgroundMusic.setVolume(20);
     _backgroundMusic.play();
     _backgroundMusic.setLoop(true);
 }
 
-void Game::stopBackgroundMusic() {
+void Game::stopBackgroundMusic() { // Arreter la musique de fond
     for (int i = 20; i >= 0; i-=5) {
         _backgroundMusic.setVolume(i);
         sf::sleep(sf::milliseconds(80));
@@ -91,7 +110,7 @@ void Game::stopBackgroundMusic() {
     _backgroundMusic.stop();
 }
 
-void Game::playHealSound() {
+void Game::playHealSound() { // Jouer la musique de soin
     _healMusic.setVolume(100);
     _healMusic.stop(); 
     _healMusic.setPlayingOffset(sf::Time::Zero); 
@@ -99,7 +118,7 @@ void Game::playHealSound() {
 }
 
 
-void Game::playAttackSound() {
+void Game::playAttackSound() { // Jouer la musique d'attaque
     _attackMusic.setVolume(100);
     _attackMusic.stop();
     _attackMusic.setPlayingOffset(sf::Time::Zero);
@@ -107,21 +126,21 @@ void Game::playAttackSound() {
 }
 
 
-void Game::playPickSound() {
+void Game::playPickSound() { // Jouer la musique de ramassage
     _pickMusic.setVolume(100);
     _pickMusic.stop();
     _pickMusic.setPlayingOffset(sf::Time::Zero);
     _pickMusic.play();
 }
 
-void Game::playAttackedSound() {
+void Game::playAttackedSound() { // Jouer la musique de victime d'attaque
     _atacckedMusic.setVolume(40);
     _atacckedMusic.stop();
     _atacckedMusic.setPlayingOffset(sf::Time::Zero);
     _atacckedMusic.play();
 }
 
-void Game::loadAndDrawTexture(sf::RenderWindow& window, const std::string& filePath) {
+void Game::loadAndDrawTexture(sf::RenderWindow& window, const std::string& filePath) { // Charger et afficher une texture
     sf::Texture texture;
     if (texture.loadFromFile(filePath)) {
         sf::Sprite sprite(texture);
@@ -133,7 +152,7 @@ void Game::loadAndDrawTexture(sf::RenderWindow& window, const std::string& fileP
 }
 
 
-bool Game::waitForMouseClickInRegion(sf::RenderWindow& window, int minX, int maxX, int minY, int maxY) {
+bool Game::waitForMouseClickInRegion(sf::RenderWindow& window, int minX, int maxX, int minY, int maxY) { // Attendre un clic de souris dans une région donnée
     sf::Event event;
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
@@ -168,10 +187,6 @@ void Game::displayExitScreen(sf::RenderWindow& window) {
 }
 
 
-void Game::handleIntroLogic(sf::RenderWindow& window) {
-
-}
-
 
 void Game::intro(sf::RenderWindow& window) {
     displayIntroScreen(window);
@@ -180,7 +195,7 @@ void Game::intro(sf::RenderWindow& window) {
     bool startClicked = false;
     bool exitClicked = false;
 
-    while (window.isOpen() && !startClicked && !exitClicked) {
+    while (window.isOpen() && !startClicked && !exitClicked) { // Attendre un clic de souris dans une région donnée
         while (window.pollEvent(_event)) {
             if (_event.type == sf::Event::Closed) {
                 window.close();
@@ -189,10 +204,10 @@ void Game::intro(sf::RenderWindow& window) {
                 sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
                 if (mousePosition.x >= 690 && mousePosition.x <= 1195 &&
                     mousePosition.y >= 770 && mousePosition.y <= 900) {
-                    startClicked = true;
+                    startClicked = true; // Commencer le jeu
                 } else if (mousePosition.x >= 820 && mousePosition.x <= 1055 &&
                            mousePosition.y >= 930 && mousePosition.y <= 1040) {
-                    exitClicked = true;
+                    exitClicked = true; // Quitter le jeu
                 }
             }
         }
@@ -250,10 +265,10 @@ void Game::choose(sf::RenderWindow& window, size_t& i) {
                 UserInput input(event, window);
                 
                 if (input.getButton() == Button::right || input.getButton() == left) {
-                    moveImageIterator(currentImage, i, (input.getButton() == Button::right) ? 1 : -1);
+                    moveImageIterator(currentImage, i, (input.getButton() == Button::right) ? 1 : -1); // Déplacer l'itérateur d'image
                 } else if (input.getButton() == confirm) {
                     std::string newFileName = *currentImage;
-                    newFileName.insert(newFileName.find_last_of('.'), "1");
+                    newFileName.insert(newFileName.find_last_of('.'), "1"); // Ajouter un 1 à la fin du nom de fichier
                     loadAndDrawTexture(window, newFileName);
                     sf::sleep(sf::seconds(0.5));
                     return;
@@ -261,9 +276,9 @@ void Game::choose(sf::RenderWindow& window, size_t& i) {
 
                 loadAndDrawTexture(window, *currentImage);
             } else if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-                if (waitForMouseClickInRegion(window, 1500, 1855, 940, 1025)) {
+                if (waitForMouseClickInRegion(window, 1500, 1855, 940, 1025)) { // Si le bouton de confirmation est cliqué
                     std::string newFileName = *currentImage;
-                    newFileName.insert(newFileName.find_last_of('.'), "1");
+                    newFileName.insert(newFileName.find_last_of('.'), "1"); // Ajouter un 1 à la fin du nom de fichier
                     loadAndDrawTexture(window, newFileName);
                     sf::sleep(sf::seconds(0.5));
                     return;
@@ -274,14 +289,14 @@ void Game::choose(sf::RenderWindow& window, size_t& i) {
 }
 
 
-void Game::setPlayerPositionAndStatus(size_t index, float yPos, bool isAlive) {
+void Game::setPlayerPositionAndStatus(size_t index, float yPos, bool isAlive) { // Définir la position et l'état d'un joueur
     _players[index]->setY(yPos);
     _players[index]->setIsAlive(isAlive);
 }
 
-void Game::checkExitConditions(bool& exitRun, size_t& winner) {
+void Game::checkExitConditions(bool& exitRun, size_t& winner) { // Vérifier les conditions de sortie
     for (size_t i = 0; i < _players.size(); i++) {
-        if (_players[i]->getX() > 1700) {
+        if (_players[i]->getX() > 3670) {
             exitRun = true;
             winner = i;
             break;
@@ -298,18 +313,19 @@ void Game::updateStates() {
     updateStateBots();
 }
 
-void Game::render(sf::RenderWindow& window, std::shared_ptr<PlayerPlus> captainPlayer) {
+void Game::render(sf::RenderWindow& window, std::shared_ptr<PlayerPlus> captainPlayer) { // Afficher les joueurs et les fruits
     window.clear();
     _characterRenderer.setTexture(BACKGROUND);
     if (captainPlayer)
         _characterRenderer.render2(window);
     else
         _characterRenderer.render(window);
-    _characterRenderer.renderHealthBars(window);
     _characterRenderer.renderHealthBarsBots(window);
+    _characterRenderer.renderPlayerCurser(window);
 }
 
 void Game::handleWinLose(size_t winner, sf::RenderWindow& window) {
+    window.setView(window.getDefaultView());
     if (winner == 0)
         win(window);
     else
@@ -318,16 +334,21 @@ void Game::handleWinLose(size_t winner, sf::RenderWindow& window) {
 
 void Game::run(sf::RenderWindow& window, size_t i) {
     applyPlayerChosen(i);
+    _players[0]->getView().setCenter(sf::Vector2f(_players[0]->getX() + 200, _players[0]->getY() -100)); // Centrer la vue sur le joueur
+    _players[0]->getView().setSize(sf::Vector2f(1920, 1080));
+    _players[0]->getView().zoom(1.0f);
+
+    
     bool exitRun = false;
     size_t winner = -1;
     
     std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[0]);
     
-    if (captainPlayer) {
+    if (captainPlayer) { // On joue sans le joueur Byakuya, pour ne pas avoir trop de joueurs sur le terrain
         setPlayerPositionAndStatus(i, -1000, false);
-        setPlayerPositionAndStatus(i + 1, 740, true);
+        setPlayerPositionAndStatus(i + 1, 940, true); // On place un autre joueur sur la ligne dans laquelle était censé se trouver Byakuya
     } else {
-        setPlayerPositionAndStatus(1, -1000, false);
+        setPlayerPositionAndStatus(1, -1000, false); // On joue sans le joueur Ichigo, pour ne pas avoir trop de joueurs sur le terrain
     }
 
     while (window.isOpen() && !exitRun) {
@@ -340,6 +361,8 @@ void Game::run(sf::RenderWindow& window, size_t i) {
                 window.close();
         }
 
+        window.setView(_players[0]->getView());
+
         updateStates();
         render(window, captainPlayer);
 
@@ -350,7 +373,7 @@ void Game::run(sf::RenderWindow& window, size_t i) {
 }
 
 
-void Game::win(sf::RenderWindow& window) {
+void Game::win(sf::RenderWindow& window) { // Afficher l'écran de victoire
     stopBackgroundMusic();
     sf::Texture winTexture;
     if (winTexture.loadFromFile("../Sprite/win.png")) {
@@ -375,7 +398,7 @@ void Game::win(sf::RenderWindow& window) {
 
 }
 
-void Game::lose(sf::RenderWindow& window) {
+void Game::lose(sf::RenderWindow& window) { // Afficher l'écran de défaite
     sf::Texture loseTexture;
         stopBackgroundMusic();
     if (loseTexture.loadFromFile("../Sprite/lose.png")) {
@@ -401,7 +424,7 @@ void Game::lose(sf::RenderWindow& window) {
 }
 
 
-void Game::updateStatePlayerUser(const UserInput& input) {
+void Game::updateStatePlayerUser(const UserInput& input) { // Mettre à jour l'état du joueur utilisateur
     if (_players.empty() || !_players[0])
         return;
 
@@ -422,8 +445,8 @@ void Game::updateStatePlayerUser(const UserInput& input) {
     }
 }
 
-void Game::handleAttack(int attackType) {
-    size_t attackerIndex = 0;
+void Game::handleAttack(int attackType) { // Gérer l'attaque
+    size_t attackerIndex = 0; 
     if (attackType == 2) {
         std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[0]);
         if (!captainPlayer) {
@@ -441,7 +464,7 @@ void Game::handleAttack(int attackType) {
     }
 }
 
-size_t Game::basicAttack() {
+size_t Game::basicAttack() { // Attaque de base
     for (size_t i = 0; i < _players.size(); ++i) {
         if (i != 0 && _players[i] && _players[i]->isAlive() &&
             _players[0]->isTimetoAttack() && (_players[0]->isCloseTo(*_players[i],DISTANCETREEHOLD) && _players[0]->isBehind(*_players[i]))) {
@@ -454,7 +477,7 @@ size_t Game::basicAttack() {
     return static_cast<size_t>(-1);
 }
 
-size_t Game::captainPlayerAttack(const std::shared_ptr<PlayerPlus>& captainPlayer) {
+size_t Game::captainPlayerAttack(const std::shared_ptr<PlayerPlus>& captainPlayer) { // Attaque pour les joueur plus
     for (size_t i = 0; i < _players.size(); ++i) {
         if (i != 0 && captainPlayer->isTimetoAttack() &&
             (captainPlayer->isCloseTo(*_players[i],DISTANCETREEHOLD) && captainPlayer->isBehind(*_players[i]))) {
@@ -467,7 +490,7 @@ size_t Game::captainPlayerAttack(const std::shared_ptr<PlayerPlus>& captainPlaye
     return static_cast<size_t>(-1);
 }
 
-void Game::handlePick() {
+void Game::handlePick() { // Gérer le ramassage
         for (const auto& fruit : _fruits) {
             _players[0]->doPick(*fruit, DISTANCETREEHOLDFRUITS);
             if(_players[0]->isPicking()) {
@@ -477,7 +500,7 @@ void Game::handlePick() {
     }
 }
 
-void Game::handleHeal() {
+void Game::handleHeal() { // Gérer le soin
     std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>(_players[0]);
     if (HealPlayer && HealPlayer->isTimetoHeal()){
         HealPlayer->doHeal();
@@ -487,16 +510,16 @@ void Game::handleHeal() {
 }
 
 
-void Game::updateStateBots() {
+void Game::updateStateBots() { // Mettre à jour l'état des bots
     for (size_t i = 1; i < _players.size(); ++i) {
         if (_players[i] && _players[i]->isAlive()) {
             
             std::shared_ptr<PlayerPlus> captainPlayer = std::dynamic_pointer_cast<PlayerPlus>(_players[i]);
             std::shared_ptr<PlayerHeal> HealPlayer = std::dynamic_pointer_cast<PlayerHeal>(_players[i]);  
 
-            if (_players[i]->isTimeToFix()) _players[i]->doFix();
+            if (_players[i]->isTimeToFix()) _players[i]->doFix(); // Pour que le sprite se remette à courir après l'attaque
 
-            _players[i]->setSpeed();
+            _players[i]->setSpeed(); // Mettre à jour la vitesse du joueur qui ralentit s'il perd des points de vie
 
             for (size_t j = 0; j < _players.size(); ++j) {
                 if (i != j &&  _players[i]->isTimetoAttack() && (((_players[i]->getFirstname()=="Luffy") && (_players[i]->isCloseTo(*_players[j], DISTANCETREEHOLDLUFFY)))|| (_players[i]->isCloseTo(*_players[j], DISTANCETREEHOLD))) && _players[i]->isBehind(*_players[j])) {
@@ -511,7 +534,7 @@ void Game::updateStateBots() {
                     break;  // Sortir de la boucle interne après avoir attaqué
                     }
                 }
-                if (HealPlayer && HealPlayer->getXp()<=HealPlayer->getXpMax()/2 && HealPlayer->isTimetoHeal()) {
+                if (HealPlayer && HealPlayer->getHp()<=HealPlayer->getHpMax()/2 && HealPlayer->isTimetoHeal()) {
                     HealPlayer->doHeal();
                     HealPlayer->setLastHealTime();
                 }
