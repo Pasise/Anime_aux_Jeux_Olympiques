@@ -18,8 +18,8 @@ protected:
     sf::Sprite _sprite;
     sf::Texture _texture;
     std::string _texturePath;
-    static std::unordered_set<float> usedXCoordinates;  // Static set to store used x-coordinates
-    static std::unordered_set<float> usedYCoordinates;  // Static set to store used y-coordinates
+    static std::unordered_set<float> usedXCoordinates;  // Variable static pour stocker les x-coordonnées utilisées
+    static std::unordered_set<float> usedYCoordinates;  // Variable static pour stocker les y-coordonnées utilisées
 
 public:
     Fruit(std::string name, float energy, std::string texturePath);

@@ -17,7 +17,7 @@ public:
     void doHeal();
     bool isHealing(){return _isHealing;};
     void doFix() override;
-    void doAttack1(Player& targetPlayer); //
+    void doAttack1(Player& targetPlayer); 
     void randomAttack(Player& targetPlayer);
     bool canAttack() const;
     bool isTimetoHeal() const;

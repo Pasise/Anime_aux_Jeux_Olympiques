@@ -24,15 +24,15 @@ class Player: public Object{
     using Clock = std::chrono::steady_clock;
     using TimePoint = std::chrono::time_point<Clock>;
 
-    TimePoint _lastAttackTime; // Record the time of the last attack
-    TimePoint _lastPickTime;
+    TimePoint _lastAttackTime; // Enregistre le moment où le joueur a attaqué pour la dernière fois
+    TimePoint _lastPickTime; // Enregistre le moment où le joueur a ramassé un fruit pour la dernière fois
 
     bool _isPicking;
     
     std::map<std::string, int> _textureAssociations;
     std::string _deathTexturePath;
 
-    //view
+    // Pour la vue associée au joueur  (pour le scrolling)
     sf::View _view;
 
     public : 

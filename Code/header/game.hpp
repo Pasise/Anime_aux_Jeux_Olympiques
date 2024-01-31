@@ -14,7 +14,7 @@
 
 class Game {
     std::vector<std::shared_ptr<Player>> _players;
-    std::vector<std::shared_ptr<Fruit>> _fruits; // Added _fruits attribute
+    std::vector<std::shared_ptr<Fruit>> _fruits; 
     UserInput _input;
     CharacterRenderer _characterRenderer;
     std::vector<std::string> chooseScreen;

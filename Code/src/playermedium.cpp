@@ -40,7 +40,7 @@ bool PlayerMedium::canAttack() const {
     // Générez une valeur aléatoire pour déterminer si le joueur peut attaquer
     int randomValue = getRandomNumberForCanAttack();
 
-    // Le joueur peut attaquer si la valeur aléatoire est 1 donc 50% de chance
+    // Le joueur peut attaquer si la valeur aléatoire est 1 il a 1 chance sur 10 d'attaquer
     return randomValue == 1;
 }
 
@@ -51,7 +51,7 @@ PlayerMedium& PlayerMedium::operator=(const PlayerMedium& other)
 {
     if (this != &other)
     {
-        // Copier les membres de other vers this
+        // Copier les membres de other vers l'autre player 
         _lastname = other._lastname;
         _firstname = other._firstname;
         _Hp = other._Hp;

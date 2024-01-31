@@ -22,7 +22,6 @@ PlayerHeal::PlayerHeal(std::string lastname, std::string firstname, float Hp,flo
     _isHealing = false;
     _isAlive = true;
     
-    // view
 
 
     std::cout << "PlayerBleachShinigami created" << std::endl;
@@ -68,7 +67,7 @@ bool PlayerHeal::canAttack() const {
     // Générez une valeur aléatoire pour déterminer si le joueur peut attaquer
     int randomValue = getRandomNumberForCanAttack();
 
-    // Le joueur peut attaquer si la valeur aléatoire est 1 donc 50% de chance
+    // Le joueur peut attaquer si la valeur aléatoire est 3 il a 1 chance sur 10 d'attaquer
     return randomValue == 3;
 }
 
@@ -76,6 +75,6 @@ bool PlayerHeal::isTimetoHeal() const {
     auto currentTime = Clock::now();
     auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - _lastHealTime);
 
-        // Check if enough time has passed since the last attack
-    return elapsedTime.count() >= 17; // Adjust the cooldown period (5 seconds in this case)
+        // Vérifier si le temps écoulé depuis la dernière guerison est supérieur ou égal à 17 secondes
+    return elapsedTime.count() >= 17; 
 }

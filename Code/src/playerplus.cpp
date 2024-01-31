@@ -37,7 +37,7 @@ void PlayerPlus::doAttack2(Player& targetPlayer)
 
 
 int PlayerPlus::getRandomNumberForRandomAttack() const {
-        // Obtenir le temps actuel en secondes depuis l'époque
+        // Obtenir le temps actuel en secondes 
         auto currentTime = std::chrono::system_clock::now();
         // Convertir le temps en nombre entier représentant le nombre de secondes
         auto currentTimeInSeconds = std::chrono::time_point_cast<std::chrono::seconds>(currentTime);
@@ -45,7 +45,7 @@ int PlayerPlus::getRandomNumberForRandomAttack() const {
         auto epoch = currentTimeInSeconds.time_since_epoch();
         // Convertir la durée en secondes
         auto value = std::chrono::duration_cast<std::chrono::seconds>(epoch);
-        // Obtenir le nombre de secondes écoulées depuis l'époque
+        // Obtenir le nombre de secondes écoulées
         auto duration = value.count();
         // Utiliser le nombre de secondes comme graine pour le générateur de nombres aléatoires
         std::srand(duration);
@@ -78,9 +78,8 @@ void PlayerPlus::randomAttack(Player& targetPlayer)
 
 bool PlayerPlus::canAttack() const {
 
-    // Générez une valeur aléatoire pour déterminer si le joueur peut attaquer
     int randomValue = getRandomNumberForCanAttack();
 
-    // Le joueur peut attaquer si la valeur aléatoire est 1 donc 50% de chance
+
     return randomValue == 2;
 }
