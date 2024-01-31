@@ -42,6 +42,8 @@ Vous pouvez à présent lancer le jeu avec la commande:
 make execute
 ```
 
+
+
 Pour nettoyer les executables: 
 
 ```bash
@@ -53,7 +55,7 @@ Le dossier contient les différents types de fichiers suivants
 
 #### - Les fichiers .hpp dans le dossier header pour la déclaration des Classes: 
 - button.hpp
-- characterrenderer.hpp (gestion des affichages des joeurs, des fruits et la barre de vie)
+- characterrenderer.hpp (gestion des affichages des joeurs, des fruits et les barres de vie)
 - constant.hpp (les constantes)
 - fruit.hpp (la classe des fruits)
 - game.hpp (le déroulement du jeu)
@@ -100,3 +102,5 @@ Et lancer la commande
 ```bash
 make test
 ```
+
+Amusez vous bien !
