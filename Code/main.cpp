@@ -1,8 +1,7 @@
 #include "header/main.hpp"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "One Piece vs Bleach", sf::Style::Default);
-
+    sf::RenderWindow  window(sf::VideoMode(1920, 1080), "One Piece vs Bleach", sf::Style::Fullscreen);
 
     Game game;
     size_t i = 0;
