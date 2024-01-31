@@ -6,8 +6,6 @@
 
 class PlayerMedium : public Player
 {
-    protected:
-    std::string _texture;
     public: 
         PlayerMedium(std::string lastname, std::string firstname, float Hp,float Hp_max,float Hp_multiplier, float x, float y, float damage, std::map<std::string, int> textureAssociations, std::string deathTexturePath);
         ~PlayerMedium() {};

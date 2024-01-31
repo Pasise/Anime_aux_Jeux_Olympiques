@@ -145,7 +145,7 @@ TEST_CASE("PlayerHeal - Test de la fonction doHeal") {
 
 
 
-TEST_CASE("Creation of Fruit") {
+TEST_CASE("Test sur les fruits") {
     
 
     // Vérifiez que le nom, l'énergie, la texture et le statut sont corrects
