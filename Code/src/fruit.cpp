@@ -12,7 +12,7 @@ Fruit::Fruit(std::string name, float energy, std::string texturePath)
 }
 
 void Fruit::setX(float x) {
-    // Add the x-coordinate to the set of used x-coordinates
+    // Ajouter la coordonnée x au set des x-coordonnées utilisées
     usedXCoordinates.insert(x);
     _x = x;
 }
@@ -21,7 +21,7 @@ int Fruit::getRandomNumberForX() const {
     srand(time(NULL));
     float newX;
 
-    // Generate a new x-coordinate until a unique one is found
+    // GGenerer une coordonnée x aléatoire entre 1250 et 3650
     do {
 
         newX = (rand() % 2400) + 1250;
@@ -31,11 +31,12 @@ int Fruit::getRandomNumberForX() const {
 }
 
 void Fruit::setY(float y) {
-    // Add the y-coordinate to the set of used y-coordinates
+    // Ajouter la coordonnée y au set des y-coordonnées utilisées
     usedYCoordinates.insert(y);
     _y = y;
 }
 
+//Generer une des coordonnées y aléatoirement possibles entre les 2 lignes pour chaque fruit
 int Fruit::getRandomNumberForY() const {
     srand(time(NULL));
     float newY;
